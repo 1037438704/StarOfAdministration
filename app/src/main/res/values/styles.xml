@@ -15,4 +15,10 @@
         <!--<item name="android:fitsSystemWindows">true</item>-->
     </style>
 
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+    <item name="colorControlNormal">@color/editcolor</item>
+    <item name="colorControlActivated">@color/editcolor</item>
+    </style>
+
 </resources>

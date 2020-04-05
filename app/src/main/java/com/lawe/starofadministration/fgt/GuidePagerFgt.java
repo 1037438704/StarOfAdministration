@@ -18,6 +18,7 @@ import com.kongzue.baseframework.interfaces.FragmentLayout;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.AppManager;
+import com.kongzue.baseframework.util.Preferences;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.aty.BootPageAty;
 import com.lawe.starofadministration.aty.LoginAty;
@@ -56,6 +57,7 @@ public class GuidePagerFgt extends BaseFgt {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Preferences.getInstance().commit(me, "page", "decide", true);
                 jump(LoginAty.class);
                 AppManager.getInstance().killActivity(BootPageAty.class);
             }

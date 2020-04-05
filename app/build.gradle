@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {
@@ -33,4 +37,5 @@ dependencies {
     implementation 'com.kongzue.baseframework:baseframework:6.7.4'
     //okhttp
     implementation 'com.kongzue.baseokhttp_v3:baseokhttp_v3:3.1.6'
+    implementation 'com.github.WShaobin:VerificationCodeInputView:1.0.2'
 }

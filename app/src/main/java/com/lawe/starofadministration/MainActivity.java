@@ -1,30 +1,46 @@
 package com.lawe.starofadministration;
 
-import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
-import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
-import com.kongzue.baseframework.interfaces.Layout;
-import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
-import com.kongzue.baseframework.util.JumpParameter;
-import com.lawe.starofadministration.base.BaseAty;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
-@Layout(R.layout.activity_main)
-@DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
-@DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
-@NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
-public class MainActivity extends BaseAty {
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.wynsbin.vciv.VerificationCodeInputView;
+
+public class MainActivity extends AppCompatActivity implements VerificationCodeInputView.OnInputListener {
 
     @Override
-    public void initViews() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        final VerificationCodeInputView verificationCodeInputView1 = findViewById(R.id.vciv_code1);
+        final VerificationCodeInputView verificationCodeInputView2 = findViewById(R.id.vciv_code2);
+        final VerificationCodeInputView verificationCodeInputView3 = findViewById(R.id.vciv_code3);
+        verificationCodeInputView1.setOnInputListener(this);
+        verificationCodeInputView2.setOnInputListener(this);
+        verificationCodeInputView3.setOnInputListener(this);
+        findViewById(R.id.btn_clear).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                verificationCodeInputView1.clearCode();
+                verificationCodeInputView2.clearCode();
+                verificationCodeInputView3.clearCode();
+            }
+        });
+    }
+
+    @Override
+    public void onComplete(String code) {
+        Toast.makeText(MainActivity.this, code, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onInput() {
 
     }
 
     @Override
-    public void initDatas(JumpParameter parameter) {
-
-    }
-
-    @Override
-    public void setEvents() {
-
+    public void onPointerCaptureChanged(boolean hasCapture) {
     }
 }

@@ -11,8 +11,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".aty.LoginAty"></activity>
-        <!-- 启动页面 -->
+        <activity android:name=".aty.LoginAty" /> <!-- 启动页面 -->
         <activity android:name=".aty.BootPageAty" /> <!-- 闪屏页面 -->
         <activity android:name=".aty.SplashAty">
             <intent-filter>
@@ -20,8 +19,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
     </application>
 
 </manifest>

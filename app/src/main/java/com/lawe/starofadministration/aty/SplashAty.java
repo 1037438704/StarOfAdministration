@@ -39,7 +39,7 @@ public class SplashAty extends BaseAty {
     @Override
     public void initViews() {
         framgentLayout = findViewById(R.id.fragment_lauout);
-//        decideBoolean = Preferences.getInstance().getBoolean(me, "page", "decide");
+        decideBoolean = Preferences.getInstance().getBoolean(me, "page", "decide");
     }
 
     @Override
@@ -57,13 +57,12 @@ public class SplashAty extends BaseAty {
             public void onAnimationEnd(Animation animation) {
                 //判断是否是第一次进入的
                 if (!decideBoolean){
-                    Preferences.getInstance().commit(me, "page", "decide", true);
                     //这里进入引导页面
                     jump(BootPageAty.class);
                     finish();
                 }else {
                     //判断是否登录
-                    jump(MainActivity.class);
+                    jump(LoginAty.class);
                     finish();
                 }
             }
