@@ -1,4 +1,4 @@
-package com.lawe.starofadministration.aty;
+package com.lawe.starofadministration.base;
 
 import com.kongzue.baseframework.BaseActivity;
 

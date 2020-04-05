@@ -5,7 +5,7 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
-import com.lawe.starofadministration.aty.BaseAty;
+import com.lawe.starofadministration.base.BaseAty;
 
 @Layout(R.layout.activity_main)
 @DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
