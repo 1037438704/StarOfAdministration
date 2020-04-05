@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
@@ -12,6 +15,7 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.kongzue.baseframework.util.Preferences;
+import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseAty;
 
@@ -28,17 +32,47 @@ import com.lawe.starofadministration.base.BaseAty;
 @NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class SplashAty extends BaseAty {
 
+    AlphaAnimation alphaAnimation = new AlphaAnimation(0.1f,1f);
+    boolean decideBoolean;
+
     private LinearLayout framgentLayout;
     @Override
     public void initViews() {
-        Preferences.getInstance().commit(me, "page", "decide", true);
-        Preferences.getInstance().getBoolean(me,"page","decide");
         framgentLayout = findViewById(R.id.fragment_lauout);
+//        decideBoolean = Preferences.getInstance().getBoolean(me, "page", "decide");
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
+        alphaAnimation.setDuration(3000);
+        alphaAnimation.setFillAfter(true);
+        framgentLayout.startAnimation(alphaAnimation);
+        alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
 
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                //判断是否是第一次进入的
+                if (!decideBoolean){
+                    Preferences.getInstance().commit(me, "page", "decide", true);
+                    //这里进入引导页面
+                    jump(BootPageAty.class);
+                    finish();
+                }else {
+                    //判断是否登录
+                    jump(MainActivity.class);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     @Override
