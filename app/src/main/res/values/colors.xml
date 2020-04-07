@@ -7,4 +7,5 @@
     <color name="loginbackground">#DB1E2C</color>
     <color name="backgroundHui">#EFF0F2</color>
     <color name="background">#ffffff</color>
+    <color name="button_bg">#E3E5E7</color>
 </resources>
