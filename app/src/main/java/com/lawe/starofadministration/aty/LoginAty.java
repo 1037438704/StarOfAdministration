@@ -64,6 +64,9 @@ public class LoginAty extends BaseAty {
     private Button login_getCode;
     private LinearLayout linear_code;
     private RelativeLayout linear_pass;
+    private TextView text_zhuanwang;
+    private RelativeLayout linear_popNet;
+    private ImageView login_down;
 
     @Override
     public void initViews() {
@@ -76,6 +79,9 @@ public class LoginAty extends BaseAty {
         login_getCode = findViewById(R.id.login_getCode);
         linear_code = findViewById(R.id.linear_code);
         linear_pass = findViewById(R.id.linear_pass);
+        text_zhuanwang = findViewById(R.id.text_zhuanwang);
+        linear_popNet = findViewById(R.id.linear_pop);
+        login_down = findViewById(R.id.login_down);
         //输入密码  不可见
         login_eye.setBackgroundResource(R.mipmap.login_biyan);
         LoginAty.this.login_edpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -185,6 +191,28 @@ public class LoginAty extends BaseAty {
                     linear_pass.setVisibility(View.VISIBLE);
                     linear_code.setVisibility(View.GONE);
                 }
+            }
+        });
+
+        /*输入专网*/
+        text_zhuanwang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linear_popNet.setVisibility(View.VISIBLE);
+            }
+        });
+
+        login_down.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linear_popNet.setVisibility(View.GONE);
+            }
+        });
+
+        linear_popNet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linear_popNet.setVisibility(View.GONE);
             }
         });
     }
