@@ -1,5 +1,6 @@
 package com.lawe.starofadministration.aty;
 
+import android.app.AlertDialog;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
@@ -68,6 +69,7 @@ public class LoginAty extends BaseAty {
         linear_popNet = findViewById(R.id.linear_pop);
         login_down = findViewById(R.id.login_down);
         linear_popAgree = findViewById(R.id.linear_popAgree);
+
         //输入密码  不可见
         login_eye.setBackgroundResource(R.mipmap.login_biyan);
         LoginAty.this.login_edpass.setTransformationMethod(PasswordTransformationMethod.getInstance());

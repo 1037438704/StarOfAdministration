@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#60000000"
+        android:gravity="center"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@drawable/shape_background4_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:text="信息已更新"
+                android:textSize="16dp"
+                android:textColor="@color/textMedium"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="您修改的信息已经生效"
+                android:textColor="#ff717173"
+                android:textSize="14sp"
+                />
+
+
+                <Button
+                    android:text="知道了"
+                    android:textSize="14dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/shape_red22"
+                    android:textColor="#fff"
+                    android:layout_width="100dp"
+                    android:layout_height="36dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
