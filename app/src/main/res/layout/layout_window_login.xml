@@ -2,7 +2,60 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     android:layout_height="match_parent">
+
+   <ImageView
+       android:id="@+id/back_button"
+       android:src="@mipmap/daiban_back2"
+        android:layout_marginTop="40dp"
+       android:layout_marginLeft="24dp"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginTop="137dp"
+            android:src="@mipmap/login_conputer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textColor="@color/textMedium"
+            android:textSize="14dp"
+            android:layout_marginTop="24dp"
+            android:text="电脑端系统登录确认"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <Button
+            android:id="@+id/login_conputer_sure"
+            android:text="确认"
+            android:textSize="18dp"
+            android:textColor="#fff"
+            android:layout_marginTop="123dp"
+            android:background="@drawable/shape_red22"
+            android:layout_width="304dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/login_conputer_none"
+            android:text="取消登录"
+            android:textSize="14dp"
+            android:textColor="#9F9FA0"
+            android:layout_marginTop="22dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
 
 
 </LinearLayout>
