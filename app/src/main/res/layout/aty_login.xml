@@ -380,17 +380,10 @@
             android:background="@drawable/shape_background8"
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
-
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/login_down"
-                android:src="@mipmap/login_down"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="12dp"
-                android:layout_width="26dp"
-                android:layout_height="16dp"/>
+            <include layout="@layout/item_img_down"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -427,4 +420,139 @@
         </LinearLayout>
     </RelativeLayout>
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:background="#60000000"
+        android:visibility="gone"
+        android:id="@+id/linear_popAgree"
+        >
+
+        <LinearLayout
+            android:layout_marginTop="67dp"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/item_img_down"/>
+
+            <LinearLayout
+                android:id="@+id/linear_agree"
+                android:layout_marginLeft="64dp"
+                android:layout_marginRight="64dp"
+                android:gravity="center"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/radio_conceal"
+                        android:layout_width="match_parent"
+                        android:text="隐私政策"
+                        android:textSize="14dp"
+                        android:textColor="@color/loginbackground"
+                        android:button="@null"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"/>
+
+                    <View
+                        android:layout_width="22dp"
+                        android:background="@color/loginbackground"
+                        android:layout_marginTop="17dp"
+                        android:layout_height="2dp"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/radio_user"
+                        android:layout_width="match_parent"
+                        android:text="隐私政策"
+                        android:textSize="14dp"
+                        android:textColor="@color/textNoCheck"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"/>
+
+                    <View
+                        android:layout_width="22dp"
+                        android:background="@color/background"
+                        android:layout_marginTop="17dp"
+                        android:layout_height="2dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/radio_serve"
+                        android:layout_width="match_parent"
+                        android:text="服务协议"
+                        android:textSize="14dp"
+                        android:textColor="@color/textNoCheck"
+                        android:button="@null"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"/>
+
+                    <View
+                        android:layout_width="22dp"
+                        android:background="@color/background"
+                        android:layout_marginTop="17dp"
+                        android:layout_height="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="139dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_marginRight="52dp"
+            android:layout_marginLeft="52dp"
+            android:gravity="center"
+            android:layout_height="139dp"
+            >
+            <Button
+                android:text="拒绝"
+                android:textSize="14dp"
+                android:background="@drawable/shape_white22"
+                android:textColor="#9f9fa0"
+                android:layout_width="122dp"
+                android:layout_height="36dp"/>
+
+            <Button
+                android:text="同意"
+                android:textSize="14dp"
+                android:layout_marginLeft="12dp"
+                android:background="@drawable/shape_red22"
+                android:textColor="#fff"
+                android:layout_width="122dp"
+                android:layout_height="36dp"/>
+        </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>
