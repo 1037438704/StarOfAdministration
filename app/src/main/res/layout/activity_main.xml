@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager1"
+        android:id="@+id/viewPagerMain"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
@@ -17,7 +17,7 @@
     <RadioGroup
         android:id="@+id/main_rgp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:background="@mipmap/daiban_tabbar_bottom"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
@@ -42,7 +42,6 @@
             android:layout_weight="1"
             android:layout_marginTop="16dp"
             android:button="@null"
-            android:drawablePadding="2dp"
             android:drawableTop="@drawable/select_jindu"
             android:gravity="center"
             android:text="进度"
@@ -56,9 +55,8 @@
             android:layout_weight="1"
             android:button="@null"
             android:layout_marginTop="4dp"
-            android:drawableTop="@mipmap/daiban_workdesk_rcard"
-            android:gravity="center"
-            android:textSize="11sp" />
+            android:drawableTop="@mipmap/center"
+            />
 
         <RadioButton
             android:layout_width="0dp"
@@ -66,7 +64,6 @@
             android:layout_weight="1"
             android:layout_marginTop="16dp"
             android:button="@null"
-            android:drawablePadding="2dp"
             android:drawableTop="@drawable/select_datas"
             android:gravity="center"
             android:text="数据"
@@ -79,7 +76,6 @@
             android:layout_weight="1"
             android:layout_marginTop="16dp"
             android:button="@null"
-            android:drawablePadding="2dp"
             android:drawableTop="@drawable/select_settings"
             android:gravity="center"
             android:text="设置"

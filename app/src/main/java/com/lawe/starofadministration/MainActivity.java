@@ -1,25 +1,20 @@
 package com.lawe.starofadministration;
 
 import android.Manifest;
-import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-
-import com.kongzue.baseframework.interfaces.BindView;
+;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.AppManager;
 import com.kongzue.baseframework.util.JumpParameter;
-import com.kongzue.baseframework.util.OnPermissionResponseListener;
 import com.lawe.starofadministration.adp.MainFragmentPageAdapter;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.fgt.CenterFragment;
@@ -27,8 +22,6 @@ import com.lawe.starofadministration.fgt.DatasFragment;
 import com.lawe.starofadministration.fgt.DealtFragment;
 import com.lawe.starofadministration.fgt.SettingsFragment;
 import com.lawe.starofadministration.fgt.SpeedFragment;
-import com.wynsbin.vciv.VerificationCodeInputView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,14 +32,15 @@ import java.util.List;
 public class MainActivity extends BaseAty {
 
     private RadioGroup mainRgp;
-    private ViewPager viewpager;
+    private ViewPager viewPager;
     private long exitTime = 0;
     private List<Fragment> fragemnts;
 
     @Override
     public void initViews() {
+        requestPemissions();
         mainRgp = findViewById(R.id.main_rgp);
-        viewpager = findViewById(R.id.viewPager1);
+        viewPager = findViewById(R.id.viewPagerMain);
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
     }
@@ -61,15 +55,15 @@ public class MainActivity extends BaseAty {
         fragemnts.add(SettingsFragment.newInstance());
         //实例化适配器
         MainFragmentPageAdapter adapter = new MainFragmentPageAdapter(getSupportFragmentManager(), fragemnts);
-        viewpager.setOffscreenPageLimit(fragemnts.size());
+        viewPager.setOffscreenPageLimit(fragemnts.size());
         //设置适配器
-        viewpager.setAdapter(adapter);
+        viewPager.setAdapter(adapter);
     }
 
     @Override
     public void setEvents() {
         //viewPager的滑动监听
-        viewpager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 //获取当前位置的RadioButton
@@ -85,15 +79,15 @@ public class MainActivity extends BaseAty {
                 for (int index = 0; index < mainRgp.getChildCount(); index++) {
                     RadioButton rb = (RadioButton) mainRgp.getChildAt(index);
                     if (rb.isChecked()) {
-                        viewpager.setCurrentItem(index, false);
+                        viewPager.setCurrentItem(index, false);
                         break;
                     }
-                    RadioButton childAt = (RadioButton) mainRgp.getChildAt(4);
+                    /*RadioButton childAt = (RadioButton) mainRgp.getChildAt(4);
                     if(childAt.isChecked()){
-                        /*if (token == null || token.equals("")){
+                        if (token == null || token.equals("")){
                             start(me, LoginActivity.class);
-                        }*/
-                    }
+                        }
+                    }*/
                 }
             }
         });
@@ -101,10 +95,6 @@ public class MainActivity extends BaseAty {
 
     /**
      * 按两次退出应用
-     *
-     * @param keyCode
-     * @param event
-     * @return
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
