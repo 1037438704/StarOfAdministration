@@ -34,7 +34,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     //今日头条适配
-//    implementation 'me.jessyan:autosize:0.9.5'
+    implementation 'me.jessyan:autosize:0.9.5'
     //base依赖
     implementation 'com.kongzue.baseframework:baseframework:6.7.4'
     //okhttp
@@ -42,7 +42,11 @@ dependencies {
     implementation 'com.github.WShaobin:VerificationCodeInputView:1.0.2'
     implementation 'com.kongzue.dialog_v3x:dialog:3.1.8'
     //noinspection GradleCompatible
-    implementation 'com.android.support:support-v4:29.0.2'
-    implementation 'com.android.support:design:29.0.2'
+    implementation 'com.android.support:design:29.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
 
+    //图片加载
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
 }

@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="editcolor">#EDEDED</color>
-    <color name="loginbackground">#DB1E2C</color>
+    <color name="loginbackground">#DB1F2C</color>
+    <color name="background10">#10DB1F2C</color>
     <color name="backgroundHui">#EFF0F2</color>
     <color name="background">#ffffff</color>
     <color name="button_bg">#E3E5E7</color>

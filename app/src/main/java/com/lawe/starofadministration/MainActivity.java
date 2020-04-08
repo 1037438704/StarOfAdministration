@@ -22,6 +22,7 @@ import com.kongzue.baseframework.util.JumpParameter;
 import com.kongzue.baseframework.util.OnPermissionResponseListener;
 import com.lawe.starofadministration.adp.MainFragmentPageAdapter;
 import com.lawe.starofadministration.base.BaseAty;
+import com.lawe.starofadministration.fgt.CenterFragment;
 import com.lawe.starofadministration.fgt.DatasFragment;
 import com.lawe.starofadministration.fgt.DealtFragment;
 import com.lawe.starofadministration.fgt.SettingsFragment;
@@ -37,15 +38,15 @@ import java.util.List;
 @NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class MainActivity extends BaseAty {
 
-    @BindView(R.id.main_rgp)
-    RadioGroup mainRgp;
-    @BindView(R.id.viewPager)
-    ViewPager viewPager;
+    private RadioGroup mainRgp;
+    private ViewPager viewpager;
     private long exitTime = 0;
     private List<Fragment> fragemnts;
 
     @Override
     public void initViews() {
+        mainRgp = findViewById(R.id.main_rgp);
+        viewpager = findViewById(R.id.viewPager1);
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
     }
@@ -55,20 +56,20 @@ public class MainActivity extends BaseAty {
         fragemnts = new ArrayList<>();
         fragemnts.add(DealtFragment.newInstance());
         fragemnts.add(SpeedFragment.newInstance());
-        //fragemnts.add(MarketFragment.newInstance());
+        fragemnts.add(CenterFragment.newInstance());
         fragemnts.add(DatasFragment.newInstance());
         fragemnts.add(SettingsFragment.newInstance());
         //实例化适配器
         MainFragmentPageAdapter adapter = new MainFragmentPageAdapter(getSupportFragmentManager(), fragemnts);
-        viewPager.setOffscreenPageLimit(fragemnts.size());
+        viewpager.setOffscreenPageLimit(fragemnts.size());
         //设置适配器
-        viewPager.setAdapter(adapter);
+        viewpager.setAdapter(adapter);
     }
 
     @Override
     public void setEvents() {
         //viewPager的滑动监听
-        viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        viewpager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 //获取当前位置的RadioButton
@@ -84,7 +85,7 @@ public class MainActivity extends BaseAty {
                 for (int index = 0; index < mainRgp.getChildCount(); index++) {
                     RadioButton rb = (RadioButton) mainRgp.getChildAt(index);
                     if (rb.isChecked()) {
-                        viewPager.setCurrentItem(index, false);
+                        viewpager.setCurrentItem(index, false);
                         break;
                     }
                     RadioButton childAt = (RadioButton) mainRgp.getChildAt(4);
@@ -137,7 +138,8 @@ public class MainActivity extends BaseAty {
         );
     }
 
-    private void requestPermission(OnPermissionResponseListener onPermissionResponseListener, String camera, String writeExternalStorage, String readExternalStorage) {
+    private void requestPermission(OnPermissionResponseListener onPermissionResponseListener, String camera,
+                                   String writeExternalStorage, String readExternalStorage) {
     }
 
 }

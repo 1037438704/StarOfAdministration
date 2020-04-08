@@ -27,6 +27,7 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.kongzue.dialog.v3.FullScreenDialog;
+import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseAty;
 import com.wynsbin.vciv.VerificationCodeInputView;
@@ -53,6 +54,7 @@ public class LoginAty extends BaseAty {
     private RelativeLayout linear_popNet;
     private ImageView login_down;
     private RelativeLayout linear_popAgree;
+    private Button login_agree;
 
     @Override
     public void initViews() {
@@ -69,6 +71,7 @@ public class LoginAty extends BaseAty {
         linear_popNet = findViewById(R.id.linear_pop);
         login_down = findViewById(R.id.login_down);
         linear_popAgree = findViewById(R.id.linear_popAgree);
+        login_agree = findViewById(R.id.login_agree);
 
         //输入密码  不可见
         login_eye.setBackgroundResource(R.mipmap.login_biyan);
@@ -105,6 +108,12 @@ public class LoginAty extends BaseAty {
             public void onClick(View v) {
                 toast("立即登录");
                 linear_popAgree.setVisibility(View.VISIBLE);
+                login_agree.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        jump(MainActivity.class);
+                    }
+                });
             }
         });
 
@@ -176,6 +185,5 @@ public class LoginAty extends BaseAty {
                 linear_popAgree.setVisibility(View.GONE);
             }
         });
-
     }
 }

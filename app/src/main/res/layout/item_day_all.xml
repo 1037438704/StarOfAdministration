@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="您有一条信用扣分记录"
+        android:paddingLeft="16dp"
+        android:textColor="#ff3e3e41"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:text="编号：1274718733791379237489"
+        android:textColor="#ff9f9fa0"
+        android:textSize="12sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="类别：督查督办"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="16dp"
+        android:textColor="#ff717173"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="要求时间：2020/03/27 21:33:50"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="16dp"
+        android:textColor="#ff717173"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="预警等级："
+        android:layout_marginTop="8dp"
+        android:paddingLeft="16dp"
+        android:textColor="#ff717173"
+        android:textSize="16sp"
+        />
+
+    <View
+        android:background="#EFF0F2"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</LinearLayout>

@@ -431,12 +431,12 @@
         >
 
         <LinearLayout
-            android:layout_marginTop="67dp"
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
             android:background="@color/white"
             android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_alignParentBottom="true"
+            android:layout_height="646dp">
 
             <include layout="@layout/item_img_down"/>
 
@@ -547,6 +547,7 @@
                 android:layout_height="36dp"/>
 
             <Button
+                android:id="@+id/login_agree"
                 android:text="同意"
                 android:textSize="14dp"
                 android:layout_marginLeft="12dp"
