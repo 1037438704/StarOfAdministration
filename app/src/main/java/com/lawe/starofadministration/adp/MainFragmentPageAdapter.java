@@ -23,15 +23,6 @@ public class MainFragmentPageAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> fragments;
     private String[] titleList;
 
-    public MainFragmentPageAdapter(FragmentManager fm) {
-        super(fm);
-    }
-
-    public MainFragmentPageAdapter(FragmentManager fm, List<Fragment> fragments) {
-        super(fm);
-        this.fragments = fragments;
-    }
-
     public MainFragmentPageAdapter(FragmentManager fm, List<Fragment> fragments, String[] titleList) {
         super(fm);
         this.fragments = fragments;

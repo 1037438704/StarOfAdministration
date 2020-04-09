@@ -33,7 +33,7 @@
             android:drawableTop="@drawable/select_daiban"
             android:gravity="center"
             android:text="待办"
-            android:textColor="@drawable/select_textcolor"
+           android:textColor="@drawable/select_text_color"
             android:textSize="11sp" />
 
         <RadioButton
@@ -42,10 +42,10 @@
             android:layout_weight="1"
             android:layout_marginTop="16dp"
             android:button="@null"
-            android:drawableTop="@drawable/select_jindu"
             android:gravity="center"
             android:text="进度"
-            android:textColor="@drawable/select_textcolor"
+            android:textColor="@drawable/select_text_color"
+            android:drawableTop="@drawable/select_jindu"
             android:textSize="11sp" />
 
 
@@ -67,7 +67,7 @@
             android:drawableTop="@drawable/select_datas"
             android:gravity="center"
             android:text="数据"
-            android:textColor="@drawable/select_textcolor"
+            android:textColor="@drawable/select_text_color"
             android:textSize="11sp" />
 
         <RadioButton
@@ -79,7 +79,7 @@
             android:drawableTop="@drawable/select_settings"
             android:gravity="center"
             android:text="设置"
-            android:textColor="@drawable/select_textcolor"
+            android:textColor="@drawable/select_text_color"
             android:textSize="11sp" />
     </RadioGroup>
 

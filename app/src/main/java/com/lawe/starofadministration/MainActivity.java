@@ -2,11 +2,14 @@ package com.lawe.starofadministration;
 
 import android.Manifest;
 import android.view.KeyEvent;
+import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 ;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
@@ -15,7 +18,6 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.AppManager;
 import com.kongzue.baseframework.util.JumpParameter;
-import com.lawe.starofadministration.adp.MainFragmentPageAdapter;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.fgt.CenterFragment;
 import com.lawe.starofadministration.fgt.DatasFragment;
@@ -38,7 +40,7 @@ public class MainActivity extends BaseAty {
 
     @Override
     public void initViews() {
-        requestPemissions();
+        //requestPemissions();
         mainRgp = findViewById(R.id.main_rgp);
         viewPager = findViewById(R.id.viewPagerMain);
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
@@ -54,10 +56,37 @@ public class MainActivity extends BaseAty {
         fragemnts.add(DatasFragment.newInstance());
         fragemnts.add(SettingsFragment.newInstance());
         //实例化适配器
-        MainFragmentPageAdapter adapter = new MainFragmentPageAdapter(getSupportFragmentManager(), fragemnts);
+      /*  MainFragmentPageAdapter adapter = new MainFragmentPageAdapter(me.getSupportFragmentManager(), fragemnts);
         viewPager.setOffscreenPageLimit(fragemnts.size());
         //设置适配器
-        viewPager.setAdapter(adapter);
+        //viewPager.setAdapter(adapter);
+        viewPager.setAdapter(adapter);*/
+        //viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(),fragemnts));
+
+        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public int getCount() {
+                return 5;
+            }
+
+            @NonNull
+            @Override
+            public Fragment getItem(int position) {
+                switch (position){
+                    case 0:
+                        return new DealtFragment();
+                    case 1:
+                        return new SpeedFragment();
+                    case 2:
+                        return new CenterFragment();
+                    case 3:
+                        return new DatasFragment();
+                    case 4:
+                        return new SettingsFragment();
+                }
+                return null;
+            }
+        });
     }
 
     @Override
@@ -132,4 +161,7 @@ public class MainActivity extends BaseAty {
                                    String writeExternalStorage, String readExternalStorage) {
     }
 
+    private void destroyItem(ViewGroup container, int position, Object object) {
+        viewPager.removeView(getCurrentFocus());
+    }
 }
