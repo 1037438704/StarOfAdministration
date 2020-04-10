@@ -34,4 +34,8 @@ public class NoticeFragment extends BaseFgt {
     public void setEvents() {
 
     }
+
+    public static NoticeFragment newInstance() {
+        return new NoticeFragment();
+    }
 }

@@ -1,13 +1,9 @@
 package com.lawe.starofadministration.aty;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
@@ -15,7 +11,6 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.kongzue.baseframework.util.Preferences;
-import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseAty;
 
@@ -62,7 +57,7 @@ public class SplashAty extends BaseAty {
                     finish();
                 }else {
                     //判断是否登录
-                    jump(LoginAty.class);
+                    jump(LoginActivity.class);
                     finish();
                 }
             }

@@ -1,27 +1,23 @@
 package com.lawe.starofadministration.fgt;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
-import com.kongzue.baseframework.interfaces.FragmentLayout;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.AppManager;
 import com.kongzue.baseframework.util.Preferences;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.aty.BootPageAty;
-import com.lawe.starofadministration.aty.LoginAty;
+import com.lawe.starofadministration.aty.LoginActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
@@ -58,7 +54,7 @@ public class GuidePagerFgt extends BaseFgt {
             @Override
             public void onClick(View v) {
                 Preferences.getInstance().commit(me, "page", "decide", true);
-                jump(LoginAty.class);
+                jump(LoginActivity.class);
                 AppManager.getInstance().killActivity(BootPageAty.class);
             }
         });

@@ -1,6 +1,6 @@
 package com.lawe.starofadministration.fgt;
 
-import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,12 +8,10 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
-import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
-import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 
@@ -23,11 +21,8 @@ import com.lawe.starofadministration.base.BaseFgt;
  * description :待办——待办信息
  */
 @Layout(R.layout.fgt_message)
-@DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
-@DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
-@NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
-//设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class MessageFragment extends BaseFgt {
+
     private TextView textCategory;
     private ImageView daibanDown1;
     private TextView textTimer;
@@ -38,6 +33,7 @@ public class MessageFragment extends BaseFgt {
     private RecyclerView recycleMessage;
     private LinearLayout linearLeibie;
     private RecyclerView recyclerLeibie;
+    private LinearLayout choose_leibie;
     private int flag = 1; //类别默认标识
     private PopupWindow popupWindow;
 
@@ -51,6 +47,7 @@ public class MessageFragment extends BaseFgt {
         daibanDown3 = (ImageView) findViewById(R.id.daiban_down3);
         textChoose = (LinearLayout) findViewById(R.id.text_choose);
         recycleMessage = (RecyclerView) findViewById(R.id.recycle_message);
+        choose_leibie = (LinearLayout) findViewById(R.id.choose_leibie);
 
         linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
         recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
@@ -64,7 +61,7 @@ public class MessageFragment extends BaseFgt {
     @Override
     public void setEvents() {
         //类别选择
-        daibanDown1.setOnClickListener(new View.OnClickListener() {
+        choose_leibie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (flag == 1){
@@ -83,15 +80,15 @@ public class MessageFragment extends BaseFgt {
         textChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View popupWindow_view = getLayoutInflater().inflate(R.layout.pop_shaixuan, null,
-                        false);
-                popupWindow = new PopupWindow(popupWindow_view, 360, 720, true);
+                toast(".....");
+                View view = LayoutInflater.from(fgtContext).inflate(R.layout.pop_shaixuan, null, false);
+               popupWindow = new PopupWindow(view, CoordinatorLayout.LayoutParams.MATCH_PARENT, 400, true);
 
                 // 设置动画效果
                 popupWindow.setAnimationStyle(R.style.AnimationFade);
 
                 //点击其他地方消失
-                popupWindow_view.setOnTouchListener(new View.OnTouchListener() {
+                view.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
 
@@ -106,4 +103,7 @@ public class MessageFragment extends BaseFgt {
         });
     }
 
+    public static MessageFragment newInstance() {
+        return new MessageFragment();
+    }
 }

@@ -1,45 +1,33 @@
 package com.lawe.starofadministration.aty;
 
-import android.app.AlertDialog;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
-import com.kongzue.dialog.v3.FullScreenDialog;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseAty;
 import com.wynsbin.vciv.VerificationCodeInputView;
-
-import java.util.ArrayList;
 
 
 @Layout(R.layout.aty_login)
 @DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
-public class LoginAty extends BaseAty {
+public class LoginActivity extends BaseAty {
     FrameLayout frame_layout_bottom;
     Button buttonLoginImmediately;
     private VerificationCodeInputView vcivCode;
@@ -75,7 +63,7 @@ public class LoginAty extends BaseAty {
 
         //输入密码  不可见
         login_eye.setBackgroundResource(R.mipmap.login_biyan);
-        LoginAty.this.login_edpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        LoginActivity.this.login_edpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
     }
 
     @Override
@@ -123,12 +111,12 @@ public class LoginAty extends BaseAty {
             public void onClick(View v) {
                 if(lock){
                     lock=false;
-                    LoginAty.this.login_edpass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    LoginActivity.this.login_edpass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     login_eye.setBackgroundResource(R.mipmap.login_eye);
 
                 }else{
                     lock=true;
-                    LoginAty.this.login_edpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    LoginActivity.this.login_edpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     login_eye.setBackgroundResource(R.mipmap.login_biyan);
 
                 }
