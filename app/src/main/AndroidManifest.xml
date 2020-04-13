@@ -27,10 +27,10 @@
             android:name="design_height_in_dp"
             android:value="720" />
 
-        <activity android:name=".aty.LoginActivity" /> <!-- 启动页面 -->
+       <!-- <activity android:name=".aty.LoginActivity" />  启动页面 -->
         <activity android:name=".aty.BootPageAty" /> <!-- 闪屏页面 -->
         <activity android:name=".zxing.activity.CaptureActivity"/>
-        <activity android:name=".aty.SplashAty">
+        <activity android:name=".aty.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

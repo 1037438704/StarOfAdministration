@@ -63,6 +63,7 @@ public class ScanningActivity extends BaseAty {
 
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
+        startQrCode();
     }
 
     // 开始扫码
@@ -122,13 +123,6 @@ public class ScanningActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 me.finish();
-            }
-        });
-
-        btnQrCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startQrCode();
             }
         });
     }

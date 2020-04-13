@@ -6,11 +6,13 @@ import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.text.TextUtils;
+import android.view.PointerIcon;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -36,7 +38,6 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.httpUtils.BitmapUtil;
 import com.lawe.starofadministration.httpUtils.Constant;
-import com.lawe.starofadministration.zxing.activity.CaptureActivity;
 import com.lawe.starofadministration.zxing.camera.CameraManager;
 import com.lawe.starofadministration.zxing.decoding.CaptureActivityHandler;
 import com.lawe.starofadministration.zxing.decoding.InactivityTimer;
@@ -47,10 +48,9 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import javax.security.auth.callback.Callback;
-
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.AUDIO_SERVICE;
+import static android.content.Context.VIBRATOR_SERVICE;
 
 /**
  * author :
@@ -62,9 +62,9 @@ import static android.content.Context.AUDIO_SERVICE;
 @DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
 //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
-public class QRcodeFragment extends BaseFgt implements Callback {
-    private ImageView dongxiao;
+public class QRcodeFragment extends BaseFgt implements SurfaceHolder.Callback {
 
+    private ImageView dongxiao;
     private static final int REQUEST_CODE_SCAN_GALLERY = 100;
 
     private CaptureActivityHandler handler;
@@ -88,25 +88,24 @@ public class QRcodeFragment extends BaseFgt implements Callback {
 
     @Override
     public void initViews() {
-        dongxiao = (ImageView) findViewById(R.id.dongxiao);
+        //dongxiao = (ImageView) findViewById(R.id.dongxiao);
 
         //ViewUtil.addTopView(getApplicationContext(), this, R.string.scan_card);
-        CameraManager.init(fgtContext.getApplication());
-        viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_content);
-        back = (ImageButton) findViewById(R.id.btn_back);
+        CameraManager.init(me.getApplication());
+        /*back = (ImageButton) findViewById(R.id.btn_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 me.finish();
             }
-        });
+        });*/
 
-        btnFlash = (ImageButton) findViewById(R.id.btn_flash);
+       /* btnFlash = (ImageButton) findViewById(R.id.btn_flash);
         btnFlash.setOnClickListener(flashListener);
 
         btnAlbum = (Button) findViewById(R.id.btn_album);
         btnAlbum.setOnClickListener(albumOnClick);
-
+*/
 //		cancelScanButton = (Button) this.findViewById(R.id.btn_cancel_scan);
         hasSurface = false;
         inactivityTimer = new InactivityTimer(fgtContext);
@@ -137,7 +136,7 @@ public class QRcodeFragment extends BaseFgt implements Callback {
         }
     };
 
-   /* @Override
+    @Override
     public void onActivityResult(final int requestCode, int resultCode, Intent data) {
         if (resultCode==RESULT_OK) {
             switch (requestCode) {
@@ -147,13 +146,13 @@ public class QRcodeFragment extends BaseFgt implements Callback {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }*/
+    }
 
     /**
      * 处理选择的图片
      * @param data
      */
-   /* private void handleAlbumPic(Intent data) {
+    private void handleAlbumPic(Intent data) {
         //获取选中图片的路径
         final Uri uri = data.getData();
 
@@ -162,7 +161,7 @@ public class QRcodeFragment extends BaseFgt implements Callback {
         mProgress.setCancelable(false);
         mProgress.show();
 
-        runOnUiThread(new Runnable() {
+        fgtContext.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 Result result = scanningImage(uri);
@@ -183,11 +182,11 @@ public class QRcodeFragment extends BaseFgt implements Callback {
         });
     }
 
-    *//**
+    /**
      * 扫描二维码图片的方法
      * @param uri
      * @return
-     *//*
+     */
     public Result scanningImage(Uri uri) {
         if (uri == null) {
             return null;
@@ -201,11 +200,7 @@ public class QRcodeFragment extends BaseFgt implements Callback {
         QRCodeReader reader = new QRCodeReader();
         try {
             return reader.decode(bitmap1, hints);
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        } catch (ChecksumException e) {
-            e.printStackTrace();
-        } catch (FormatException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -226,7 +221,7 @@ public class QRcodeFragment extends BaseFgt implements Callback {
         characterSet = null;
 
         playBeep = true;
-        AudioManager audioService = (AudioManager) getSystemService(AUDIO_SERVICE);
+        AudioManager audioService = (AudioManager) me.getSystemService(AUDIO_SERVICE);
         if (audioService.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
             playBeep = false;
         }
@@ -259,12 +254,12 @@ public class QRcodeFragment extends BaseFgt implements Callback {
         super.onDestroy();
     }
 
-    *//**
+    /**
      * Handler scan result
      *
      * @param result
      * @param barcode
-     *//*
+     */
     public void handleDecode(Result result, Bitmap barcode) {
         inactivityTimer.onActivity();
         playBeepSoundAndVibrate();
@@ -294,10 +289,10 @@ public class QRcodeFragment extends BaseFgt implements Callback {
         } catch (RuntimeException e) {
             return;
         }
-        if (handler == null) {
-            handler = new CaptureActivityHandler(this, decodeFormats,
-                    characterSet);
-        }
+//        if (handler == null) {
+//            handler = new CaptureActivityHandler(this, decodeFormats,
+//                    characterSet);
+//        }
     }
 
     @Override
@@ -321,25 +316,12 @@ public class QRcodeFragment extends BaseFgt implements Callback {
 
     }
 
-    public ViewfinderView getViewfinderView() {
-        return viewfinderView;
-    }
-
-    public Handler getHandler() {
-        return handler;
-    }
-
-    public void drawViewfinder() {
-        viewfinderView.drawViewfinder();
-
-    }
-
     private void initBeepSound() {
         if (playBeep && mediaPlayer == null) {
             // The volume on STREAM_SYSTEM is not adjustable, and users found it
             // too loud,
             // so we now play on the music stream.
-            setVolumeControlStream(AudioManager.STREAM_MUSIC);
+            me.setVolumeControlStream(AudioManager.STREAM_MUSIC);
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaPlayer.setOnCompletionListener(beepListener);
@@ -365,19 +347,19 @@ public class QRcodeFragment extends BaseFgt implements Callback {
             mediaPlayer.start();
         }
         if (vibrate) {
-            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            Vibrator vibrator = (Vibrator) me.getSystemService(VIBRATOR_SERVICE);
             vibrator.vibrate(VIBRATE_DURATION);
         }
     }
 
-    *//**
+    /**
      * When the beep has finished playing, rewind to queue up another one.
-     *//*
+     */
     private final OnCompletionListener beepListener = new OnCompletionListener() {
         public void onCompletion(MediaPlayer mediaPlayer) {
             mediaPlayer.seekTo(0);
         }
-    };*/
+    };
 
     /**
      *  闪光灯开关按钮

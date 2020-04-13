@@ -1,8 +1,12 @@
 package com.lawe.starofadministration.aty;
 
+import android.animation.ObjectAnimator;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -43,6 +47,8 @@ public class LoginActivity extends BaseAty {
     private ImageView login_down;
     private RelativeLayout linear_popAgree;
     private Button login_agree;
+    private TextView login_zhanghao;
+    private EditText login_phone;
 
     @Override
     public void initViews() {
@@ -60,6 +66,8 @@ public class LoginActivity extends BaseAty {
         login_down = findViewById(R.id.login_down);
         linear_popAgree = findViewById(R.id.linear_popAgree);
         login_agree = findViewById(R.id.login_agree);
+        login_zhanghao = findViewById(R.id.login_zhanghao);
+        login_phone = findViewById(R.id.login_phone);
 
         //输入密码  不可见
         login_eye.setBackgroundResource(R.mipmap.login_biyan);
@@ -68,7 +76,55 @@ public class LoginActivity extends BaseAty {
 
     @Override
     public void initDatas(JumpParameter parameter) {
+        //点击输入框   提示动画
+        login_phone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    toast("有焦点");
 
+                    //账号上移
+                    TranslateAnimation translateAni = new TranslateAnimation(
+                            Animation.RELATIVE_TO_PARENT, 0, Animation.RELATIVE_TO_PARENT,
+                            0, Animation.RELATIVE_TO_PARENT, 0,
+                            Animation.RELATIVE_TO_PARENT, -0.5f);
+
+                    //设置动画执行的时间，单位是毫秒
+                    translateAni.setDuration(1000);
+                    translateAni.setFillAfter(true);
+
+                    // 设置动画重复次数
+                    // -1或者Animation.INFINITE表示无限重复，正数表示重复次数，0表示不重复只播放一次
+                    translateAni.setRepeatCount(0);
+
+                    // 设置动画模式（Animation.REVERSE设置循环反转播放动画,Animation.RESTART每次都从头开始）
+                    //translateAni.setRepeatMode(Animation.REVERSE);
+
+                    // 启动动画
+                    login_zhanghao.startAnimation(translateAni);
+                    login_zhanghao.setTextSize(TypedValue.COMPLEX_UNIT_SP,14);
+
+                    //输入框左平移
+                    TranslateAnimation translateAnied = new TranslateAnimation(
+                            Animation.RELATIVE_TO_PARENT, 0, Animation.RELATIVE_TO_PARENT,
+                            -0.2f, Animation.RELATIVE_TO_PARENT, 0,
+                            Animation.RELATIVE_TO_PARENT, 0);
+
+                    //设置动画执行的时间，单位是毫秒
+                    translateAnied.setDuration(1000);
+                    translateAnied.setFillAfter(true);
+
+                    // 设置动画重复次数
+                    // -1或者Animation.INFINITE表示无限重复，正数表示重复次数，0表示不重复只播放一次
+                    translateAnied.setRepeatCount(0);
+
+                    // 启动动画
+                    login_phone.startAnimation(translateAnied);
+                }else{
+                    toast("没有焦点");
+                }
+            }
+        });
     }
 
     @Override

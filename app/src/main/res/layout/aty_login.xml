@@ -118,22 +118,10 @@
             android:text="欢迎使用政务之星数字政务系统"
             />
 
-        <TextView
-            android:id="@+id/login_moren"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="28dp"
-            android:text="默认状态"
-            android:textColor="#ff0032ff"
-            android:textSize="14dp"
-            android:visibility="gone"
-            />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="54dp"
             android:layout_height="wrap_content">
 
             <RelativeLayout
@@ -154,10 +142,12 @@
                         android:text="账号"
                         android:textColor="#ff717173"
                         android:textSize="18sp"
+                        android:autoSizeMaxTextSize="18sp"
+                        android:autoSizeMinTextSize="14sp"
                         />
 
                     <EditText
-                        android:id="@+id/lpgin_phone"
+                        android:id="@+id/login_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
