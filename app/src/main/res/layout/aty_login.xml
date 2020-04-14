@@ -122,18 +122,19 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_marginTop="54dp"
-            android:layout_height="wrap_content">
+            android:layout_height="30dp">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginLeft="28dp"
                     android:layout_marginRight="29dp"
-                    android:layout_height="wrap_content">
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/login_zhanghao"
@@ -162,12 +163,10 @@
                 <!--验证码按钮-->
                 <Button
                     android:id="@+id/login_getCode"
-                    android:visibility="gone"
                     android:layout_alignParentRight="true"
-                    android:paddingBottom="4dp"
+                    android:visibility="gone"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:paddingTop="4dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="28dp"
                     android:layout_width="wrap_content"
@@ -180,16 +179,16 @@
 
             </RelativeLayout>
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#EDEDED"
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="29dp"
-                android:layout_marginTop="8dp"
-                />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EDEDED"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="29dp"
+            android:layout_marginTop="4dp"
+            />
 
         <LinearLayout
 
@@ -368,6 +367,7 @@
         <LinearLayout
             android:layout_alignParentBottom="true"
             android:background="@drawable/shape_background8"
+            android:paddingTop="8dp"
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical"
@@ -423,15 +423,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
-            android:background="@color/white"
+            android:background="@drawable/shape_background8"
             android:orientation="vertical"
+            android:paddingTop="8dp"
             android:layout_alignParentBottom="true"
             android:layout_height="646dp">
 
             <include layout="@layout/item_img_down"/>
 
             <LinearLayout
-                android:id="@+id/linear_agree"
                 android:layout_marginLeft="64dp"
                 android:layout_marginRight="64dp"
                 android:gravity="center"
@@ -460,7 +460,7 @@
                     <View
                         android:layout_width="22dp"
                         android:background="@color/loginbackground"
-                        android:layout_marginTop="17dp"
+                        android:layout_marginTop="10dp"
                         android:layout_height="2dp"/>
                 </LinearLayout>
 
@@ -484,7 +484,7 @@
                     <View
                         android:layout_width="22dp"
                         android:background="@color/background"
-                        android:layout_marginTop="17dp"
+                        android:layout_marginTop="10dp"
                         android:layout_height="2dp"/>
                 </LinearLayout>
 
@@ -507,7 +507,7 @@
                     <View
                         android:layout_width="22dp"
                         android:background="@color/background"
-                        android:layout_marginTop="17dp"
+                        android:layout_marginTop="10dp"
                         android:layout_height="2dp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -529,6 +529,7 @@
             android:layout_height="139dp"
             >
             <Button
+                android:id="@+id/login_jujue"
                 android:text="拒绝"
                 android:textSize="14dp"
                 android:background="@drawable/shape_white22"

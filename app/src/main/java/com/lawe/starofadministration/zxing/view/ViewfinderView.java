@@ -210,7 +210,7 @@ public final class ViewfinderView extends View {
     RadialGradient radialGradient = new RadialGradient(
             (float)(frame.left + frame.width() / 2),
             (float)(scannerStart + SCANNER_LINE_HEIGHT / 2),
-              360f,
+            360f,
             laserColor,
             shadeColor(laserColor),
             Shader.TileMode.MIRROR);

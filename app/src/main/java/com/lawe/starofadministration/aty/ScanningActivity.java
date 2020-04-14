@@ -1,6 +1,5 @@
 package com.lawe.starofadministration.aty;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
@@ -24,10 +23,7 @@ import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
-import com.lawe.starofadministration.adp.ViewPagerFragmentAdp;
 import com.lawe.starofadministration.base.BaseAty;
-import com.lawe.starofadministration.fgt.MessageFragment;
-import com.lawe.starofadministration.fgt.NoticeFragment;
 import com.lawe.starofadministration.fgt.OCRwordFragment;
 import com.lawe.starofadministration.fgt.QRcodeFragment;
 import com.lawe.starofadministration.httpUtils.Constant;
@@ -37,13 +33,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-*扫描页面
-*/
+ *扫描页面
+ */
 
 @Layout(R.layout.activity_scanning)
 @DarkStatusBarTheme(false)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(false)       //开启底部导航栏按钮暗色模式
-@NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
+@NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
+//设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class ScanningActivity extends BaseAty {
 
     private RadioGroup mainRgp;
@@ -56,14 +53,13 @@ public class ScanningActivity extends BaseAty {
     @Override
     public void initViews() {
         fragemnts = new ArrayList<>();
-        mainRgp = (RadioGroup) findViewById(R.id.main_rgp);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
-        backButton = (ImageView) findViewById(R.id.back_button);
-        btnQrCode = (RadioButton) findViewById(R.id.btn_qrcode);
+        mainRgp = findViewById(R.id.main_rgp);
+        viewPager = findViewById(R.id.viewPager);
+        backButton = findViewById(R.id.back_button);
+        btnQrCode = findViewById(R.id.btn_qrcode);
 
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
-        startQrCode();
     }
 
     // 开始扫码
@@ -83,15 +79,16 @@ public class ScanningActivity extends BaseAty {
         // 二维码扫码
         Intent intent = new Intent(ScanningActivity.this, CaptureActivity.class);
         startActivityForResult(intent, Constant.REQ_QR_CODE);
+
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-       /* fragemnts.add(QRcodeFragment.newInstance());
+        fragemnts.add(QRcodeFragment.newInstance());
         fragemnts.add(OCRwordFragment.newInstance());
         viewPagerAdp = new ViewPagerAdp(getSupportFragmentManager(), fragemnts);
         viewPager.setOffscreenPageLimit(fragemnts.size());
-        viewPager.setAdapter(viewPagerAdp);*/
+        viewPager.setAdapter(viewPagerAdp);
     }
 
     @Override
@@ -125,6 +122,13 @@ public class ScanningActivity extends BaseAty {
                 me.finish();
             }
         });
+
+        btnQrCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startQrCode();
+            }
+        });
     }
 
     @Override
@@ -135,7 +139,7 @@ public class ScanningActivity extends BaseAty {
             Bundle bundle = data.getExtras();
             String scanResult = bundle.getString(Constant.INTENT_EXTRA_KEY_QR_SCAN);
             //将扫描出的信息显示出来
-           // tvResult.setText(scanResult);
+            // tvResult.setText(scanResult);
         }
     }
 

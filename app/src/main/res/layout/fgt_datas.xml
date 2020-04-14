@@ -5,11 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".fgt.DatasFragment"
     android:background="@color/white"
     android:orientation="horizontal">
 
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="数据"
+        android:textSize="20dp"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

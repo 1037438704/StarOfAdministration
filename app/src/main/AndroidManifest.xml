@@ -6,8 +6,9 @@
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动权限 -->
     <uses-permission android:name="android.permission.CAMERA" /> <!-- 摄像头权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".MyApplication"
@@ -18,18 +19,17 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".aty.ScanningActivity"></activity>
-        <!-- ========今日头条适配========= -->
+        <activity android:name=".aty.LookAllActivity"></activity>
+        <activity android:name=".aty.ForgetPassActivity" />
+        <activity android:name=".aty.ScanningActivity" /> <!-- ========今日头条适配========= -->
         <meta-data
             android:name="design_width_in_dp"
             android:value="360" />
         <meta-data
             android:name="design_height_in_dp"
-            android:value="720" />
-
-       <!-- <activity android:name=".aty.LoginActivity" />  启动页面 -->
+            android:value="720" /> <!-- <activity android:name=".aty.LoginActivity" />  启动页面 -->
         <activity android:name=".aty.BootPageAty" /> <!-- 闪屏页面 -->
-        <activity android:name=".zxing.activity.CaptureActivity"/>
+        <activity android:name=".zxing.activity.CaptureActivity" />
         <activity android:name=".aty.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,9 +37,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

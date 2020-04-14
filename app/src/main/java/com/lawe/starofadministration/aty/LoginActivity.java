@@ -49,6 +49,8 @@ public class LoginActivity extends BaseAty {
     private Button login_agree;
     private TextView login_zhanghao;
     private EditText login_phone;
+    private Button login_jujue;
+    private TextView login_text_forget;
 
     @Override
     public void initViews() {
@@ -68,6 +70,8 @@ public class LoginActivity extends BaseAty {
         login_agree = findViewById(R.id.login_agree);
         login_zhanghao = findViewById(R.id.login_zhanghao);
         login_phone = findViewById(R.id.login_phone);
+        login_jujue = findViewById(R.id.login_jujue);
+        login_text_forget = findViewById(R.id.login_text_forget);
 
         //输入密码  不可见
         login_eye.setBackgroundResource(R.mipmap.login_biyan);
@@ -150,12 +154,25 @@ public class LoginActivity extends BaseAty {
         buttonLoginImmediately.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast("立即登录");
                 linear_popAgree.setVisibility(View.VISIBLE);
                 login_agree.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         jump(MainActivity.class);
+                    }
+                });
+
+                login_jujue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        linear_popAgree.setVisibility(View.GONE);
+                    }
+                });
+
+                login_down.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        linear_popAgree.setVisibility(View.GONE);
                     }
                 });
             }
@@ -184,7 +201,6 @@ public class LoginActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 String login_tishi = login_text.getText().toString();
-                toast(login_tishi);
                 if (login_tishi.equals("验证码登录")){
                     linear_code.setVisibility(View.VISIBLE);
                     login_getCode.setVisibility(View.VISIBLE);
@@ -212,21 +228,14 @@ public class LoginActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 linear_popNet.setVisibility(View.GONE);
-                linear_popAgree.setVisibility(View.GONE);
             }
         });
 
-        linear_popNet.setOnClickListener(new View.OnClickListener() {
+        //忘记密码---跳转
+        login_text_forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                linear_popNet.setVisibility(View.GONE);
-            }
-        });
-
-        linear_popAgree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                linear_popAgree.setVisibility(View.GONE);
+                jump(ForgetPassActivity.class);
             }
         });
     }

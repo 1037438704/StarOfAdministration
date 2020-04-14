@@ -1,13 +1,16 @@
 package com.lawe.starofadministration;
 
 import android.Manifest;
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -32,8 +35,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Layout(R.layout.activity_main)
-@DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
-@DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
+@DarkStatusBarTheme(false)           //开启顶部状态栏图标、文字暗色模式
+@DarkNavigationBarTheme(false)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
 //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class MainActivity extends BaseAty {
@@ -42,6 +45,7 @@ public class MainActivity extends BaseAty {
     private long exitTime = 0;
     private List<BaseFragment> fragemnts;
     ViewPagerAdp viewPagerAdp;
+    private DrawerLayout drawer;
 
     @Override
     public void initViews() {
@@ -49,6 +53,10 @@ public class MainActivity extends BaseAty {
         fragemnts = new ArrayList<>();
         mainRgp = findViewById(R.id.main_rgp);
         viewPager = findViewById(R.id.viewPager);
+
+        drawer = findViewById(R.id.drawer_layout_shaixuan);
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
     }
@@ -64,6 +72,9 @@ public class MainActivity extends BaseAty {
         viewPager.setOffscreenPageLimit(fragemnts.size());
         viewPager.setAdapter(viewPagerAdp);
         viewPager.setNoScroll(true);
+
+        drawer.openDrawer(Gravity.RIGHT);
+        drawer.closeDrawer(Gravity.RIGHT);
     }
 
     @Override
@@ -90,7 +101,31 @@ public class MainActivity extends BaseAty {
                 }
             }
         });
+
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View view, float v) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View view) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View view) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int i) {
+
+            }
+        });
     }
+
+
 
     /**
      * 按两次退出应用
