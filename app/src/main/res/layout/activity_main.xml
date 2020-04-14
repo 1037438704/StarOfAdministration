@@ -127,14 +127,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
-                    android:text="聊天留言靠前"
+                    android:text="会议通知靠前"
                     android:background="@drawable/select_shaixuan"
                     android:layout_width="122dp"
                     android:textColor="@drawable/select_text_color"
                     android:layout_height="40dp"/>
 
                 <Button
-                    android:text="聊天留言靠后"
+                    android:text="即将逾期靠后"
                     android:layout_marginLeft="12dp"
                     android:background="@drawable/select_shaixuan"
                     android:textColor="@drawable/select_text_color"

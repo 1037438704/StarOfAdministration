@@ -339,6 +339,7 @@
         </androidx.recyclerview.widget.RecyclerView>
 
         <LinearLayout
+            android:id="@+id/liaotian"
             android:layout_marginTop="14dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"

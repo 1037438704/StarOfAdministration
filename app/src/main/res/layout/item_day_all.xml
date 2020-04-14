@@ -6,15 +6,29 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="您有一条信用扣分记录"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:paddingLeft="16dp"
-        android:textColor="#ff3e3e41"
-        android:textSize="16sp"
-        />
+        android:layout_marginTop="11dp"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="16dp"
+            android:src="@mipmap/card_icon_1"
+            android:layout_height="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="您有一条信用扣分记录"
+            android:layout_marginLeft="4dp"
+            android:textColor="#ff3e3e41"
+            android:textSize="16sp"
+            />
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,7 +64,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="预警等级："
+        android:text="已扣分：-3"
         android:layout_marginTop="8dp"
         android:paddingLeft="16dp"
         android:textColor="#ff717173"
@@ -60,9 +74,9 @@
     <View
         android:background="#EFF0F2"
         android:layout_marginTop="18dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginLeft="17dp"
         android:layout_marginRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
+
 </LinearLayout>

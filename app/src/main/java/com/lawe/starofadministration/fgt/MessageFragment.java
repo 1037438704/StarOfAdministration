@@ -65,10 +65,7 @@ public class MessageFragment extends BaseFgt {
         recycleMessage.setLayoutManager(new LinearLayoutManager(me));
         MessageAdapter messageAdapter = new MessageAdapter(me);
         recycleMessage.setAdapter(messageAdapter);
-        viewLayout = LayoutInflater.from(me).inflate(R.layout.pop_shaixuan, null, false);
-        popupWindow = new PopupWindow(viewLayout, CoordinatorLayout.LayoutParams.MATCH_PARENT, 400, true);
-        // 设置动画效果
-        popupWindow.setAnimationStyle(R.style.AnimationFade);
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.lawe.starofadministration.fgt;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,8 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.aty.ChatActivity;
+import com.lawe.starofadministration.aty.LookAllActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
@@ -21,10 +24,12 @@ import com.lawe.starofadministration.base.BaseFgt;
 public class NoticeFragment extends BaseFgt {
 
     private TextView text_lookAll;
+    private LinearLayout liaotian;
 
     @Override
     public void initViews() {
         text_lookAll = (TextView) findViewById(R.id.text_lookAll);
+        liaotian = (LinearLayout) findViewById(R.id.liaotian);
     }
 
     @Override
@@ -38,7 +43,15 @@ public class NoticeFragment extends BaseFgt {
         text_lookAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                jump(LookAllActivity.class);
+            }
+        });
 
+        //聊天列表
+        liaotian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(ChatActivity.class);
             }
         });
     }
