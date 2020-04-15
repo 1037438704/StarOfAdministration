@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="81dp">
             <ImageView
-                android:src="@mipmap/ic_launcher"
+                android:id="@+id/daiban_head"
+                android:src="@mipmap/avatar"
                 android:layout_marginLeft="14dp"
                 android:layout_marginBottom="11dp"
                 android:layout_width="38dp"

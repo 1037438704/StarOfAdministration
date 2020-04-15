@@ -50,8 +50,10 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/text_num"
                     android:text="80"
                     android:textSize="32dp"
+                    android:textColor="#3E3E41"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -91,6 +93,7 @@
                 <TextView
                     android:text="14"
                     android:textSize="32dp"
+                    android:textColor="#3E3E41"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -129,6 +132,7 @@
                 <TextView
                     android:text="23"
                     android:textSize="32dp"
+                    android:textColor="#3E3E41"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -176,6 +180,7 @@
                 <TextView
                     android:text="17"
                     android:textSize="32dp"
+                    android:textColor="#3E3E41"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -216,6 +221,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12"
+                    android:textColor="#3E3E41"
                     android:textSize="32dp" />
 
                 <LinearLayout
@@ -254,6 +260,7 @@
                 <TextView
                     android:text="05"
                     android:textSize="32dp"
+                    android:textColor="#3E3E41"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 

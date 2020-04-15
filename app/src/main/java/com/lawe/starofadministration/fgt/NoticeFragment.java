@@ -1,5 +1,7 @@
 package com.lawe.starofadministration.fgt;
 
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,11 +27,16 @@ public class NoticeFragment extends BaseFgt {
 
     private TextView text_lookAll;
     private LinearLayout liaotian;
+    private TextView text_num;
 
     @Override
     public void initViews() {
         text_lookAll = (TextView) findViewById(R.id.text_lookAll);
         liaotian = (LinearLayout) findViewById(R.id.liaotian);
+        text_num = (TextView) findViewById(R.id.text_num);
+
+       /* AssetManager ass = getAssets();
+        text_num.setTypeface(Typeface.createFromAsset(getAssets(),keycaps.ttc));*/
     }
 
     @Override

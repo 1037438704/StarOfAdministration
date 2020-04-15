@@ -34,12 +34,14 @@ import java.util.List;
 public class LookAllActivity extends BaseAty {
 
     private TextView textName;
-    private TabLayout tablayout;
-    private ViewPager viewPager;
+
 
     private LinearLayout textChoose;
     private DrawerLayout drawerLayout;
     private Button drawer_quxiao;
+
+    private TabLayout tablayout;
+    private ViewPager viewPager;
 
     static final int NUM_ITEMS = 6;
     private List<Fragment> fragmentList = new ArrayList<Fragment>();

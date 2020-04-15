@@ -38,7 +38,6 @@ import java.util.List;
 @DarkStatusBarTheme(false)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(false)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
-//设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class MainActivity extends BaseAty {
     private RadioGroup mainRgp;
     private NoScrollViewPager viewPager;
@@ -72,9 +71,14 @@ public class MainActivity extends BaseAty {
         viewPager.setOffscreenPageLimit(fragemnts.size());
         viewPager.setAdapter(viewPagerAdp);
         viewPager.setNoScroll(true);
-
+/*
+        //右侧侧边栏
         drawer.openDrawer(Gravity.RIGHT);
         drawer.closeDrawer(Gravity.RIGHT);
+
+        //左侧侧边栏
+        drawer.closeDrawer(Gravity.LEFT);
+        drawer.openDrawer(Gravity.LEFT);*/
     }
 
     @Override

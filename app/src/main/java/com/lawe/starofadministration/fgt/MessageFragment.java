@@ -40,8 +40,6 @@ public class MessageFragment extends BaseFgt {
     private RecyclerView recyclerLeibie;
     private LinearLayout choose_leibie;
     private int flag = 1; //类别默认标识
-    private PopupWindow popupWindow;
-    private View viewLayout;
     private DrawerLayout drawerLayout;
     private Button drawer_quxiao;
 

@@ -19,8 +19,6 @@ import com.lawe.starofadministration.base.BaseFgt;
 @Layout(R.layout.fragment_look_all)
 public class LookAllFragment extends BaseFgt {
 
-
-
     @Override
     public void initViews() {
 

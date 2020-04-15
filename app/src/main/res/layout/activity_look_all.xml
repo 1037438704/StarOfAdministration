@@ -41,11 +41,23 @@
                 app:tabMaxWidth="0dp"
                 android:layout_height="44dp"/>
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPager"
-                android:layout_marginTop="8dp"
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@drawable/shape_background8"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:paddingTop="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/item_img_down"/>
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+
 
         </LinearLayout>
 

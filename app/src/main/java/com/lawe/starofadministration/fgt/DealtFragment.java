@@ -1,11 +1,15 @@
 package com.lawe.starofadministration.fgt;
 
+import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
@@ -18,6 +22,7 @@ import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.adp.ViewPagerFragmentAdp;
+import com.lawe.starofadministration.aty.MyMedalActivity;
 import com.lawe.starofadministration.aty.ScanningActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
@@ -41,6 +46,10 @@ public class DealtFragment extends BaseFgt {
     ViewPagerFragmentAdp viewPagerAdp;
     private List<BaseFragment> fragemnts;
     private ImageView saoyisao;
+    private ImageView daiban_head;
+    private DrawerLayout draw_person;
+    private RelativeLayout my_allXun;
+    private LinearLayout linear_myXunzhang;
 
     @Override
     public void initViews() {
@@ -49,6 +58,11 @@ public class DealtFragment extends BaseFgt {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         saoyisao = (ImageView) findViewById(R.id.saoyisao);
+        daiban_head = (ImageView) findViewById(R.id.daiban_head);
+        draw_person = getActivity().findViewById(R.id.drawer_layout_shaixuan);
+        my_allXun = getActivity().findViewById(R.id.my_xunzhang);
+        linear_myXunzhang = getActivity().findViewById(R.id.linear_myXunzhang);
+
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
     }
@@ -93,6 +107,29 @@ public class DealtFragment extends BaseFgt {
             @Override
             public void onClick(View v) {
                 jump(ScanningActivity.class);
+            }
+        });
+
+        //点击头像滑出左侧菜单栏
+        daiban_head.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                draw_person.openDrawer(Gravity.LEFT);
+            }
+        });
+
+        //我的勋章
+        my_allXun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(MyMedalActivity.class);
+            }
+        });
+
+        linear_myXunzhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(MyMedalActivity.class);
             }
         });
     }
