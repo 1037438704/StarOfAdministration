@@ -1,5 +1,9 @@
 package com.lawe.starofadministration.fgt;
 
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
@@ -17,6 +21,10 @@ import com.lawe.starofadministration.base.BaseFgt;
 @DarkNavigationBarTheme(false)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class SpeedFragment extends BaseFgt {
+
+    protected static final float FLIP_DISTANCE = 50;
+    GestureDetector mDetector;
+
     @Override
     public void initViews() {
 

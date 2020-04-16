@@ -47,6 +47,7 @@ public class MainActivity extends BaseAty {
     ViewPagerAdp viewPagerAdp;
     private DrawerLayout drawer;
 
+
     @Override
     public void initViews() {
         //requestPemissions();
