@@ -1,20 +1,16 @@
 package com.lawe.starofadministration;
 
 import android.Manifest;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.kongzue.baseframework.BaseFragment;
@@ -31,7 +27,7 @@ import com.lawe.starofadministration.fgt.DatasFragment;
 import com.lawe.starofadministration.fgt.DealtFragment;
 import com.lawe.starofadministration.fgt.SettingsFragment;
 import com.lawe.starofadministration.fgt.SpeedFragment;
-import com.lawe.starofadministration.httpUtils.NoScrollViewPager;
+import com.lawe.starofadministration.utils.NoScrollViewPager;
 
 import java.util.ArrayList;
 import java.util.List;

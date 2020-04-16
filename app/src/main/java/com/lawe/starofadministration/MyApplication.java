@@ -2,6 +2,8 @@ package com.lawe.starofadministration;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 
 import com.kongzue.baseokhttp.util.BaseOkHttp;
 import com.kongzue.dialog.util.BaseDialog;
@@ -22,6 +24,8 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
  */
 public class MyApplication extends Application {
 
+    public static Typeface getTextStyle;
+
     @Override
     public void onCreate() {
         BaseDialog.unload();
@@ -37,6 +41,11 @@ public class MyApplication extends Application {
         DialogSettings.theme = DialogSettings.THEME.LIGHT;
         //开启请求日志
         BaseOkHttp.DEBUGMODE = true;
+
+        //字体
+        AssetManager textType = this.getAssets();
+        getTextStyle = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Medium.otf");
+
         super.onCreate();
     }
 

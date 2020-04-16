@@ -1,18 +1,21 @@
 package com.lawe.starofadministration.base;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kongzue.baseframework.BaseFragment;
+import com.lawe.starofadministration.MyApplication;
 
 abstract public class BaseFgt extends BaseFragment {
 
     public AppCompatActivity fgtContext;
-
+    public Typeface  getTypeStyle = MyApplication.getTextStyle;
     /*
      * 毛玻璃
      * */
@@ -220,6 +223,7 @@ abstract public class BaseFgt extends BaseFragment {
 
     @Override
     public void initViews() {
+
         fgtContext = (AppCompatActivity) getActivity();
     }
 }

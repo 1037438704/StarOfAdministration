@@ -2,6 +2,7 @@ package com.lawe.starofadministration.base;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.IBinder;
 import android.view.MotionEvent;
@@ -13,12 +14,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.kongzue.baseframework.BaseActivity;
+import com.lawe.starofadministration.MyApplication;
 
 import java.util.ArrayList;
 import java.util.List;
 
 abstract public class BaseAty extends BaseActivity {
-
+    public Typeface getTypeStyle = MyApplication.getTextStyle;
     //权限申请回调
     private OnPermissionResponseListener onPermissionResponseListener;
     private int REQUEST_CODE_PERMISSION = 0x00099;
