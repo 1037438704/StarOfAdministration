@@ -4,13 +4,702 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/fragment_lauout"
-    tools:context=".fgt.SpeedFragment"
-    android:background="@color/white"
-    android:orientation="horizontal">
+    android:background="#F5F5F5"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:background="#DB1F2C"
+        android:paddingTop="36dp"
+        android:elevation="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="81dp">
+        <ImageView
+            android:id="@+id/daiban_head"
+            android:src="@mipmap/avatar"
+            android:layout_marginLeft="14dp"
+            android:layout_marginBottom="11dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"/>
+
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="82dp"
+            android:layout_marginTop="10dp"
+            android:elevation="3dp"
+            android:src="@mipmap/icon_search_small"
+            android:layout_width="16dp"
+            android:layout_height="16dp"/>
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="10dp"
+            android:elevation="3dp"
+            android:src="@mipmap/icon_microphone"
+            android:layout_width="16dp"
+            android:layout_height="16dp"/>
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="12dp"
+            android:layout_height="30dp">
+
+            <EditText
+                android:hint="搜索要查找的内容"
+                android:textColorHint="#fff"
+                android:textSize="14dp"
+                android:paddingLeft="30dp"
+                android:background="@drawable/shape_white15"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/saoyisao"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="3dp"
+            android:src="@mipmap/icon_search_large"
+            android:layout_width="32dp"
+            android:layout_height="32dp"/>
+
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardElevation="3dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="38dp">
+
+            <LinearLayout
+                android:id="@+id/choose_leibie"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/text_category"
+                    android:text="类别"
+                    android:textColor="#717173"
+                    android:textSize="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:id="@+id/daiban_down1"
+                    android:layout_marginLeft="3dp"
+                    android:src="@mipmap/daiban_down"
+                    android:layout_width="8dp"
+                    android:layout_height="4dp"/>
+            </LinearLayout>
 
 
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/text_urgent"
+                    android:text="紧急度"
+                    android:textColor="#717173"
+                    android:textSize="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:id="@+id/daiban_down3"
+                    android:layout_marginLeft="3dp"
+                    android:src="@mipmap/daiban_down"
+                    android:layout_width="8dp"
+                    android:layout_height="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/text_choose"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+
+                <View
+                    android:layout_width="1dp"
+                    android:background="#D7D7D8"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="11dp"
+                    android:layout_height="match_parent"/>
+                <TextView
+
+                    android:text="筛选"
+                    android:textColor="#717173"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="11dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:layout_marginLeft="3dp"
+                    android:src="@mipmap/daiban_shaixuan"
+                    android:layout_width="11dp"
+                    android:layout_height="12dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:elevation="3dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:background="@drawable/shape_white12"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@mipmap/daiban_book"/>
+
+                    <TextView
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="关于疫情防控工作的重要指导意见"
+                        android:textColor="#3e3e41"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="编号：1274718733791379237489"
+                    android:textColor="#ff9f9fa0"
+                    android:textSize="12sp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:text="类别："
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:text="公文拟制"
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:text="分类："
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:text="意见"
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="28dp">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:text="附件："
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+
+                    <LinearLayout
+                        android:background="@drawable/shape_hui14"
+                        android:layout_width="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:src="@mipmap/daiban_lianjie"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="11dp"
+                            android:layout_height="11dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="指导意见01"
+                            android:gravity="center_vertical"
+                            android:textColor="#ff717173"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="14dp"
+                            android:textSize="14sp"
+                            />
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="64dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="+2"
+                        android:layout_marginLeft="8dp"
+                        android:paddingBottom="4dp"
+                        android:paddingTop="4dp"
+                        android:paddingLeft="13dp"
+                        android:paddingRight="12dp"
+                        android:background="@drawable/shape_hui14"
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_marginTop="16dp"
+                    android:background="@color/backgroundHui"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <RelativeLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2020/03/26 13:45:29"
+                        android:textColor="#ff9f9fa0"
+                        android:textSize="14sp"
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:elevation="3dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:background="@drawable/shape_white12"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@mipmap/daiban_book"/>
+
+                    <TextView
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:text="关于疫情防控工作的重要指导意见"
+                        android:textColor="#ff3e3e41"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="编号：1274718733791379237489"
+                    android:textColor="#ff9f9fa0"
+                    android:textSize="12sp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:text="类别："
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:text="公文拟制"
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:text="分类："
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:text="意见"
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="28dp">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:text="附件："
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+
+                    <LinearLayout
+                        android:background="@drawable/shape_hui14"
+                        android:layout_width="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:src="@mipmap/daiban_lianjie"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="11dp"
+                            android:layout_height="11dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="指导意见01"
+                            android:gravity="center_vertical"
+                            android:textColor="#ff717173"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="14dp"
+                            android:textSize="14sp"
+                            />
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="64dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="+2"
+                        android:layout_marginLeft="8dp"
+                        android:paddingBottom="4dp"
+                        android:paddingTop="4dp"
+                        android:paddingLeft="13dp"
+                        android:paddingRight="12dp"
+                        android:background="@drawable/shape_hui14"
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_marginTop="16dp"
+                    android:background="@color/backgroundHui"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <RelativeLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2020/03/26 13:45:29"
+                        android:textColor="#ff9f9fa0"
+                        android:textSize="14sp"
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:elevation="3dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:background="@drawable/shape_white12"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@mipmap/daiban_book"/>
+
+                    <TextView
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:text="关于疫情防控工作的重要指导意见"
+                        android:textColor="#ff3e3e41"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="编号：1274718733791379237489"
+                    android:textColor="#ff9f9fa0"
+                    android:textSize="12sp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:text="类别："
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:text="公文拟制"
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:text="分类："
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:text="意见"
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="28dp">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="wrap_content"
+                        android:text="附件："
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+
+                    <LinearLayout
+                        android:background="@drawable/shape_hui14"
+                        android:layout_width="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:src="@mipmap/daiban_lianjie"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="11dp"
+                            android:layout_height="11dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="指导意见01"
+                            android:gravity="center_vertical"
+                            android:textColor="#ff717173"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="14dp"
+                            android:textSize="14sp"
+                            />
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="64dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="+2"
+                        android:layout_marginLeft="8dp"
+                        android:paddingBottom="4dp"
+                        android:paddingTop="4dp"
+                        android:paddingLeft="13dp"
+                        android:paddingRight="12dp"
+                        android:background="@drawable/shape_hui14"
+                        android:textColor="#ff717173"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_marginTop="16dp"
+                    android:background="@color/backgroundHui"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <RelativeLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2020/03/26 13:45:29"
+                        android:textColor="#ff9f9fa0"
+                        android:textSize="14sp"
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
