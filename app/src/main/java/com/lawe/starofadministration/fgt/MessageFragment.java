@@ -51,12 +51,12 @@ public class MessageFragment extends BaseFgt {
         daibanDown2 = (ImageView) findViewById(R.id.daiban_down2);
         textUrgent = (TextView) findViewById(R.id.text_urgent);
         daibanDown3 = (ImageView) findViewById(R.id.daiban_down3);
-        textChoose = (LinearLayout) findViewById(R.id.text_choose);
         recycleMessage = (RecyclerView) findViewById(R.id.recycle_message);
         choose_leibie = (LinearLayout) findViewById(R.id.choose_leibie);
         linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
         recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
 
+        textChoose = (LinearLayout) findViewById(R.id.text_choose);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
         drawer_quxiao = getActivity().findViewById(R.id.drawer_quxiao);
         //待办信息

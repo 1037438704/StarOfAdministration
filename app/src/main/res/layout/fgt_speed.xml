@@ -78,10 +78,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         app:cardElevation="3dp"
+        android:background="@mipmap/maoboli_bai"
         android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="horizontal"
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="38dp">
 
@@ -171,11 +171,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:paddingTop="12dp"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="12dp"
             android:orientation="vertical"
             android:layout_height="match_parent">
             <LinearLayout

@@ -58,7 +58,7 @@
 
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
+            android:id="@+id/viewPagerMedal"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="240dp"
             android:paddingTop="8dp"
