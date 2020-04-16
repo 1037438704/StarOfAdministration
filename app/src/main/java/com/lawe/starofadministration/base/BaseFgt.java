@@ -15,7 +15,10 @@ import com.lawe.starofadministration.MyApplication;
 abstract public class BaseFgt extends BaseFragment {
 
     public AppCompatActivity fgtContext;
-    public Typeface  getTypeStyle = MyApplication.getTextStyle;
+    public Typeface getTextMedium = MyApplication.getTextMedium;
+    public Typeface getTextRegular = MyApplication.getTextRegular;
+    public Typeface getTextBold = MyApplication.getTextBold;
+    public Typeface getTextNum = MyApplication.getTextNum;
     /*
      * 毛玻璃
      * */

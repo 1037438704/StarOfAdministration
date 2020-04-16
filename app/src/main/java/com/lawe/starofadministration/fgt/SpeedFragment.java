@@ -2,6 +2,7 @@ package com.lawe.starofadministration.fgt;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -45,6 +46,7 @@ public class SpeedFragment extends BaseFgt {
         textChoose = (LinearLayout) findViewById(R.id.text_choose);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
         drawer_quxiao = getActivity().findViewById(R.id.drawer_quxiao);
+
     }
 
     @Override

@@ -24,7 +24,10 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
  */
 public class MyApplication extends Application {
 
-    public static Typeface getTextStyle;
+    public static Typeface getTextMedium;
+    public static Typeface getTextBold;
+    public static Typeface getTextRegular;
+    public static Typeface getTextNum;
 
     @Override
     public void onCreate() {
@@ -44,7 +47,10 @@ public class MyApplication extends Application {
 
         //字体
         AssetManager textType = this.getAssets();
-        getTextStyle = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Medium.otf");
+        getTextMedium = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Medium.otf");
+        getTextBold = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Bold.otf");
+        getTextRegular = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Regular.otf");
+        getTextNum = Typeface.createFromAsset(textType, "fonts/DINAlternateBold.ttf");
 
         super.onCreate();
     }

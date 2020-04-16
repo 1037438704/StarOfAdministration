@@ -20,7 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 abstract public class BaseAty extends BaseActivity {
-    public Typeface getTypeStyle = MyApplication.getTextStyle;
+    public Typeface getTextMedium = MyApplication.getTextMedium;
+    public Typeface getTextRegular = MyApplication.getTextRegular;
+    public Typeface getTextBold = MyApplication.getTextBold;
+    public Typeface getTextNum = MyApplication.getTextNum;
+
     //权限申请回调
     private OnPermissionResponseListener onPermissionResponseListener;
     private int REQUEST_CODE_PERMISSION = 0x00099;
