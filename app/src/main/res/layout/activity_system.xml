@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical"
+    tools:context=".aty.SystemActivity">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:elevation="2dp"
+        android:layout_height="80dp">
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="41dp"
+            android:layout_marginLeft="12dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/set_system_back"
+                android:src="@mipmap/icon_back"
+                android:layout_width="22dp"
+                android:layout_height="22dp"/>
+
+            <TextView
+                android:id="@+id/set_system_title"
+                android:text="系统设置"
+                android:textSize="18sp"
+                android:textColor="#3E3E41"
+                android:includeFontPadding="false"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="系统设置"
+                android:textSize="14dp"
+                android:textColor="#AAAAAB"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="短信推送"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+                <View
+                    android:background="#EFF0F2"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="预警提示"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+                <View
+                    android:background="#EFF0F2"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="日程提醒"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+                <View
+                    android:background="#EFF0F2"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="全部采用手写签批"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+                <View
+                    android:background="#EFF0F2"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="字体变大"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:text="说明"
+                android:textSize="14dp"
+                android:textColor="#AAAAAB"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:hint="说明的内容"
+                android:textColorHint="@color/text717173"
+                android:background="#fff"
+                android:textSize="16dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

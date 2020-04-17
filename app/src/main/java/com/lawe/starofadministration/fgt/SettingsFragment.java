@@ -9,7 +9,10 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.aty.FeedBackActivity;
+import com.lawe.starofadministration.aty.ServiceActivity;
 import com.lawe.starofadministration.aty.SetSafeActivity;
+import com.lawe.starofadministration.aty.SystemActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
@@ -143,6 +146,31 @@ public class SettingsFragment extends BaseFgt {
                 jump(SetSafeActivity.class);
             }
         });
+
+        //系统设置
+        linearSetSystem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(SystemActivity.class);
+            }
+        });
+
+        //问题反馈
+        linearSetFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(FeedBackActivity.class);
+            }
+        });
+
+        //服务中心
+        linearSetService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(ServiceActivity.class);
+            }
+        });
+        
     }
 
     public static SettingsFragment newInstance() {
