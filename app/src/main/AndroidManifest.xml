@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".aty.MyMedalActivity"></activity>
+        <activity android:name=".aty.UpdatePassActivity"></activity>
+        <activity android:name=".aty.SetSafeActivity" />
+        <activity android:name=".aty.MyMedalActivity" />
         <activity
             android:name=".aty.ChatActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />

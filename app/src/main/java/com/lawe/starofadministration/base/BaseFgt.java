@@ -19,6 +19,7 @@ abstract public class BaseFgt extends BaseFragment {
     public Typeface getTextRegular = MyApplication.getTextRegular;
     public Typeface getTextBold = MyApplication.getTextBold;
     public Typeface getTextNum = MyApplication.getTextNum;
+
     /*
      * 毛玻璃
      * */

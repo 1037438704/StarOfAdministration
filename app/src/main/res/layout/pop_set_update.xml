@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginRight="40dp"
+    android:layout_marginLeft="40dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:src="@mipmap/daiban_sheng_ji"
+        android:layout_width="86.4dp"
+        android:layout_marginTop="13dp"
+        android:layout_height="86.4dp"/>
+
+    <TextView
+        android:id="@+id/set_update"
+        android:text="系统更新提醒"
+        android:textSize="16dp"
+        android:textColor="#3E3E41"
+        android:layout_marginTop="5dp"
+        android:includeFontPadding="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/set_app_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="当前版本：v5.0.1"
+        android:textColor="#717173"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/set_app_startTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="发布日期：2020/12/20 18:00"
+        android:textColor="#717173"
+        android:textSize="14sp"
+                />
+
+    <TextView
+        android:id="@+id/set_app_updateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="更新日期：2020/12/20 16:00"
+        android:textColor="#717173"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/set_app_updateExplain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="更新说明"
+        android:textColor="#717173"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/set_app_updateContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="语雀是一款优雅高效的在线文档编辑与协同工具，让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选"
+        android:textColor="#717173"
+        android:textSize="14sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:id="@+id/set_app_cancle"
+            android:text="取消"
+            android:textSize="14dp"
+            android:background="@drawable/shape_white22"
+            android:includeFontPadding="false"
+            android:textColor="#9f9fa0"
+            android:layout_width="100dp"
+            android:layout_height="36dp"/>
+
+        <Button
+            android:id="@+id/set_app_update"
+            android:text="立即更新"
+            android:textSize="14dp"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/shape_red22"
+            android:includeFontPadding="false"
+            android:textColor="#fff"
+            android:layout_width="100dp"
+            android:layout_height="36dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_lauout"
     tools:context=".fgt.SettingsFragment"
     android:background="#F5F5F5"
     android:orientation="vertical">
@@ -64,6 +63,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/linear_set_safe"
             android:layout_width="match_parent"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="16dp"
@@ -102,6 +102,7 @@
             android:layout_height="1dp"/>
 
         <LinearLayout
+            android:id="@+id/linear_set_system"
             android:layout_width="match_parent"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="16dp"
@@ -140,6 +141,7 @@
             android:layout_height="1dp"/>
 
         <LinearLayout
+            android:id="@+id/linear_set_service"
             android:layout_width="match_parent"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="16dp"
@@ -178,6 +180,7 @@
             android:layout_height="1dp"/>
 
         <LinearLayout
+            android:id="@+id/linear_set_item"
             android:layout_width="match_parent"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="16dp"
@@ -216,6 +219,7 @@
             android:layout_height="1dp"/>
 
         <LinearLayout
+            android:id="@+id/linear_set_explanation"
             android:layout_width="match_parent"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="16dp"
@@ -254,6 +258,7 @@
             android:layout_height="1dp"/>
 
         <LinearLayout
+            android:id="@+id/linear_set_upgread"
             android:layout_width="match_parent"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="16dp"
@@ -292,6 +297,7 @@
             android:layout_height="1dp"/>
 
         <LinearLayout
+            android:id="@+id/linear_set_feedback"
             android:layout_width="match_parent"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="16dp"

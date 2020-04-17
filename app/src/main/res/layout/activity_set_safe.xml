@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical"
+    tools:context=".aty.SetSafeActivity">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="41dp"
+            android:layout_marginLeft="12dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/set_safe_back"
+                android:src="@mipmap/icon_back"
+                android:layout_width="22dp"
+                android:layout_height="22dp"/>
+
+            <TextView
+                android:id="@+id/set_safe_title"
+                android:text="安全设置"
+                android:textSize="18sp"
+                android:textColor="#3E3E41"
+                android:includeFontPadding="false"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <View
+        android:background="#EFF0F2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/set_safe_pass"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:elevation="2dp"
+                android:layout_height="56dp">
+
+                <TextView
+                    android:textColor="@color/textMedium"
+                    android:textSize="16dp"
+                    android:text="密码"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textColor="@color/text717173"
+                    android:textSize="14dp"
+                    android:text="已设置"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:src="@mipmap/icon_more"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:text="隐私设置"
+                android:textSize="14dp"
+                android:textColor="#AAAAAB"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="通讯里不显示手机号"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:id="@+id/set_safe_conPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/set_safe_none"
+                            android:src="@mipmap/switch_none"
+                            android:layout_width="44dp"
+                            android:layout_height="26dp"/>
+
+                        <ImageView
+                            android:id="@+id/set_safe_choose"
+                            android:src="@mipmap/switch_choose"
+                            android:visibility="gone"
+                            android:layout_width="44dp"
+                            android:layout_height="26dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:background="#EFF0F2"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="不接收跨单位通知"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:text="系统安全"
+                android:textSize="14dp"
+                android:textColor="#AAAAAB"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="一键启用高级安全设置"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+                <View
+                    android:background="#EFF0F2"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="绑定本机"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+                <View
+                    android:background="#EFF0F2"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="手势识别"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+                <View
+                    android:background="#EFF0F2"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="临时授权"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+                <View
+                    android:background="#EFF0F2"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="21dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="专网链接"
+                        android:textColor="@color/textMedium"
+                        android:textSize="16dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_none"
+                        android:visibility="gone"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+
+                    <ImageView
+                        android:src="@mipmap/switch_choose"
+                        android:layout_width="44dp"
+                        android:layout_height="26dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:text="说明"
+                android:textSize="14dp"
+                android:textColor="#AAAAAB"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:hint="说明的内容"
+                android:textColorHint="@color/text717173"
+                android:background="#fff"
+                android:textSize="16dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
