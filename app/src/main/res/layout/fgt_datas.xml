@@ -5,16 +5,337 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     tools:context=".fgt.DatasFragment"
-    android:background="@color/white"
-    android:orientation="horizontal">
+    android:background="@mipmap/bg_data_andriod"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="41dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="数据"
-        android:textSize="20dp"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/data_dataCenter"
+            android:text="数据中心"
+            android:textSize="18dp"
+            android:textColor="#fff"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:includeFontPadding="false"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@mipmap/icon_ji_xiao"
+            android:layout_marginRight="2dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp"/>
+
+        <TextView
+            android:id="@+id/data_jixiao"
+            android:textColor="#80ffffff"
+            android:textSize="12dp"
+            android:text="绩效"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@mipmap/icon_xin_yong"
+            android:layout_marginRight="2dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp"/>
+
+        <TextView
+            android:id="@+id/data_xinyong"
+            android:textColor="#80ffffff"
+            android:textSize="12dp"
+            android:text="信用"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="考核评价"
+                    android:textSize="12dp"
+                    android:textColor="#69ffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/data_kaohe"
+                    android:text="99.0"
+                    android:textSize="32dp"
+                    android:textColor="#ffffff"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="我的排名"
+                    android:textSize="12dp"
+                    android:textColor="#69ffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/data_paiming"
+                    android:text="18882"
+                    android:textSize="32dp"
+                    android:textColor="#ffffff"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="近期扣分"
+                    android:textSize="12dp"
+                    android:textColor="#69ffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/data_koufen"
+                    android:text="-2.6"
+                    android:textSize="32dp"
+                    android:textColor="#ffffff"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="18dp"
+            android:layout_marginRight="36dp"
+            android:layout_marginLeft="36dp"
+            android:background="@mipmap/me_bottom"
+            android:layout_height="20dp">
+
+            <ImageView
+                android:src="@mipmap/me"
+                android:layout_marginTop="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="3dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="137dp"
+                    android:layout_height="6dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressDrawable="@drawable/shape_chage_all"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:text="低 P:50%"
+                    android:textSize="12dp"
+                    android:textColor="#fff"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="98dp"
+                    android:layout_height="6dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressDrawable="@drawable/shape_chage_all"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:text="中 P:40%"
+                    android:textSize="12dp"
+                    android:textColor="#fff"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="45dp"
+                    android:layout_height="6dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressDrawable="@drawable/shape_chage_all"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:text="高 P:50%"
+                    android:textSize="12dp"
+                    android:textColor="#fff"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+       <TextView
+           android:text="数据更新日期：2020/03/27 10:34:43"
+           android:textColor="#36ffffff"
+           android:textSize="12dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginBottom="8dp"
+           android:gravity="center"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="#F5F5F5"
+        android:elevation="2dp"
+        android:layout_height="match_parent">
+
+        <RadioGroup
+            android:id="@+id/main_rgp"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingTop="3dp"
+            >
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="单位排名"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="个人排名"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="扣分事项"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="可视数据"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerData"
+            android:background="@color/white"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="78dp"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:paddingTop="9dp"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/item_img_down"/>
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:text="政务信用"
+            android:textColor="#9F9FA0"
+            android:gravity="center"
+            android:textSize="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_marginTop="21dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/data_pop_xin_text1"
+                        android:text="政务信用可视化模型"
+                        android:textSize="16dp"
+                        android:textColor="@color/textMedium"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/data_pop_xin_time"
+                        android:text="2020"
+                        android:textColor="#717173"
+                        android:textSize="14dp"
+                        android:gravity="center"
+                        android:background="@drawable/shape_hui12"
+                        android:layout_width="51dp"
+                        android:layout_height="24dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/shape_hui8"
+                    android:layout_width="match_parent"
+                    android:layout_height="182dp">
+
+                </LinearLayout>
+
+                <View
+                    android:background="#EFF0F2"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <TextView
+                    android:id="@+id/data_pop_xin_message"
+                    android:text="信息摘要"
+                    android:textColor="@color/textMedium"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="主体名称：天津市蓝威科技有限公司"
+                    android:textColor="@color/text717173"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="编号：1234567890987654"
+                    android:textColor="@color/text717173"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                android:text="信息来源："
+                android:textColor="@color/text717173"
+                android:textSize="14dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+                <TextView
+                    android:text="更新日期：2020/3/29 12:37:21"
+                    android:textColor="@color/text717173"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="有效期：2020/3/29 12:37:21"
+                    android:textColor="@color/text717173"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="信用类型"
+                    android:textColor="@color/text717173"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="基本信息：22"
+                        android:textColor="@color/text717173"
+                        android:textSize="14dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="业务信息：22"
+                        android:textColor="@color/text717173"
+                        android:textSize="14dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="司法信息：22"
+                        android:textColor="@color/text717173"
+                        android:textSize="14dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="行政执法信息：22"
+                        android:textColor="@color/text717173"
+                        android:textSize="14dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+                
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>
