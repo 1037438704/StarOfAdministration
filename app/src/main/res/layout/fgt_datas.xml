@@ -58,6 +58,7 @@
 
     </LinearLayout>
 
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_marginTop="24dp"
@@ -245,97 +246,117 @@
             </LinearLayout>
         </LinearLayout>
 
-       <TextView
-           android:text="数据更新日期：2020/03/27 10:34:43"
-           android:textColor="#36ffffff"
-           android:textSize="12dp"
-           android:layout_marginTop="10dp"
-           android:layout_marginBottom="8dp"
-           android:gravity="center"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
+        <TextView
+            android:text="数据更新日期：2020/03/27 10:34:43"
+            android:textColor="#36ffffff"
+            android:textSize="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="#F5F5F5"
-        android:elevation="2dp"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
 
-        <RadioGroup
-            android:id="@+id/main_rgp"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
-            android:background="@color/white"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:paddingTop="3dp"
-            >
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:text="单位排名"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="7dp"
-                android:drawableBottom="@drawable/select_red_xiahualine"
-                android:textColor="@drawable/select_textcolor"
-                android:textSize="14sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="#F5F5F5"
+                android:elevation="2dp"
+                android:layout_height="match_parent">
 
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:text="个人排名"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="7dp"
-                android:drawableBottom="@drawable/select_red_xiahualine"
-                android:textColor="@drawable/select_textcolor"
-                android:textSize="14sp" />
+                <RadioGroup
+                    android:id="@+id/main_rgp"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:background="@color/white"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingTop="3dp"
+                    >
 
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:text="扣分事项"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="7dp"
-                android:drawableBottom="@drawable/select_red_xiahualine"
-                android:textColor="@drawable/select_textcolor"
-                android:textSize="14sp" />
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="单位排名"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="7dp"
+                        android:drawableBottom="@drawable/select_red_xiahualine"
+                        android:textColor="@drawable/select_textcolor"
+                        android:textSize="14sp" />
 
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:text="可视数据"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="7dp"
-                android:drawableBottom="@drawable/select_red_xiahualine"
-                android:textColor="@drawable/select_textcolor"
-                android:textSize="14sp" />
-        </RadioGroup>
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="个人排名"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="7dp"
+                        android:drawableBottom="@drawable/select_red_xiahualine"
+                        android:textColor="@drawable/select_textcolor"
+                        android:textSize="14sp" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPagerData"
-            android:background="@color/white"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            />
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="扣分事项"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="7dp"
+                        android:drawableBottom="@drawable/select_red_xiahualine"
+                        android:textColor="@drawable/select_textcolor"
+                        android:textSize="14sp" />
 
-    </LinearLayout>
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="可视数据"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="7dp"
+                        android:drawableBottom="@drawable/select_red_xiahualine"
+                        android:textColor="@drawable/select_textcolor"
+                        android:textSize="14sp" />
+                </RadioGroup>
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPagerData"
+                    android:background="@color/white"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
 
 </LinearLayout>

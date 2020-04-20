@@ -10,6 +10,48 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:layout_height="38dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="单位类别"
+                android:layout_marginLeft="12dp"
+                android:textSize="14dp"
+                android:textColor="#9F9FA0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:layout_marginLeft="3dp"
+                android:src="@mipmap/daiban_down"
+                android:layout_width="8dp"
+                android:layout_height="4dp"/>
+            
+        </LinearLayout>
+
+        <TextView
+            android:text="2020"
+            android:textColor="#717173"
+            android:textSize="14dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center"
+            android:background="@drawable/shape_hui12"
+            android:layout_width="51dp"
+            android:layout_height="24dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"

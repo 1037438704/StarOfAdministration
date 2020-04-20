@@ -27,8 +27,8 @@ import java.util.List;
 /**
  * author : dell
  * date : 2020/4/7 16:36
- * description :
- */
+ * description :  数据中心
+ * */
 
 @Layout(R.layout.fgt_datas)
 public class DatasFragment extends BaseFgt {
@@ -43,7 +43,6 @@ public class DatasFragment extends BaseFgt {
     private TextView dataKoufen;
     private TextView dataJixiao;
     private TextView dataXinyong;
-    private ContentView view;
 
     @Override
     public void initViews() {
