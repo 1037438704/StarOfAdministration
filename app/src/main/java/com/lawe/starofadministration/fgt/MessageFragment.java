@@ -1,16 +1,12 @@
 package com.lawe.starofadministration.fgt;
 
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +15,9 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.MessageAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * author : dell
@@ -43,6 +42,10 @@ public class MessageFragment extends BaseFgt {
     private DrawerLayout drawerLayout;
     private Button drawer_quxiao;
 
+    //空集合
+    private List<String> list;
+    private MessageAdapter messageAdapter;
+
     @Override
     public void initViews() {
         textCategory = (TextView) findViewById(R.id.text_category);
@@ -59,16 +62,20 @@ public class MessageFragment extends BaseFgt {
         textChoose = (LinearLayout) findViewById(R.id.text_choose);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
         drawer_quxiao = getActivity().findViewById(R.id.drawer_quxiao);
+        list = new ArrayList<>();
         //待办信息
         recycleMessage.setLayoutManager(new LinearLayoutManager(me));
-        MessageAdapter messageAdapter = new MessageAdapter(me);
+        messageAdapter = new MessageAdapter(R.layout.item_message_layout);
         recycleMessage.setAdapter(messageAdapter);
-
     }
 
     @Override
     public void initDatas() {
-
+        for (int i = 0; i < 10; i++) {
+            list.add("" + i);
+        }
+        messageAdapter.setNewData(list);
+        messageAdapter.notifyDataSetChanged();
     }
 
     @Override

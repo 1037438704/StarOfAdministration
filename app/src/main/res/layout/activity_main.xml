@@ -5,11 +5,11 @@
     android:id="@+id/drawer_layout_shaixuan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#ECECEC"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -17,13 +17,14 @@
         <com.lawe.starofadministration.utils.NoScrollViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="38dp" />
 
         <RadioGroup
             android:id="@+id/main_rgp"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:layout_gravity="bottom"
             android:background="@mipmap/daiban_tabbar_bottom"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
@@ -86,7 +87,8 @@
                 android:textColor="@drawable/select_text_color"
                 android:textSize="11sp" />
         </RadioGroup>
-    </LinearLayout>
+
+    </FrameLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"

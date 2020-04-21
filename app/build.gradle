@@ -50,15 +50,18 @@ dependencies {
     //图片加载
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
     implementation 'com.jaeger.statusbarutil:library:1.5.1'
 
     //刷新接口
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-32'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-32'
 
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    api 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+//    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+//    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+//    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     //二维码
     implementation 'com.google.zxing:core:3.3.0'
+    //万能适配器
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
 }
