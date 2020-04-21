@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="right"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="1dp"
+        android:background="@drawable/shape_white8"
+        android:orientation="vertical"
+        android:paddingLeft="12dp"
+        android:paddingTop="41dp">
+
+        <TextView
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="条件筛选"
+            android:textColor="#ff3e3e41"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="按照特殊属性排序"
+            android:textColor="#ff717173"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="122dp"
+                android:layout_height="40dp"
+                android:background="@drawable/select_shaixuan"
+                android:text="会议通知靠前"
+                android:textColor="@drawable/select_text_color" />
+
+            <Button
+                android:layout_width="122dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="12dp"
+                android:background="@drawable/select_shaixuan"
+                android:text="即将逾期靠后"
+                android:textColor="@drawable/select_text_color" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="模糊时间搜索"
+            android:textColor="#ff717173"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="120dp"
+                android:layout_height="32dp"
+                android:background="@drawable/select_shaixuan"
+                android:hint="开始时间"
+                android:paddingLeft="32dp"
+                android:textColor="#3E3E41"
+                android:textColorHint="#9F9FA0"
+                android:textSize="14dp" />
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="1dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="7dp"
+                android:background="#717173" />
+
+            <EditText
+                android:layout_width="110dp"
+                android:layout_height="32dp"
+                android:background="@drawable/select_shaixuan"
+                android:hint="结束时间"
+                android:paddingLeft="32dp"
+                android:textColor="#3E3E41"
+                android:textColorHint="#9F9FA0"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="77dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/select_shaixuan"
+                android:text="最近3天"
+                android:textColor="@drawable/select_text_color" />
+
+
+            <Button
+                android:layout_width="77dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="12dp"
+                android:background="@drawable/select_shaixuan"
+                android:text="最近7天"
+                android:textColor="@drawable/select_text_color" />
+
+            <Button
+                android:layout_width="77dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="12dp"
+                android:background="@drawable/select_shaixuan"
+                android:text="最近30天"
+                android:textColor="@drawable/select_text_color" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="54dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/drawer_quxiao"
+            android:layout_width="122dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/shape_white22"
+            android:text="取消"
+            android:textColor="#9f9fa0"
+            android:textSize="14dp" />
+
+        <Button
+            android:layout_width="122dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/shape_red22"
+            android:text="立即筛选"
+            android:textColor="#fff"
+            android:textSize="14dp" />
+    </LinearLayout>
+</RelativeLayout>
+
+
+
