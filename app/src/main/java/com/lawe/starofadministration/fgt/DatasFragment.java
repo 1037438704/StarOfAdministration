@@ -49,9 +49,6 @@ public class DatasFragment extends BaseFgt {
     private TextView dataJixiao;
     private TextView dataXinyong;
 
-    private AppBarLayout appBarLayout;
-    private LinearLayout view;
-
     @Override
     public void initViews() {
 
@@ -74,10 +71,6 @@ public class DatasFragment extends BaseFgt {
         dataKoufen.setTypeface(getTextNum);
         dataPaiming.setTypeface(getTextNum);
 
-
-        appBarLayout = (AppBarLayout) findViewById(R.id.appBarLayout);
-        view = (LinearLayout) findViewById(R.id.view);
-
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
 
@@ -93,15 +86,6 @@ public class DatasFragment extends BaseFgt {
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPager.setOffscreenPageLimit(fragemnts.size());
         viewPager.setAdapter(viewPagerAdp);
-
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                float scale = 1.0f - (float) (-verticalOffset) / (appBarLayout.getMeasuredHeight());
-                Log.e("<<<<<<<<<<<<",scale + "");
-                view.setAlpha(scale);
-            }
-        });
 
     }
 

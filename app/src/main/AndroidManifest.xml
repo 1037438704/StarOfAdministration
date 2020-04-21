@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".aty.ServiceActivity"></activity>
+        <activity android:name=".aty.ExplanaActivity" />
+        <activity android:name=".aty.ServiceActivity" />
         <activity android:name=".aty.FeedBackActivity" />
         <activity android:name=".aty.SystemActivity" />
         <activity android:name=".aty.UpdatePassActivity" />

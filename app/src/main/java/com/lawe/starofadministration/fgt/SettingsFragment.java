@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.aty.ExplanaActivity;
 import com.lawe.starofadministration.aty.FeedBackActivity;
 import com.lawe.starofadministration.aty.ServiceActivity;
 import com.lawe.starofadministration.aty.SetSafeActivity;
@@ -168,6 +169,14 @@ public class SettingsFragment extends BaseFgt {
             @Override
             public void onClick(View v) {
                 jump(ServiceActivity.class);
+            }
+        });
+
+        //操作说明
+        linearSetExplanation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(ExplanaActivity.class);
             }
         });
         

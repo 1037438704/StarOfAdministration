@@ -57,6 +57,17 @@
 
     </LinearLayout>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -259,7 +270,6 @@
 
 
     <LinearLayout
-        android:id="@+id/view"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:background="#F5F5F5"

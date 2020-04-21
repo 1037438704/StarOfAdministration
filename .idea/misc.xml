@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/mydemo/src/main/res/drawable/shape_white12.xml" />
+    <file url="file://$PROJECT_DIR$/mydemo/src/main/res/drawable/shape_white15.xml" />
+    <file url="file://$PROJECT_DIR$/mydemo/src/main/res/drawable/shape_white22.xml" />
+    <file url="file://$PROJECT_DIR$/mydemo/src/main/res/drawable/shape_white5.xml" />
+    <file url="file://$PROJECT_DIR$/mydemo/src/main/res/drawable/shape_white8.xml" />
+    <file url="file://$PROJECT_DIR$/mydemo/src/main/res/drawable/shape_white_up_12.xml" />
+    <file url="file://$PROJECT_DIR$/mydemo/src/main/res/drawable/shape_white_xia_12.xml" />
+    <file url="file://$PROJECT_DIR$/mydemo/src/main/res/drawable/vciv_et_bg.xml" />
+    <file url="file://$PROJECT_DIR$/mydemo/src/main/res/drawable/vciv_et_focus_bg.xml" />
+    <file url="file://$PROJECT_DIR$/mydemo/src/main/res/drawable/vciv_paste_bg.xml" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
