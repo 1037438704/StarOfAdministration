@@ -1,11 +1,14 @@
 package com.lawe.starofadministration.fgt;
 
 import android.app.Dialog;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -13,8 +16,10 @@ import android.widget.TextView;
 
 import androidx.annotation.ContentView;
 import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
@@ -44,8 +49,13 @@ public class DatasFragment extends BaseFgt {
     private TextView dataJixiao;
     private TextView dataXinyong;
 
+    private AppBarLayout appBarLayout;
+    private LinearLayout view;
+
     @Override
     public void initViews() {
+
+        //me.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         fragemnts = new ArrayList<>();
         mainRgp = (RadioGroup) findViewById(R.id.main_rgp);
@@ -64,6 +74,10 @@ public class DatasFragment extends BaseFgt {
         dataKoufen.setTypeface(getTextNum);
         dataPaiming.setTypeface(getTextNum);
 
+
+        appBarLayout = (AppBarLayout) findViewById(R.id.appBarLayout);
+        view = (LinearLayout) findViewById(R.id.view);
+
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
 
@@ -79,6 +93,15 @@ public class DatasFragment extends BaseFgt {
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPager.setOffscreenPageLimit(fragemnts.size());
         viewPager.setAdapter(viewPagerAdp);
+
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                float scale = 1.0f - (float) (-verticalOffset) / (appBarLayout.getMeasuredHeight());
+                Log.e("<<<<<<<<<<<<",scale + "");
+                view.setAlpha(scale);
+            }
+        });
 
     }
 

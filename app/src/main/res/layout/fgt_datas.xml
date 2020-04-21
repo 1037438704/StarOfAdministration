@@ -12,11 +12,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_marginTop="41dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:gravity="center_vertical"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp">
 
         <TextView
             android:id="@+id/data_dataCenter"
@@ -61,7 +60,7 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -258,105 +257,87 @@
 
     </LinearLayout>
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+
+    <LinearLayout
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:orientation="vertical"
+        android:background="#F5F5F5"
+        android:elevation="2dp"
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbarLayout"
+        <RadioGroup
+            android:id="@+id/main_rgp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            android:layout_height="47dp"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingTop="3dp"
+            >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:background="#F5F5F5"
-                android:elevation="2dp"
-                android:layout_height="match_parent">
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="单位排名"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14sp" />
 
-                <RadioGroup
-                    android:id="@+id/main_rgp"
-                    android:layout_width="match_parent"
-                    android:layout_height="47dp"
-                    android:background="@color/white"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingTop="3dp"
-                    >
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="个人排名"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14sp" />
 
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="单位排名"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginBottom="7dp"
-                        android:drawableBottom="@drawable/select_red_xiahualine"
-                        android:textColor="@drawable/select_textcolor"
-                        android:textSize="14sp" />
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="扣分事项"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14sp" />
 
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="个人排名"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginBottom="7dp"
-                        android:drawableBottom="@drawable/select_red_xiahualine"
-                        android:textColor="@drawable/select_textcolor"
-                        android:textSize="14sp" />
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="可视数据"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14sp" />
+        </RadioGroup>
 
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="扣分事项"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginBottom="7dp"
-                        android:drawableBottom="@drawable/select_red_xiahualine"
-                        android:textColor="@drawable/select_textcolor"
-                        android:textSize="14sp" />
-
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="可视数据"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginBottom="7dp"
-                        android:drawableBottom="@drawable/select_red_xiahualine"
-                        android:textColor="@drawable/select_textcolor"
-                        android:textSize="14sp" />
-                </RadioGroup>
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewPagerData"
-                    android:background="@color/white"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    />
-
-            </LinearLayout>
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
+    </LinearLayout>
 
 
-
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerData"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

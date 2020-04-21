@@ -11,15 +11,15 @@
 
     <RelativeLayout
         android:background="#DB1F2C"
-        android:paddingTop="36dp"
         android:elevation="3dp"
         android:layout_width="match_parent"
-        android:layout_height="81dp">
+        android:layout_height="50dp">
         <ImageView
             android:id="@+id/daiban_head"
             android:src="@mipmap/avatar"
             android:layout_marginLeft="14dp"
             android:layout_marginBottom="11dp"
+            android:layout_centerVertical="true"
             android:layout_width="38dp"
             android:layout_height="38dp"/>
 
@@ -28,6 +28,7 @@
             android:layout_marginLeft="82dp"
             android:layout_marginTop="10dp"
             android:elevation="3dp"
+            android:layout_centerVertical="true"
             android:src="@mipmap/icon_search_small"
             android:layout_width="16dp"
             android:layout_height="16dp"/>
@@ -37,28 +38,23 @@
             android:layout_marginRight="24dp"
             android:layout_marginTop="10dp"
             android:elevation="3dp"
+            android:layout_centerVertical="true"
             android:src="@mipmap/icon_microphone"
             android:layout_width="16dp"
             android:layout_height="16dp"/>
 
-        <RelativeLayout
-
-            android:layout_width="match_parent"
+        <EditText
+            android:hint="搜索要查找的内容"
+            android:textColorHint="#fff"
+            android:textSize="14dp"
+            android:paddingLeft="30dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="3dp"
+            android:layout_centerVertical="true"
             android:layout_marginRight="12dp"
-            android:layout_height="30dp">
-
-            <EditText
-                android:hint="搜索要查找的内容"
-                android:textColorHint="#fff"
-                android:textSize="14dp"
-                android:paddingLeft="30dp"
-                android:background="@drawable/shape_white15"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-        </RelativeLayout>
+            android:background="@drawable/shape_white15"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
 
         <ImageView
             android:id="@+id/saoyisao"
@@ -68,6 +64,7 @@
             android:layout_marginRight="12dp"
             android:layout_marginBottom="12dp"
             android:elevation="3dp"
+            android:layout_centerVertical="true"
             android:src="@mipmap/icon_search_large"
             android:layout_width="32dp"
             android:layout_height="32dp"/>
