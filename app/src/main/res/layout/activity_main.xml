@@ -5,11 +5,11 @@
     android:id="@+id/drawer_layout_shaixuan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ECECEC"
     android:fitsSystemWindows="true"
-    android:background="#F5F5F5"
     tools:context=".MainActivity">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -18,13 +18,13 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-             />
+            android:layout_marginBottom="38dp" />
 
         <RadioGroup
             android:id="@+id/main_rgp"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
             android:background="@mipmap/daiban_tabbar_bottom"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
@@ -87,7 +87,8 @@
                 android:textColor="@drawable/select_text_color"
                 android:textSize="11sp" />
         </RadioGroup>
-    </RelativeLayout>
+
+    </FrameLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
