@@ -1,21 +1,22 @@
 package com.lawe.starofadministration.fgt;
 
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
-import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.kongzue.baseframework.interfaces.Layout;
-import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.adp.MessageAdapter;
+import com.lawe.starofadministration.adp.NoticeMessageAdapter;
 import com.lawe.starofadministration.aty.ChatActivity;
 import com.lawe.starofadministration.aty.LookAllActivity;
 import com.lawe.starofadministration.base.BaseFgt;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * author : dell
@@ -26,21 +27,33 @@ import com.lawe.starofadministration.base.BaseFgt;
 public class NoticeFragment extends BaseFgt {
 
     private TextView text_lookAll;
-    private LinearLayout liaotian;
     private TextView text_num;
+    private RecyclerView recycleMessageList;
+    //空集合
+    private List<String> list;
+    private NoticeMessageAdapter noticeAdapter;
 
     @Override
     public void initViews() {
         text_lookAll = (TextView) findViewById(R.id.text_lookAll);
-        liaotian = (LinearLayout) findViewById(R.id.liaotian);
         text_num = (TextView) findViewById(R.id.text_num);
+        recycleMessageList = (RecyclerView) findViewById(R.id.recycle_messageList);
 
-       /* AssetManager ass = getAssets();
-        text_num.setTypeface(Typeface.createFromAsset(getAssets(),keycaps.ttc));*/
+        list = new ArrayList<>();
+        //待办信息
+        recycleMessageList.setLayoutManager(new LinearLayoutManager(me));
+        noticeAdapter = new NoticeMessageAdapter(R.layout.item_message_list);
+        recycleMessageList.setAdapter(noticeAdapter);
     }
 
     @Override
     public void initDatas() {
+
+        for (int i = 0; i < 10; i++) {
+            list.add("" + i);
+        }
+        noticeAdapter.setNewData(list);
+        noticeAdapter.notifyDataSetChanged();
 
     }
 
@@ -54,16 +67,18 @@ public class NoticeFragment extends BaseFgt {
             }
         });
 
-        //聊天列表
-        liaotian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                jump(ChatActivity.class);
-            }
-        });
+        //适配器点击事件
+       noticeAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+           @Override
+           public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+               jump(ChatActivity.class);
+           }
+       });
+
     }
 
     public static NoticeFragment newInstance() {
         return new NoticeFragment();
     }
+
 }
