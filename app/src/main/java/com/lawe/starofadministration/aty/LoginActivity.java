@@ -72,7 +72,6 @@ public class LoginActivity extends BaseAty {
         login_phone = findViewById(R.id.login_phone);
         login_jujue = findViewById(R.id.login_jujue);
         login_text_forget = findViewById(R.id.login_text_forget);
-
         //输入密码  不可见
         login_eye.setBackgroundResource(R.mipmap.login_biyan);
         LoginActivity.this.login_edpass.setTransformationMethod(PasswordTransformationMethod.getInstance());

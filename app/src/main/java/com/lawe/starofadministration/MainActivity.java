@@ -43,39 +43,12 @@ public class MainActivity extends BaseAty {
     private List<BaseFragment> fragemnts;
     ViewPagerAdp viewPagerAdp;
     private DrawerLayout drawer;
-    //------------------------------------------------------------------------------------------
-    private ArrayList<FragmentTouchListener> mFragmentTouchListeners = new ArrayList<>();
-
-
-    public void registerFragmentTouchListener(FragmentTouchListener listener) {
-        mFragmentTouchListeners.add(listener);
-    }
-
-
-    public void unRegisterFragmentTouchListener(FragmentTouchListener listener) {
-        mFragmentTouchListeners.remove(listener);
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        for (FragmentTouchListener listener : mFragmentTouchListeners) {
-            listener.onTouchEvent(event);
-        }
-
-        return super.dispatchTouchEvent(event);
-    }
-
-    public interface FragmentTouchListener {
-
-        boolean onTouchEvent(MotionEvent event);
-    }
-
-    //------------------------------------------------------------------------------------------
-
+    private ArrayList<FragmentTouchListener> mFragmentTouchListeners;
     @Override
     public void initViews() {
         //requestPemissions();
         fragemnts = new ArrayList<>();
+        mFragmentTouchListeners = new ArrayList<>();
         mainRgp = findViewById(R.id.main_rgp);
         viewPager = findViewById(R.id.viewPager);
 
@@ -154,6 +127,46 @@ public class MainActivity extends BaseAty {
             }
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void registerFragmentTouchListener(FragmentTouchListener listener) {
+        mFragmentTouchListeners.add(listener);
+    }
+
+
+    public void unRegisterFragmentTouchListener(FragmentTouchListener listener) {
+        mFragmentTouchListeners.remove(listener);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        for (FragmentTouchListener listener : mFragmentTouchListeners) {
+            listener.onTouchEvent(event);
+        }
+
+        return super.dispatchTouchEvent(event);
+    }
+
+    public interface FragmentTouchListener {
+        boolean onTouchEvent(MotionEvent event);
+    }
+
+
 
     /**
      * 按两次退出应用

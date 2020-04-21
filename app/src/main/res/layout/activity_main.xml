@@ -2,22 +2,23 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_shaixuan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layout_shaixuan"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <com.lawe.starofadministration.utils.NoScrollViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1" />
 
         <RadioGroup
             android:id="@+id/main_rgp"
@@ -26,14 +27,13 @@
             android:background="@mipmap/daiban_tabbar_bottom"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingTop="3dp"
-            >
+            android:paddingTop="3dp">
 
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginTop="16dp"
+                android:layout_weight="1"
                 android:button="@null"
                 android:drawableTop="@drawable/select_daiban"
                 android:gravity="center"
@@ -44,30 +44,29 @@
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginTop="16dp"
+                android:layout_weight="1"
                 android:button="@null"
+                android:drawableTop="@drawable/select_jindu"
                 android:gravity="center"
                 android:text="进度"
                 android:textColor="@drawable/select_text_color"
-                android:drawableTop="@drawable/select_jindu"
                 android:textSize="11sp" />
 
 
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:button="@null"
-                android:layout_marginTop="4dp"
-                android:drawableTop="@mipmap/center"
-                />
+                android:drawableTop="@mipmap/center" />
 
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginTop="16dp"
+                android:layout_weight="1"
                 android:button="@null"
                 android:drawableTop="@drawable/select_datas"
                 android:gravity="center"
@@ -78,8 +77,8 @@
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginTop="16dp"
+                android:layout_weight="1"
                 android:button="@null"
                 android:drawableTop="@drawable/select_settings"
                 android:gravity="center"
@@ -89,28 +88,26 @@
         </RadioGroup>
     </LinearLayout>
 
-
     <RelativeLayout
-        android:layout_gravity="right"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="right">
 
         <LinearLayout
             android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_white8"
             android:orientation="vertical"
             android:paddingLeft="12dp"
-            android:paddingTop="41dp"
-            android:background="@drawable/shape_white8"
-            android:layout_height="match_parent">
+            android:paddingTop="41dp">
 
             <TextView
                 android:layout_width="72dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
                 android:text="条件筛选"
                 android:textColor="#ff3e3e41"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="18dp"
-                />
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="112dp"
@@ -118,104 +115,103 @@
                 android:layout_marginTop="24dp"
                 android:text="按照特殊属性排序"
                 android:textColor="#ff717173"
-                android:textSize="14dp"
-                />
+                android:textSize="14dp" />
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <Button
-                    android:text="会议通知靠前"
-                    android:background="@drawable/select_shaixuan"
-                    android:layout_width="122dp"
-                    android:textColor="@drawable/select_text_color"
-                    android:layout_height="40dp"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
                 <Button
-                    android:text="即将逾期靠后"
+                    android:layout_width="122dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/select_shaixuan"
+                    android:text="会议通知靠前"
+                    android:textColor="@drawable/select_text_color" />
+
+                <Button
+                    android:layout_width="122dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="12dp"
                     android:background="@drawable/select_shaixuan"
-                    android:textColor="@drawable/select_text_color"
-                    android:layout_width="122dp"
-                    android:layout_height="40dp"/>
+                    android:text="即将逾期靠后"
+                    android:textColor="@drawable/select_text_color" />
             </LinearLayout>
 
             <TextView
-                android:layout_marginTop="32dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:text="模糊时间搜索"
                 android:textColor="#ff717173"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
 
                 <EditText
-                    android:hint="开始时间"
-                    android:textColorHint="#9F9FA0"
-                    android:textSize="14dp"
-                    android:textColor="#3E3E41"
-                    android:paddingLeft="32dp"
-                    android:background="@drawable/select_shaixuan"
                     android:layout_width="120dp"
-                    android:layout_height="32dp"/>
+                    android:layout_height="32dp"
+                    android:background="@drawable/select_shaixuan"
+                    android:hint="开始时间"
+                    android:paddingLeft="32dp"
+                    android:textColor="#3E3E41"
+                    android:textColorHint="#9F9FA0"
+                    android:textSize="14dp" />
 
                 <View
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#717173"
                     android:layout_width="12dp"
-                    android:layout_height="1dp"/>
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="7dp"
+                    android:background="#717173" />
 
                 <EditText
-                    android:hint="结束时间"
-                    android:textColorHint="#9F9FA0"
-                    android:textSize="14dp"
-                    android:textColor="#3E3E41"
-                    android:paddingLeft="32dp"
-                    android:background="@drawable/select_shaixuan"
                     android:layout_width="110dp"
-                    android:layout_height="32dp"/>
+                    android:layout_height="32dp"
+                    android:background="@drawable/select_shaixuan"
+                    android:hint="结束时间"
+                    android:paddingLeft="32dp"
+                    android:textColor="#3E3E41"
+                    android:textColorHint="#9F9FA0"
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
                 <Button
-                    android:text="最近3天"
+                    android:layout_width="77dp"
+                    android:layout_height="40dp"
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/select_shaixuan"
-                    android:textColor="@drawable/select_text_color"
-                    android:layout_width="77dp"
-                    android:layout_height="40dp"/>
+                    android:text="最近3天"
+                    android:textColor="@drawable/select_text_color" />
 
 
                 <Button
+                    android:layout_width="77dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/select_shaixuan"
                     android:text="最近7天"
-                    android:layout_marginLeft="12dp"
-                    android:background="@drawable/select_shaixuan"
-                    android:textColor="@drawable/select_text_color"
-                    android:layout_width="77dp"
-                    android:layout_height="40dp"/>
+                    android:textColor="@drawable/select_text_color" />
 
                 <Button
-                    android:text="最近30天"
+                    android:layout_width="77dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="12dp"
                     android:background="@drawable/select_shaixuan"
-                    android:textColor="@drawable/select_text_color"
-                    android:layout_width="77dp"
-                    android:layout_height="40dp"/>
+                    android:text="最近30天"
+                    android:textColor="@drawable/select_text_color" />
 
             </LinearLayout>
 
@@ -223,83 +219,83 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="12dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_height="wrap_content"
             android:layout_marginBottom="54dp"
-            >
-            <Button
-                android:id="@+id/drawer_quxiao"
-                android:text="取消"
-                android:textSize="14dp"
-                android:layout_marginBottom="6dp"
-                android:layout_marginTop="3dp"
-                android:background="@drawable/shape_white22"
-                android:textColor="#9f9fa0"
-                android:layout_width="122dp"
-                android:layout_height="36dp"/>
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <Button
-                android:text="立即筛选"
-                android:textSize="14dp"
+                android:id="@+id/drawer_quxiao"
+                android:layout_width="122dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/shape_white22"
+                android:text="取消"
+                android:textColor="#9f9fa0"
+                android:textSize="14dp" />
+
+            <Button
+                android:layout_width="122dp"
+                android:layout_height="36dp"
                 android:layout_marginLeft="12dp"
+                android:layout_marginTop="3dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="6dp"
-                android:layout_marginTop="3dp"
                 android:background="@drawable/shape_red22"
+                android:text="立即筛选"
                 android:textColor="#fff"
-                android:layout_width="122dp"
-                android:layout_height="36dp"/>
+                android:textSize="14dp" />
         </LinearLayout>
 
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_gravity="left"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="left">
 
         <RelativeLayout
             android:layout_width="300dp"
+            android:layout_height="match_parent"
             android:background="@drawable/shape_white2_8"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:orientation="vertical">
 
             <ImageView
-                android:src="@mipmap/bg_tu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:src="@mipmap/bg_tu" />
 
             <ImageView
-                android:src="@mipmap/avatar"
-                android:layout_marginTop="91dp"
-                android:layout_marginLeft="16dp"
                 android:layout_width="64dp"
-                android:layout_height="64dp"/>
+                android:layout_height="64dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="91dp"
+                android:src="@mipmap/avatar" />
 
             <TextView
-                android:text="高寒"
-                android:textSize="16sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="86dp"
                 android:layout_marginTop="102dp"
-                android:layout_marginLeft="86dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:fontFamily="sans-serif-medium"
+                android:text="高寒"
+                android:textColor="#fff"
+                android:textSize="16sp" />
 
             <TextView
-                android:text="天津市蓝威科技发展有限公司"
-                android:textSize="14sp"
-                android:textColor="#717173"
-                android:fontFamily="sans-serif-medium"
-                android:layout_marginTop="130dp"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:layout_marginLeft="86dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="86dp"
+                android:layout_marginTop="130dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:text="天津市蓝威科技发展有限公司"
+                android:textColor="#717173"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -327,124 +323,125 @@
                         android:layout_marginLeft="38dp"
                         android:fontFamily="sans-serif-medium"
                         android:text="勋章墙"
-                        android:textSize="16dp"
-                        android:textColor="#3E3E41" />
+                        android:textColor="#3E3E41"
+                        android:textSize="16dp" />
 
                     <ImageView
                         android:layout_width="14dp"
                         android:layout_height="14dp"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="13dp"
-                        android:layout_marginTop="4dp"
                         android:layout_marginLeft="195dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="13dp"
                         android:src="@mipmap/icon_more" />
                 </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/linear_myXunzhang"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:src="@mipmap/medal_small"
                             android:layout_width="40dp"
-                            android:layout_height="40dp"/>
+                            android:layout_height="40dp"
+                            android:src="@mipmap/medal_small" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="勋章1"
                             android:textColor="#717173"
-                            android:textSize="12sp"
-                            android:layout_marginTop="4dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:src="@mipmap/medal_small"
                             android:layout_width="40dp"
-                            android:layout_height="40dp"/>
+                            android:layout_height="40dp"
+                            android:src="@mipmap/medal_small" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="勋章2"
                             android:textColor="#717173"
-                            android:textSize="12sp"
-                            android:layout_marginTop="4dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:src="@mipmap/medal_small"
                             android:layout_width="40dp"
-                            android:layout_height="40dp"/>
+                            android:layout_height="40dp"
+                            android:src="@mipmap/medal_small" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="勋章3"
                             android:textColor="#717173"
-                            android:textSize="12sp"
-                            android:layout_marginTop="4dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:src="@mipmap/medal_small"
                             android:layout_width="40dp"
-                            android:layout_height="40dp"/>
+                            android:layout_height="40dp"
+                            android:src="@mipmap/medal_small" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="勋章4"
                             android:textColor="#717173"
-                            android:textSize="12sp"
-                            android:layout_marginTop="4dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:layout_marginTop="29dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="29dp"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="16dp"
                         android:layout_height="16dp"
-                        android:layout_marginTop="4dp"
                         android:layout_marginLeft="18dp"
+                        android:layout_marginTop="4dp"
                         android:src="@mipmap/icon_data" />
 
                     <TextView
@@ -453,131 +450,132 @@
                         android:layout_marginLeft="38dp"
                         android:fontFamily="sans-serif-medium"
                         android:text="数据信息"
-                        android:textSize="16dp"
-                        android:textColor="#3E3E41" />
+                        android:textColor="#3E3E41"
+                        android:textSize="16dp" />
 
                     <ImageView
                         android:layout_width="14dp"
                         android:layout_height="14dp"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="13dp"
-                        android:layout_marginTop="4dp"
                         android:layout_marginLeft="179dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="13dp"
                         android:src="@mipmap/icon_more" />
                 </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="12dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:layout_height="wrap_content">
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="工作时效"
-                            android:textSize="14dp"
                             android:textColor="#717173"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textSize="14dp" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
                             android:text="政务好差评"
-                            android:textSize="14dp"
-                            android:layout_marginTop="12dp"
                             android:textColor="#717173"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textSize="14dp" />
 
                         <TextView
-                            android:text="公务员信用"
-                            android:textSize="14dp"
-                            android:layout_marginTop="12dp"
-                            android:textColor="#717173"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="公务员信用"
+                            android:textColor="#717173"
+                            android:textSize="14dp" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="141dp"
-                        android:orientation="vertical"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
-                        android:layout_height="wrap_content">
+                        android:orientation="vertical">
 
                         <ProgressBar
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="141dp"
                             android:layout_height="10dp"
-                            android:layout_weight="1"
                             android:layout_gravity="center_vertical"
                             android:layout_marginTop="4dp"
+                            android:layout_weight="1"
 
                             android:max="100"
                             android:progress="44"
                             android:progressDrawable="@drawable/shape_chage_all"
-                            android:visibility="visible"/>
+                            android:visibility="visible" />
 
                         <ProgressBar
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="141dp"
                             android:layout_height="10dp"
-                            android:layout_weight="1"
                             android:layout_gravity="center_vertical"
                             android:layout_marginTop="20dp"
+                            android:layout_weight="1"
                             android:max="100"
                             android:progress="22"
                             android:progressDrawable="@drawable/shape_chage_all"
-                            android:visibility="visible"/>
+                            android:visibility="visible" />
 
                         <ProgressBar
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="141dp"
                             android:layout_height="10dp"
-                            android:layout_weight="1"
                             android:layout_gravity="center_vertical"
                             android:layout_marginTop="22dp"
+                            android:layout_weight="1"
                             android:max="400"
                             android:progress="302"
 
                             android:progressDrawable="@drawable/shape_chage_all"
-                            android:visibility="visible"/>
+                            android:visibility="visible" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
-                        android:layout_height="wrap_content">
+                        android:orientation="vertical">
 
                         <TextView
-                            android:text="44/100"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:text="44/100" />
 
                         <TextView
-                            android:text="22/100"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:text="22/100" />
 
                         <TextView
-                            android:text="302/400"
-                            android:layout_marginTop="12dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="302/400" />
 
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="28dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -593,143 +591,142 @@
                         android:layout_marginLeft="4dp"
                         android:fontFamily="sans-serif-medium"
                         android:text="个人信息设置"
-                        android:textSize="16dp"
-                        android:textColor="#3E3E41" />
+                        android:textColor="#3E3E41"
+                        android:textSize="16dp" />
 
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginRight="12dp"
-                    android:layout_height="wrap_content">
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="所在单位"
                         android:textColor="#717173"
-                        android:textSize="14dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="14dp" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:text="天津市蓝威科技发展有限公司"
                         android:textColor="#717173"
-                        android:textSize="14dp"
-                        android:layout_alignParentRight="true"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="14dp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginRight="12dp"
-                    android:layout_height="wrap_content">
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="所在部门"
                         android:textColor="#717173"
-                        android:textSize="14dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="14dp" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:text="用户体验中心"
                         android:textColor="#717173"
-                        android:textSize="14dp"
-                        android:layout_alignParentRight="true"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="14dp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginRight="12dp"
-                    android:layout_height="wrap_content">
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="姓名"
                         android:textColor="#717173"
-                        android:textSize="14dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="14dp" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:text="高寒"
                         android:textColor="#717173"
-                        android:textSize="14dp"
-                        android:layout_alignParentRight="true"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="14dp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginRight="12dp"
-                    android:layout_height="wrap_content">
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="职称"
                         android:textColor="#717173"
-                        android:textSize="14dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="14dp" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:text="UI设计师"
                         android:textColor="#717173"
-                        android:textSize="14dp"
-                        android:layout_alignParentRight="true"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="14dp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginRight="12dp"
-                    android:layout_height="wrap_content">
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="年龄"
                         android:textColor="#717173"
-                        android:textSize="14dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="14dp" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:text="24"
                         android:textColor="#717173"
-                        android:textSize="14dp"
-                        android:layout_alignParentRight="true"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="14dp" />
                 </RelativeLayout>
 
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-
 </androidx.drawerlayout.widget.DrawerLayout>
