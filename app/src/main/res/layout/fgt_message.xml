@@ -127,7 +127,7 @@
             android:id="@+id/recycle_message"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ECECEC" />
+            android:background="#F5F5F5" />
 
         <include layout="@layout/view_screen_layout" />
     </FrameLayout>

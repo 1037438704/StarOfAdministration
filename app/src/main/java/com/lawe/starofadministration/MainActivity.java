@@ -1,6 +1,7 @@
 package com.lawe.starofadministration;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +21,11 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.AppManager;
 import com.kongzue.baseframework.util.JumpParameter;
+import com.kongzue.baseokhttp.HttpRequest;
+import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.BaseOkHttp;
+import com.kongzue.baseokhttp.util.Parameter;
+import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.fgt.CenterFragment;
@@ -44,6 +50,7 @@ public class MainActivity extends BaseAty {
     ViewPagerAdp viewPagerAdp;
     private DrawerLayout drawer;
     private ArrayList<FragmentTouchListener> mFragmentTouchListeners;
+
     @Override
     public void initViews() {
         //requestPemissions();
@@ -57,10 +64,7 @@ public class MainActivity extends BaseAty {
 
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
-    }
 
-    @Override
-    public void initDatas(JumpParameter parameter) {
         fragemnts.add(DealtFragment.newInstance());
         fragemnts.add(SpeedFragment.newInstance());
         fragemnts.add(CenterFragment.newInstance());
@@ -70,14 +74,29 @@ public class MainActivity extends BaseAty {
         viewPager.setOffscreenPageLimit(fragemnts.size());
         viewPager.setAdapter(viewPagerAdp);
         viewPager.setNoScroll(true);
-/*
-        //右侧侧边栏
-        drawer.openDrawer(Gravity.RIGHT);
-        drawer.closeDrawer(Gravity.RIGHT);
 
-        //左侧侧边栏
-        drawer.closeDrawer(Gravity.LEFT);
-        drawer.openDrawer(Gravity.LEFT);*/
+    }
+
+    @Override
+    public void initDatas(JumpParameter parameter) {
+
+        WaitDialog.show(me, "请稍候...");
+        HttpRequest.POST(me, "http://你的接口地址", new Parameter()
+                .add("userHeadler", "")
+                .add("id","userId"), new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                WaitDialog.dismiss();
+                if (error == null) {
+//                    resultHttp.setText(response);
+                } else {
+                    error.getMessage();
+//                    resultHttp.setText("请求失败");
+//                    Toast.makeText(context, "请求失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -129,21 +148,6 @@ public class MainActivity extends BaseAty {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void registerFragmentTouchListener(FragmentTouchListener listener) {
         mFragmentTouchListeners.add(listener);
     }
@@ -165,7 +169,6 @@ public class MainActivity extends BaseAty {
     public interface FragmentTouchListener {
         boolean onTouchEvent(MotionEvent event);
     }
-
 
 
     /**
