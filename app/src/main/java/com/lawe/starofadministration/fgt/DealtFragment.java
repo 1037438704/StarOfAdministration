@@ -2,7 +2,6 @@ package com.lawe.starofadministration.fgt;
 
 import android.view.Gravity;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -10,8 +9,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.kongzue.baseframework.BaseFragment;
@@ -20,7 +17,6 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.lawe.starofadministration.R;
-import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.adp.ViewPagerFragmentAdp;
 import com.lawe.starofadministration.aty.MyMedalActivity;
 import com.lawe.starofadministration.aty.ScanningActivity;
@@ -38,7 +34,8 @@ import java.util.List;
 @Layout(R.layout.fgt_dealt)
 @DarkStatusBarTheme(false)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(false)       //开启底部导航栏按钮暗色模式
-@NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
+@NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
+//设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class DealtFragment extends BaseFgt {
 
     private RadioGroup mainRgp;
@@ -50,13 +47,16 @@ public class DealtFragment extends BaseFgt {
     private DrawerLayout draw_person;
     private RelativeLayout my_allXun;
     private LinearLayout linear_myXunzhang;
+    private RadioButton dealtMessage;
+    private RadioButton dealtNotice;
 
     @Override
     public void initViews() {
         fragemnts = new ArrayList<>();
         mainRgp = (RadioGroup) findViewById(R.id.main_rgp);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-
+        dealtMessage = (RadioButton) findViewById(R.id.dealt_message);
+        dealtNotice = (RadioButton) findViewById(R.id.dealt_notice);
         saoyisao = (ImageView) findViewById(R.id.saoyisao);
         daiban_head = (ImageView) findViewById(R.id.daiban_head);
         draw_person = getActivity().findViewById(R.id.drawer_layout_shaixuan);
@@ -65,6 +65,7 @@ public class DealtFragment extends BaseFgt {
 
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
+        rb.setTypeface(getTextMedium);
     }
 
     @Override
@@ -87,6 +88,7 @@ public class DealtFragment extends BaseFgt {
                 RadioButton rb = (RadioButton) mainRgp.getChildAt(position);
                 //设置为true
                 rb.setChecked(true);
+                rb.setTypeface(getTextMedium);
             }
         });
         //RadioGroup的事件监听
@@ -97,6 +99,9 @@ public class DealtFragment extends BaseFgt {
                     RadioButton rb = (RadioButton) mainRgp.getChildAt(i);
                     if (rb.isChecked()) {
                         viewPager.setCurrentItem(i, false);
+                        rb.setTypeface(getTextMedium);
+                    }else{
+                        rb.setTypeface(getTextRegular);
                     }
                 }
             }
@@ -137,4 +142,5 @@ public class DealtFragment extends BaseFgt {
     public static DealtFragment newInstance() {
         return new DealtFragment();
     }
+
 }

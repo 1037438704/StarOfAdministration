@@ -1,17 +1,17 @@
 package com.lawe.starofadministration.fgt;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
@@ -19,7 +19,11 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.adp.SpeedAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * author : dell
@@ -29,7 +33,8 @@ import com.lawe.starofadministration.base.BaseFgt;
 @Layout(R.layout.fgt_speed)
 @DarkStatusBarTheme(false)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(false)       //开启底部导航栏按钮暗色模式
-@NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
+@NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
+//设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class SpeedFragment extends BaseFgt {
 
     protected static final float FLIP_DISTANCE = 50;
@@ -37,6 +42,18 @@ public class SpeedFragment extends BaseFgt {
     private LinearLayout textChoose;
     private DrawerLayout drawerLayout;
     private Button drawer_quxiao;
+    private ImageView speedHead;
+    private LinearLayout chooseLeibie;
+    private RecyclerView recycleSpeed;
+    private RecyclerView recyclerLeibie;
+    private ImageView speedImgLeibie;
+    private ImageView speedImgJinji;
+    private LinearLayout linearLeibie;
+    private int flag = 1; //类别默认标识
+
+    //空集合
+    private List<String> list;
+    private SpeedAdapter speedAdapter;
 
     @Override
     public void initViews() {
@@ -46,12 +63,32 @@ public class SpeedFragment extends BaseFgt {
         textChoose = (LinearLayout) findViewById(R.id.text_choose);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
         drawer_quxiao = getActivity().findViewById(R.id.drawer_quxiao);
+        speedHead = (ImageView) findViewById(R.id.speed_head);
+
+        chooseLeibie = (LinearLayout) findViewById(R.id.choose_leibie);
+        recycleSpeed = (RecyclerView) findViewById(R.id.recycle_speed);
+        recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
+
+        speedImgLeibie = (ImageView) findViewById(R.id.speed_img_leibie);
+        speedImgJinji = (ImageView) findViewById(R.id.speed_img_jinji);
+        linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
+
+        list = new ArrayList<>();
+        //进度信息
+        recycleSpeed.setLayoutManager(new LinearLayoutManager(me));
+        speedAdapter = new SpeedAdapter(R.layout.item_message_layout);
+        recycleSpeed.setAdapter(speedAdapter);
 
     }
 
     @Override
     public void initDatas() {
-
+        //进度列表
+        for (int i = 0; i < 10; i++) {
+            list.add("" + i);
+        }
+        speedAdapter.setNewData(list);
+        speedAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -64,18 +101,43 @@ public class SpeedFragment extends BaseFgt {
             }
         });
 
+        //类别选择
+        chooseLeibie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flag == 1) {
+                    linearLeibie.setVisibility(View.VISIBLE);
+                    speedImgLeibie.setImageResource(R.mipmap.shaixuan_3);
+                    flag = 2;
+                } else {
+                    linearLeibie.setVisibility(View.GONE);
+                    speedImgLeibie.setImageResource(R.mipmap.daiban_down);
+                    flag = 1;
+                }
+            }
+        });
+
+        //侧滑栏取消按钮
         drawer_quxiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.closeDrawer(Gravity.RIGHT);
             }
         });
+
+        //点击头像滑出左侧菜单栏
+        speedHead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(Gravity.LEFT);
+            }
+        });
     }
 
     /*
-    * 获取手势
-    * */
-    private void gestrueListener(){
+     * 获取手势
+     * */
+    private void gestrueListener() {
         mDetector = new GestureDetector(new GestureDetector.OnGestureListener() {
             @Override
             public boolean onDown(MotionEvent e) {
@@ -146,5 +208,9 @@ public class SpeedFragment extends BaseFgt {
 
     public static SpeedFragment newInstance() {
         return new SpeedFragment();
+    }
+
+    private void initView() {
+
     }
 }

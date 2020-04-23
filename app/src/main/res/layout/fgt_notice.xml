@@ -12,15 +12,16 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/notice_day"
                 android:textSize="16dp"
                 android:textColor="#3E3E41"
                 android:textStyle="bold"
                 android:text="今日日程"
+                android:includeFontPadding="false"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="12dp"
                 android:layout_width="wrap_content"
@@ -38,6 +39,7 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
@@ -50,10 +52,11 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/text_num"
+                    android:id="@+id/notice_num_one"
                     android:text="80"
                     android:textSize="32dp"
                     android:textColor="#3E3E41"
+                    android:includeFontPadding="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -64,7 +67,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:text="今日日程"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="4dp"
                         android:textSize="12dp"
                         android:textColor="#717173"
                         android:layout_width="wrap_content"
@@ -90,10 +93,13 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
+
                 <TextView
+                    android:id="@+id/notice_num_two"
                     android:text="14"
                     android:textSize="32dp"
                     android:textColor="#3E3E41"
+                    android:includeFontPadding="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -104,7 +110,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:text="紧急事项"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="4dp"
                         android:textSize="12dp"
                         android:textColor="#717173"
                         android:layout_width="wrap_content"
@@ -129,10 +135,13 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
+
                 <TextView
+                    android:id="@+id/notice_num_three"
                     android:text="23"
                     android:textSize="32dp"
                     android:textColor="#3E3E41"
+                    android:includeFontPadding="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -143,7 +152,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:text="会议会晤"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="4dp"
                         android:textSize="12dp"
                         android:textColor="#717173"
                         android:layout_width="wrap_content"
@@ -166,6 +175,7 @@
 
         <LinearLayout
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
@@ -178,9 +188,11 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/notice_num_four"
                     android:text="17"
                     android:textSize="32dp"
                     android:textColor="#3E3E41"
+                    android:includeFontPadding="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -191,7 +203,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:text="个人日程"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="4dp"
                         android:textSize="12dp"
                         android:textColor="#717173"
                         android:layout_width="wrap_content"
@@ -218,8 +230,10 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/notice_num_five"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
                     android:text="12"
                     android:textColor="#3E3E41"
                     android:textSize="32dp" />
@@ -233,7 +247,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="4dp"
                         android:text="督查事项"
                         android:textColor="#717173"
                         android:textSize="12dp" />
@@ -257,10 +271,13 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
+
                 <TextView
+                    android:id="@+id/notice_num_six"
                     android:text="05"
                     android:textSize="32dp"
                     android:textColor="#3E3E41"
+                    android:includeFontPadding="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -271,7 +288,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:text="工作计划"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="4dp"
                         android:textSize="12dp"
                         android:textColor="#717173"
                         android:layout_width="wrap_content"
@@ -315,9 +332,11 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
+                android:id="@+id/notice_message"
                 android:text="消息列表"
-                android:fontFamily="sans-serif-medium"
+                android:includeFontPadding="false"
                 android:textSize="16dp"
                 android:textColor="#3E3E41"
                 android:layout_marginTop="16dp"
@@ -325,9 +344,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/text_messNum"
+                android:id="@+id/notice_message_num"
                 android:text="3"
-                android:fontFamily="sans-serif-medium"
+                android:includeFontPadding="false"
                 android:textSize="16dp"
                 android:textColor="#3E3E41"
                 android:layout_marginTop="15dp"
@@ -338,7 +357,6 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle_messageList"
-            android:layout_marginTop="14dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

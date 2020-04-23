@@ -17,6 +17,7 @@
         android:layout_height="38dp">
 
         <LinearLayout
+            android:id="@+id/dedu_leibie"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
@@ -24,6 +25,7 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/dedu_leibie_text"
                 android:text="按类别"
                 android:layout_marginLeft="12dp"
                 android:textSize="14dp"
@@ -32,6 +34,7 @@
                 android:layout_height="wrap_content"/>
 
             <ImageView
+                android:id="@+id/dedu_leibie_img"
                 android:layout_marginLeft="3dp"
                 android:src="@mipmap/daiban_down"
                 android:layout_width="8dp"
@@ -40,6 +43,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/dedu_year"
             android:text="2020"
             android:textColor="#717173"
             android:textSize="14dp"
@@ -51,183 +55,17 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:background="#F5F5F5"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_deduction"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F5F5F5" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:text="1"
-                android:textSize="16dp"
-                android:gravity="center"
-                android:layout_marginLeft="12dp"
-                android:textColor="@color/textMedium"
-                android:layout_width="24dp"
-                android:layout_height="20dp"/>
-
-            <TextView
-                android:text="扣分："
-                android:textSize="16dp"
-                android:textColor="@color/textMedium"
-                android:layout_marginLeft="4dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:text="-2"
-                android:textColor="@color/textDataUp"
-                android:textSize="14dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:text="497"
-            android:textSize="16dp"
-            android:layout_marginRight="12dp"
-            android:textColor="@color/textMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="14dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="扣分原因："
-            android:textColor="@color/text717173"
-            android:textSize="14dp"
-
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:text="嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟的嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟 嘟嘟"
-            android:textColor="@color/text717173"
-            android:textSize="14dp"
-            android:layout_marginRight="12dp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-
-
-    <View
-        android:background="#EFF0F2"
-        android:layout_marginLeft="17dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="4dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:text="1"
-                android:textSize="16dp"
-                android:gravity="center"
-                android:layout_marginLeft="12dp"
-                android:textColor="@color/textMedium"
-                android:layout_width="24dp"
-                android:layout_height="20dp"/>
-
-            <TextView
-                android:text="扣分："
-                android:textSize="16dp"
-                android:textColor="@color/textMedium"
-                android:layout_marginLeft="4dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:text="-2"
-                android:textColor="@color/textDataUp"
-                android:textSize="14dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:text="497"
-            android:textSize="16dp"
-            android:layout_marginRight="12dp"
-            android:textColor="@color/textMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="14dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="扣分原因："
-            android:textColor="@color/text717173"
-            android:textSize="14dp"
-
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:text="嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟的嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟嘟 嘟嘟"
-            android:textColor="@color/text717173"
-            android:textSize="14dp"
-            android:layout_marginRight="12dp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-
-    <View
-        android:background="#EFF0F2"
-        android:layout_marginLeft="17dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="4dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        <include layout="@layout/view_screen_layout" />
+    </FrameLayout>
 
 </LinearLayout>

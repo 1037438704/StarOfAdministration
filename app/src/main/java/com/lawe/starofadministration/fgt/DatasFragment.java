@@ -73,6 +73,7 @@ public class DatasFragment extends BaseFgt {
 
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
+        rb.setTypeface(getTextMedium);
 
     }
 
@@ -99,6 +100,7 @@ public class DatasFragment extends BaseFgt {
                 RadioButton rb = (RadioButton) mainRgp.getChildAt(position);
                 //设置为true
                 rb.setChecked(true);
+                rb.setTypeface(getTextMedium);
             }
         });
         //RadioGroup的事件监听
@@ -109,6 +111,9 @@ public class DatasFragment extends BaseFgt {
                     RadioButton rb = (RadioButton) mainRgp.getChildAt(i);
                     if (rb.isChecked()) {
                         viewPager.setCurrentItem(i, false);
+                        rb.setTypeface(getTextMedium);
+                    }else{
+                        rb.setTypeface(getTextRegular);
                     }
                 }
             }

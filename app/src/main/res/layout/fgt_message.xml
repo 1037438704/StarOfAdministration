@@ -86,13 +86,6 @@
                 android:src="@mipmap/daiban_down" />
         </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="11dp"
-            android:layout_marginBottom="11dp"
-            android:background="#D7D7D8" />
-
         <LinearLayout
             android:id="@+id/text_choose"
             android:layout_width="0dp"
@@ -100,6 +93,13 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="11dp"
+                android:background="#D7D7D8" />
 
             <TextView
 
