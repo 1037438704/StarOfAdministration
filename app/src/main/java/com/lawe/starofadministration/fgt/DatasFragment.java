@@ -145,6 +145,7 @@ public class DatasFragment extends BaseFgt {
                 pop_pingjia.setTypeface(getTextMedium);
                 pop_time.setTypeface(getTextNum);
 
+                dialog.setCanceledOnTouchOutside(true);
                 dialog.show();
             }
         });
@@ -175,6 +176,7 @@ public class DatasFragment extends BaseFgt {
                 pop_text1.setTypeface(getTextMedium);
                 pop_time.setTypeface(getTextNum);
 
+                dialog.setCanceledOnTouchOutside(true);
                 dialog.show();
             }
         });
