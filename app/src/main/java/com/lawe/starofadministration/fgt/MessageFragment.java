@@ -45,6 +45,7 @@ public class MessageFragment extends BaseFgt {
     //空集合
     private List<String> list;
     private MessageAdapter messageAdapter;
+    private TextView messageTitle;
 
     @Override
     public void initViews() {
@@ -59,9 +60,13 @@ public class MessageFragment extends BaseFgt {
         linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
         recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
 
+
         textChoose = (LinearLayout) findViewById(R.id.text_choose);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
         drawer_quxiao = getActivity().findViewById(R.id.drawer_quxiao);
+
+
+
         list = new ArrayList<>();
         //待办信息
         recycleMessage.setLayoutManager(new LinearLayoutManager(me));

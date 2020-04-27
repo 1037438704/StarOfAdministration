@@ -35,7 +35,7 @@ public class UpdatePassActivity extends BaseAty {
         setPassBack = findViewById(R.id.set_pass_back);
         setPassTitle = findViewById(R.id.set_pass_title);
 
-        setPassTitle.setTypeface(getTextMedium);
+        setPassTitle.setTypeface(getTextBold);
     }
 
     @Override

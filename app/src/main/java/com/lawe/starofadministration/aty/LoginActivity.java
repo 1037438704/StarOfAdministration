@@ -51,6 +51,9 @@ public class LoginActivity extends BaseAty {
     private EditText login_phone;
     private Button login_jujue;
     private TextView login_text_forget;
+    private TextView login_ninhao;
+    private TextView login_password;
+    private TextView login_code;
 
     @Override
     public void initViews() {
@@ -62,6 +65,7 @@ public class LoginActivity extends BaseAty {
         login_text = findViewById(R.id.login_text);
         login_getCode = findViewById(R.id.login_getCode);
         linear_code = findViewById(R.id.linear_code);
+        login_code = findViewById(R.id.login_code);
         linear_pass = findViewById(R.id.linear_pass);
         text_zhuanwang = findViewById(R.id.text_zhuanwang);
         linear_popNet = findViewById(R.id.linear_pop);
@@ -72,6 +76,14 @@ public class LoginActivity extends BaseAty {
         login_phone = findViewById(R.id.login_phone);
         login_jujue = findViewById(R.id.login_jujue);
         login_text_forget = findViewById(R.id.login_text_forget);
+        login_ninhao = findViewById(R.id.login_ninhao);
+        login_password = findViewById(R.id.login_password);
+        //设置字体
+        login_ninhao.setTypeface(getTextMedium);
+        login_zhanghao.setTypeface(getTextMedium);
+        login_password.setTypeface(getTextMedium);
+        buttonLoginImmediately.setTypeface(getTextMedium);
+        login_code.setTypeface(getTextMedium);
         //输入密码  不可见
         login_eye.setBackgroundResource(R.mipmap.login_biyan);
         LoginActivity.this.login_edpass.setTransformationMethod(PasswordTransformationMethod.getInstance());

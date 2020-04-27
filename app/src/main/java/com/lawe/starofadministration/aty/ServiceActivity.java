@@ -37,7 +37,7 @@ public class ServiceActivity extends BaseAty {
         setServiceTitle = findViewById(R.id.set_service_title);
         setServicePhone = findViewById(R.id.set_service_phone);
 
-        setServiceTitle.setTypeface(getTextMedium);
+        setServiceTitle.setTypeface(getTextBold);
         setServicePhone.setTypeface(getTextMedium);
     }
 

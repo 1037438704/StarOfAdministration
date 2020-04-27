@@ -98,11 +98,12 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/login_ninhao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="28dp"
-            android:fontFamily="sans-serif-medium"
+            android:includeFontPadding="false"
             android:textColor="#ff3f3f42"
             android:textSize="24dp"
             android:text="您好！"
@@ -141,6 +142,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="账号"
+                        android:includeFontPadding="false"
                         android:textColor="#ff717173"
                         android:textSize="18sp"
                         android:autoSizeMaxTextSize="18sp"
@@ -214,6 +216,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="密码"
+                        android:includeFontPadding="false"
                         android:textColor="#ff717173"
                         android:textSize="18sp"
                         />
@@ -253,6 +256,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="验证码"
+                    android:includeFontPadding="false"
                     android:textColor="#ff717173"
                     android:textSize="18sp"
                     />
@@ -317,6 +321,7 @@
             android:layout_marginRight="28dp"
             android:layout_width="match_parent"
             android:text="立即登录"
+            android:includeFontPadding="false"
             android:textSize="18sp"
             android:textColor="#fff"
             android:layout_marginTop="16dp"

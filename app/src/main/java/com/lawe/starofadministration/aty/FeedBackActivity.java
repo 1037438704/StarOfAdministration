@@ -37,7 +37,7 @@ public class FeedBackActivity extends BaseAty {
         setFeedTitle = findViewById(R.id.set_feed_title);
         setFeedFeed = findViewById(R.id.set_feed_feed);
 
-        setFeedTitle.setTypeface(getTextMedium);
+        setFeedTitle.setTypeface(getTextBold);
         setFeedFeed.setTypeface(getTextMedium);
     }
 

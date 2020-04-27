@@ -46,7 +46,7 @@ public class SetSafeActivity extends BaseAty {
         setSafePass = findViewById(R.id.set_safe_pass);
         setSafeConPhone = findViewById(R.id.set_safe_conPhone);
 
-        setSafeTitle.setTypeface(getTextMedium);
+        setSafeTitle.setTypeface(getTextBold);
 
     }
 

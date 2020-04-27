@@ -35,7 +35,7 @@ public class SystemActivity extends BaseAty {
         setSystemBack = findViewById(R.id.set_system_back);
         setSystemTitle = findViewById(R.id.set_system_title);
 
-        setSystemTitle.setTypeface(getTextMedium);
+        setSystemTitle.setTypeface(getTextBold);
     }
 
     @Override

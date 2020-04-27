@@ -34,27 +34,28 @@
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="4dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:drawableTop="@drawable/select_daiban"
                 android:gravity="center"
                 android:text="待办"
                 android:textColor="@drawable/select_text_color"
-                android:textSize="11sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="4dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:drawableTop="@drawable/select_jindu"
                 android:gravity="center"
                 android:text="进度"
                 android:textColor="@drawable/select_text_color"
-                android:textSize="11sp" />
-
+                android:textSize="14sp" />
 
             <RadioButton
                 android:layout_width="0dp"
@@ -62,31 +63,33 @@
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:button="@null"
-                android:drawableTop="@mipmap/center" />
+                android:drawableTop="@drawable/select_center" />
 
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="4dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:drawableTop="@drawable/select_datas"
                 android:gravity="center"
                 android:text="数据"
                 android:textColor="@drawable/select_text_color"
-                android:textSize="11sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="4dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:drawableTop="@drawable/select_settings"
                 android:gravity="center"
                 android:text="设置"
                 android:textColor="@drawable/select_text_color"
-                android:textSize="11sp" />
+                android:textSize="14sp" />
         </RadioGroup>
 
     </FrameLayout>

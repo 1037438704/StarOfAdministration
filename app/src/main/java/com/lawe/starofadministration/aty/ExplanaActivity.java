@@ -40,7 +40,7 @@ public class ExplanaActivity extends BaseAty {
         setExplanationShuoming = (TextView) findViewById(R.id.set_explanation_shuoming);
         setServicePhone = (TextView) findViewById(R.id.set_service_phone);
 
-        setExplanationTitle.setTypeface(getTextMedium);
+        setExplanationTitle.setTypeface(getTextBold);
         setExplanationShuoming.setTypeface(getTextMedium);
         setServicePhone.setTypeface(getTextMedium);
     }

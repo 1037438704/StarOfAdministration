@@ -37,7 +37,7 @@
                 <TextView
                     android:id="@+id/set_explanation_title"
                     android:text="操作说明"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#3E3E41"
                     android:includeFontPadding="false"
                     android:layout_marginLeft="4dp"
