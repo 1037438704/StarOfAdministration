@@ -1,7 +1,6 @@
 package com.lawe.starofadministration;
 
 import android.Manifest;
-import android.app.ProgressDialog;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,7 +22,6 @@ import com.kongzue.baseframework.util.AppManager;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
-import com.kongzue.baseokhttp.util.BaseOkHttp;
 import com.kongzue.baseokhttp.util.Parameter;
 import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
@@ -170,8 +168,7 @@ public class MainActivity extends BaseAty {
         boolean onTouchEvent(MotionEvent event);
     }
 
-
-    /**
+    /*
      * 按两次退出应用
      */
     @Override
