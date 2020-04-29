@@ -9,9 +9,9 @@
     tools:context=".MainActivity">
 
     <FrameLayout
+        android:id="@+id/main_frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
         <com.lawe.starofadministration.utils.NoScrollViewPager

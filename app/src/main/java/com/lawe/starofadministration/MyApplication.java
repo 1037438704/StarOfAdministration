@@ -50,7 +50,8 @@ public class MyApplication extends Application {
         getTextMedium = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Medium.otf");
         getTextBold = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Bold.otf");
         getTextRegular = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Regular.otf");
-        getTextNum = Typeface.createFromAsset(textType, "fonts/DINAlternateBold.ttf");
+        //这行加上我报错
+//        getTextNum = Typeface.createFromAsset(textType, "fonts/DINAlternateBold.ttf");
 
         super.onCreate();
     }

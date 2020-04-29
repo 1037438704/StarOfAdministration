@@ -11,6 +11,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:paddingTop="31dp"
         android:id="@+id/center_title"
         android:text="工作台"
         android:textSize="18dp"
@@ -18,10 +19,11 @@
         android:background="#DB1F2C"
         android:paddingLeft="12dp"
         android:elevation="2dp"
+        android:paddingBottom="10dp"
         android:includeFontPadding="false"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"/>
 
     <ScrollView
         android:layout_marginTop="1dp"

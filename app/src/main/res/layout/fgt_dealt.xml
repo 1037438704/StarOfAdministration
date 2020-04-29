@@ -6,6 +6,10 @@
     tools:context=".fgt.DealtFragment"
     android:orientation="vertical"
     android:layout_height="match_parent">
+    <View
+        android:background="#DB1F2C"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"/>
      <RelativeLayout
          android:layout_width="match_parent"
          android:layout_height="50dp"
