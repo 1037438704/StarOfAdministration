@@ -26,7 +26,11 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseAty;
 import com.wynsbin.vciv.VerificationCodeInputView;
 
-
+/**
+ * author : fuke
+ * date : 2020/4/2 15:22
+ * description : 登录
+ */
 @Layout(R.layout.aty_login)
 @DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式

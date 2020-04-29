@@ -26,9 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * author : dell
+ * author : fuke
  * date : 2020/4/7 16:36
- * description :
+ * description :  进度追踪
  */
 @Layout(R.layout.fgt_speed)
 @DarkStatusBarTheme(false)           //开启顶部状态栏图标、文字暗色模式

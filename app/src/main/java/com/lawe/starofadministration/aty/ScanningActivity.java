@@ -30,8 +30,10 @@ import com.lawe.starofadministration.zxing.activity.CaptureActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- *扫描页面
+/**
+ * author : fuke
+ * date : 2020/4/7 15:22
+ * description : 扫描
  */
 
 @Layout(R.layout.activity_scanning)

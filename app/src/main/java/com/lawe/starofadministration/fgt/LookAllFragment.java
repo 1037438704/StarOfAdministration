@@ -12,9 +12,9 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
- * author :
+ * author : fuke
  * date : 2020/4/14 15:22
- * description :
+ * description : 查看所有日程
  */
 @Layout(R.layout.fragment_look_all)
 public class LookAllFragment extends BaseFgt {

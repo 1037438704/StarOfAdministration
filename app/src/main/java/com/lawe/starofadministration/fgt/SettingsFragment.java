@@ -17,9 +17,9 @@ import com.lawe.starofadministration.aty.SystemActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
- * author : dell
+ * author : fuke
  * date : 2020/4/7 16:36
- * description :
+ * description : 首页-设置
  */
 
 @Layout(R.layout.fgt_settings)

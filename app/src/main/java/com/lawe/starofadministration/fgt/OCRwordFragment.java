@@ -8,9 +8,9 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
- * author :
+ * author : fuke
  * date : 2020/4/10 11:40
- * description :
+ * description : OCR文档识别
  */
 @Layout(R.layout.fgt_ocr_shibie)
 public class OCRwordFragment extends BaseFgt {

@@ -8,9 +8,9 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
- * author :
+ * author : fuke
  * date : 2020/4/10 11:40
- * description :
+ * description : 二维码扫描
  */
 @Layout(R.layout.fgt_erweima)
 @DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式

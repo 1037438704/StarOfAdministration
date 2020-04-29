@@ -5,9 +5,9 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
- * author :
+ * author : fuke
  * date : 2020/4/14 15:22
- * description :
+ * description : 所有勋章
  */
 @Layout(R.layout.fgt_all_madal)
 public class AllMedalFragment extends BaseFgt {
