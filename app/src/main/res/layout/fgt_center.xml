@@ -5,79 +5,368 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="18dp"
     tools:context=".fgt.CenterFragment"
-    android:background="@color/white"
+    android:background="#F5F5F5"
     android:orientation="vertical">
 
-    <Button
-        android:text="android开发"
-        android:background="#dff"
-        android:elevation="3dp"
+    <TextView
+        android:id="@+id/center_title"
+        android:text="工作台"
+        android:textSize="18dp"
+        android:textColor="#fff"
+        android:background="#DB1F2C"
+        android:paddingLeft="12dp"
+        android:elevation="2dp"
+        android:includeFontPadding="false"
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="56dp"/>
+        android:layout_height="50dp"/>
 
-    <Button
-        android:text="ios开发"
-        android:background="#dff"
-        android:elevation="3dp"
+    <ScrollView
         android:layout_marginTop="1dp"
+        android:background="#F5F5F5"
         android:layout_width="match_parent"
-        android:layout_height="56dp"/>
+        android:layout_height="match_parent">
 
-    <Button
-        android:text="framwork开发"
-        android:background="#dff"
-        android:elevation="3dp"
-        android:layout_marginTop="1dp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:text="RN开发"
-        android:background="#dff"
-        android:elevation="3dp"
-        android:layout_marginTop="1dp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"/>
+            <TextView
+                android:text="公文会议管理"
+                android:textSize="14dp"
+                android:textColor="#9F9FA0"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-    <Button
-        android:text="flutter开发"
-        android:background="#dff"
-        android:elevation="3dp"
-        android:layout_marginTop="1dp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"/>
+            <GridLayout
+                android:rowCount="2"
+                android:columnCount="4"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <Button
-        android:text="c++开发"
-        android:background="#dff"
-        android:elevation="3dp"
-        android:layout_marginTop="1dp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"/>
+                <TextView
+                    android:id="@+id/center_nizhi"
+                    android:text="公文拟制"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/gong_wen_ni_zhi"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    />
 
-    <Button
-        android:text="kotelin开发"
-        android:background="#dff"
-        android:elevation="3dp"
-        android:layout_marginTop="1dp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"/>
+                <TextView
+                    android:text="收文传阅"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/shou_wen_chuan_yue"
+                    />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginTop="1dp"
-        android:background="#dff"
-        android:elevation="3dp"
-        android:text="web开发" />
+                <TextView
+                    android:text="公文归档"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/gong_wen_gui_dang"
+                    />
 
-    <Button
-        android:text="后台开发"
-        android:background="#dff"
-        android:elevation="3dp"
-        android:layout_marginTop="1dp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"/>
+                <TextView
+                    android:text="文件报发"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/wen_jian_bao_fa"
+                    />
+
+                <TextView
+                    android:text="共享文件库"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/gong_xiang_wen_jian"
+                    />
+            </GridLayout>
+
+            <TextView
+                android:text="工作任务管理"
+                android:textSize="14dp"
+                android:textColor="#9F9FA0"
+                android:layout_marginTop="28dp"
+                android:layout_marginLeft="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <GridLayout
+                android:rowCount="2"
+                android:columnCount="4"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="公告通知"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/gong_gao_tong_zhi"
+                    />
+
+                <TextView
+                    android:text="督察督办"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/du_cha_du_ban"
+                    />
+
+                <TextView
+                    android:text="工作计划"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/gong_zuo_ji_hua"
+                    />
+
+                <TextView
+                    android:text="日程管理"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    />
+
+            </GridLayout>
+
+            <TextView
+                android:text="决策指挥管理"
+                android:textSize="14dp"
+                android:textColor="#9F9FA0"
+                android:layout_marginTop="28dp"
+                android:layout_marginLeft="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <GridLayout
+                android:rowCount="2"
+                android:columnCount="4"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="云会晤"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/yun_hui_wu"
+                    />
+
+                <TextView
+                    android:text="应急指挥"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    />
+
+                <TextView
+                    android:text="政务情报"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    />
+
+                <TextView
+                    android:text="舆情监测"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    />
+
+            </GridLayout>
+
+            <TextView
+                android:text="互联网+政务"
+                android:textSize="14dp"
+                android:textColor="#9F9FA0"
+                android:layout_marginTop="28dp"
+                android:layout_marginLeft="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <GridLayout
+                android:rowCount="2"
+                android:columnCount="4"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="政务服务"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/zheng_wu_fu_wu"
+                    />
+
+                <TextView
+                    android:text="征求意见"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/zheng_qiu_yi_jian"
+                    />
+
+                <TextView
+                    android:text="投票调研"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    />
+
+                <TextView
+                    android:text="占位占位"
+                    android:textColor="#F5F5F5"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    />
+
+            </GridLayout>
+
+            <TextView
+                android:text="其他功能"
+                android:textSize="14dp"
+                android:textColor="#9F9FA0"
+                android:layout_marginTop="28dp"
+                android:layout_marginLeft="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <GridLayout
+                android:rowCount="2"
+                android:columnCount="4"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="共享地图"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/gong_xiang_di_tu"
+                    />
+
+                <TextView
+                    android:text="通讯录"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    android:layout_height="60dp"
+                    android:drawableTop="@mipmap/tong_xun_lu"
+                    />
+
+                <TextView
+                    android:text="占位占位"
+                    android:textColor="#F5F5F5"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    />
+
+                <TextView
+                    android:text="占位占位"
+                    android:textColor="#F5F5F5"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="1"
+                    android:layout_gravity="fill"
+                    />
+
+            </GridLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

@@ -57,7 +57,6 @@
 
          </RadioGroup>
 
-
          <ImageView
              android:id="@+id/saoyisao"
              android:layout_width="22dp"

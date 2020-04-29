@@ -159,8 +159,8 @@
                 <ImageView
                     android:layout_marginLeft="3dp"
                     android:src="@mipmap/daiban_shaixuan"
-                    android:layout_width="11dp"
-                    android:layout_height="12dp"/>
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
             </LinearLayout>
         </LinearLayout>
 

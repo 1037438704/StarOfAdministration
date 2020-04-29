@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:elevation="2dp"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:layout_height="38dp">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="12dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/shape_hui12"
+        android:layout_height="24dp">
+
+        <ImageView
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/icon_search"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+
+        <EditText
+            android:id="@+id/search_edit"
+            android:hint="按公文文号查询"
+            android:textColorHint="#9F9FA0"
+            android:textSize="14dp"
+            android:layout_marginLeft="8dp"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_choose"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="1dp"
+            android:background="#D7D7D8"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="11dp"
+            android:layout_height="match_parent"/>
+        <TextView
+
+            android:text="筛选"
+            android:textColor="#717173"
+            android:textSize="14dp"
+            android:layout_marginLeft="11dp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:layout_marginLeft="3dp"
+            android:src="@mipmap/daiban_shaixuan"
+            android:layout_width="16dp"
+            android:layout_height="16dp"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,7 +1,11 @@
 package com.lawe.starofadministration.fgt;
 
+import android.view.View;
+import android.widget.TextView;
+
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.aty.FictionActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
@@ -12,14 +16,27 @@ import com.lawe.starofadministration.base.BaseFgt;
 @Layout(R.layout.fgt_center)
 public class CenterFragment extends BaseFgt {
 
+    private TextView centerTitle;
+    private TextView centerNizhi;
+
     @Override
     public void initViews() {
+        centerTitle = (TextView) findViewById(R.id.center_title);
+        centerNizhi = (TextView) findViewById(R.id.center_nizhi);
 
+        //设置字体
+        centerTitle.setTypeface(getTextMedium);
     }
 
     @Override
     public void initDatas() {
-
+        //公文拟制
+        centerNizhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(FictionActivity.class);
+            }
+        });
     }
 
     @Override
@@ -30,4 +47,5 @@ public class CenterFragment extends BaseFgt {
     public static CenterFragment newInstance() {
         return new CenterFragment();
     }
+
 }
