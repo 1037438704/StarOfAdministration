@@ -6,17 +6,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fgt.CenterFragment"
-    android:gravity="center"
     android:background="@color/white"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <TextView
-        android:text="犯法反复副"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <Button
+        android:text="android开发"
+        android:background="#dff"
+        android:elevation="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"/>
 
-    </TextView>
+    <Button
+        android:text="ios开发"
+        android:background="#dff"
+        android:elevation="3dp"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"/>
 
+    <Button
+        android:text="framwork开发"
+        android:background="#dff"
+        android:elevation="3dp"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"/>
 
+    <Button
+        android:text="RN开发"
+        android:background="#dff"
+        android:elevation="3dp"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"/>
+
+    <Button
+        android:text="flutter开发"
+        android:background="#dff"
+        android:elevation="3dp"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"/>
+
+    <Button
+        android:text="c++开发"
+        android:background="#dff"
+        android:elevation="3dp"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"/>
+
+    <Button
+        android:text="kotelin开发"
+        android:background="#dff"
+        android:elevation="3dp"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="1dp"
+        android:background="#dff"
+        android:elevation="3dp"
+        android:text="web开发" />
+
+    <Button
+        android:text="后台开发"
+        android:background="#dff"
+        android:elevation="3dp"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"/>
 
 </LinearLayout>

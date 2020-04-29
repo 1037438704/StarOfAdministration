@@ -6,11 +6,12 @@ import com.lawe.starofadministration.base.BaseFgt;
 
 /**
  * author : dell
- * date : 2020/4/7 16:36
- * description :
+ * date : 2020/4/28 16:36
+ * description : 中间工作台
  */
 @Layout(R.layout.fgt_center)
 public class CenterFragment extends BaseFgt {
+
     @Override
     public void initViews() {
 
