@@ -3,73 +3,77 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context=".fgt.DealtFragment"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
-     <RelativeLayout
-         android:layout_width="match_parent"
-         android:layout_height="50dp"
-         android:background="#DB1F2C">
+    android:background="#DB1F2C"
+    android:id="@+id/dealt_linerar_layout"
+    tools:context=".fgt.DealtFragment">
 
-         <ImageView
-             android:id="@+id/daiban_head"
-             android:layout_width="38dp"
-             android:layout_height="38dp"
-             android:layout_centerVertical="true"
-             android:layout_marginLeft="14dp"
-             android:layout_marginBottom="11dp"
-             android:src="@mipmap/avatar" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+        <ImageView
+            android:id="@+id/daiban_head"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginBottom="11dp"
+            android:src="@mipmap/avatar" />
 
 
-         <RadioGroup
-             android:id="@+id/main_rgp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_centerInParent="true"
-             android:orientation="horizontal">
+        <RadioGroup
+            android:id="@+id/main_rgp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
 
-             <RadioButton
-                 android:id="@+id/dealt_message"
-                 android:layout_width="0dp"
-                 android:layout_height="42dp"
-                 android:layout_weight="1"
-                 android:button="@null"
-                 android:includeFontPadding="false"
-                 android:drawableBottom="@drawable/select_xiahualine"
-                 android:gravity="center"
-                 android:text="待办信息"
-                 android:textColor="@drawable/select_daiban_text_color"
-                 android:textSize="16sp" />
+            <RadioButton
+                android:id="@+id/dealt_message"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableBottom="@drawable/select_xiahualine"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="待办信息"
+                android:textColor="@drawable/select_daiban_text_color"
+                android:textSize="16sp" />
 
-             <RadioButton
-                 android:id="@+id/dealt_notice"
-                 android:layout_width="0dp"
-                 android:layout_height="42dp"
-                 android:layout_marginLeft="12dp"
-                 android:layout_weight="1"
-                 android:button="@null"
-                 android:includeFontPadding="false"
-                 android:drawableBottom="@drawable/select_xiahualine"
-                 android:gravity="center"
-                 android:text="通知信息"
-                 android:textColor="@drawable/select_daiban_text_color"
-                 android:textSize="16sp" />
+            <RadioButton
+                android:id="@+id/dealt_notice"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableBottom="@drawable/select_xiahualine"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="通知信息"
+                android:textColor="@drawable/select_daiban_text_color"
+                android:textSize="16sp" />
 
-         </RadioGroup>
+        </RadioGroup>
 
-         <ImageView
-             android:id="@+id/saoyisao"
-             android:layout_width="22dp"
-             android:layout_height="22dp"
-             android:layout_alignParentRight="true"
-             android:layout_marginRight="12dp"
-             android:layout_centerInParent="true"
-             android:src="@mipmap/daiban_saomiao" />
-     </RelativeLayout>
-     <androidx.viewpager.widget.ViewPager
-         android:id="@+id/viewPager"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:background="@color/white" />
+        <ImageView
+            android:id="@+id/saoyisao"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/daiban_saomiao" />
+    </RelativeLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" />
 
 </LinearLayout>
