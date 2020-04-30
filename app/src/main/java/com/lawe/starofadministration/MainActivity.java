@@ -1,10 +1,13 @@
 package com.lawe.starofadministration;
 
 import android.Manifest;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -48,13 +51,17 @@ public class MainActivity extends BaseAty {
     ViewPagerAdp viewPagerAdp;
     private DrawerLayout drawer;
     private ArrayList<FragmentTouchListener> mFragmentTouchListeners;
+    private FrameLayout frameLayout;
+
+
 
     @Override
     public void initViews() {
-        //requestPemissions();
         fragemnts = new ArrayList<>();
         mFragmentTouchListeners = new ArrayList<>();
         mainRgp = findViewById(R.id.main_rgp);
+        frameLayout = findViewById(R.id.main_frame_layout);
+        frameLayout.setPadding(0,0,0,me.getNavbarHeight());
         viewPager = findViewById(R.id.viewPager);
 
         drawer = findViewById(R.id.drawer_layout_shaixuan);

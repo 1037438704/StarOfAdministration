@@ -8,7 +8,10 @@
     tools:context=".fgt.SettingsFragment"
     android:background="#F5F5F5"
     android:orientation="vertical">
-
+    <View
+        android:background="#DB1F2C"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"/>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:orientation="horizontal"
