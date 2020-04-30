@@ -18,9 +18,9 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 /**
- * @author
+ * @author  fuke
  * @date
- * 功能描述：
+ * 功能描述： zhuce
  */
 public class MyApplication extends Application {
 
@@ -51,7 +51,7 @@ public class MyApplication extends Application {
         getTextBold = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Bold.otf");
         getTextRegular = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Regular.otf");
         //这行加上我报错
-//        getTextNum = Typeface.createFromAsset(textType, "fonts/DINAlternateBold.ttf");
+        getTextNum = Typeface.createFromAsset(textType, "fonts/DINAlternateBold.ttf");
 
         super.onCreate();
     }
