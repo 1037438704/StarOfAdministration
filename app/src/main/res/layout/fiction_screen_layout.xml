@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fiction_drawerlayout"
+    android:layout_width="310dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="right"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="310dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="1dp"
+        android:background="@drawable/shape_white8"
+        android:orientation="vertical"
+        android:paddingLeft="12dp"
+        android:paddingTop="34dp">
+
+        <TextView
+            android:id="@+id/fiction_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="条件筛选器"
+            android:includeFontPadding="false"
+            android:textColor="#ff3e3e41"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="按类型筛选"
+            android:textColor="@color/text9f9fa0"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="1dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/fiction_text_yian"
+                android:text="议案"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginRight="6dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+            <TextView
+                android:id="@+id/fiction_text_mingling"
+                android:text="命令"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+            <TextView
+                android:id="@+id/fiction_text_jueding"
+                android:text="决定"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+            <TextView
+                android:id="@+id/fiction_text_zhibiao"
+                android:text="指示"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--第二行-->
+            <TextView
+                android:id="@+id/fiction_text_gonggao"
+                android:text="公告"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+            <TextView
+                android:id="@+id/fiction_text_tonggao"
+                android:text="通告"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+            <TextView
+                android:id="@+id/fiction_text_tongzhi"
+                android:text="通知"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+            <TextView
+                android:id="@+id/fiction_text_tongbao"
+                android:text="通报"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--第三行-->
+            <TextView
+                android:id="@+id/fiction_text_baogao"
+                android:text="报告"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+            <TextView
+                android:id="@+id/fiction_text_qingshi"
+                android:text="请示"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+            <TextView
+                android:text="批复"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+            <TextView
+                android:text="函"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
+                android:layout_height="38dp"
+                />
+
+        </LinearLayout>
+        <!--第四行-->
+        <TextView
+            android:text="会议纪要"
+            android:textSize="14dp"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/select_shaixuan"
+            android:textColor="@drawable/select_text_color"
+            android:layout_width="88dp"
+            android:layout_height="38dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="按状态筛选"
+            android:textColor="@color/text9f9fa0"
+            android:textSize="14sp" />
+<!--
+
+        <com.kongzue.stacklabelview.StackLabel
+            android:id="@+id/stackLabelView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:textColor="#e6000000"
+            app:itemMargin="6dp"
+            app:paddingHorizontal="12dp"
+            app:paddingVertical="8dp"
+            app:deleteButton="false"
+            app:textSize="14dp"
+            app:labels="标签1,标签2,标签3,标签4"
+            />
+-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="仅显示处理中"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="116dp"
+                android:layout_height="38dp"
+                />
+
+            <TextView
+                android:text="仅显示已归档"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginLeft="12dp"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="116dp"
+                android:layout_height="38dp"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="仅显示草稿"
+            android:textSize="14dp"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/select_shaixuan"
+            android:textColor="@drawable/select_text_color"
+            android:layout_width="116dp"
+            android:layout_height="38dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="模糊时间搜索"
+            android:textColor="@color/text9f9fa0"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fiction_time_start"
+                android:layout_width="128dp"
+                android:layout_height="38dp"
+                android:gravity="center"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:hint="开始时间"
+                android:textColorHint="#9F9FA0"
+                android:textSize="14dp" />
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="1dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="7dp"
+                android:background="#717173" />
+
+            <TextView
+                android:id="@+id/fiction_time_end"
+                android:layout_width="128dp"
+                android:layout_height="38dp"
+                android:gravity="center"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:hint="结束时间"
+                android:textColorHint="#9F9FA0"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="82dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/select_shaixuan"
+                android:text="最近3天"
+                android:textColor="@drawable/select_text_color" />
+
+
+            <TextView
+                android:layout_width="82dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="12dp"
+                android:gravity="center"
+                android:background="@drawable/select_shaixuan"
+                android:text="最近7天"
+                android:textColor="@drawable/select_text_color" />
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="12dp"
+                android:gravity="center"
+                android:background="@drawable/select_shaixuan"
+                android:text="最近30天"
+                android:textColor="@drawable/select_text_color" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/drawer_quxiao"
+            android:layout_width="70dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="110dp"
+            android:background="@drawable/shape_white22"
+            android:text="取消"
+            android:textColor="#9f9fa0"
+            android:textSize="14dp" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="39dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/shape_red22"
+            android:text="立即筛选"
+            android:textColor="#fff"
+            android:textSize="14dp" />
+    </LinearLayout>
+</RelativeLayout>
+
+
+

@@ -19,6 +19,8 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/AppTheme">
+        <!--公文起草-->
+        <activity android:name=".aty.DraftActivity"></activity>
         <!-- 登录页 -->
         <activity android:name=".aty.LoginActivity">
             <intent-filter>
@@ -69,9 +71,6 @@
         <meta-data
             android:name="design_height_in_dp"
             android:value="720" />
-
-
-
     </application>
 
 </manifest>

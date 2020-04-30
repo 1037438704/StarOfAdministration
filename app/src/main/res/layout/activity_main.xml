@@ -96,4 +96,5 @@
     <include layout="@layout/personal_information_layout" />
     <!-- 筛选 -->
     <include layout="@layout/left_screen_layout" />
+
 </androidx.drawerlayout.widget.DrawerLayout>
