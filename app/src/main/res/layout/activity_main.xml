@@ -18,6 +18,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
+
         <RadioGroup
             android:id="@+id/main_rgp"
             android:layout_width="match_parent"
