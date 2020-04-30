@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fiction_drawer"
     android:background="@color/colorPrimaryDark"
     tools:context=".aty.FictionActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <include layout="@layout/layout_title"/>
-
-        <include layout="@layout/layout_search"/>
-
-        <ScrollView
-            android:background="#F5F5F5"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/faction_recycle"
+            <include layout="@layout/layout_title_red"/>
+
+            <include layout="@layout/layout_search"/>
+
+            <ScrollView
+                android:background="#F5F5F5"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
 
-        </ScrollView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/faction_recycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
 
-    </LinearLayout>
+            </ScrollView>
 
-    <ImageView
-        android:id="@+id/faction_top"
-        android:src="@mipmap/back_top"
-        android:visibility="gone"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="33dp"
-        android:layout_marginRight="28dp"
-        android:layout_width="34dp"
-        android:layout_height="34dp"/>
-</RelativeLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/faction_top"
+            android:src="@mipmap/back_top"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="33dp"
+            android:layout_marginRight="28dp"
+            android:layout_width="34dp"
+            android:layout_height="34dp"/>
+
+    </RelativeLayout>
+
+    <!--筛选-->
+    <include layout="@layout/fiction_screen_layout"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

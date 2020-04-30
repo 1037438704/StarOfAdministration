@@ -24,7 +24,7 @@
             android:textSize="18dp" />
 
         <TextView
-            android:layout_width="112dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="按照特殊属性排序"
@@ -123,8 +123,8 @@
                 android:layout_width="77dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="12dp"
-                android:background="@drawable/select_shaixuan"
                 android:text="最近30天"
+                android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color" />
 
         </LinearLayout>

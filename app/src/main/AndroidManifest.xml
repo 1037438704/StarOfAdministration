@@ -19,15 +19,13 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/AppTheme">
-        <!--公文拟制列表-->
-        <activity android:name=".aty.FictionActivity"></activity>
-        <!-- 操作中心 -->
-        <activity android:name=".aty.ExplanaActivity" />
-        <!-- 服务中心 -->
-        <activity android:name=".aty.ServiceActivity" />
-        <!-- 问题反馈 -->
-        <activity android:name=".aty.FeedBackActivity" />
-        <!-- 系统设置 -->
+        <!--公文起草-->
+        <activity android:name=".aty.DraftActivity"></activity>
+        <!-- 公文拟制列表 -->
+        <activity android:name=".aty.FictionActivity" /> <!-- 操作中心 -->
+        <activity android:name=".aty.ExplanaActivity" /> <!-- 服务中心 -->
+        <activity android:name=".aty.ServiceActivity" /> <!-- 问题反馈 -->
+        <activity android:name=".aty.FeedBackActivity" /> <!-- 系统设置 -->
         <activity android:name=".aty.SystemActivity" /> <!-- 重置密码 -->
         <activity android:name=".aty.UpdatePassActivity" /> <!-- 安全设置 -->
         <activity android:name=".aty.SetSafeActivity" /> <!-- 我的勋章 -->

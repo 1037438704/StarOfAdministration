@@ -51,7 +51,7 @@ public class MyApplication extends Application {
         getTextBold = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Bold.otf");
         getTextRegular = Typeface.createFromAsset(textType, "fonts/SourceHanSansCN-Regular.otf");
         getTextNum = Typeface.createFromAsset(textType, "fonts/DINAlternateBold.ttf");
-
+        //这个地方会报错 你不是少个字体吗  等下
         super.onCreate();
     }
 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#76000000"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/shape_white8"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="332dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="请选择年份"
+                android:textColor="@color/textMedium"
+                android:textSize="16dp"
+                android:includeFontPadding="false"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="取消"
+                android:textColor="#404043"
+                android:textSize="15dp"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="完成"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15dp"
+                android:layout_marginLeft="20dp"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <DatePicker
+            android:id="@+id/date_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f5f5f5"
+            android:layout_marginBottom="47dp"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="47dp">
+
+        <TextView
+            android:text="年月"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="月日"
+            android:textColor="@color/text9f9fa0"
+            android:textSize="16dp"
+            android:includeFontPadding="false"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</RelativeLayout>
