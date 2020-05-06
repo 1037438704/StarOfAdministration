@@ -112,6 +112,13 @@ public class DraftActivity extends BaseAty {
             }
         });
 
+        //返回
+        titleBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 }

@@ -168,14 +168,14 @@ public class FictionActivity extends BaseAty {
         fictionTimeStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDatePickerDialog(me,  2, fictionTimeStart, calendar);
+                showStartDatePickerDialog(me,  2, fictionTimeStart, calendar);
             }
         });
 
         fictionTimeEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDatePickerDialog(me,  2, fictionTimeStart, calendar);
+                showEndDatePickerDialog(me,  2, fictionTimeEnd, calendar);
             }
         });
     }
@@ -188,7 +188,7 @@ public class FictionActivity extends BaseAty {
      * @param tv
      * @param calendar
      */
-    public static void showDatePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
+    public static void showStartDatePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
         // 直接创建一个DatePickerDialog对话框实例，并将它显示出来
         new DatePickerDialog(activity, themeResId, new DatePickerDialog.OnDateSetListener() {
             // 绑定监听器(How the parent is notified that the date is set.)
@@ -204,4 +204,19 @@ public class FictionActivity extends BaseAty {
                 , calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    public static void showEndDatePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
+        // 直接创建一个DatePickerDialog对话框实例，并将它显示出来
+        new DatePickerDialog(activity, themeResId, new DatePickerDialog.OnDateSetListener() {
+            // 绑定监听器(How the parent is notified that the date is set.)
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                // 此处得到选择的时间，可以进行你想要的操作
+                tv.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            }
+        }
+                // 设置初始日期
+                , calendar.get(Calendar.YEAR)
+                , calendar.get(Calendar.MONTH)
+                , calendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
 }

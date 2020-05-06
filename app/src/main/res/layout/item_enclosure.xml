@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_marginTop="17dp"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/enclosure_item_num"
+            android:text="1"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_marginLeft="12dp"
+            android:includeFontPadding="false"
+            android:textColor="@color/textMedium"
+            android:layout_width="16dp"
+            android:layout_height="19dp"/>
+
+        <TextView
+            android:id="@+id/enclosure_item_title"
+            android:text="关于疫情防控问题的指导意见"
+            android:textSize="16dp"
+            android:textColor="@color/textMedium"
+            android:includeFontPadding="false"
+            android:layout_marginLeft="12dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/enclosure_item_more"
+            android:src="@mipmap/icon_fu_jian_more"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/enclosure_item_name"
+            android:text="某某木"
+            android:textSize="12dp"
+            android:textColor="@color/text9f9fa0"
+            android:layout_marginLeft="40dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/enclosure_item_time"
+            android:text="2020/02/19 19:11:23"
+            android:textSize="12dp"
+            android:textColor="@color/text9f9fa0"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="12dp"
+            android:includeFontPadding="false"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <View
+        android:background="#EFF0F2"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</LinearLayout>
