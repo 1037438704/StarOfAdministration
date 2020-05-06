@@ -45,7 +45,7 @@ public class DraftActivity extends BaseAty {
     private LinearLayout titleNew;
     private RadioGroup mainRgp;
     private ViewPager viewPagerData;
-    private ImageView titleMore;
+    private LinearLayout titleMore;
 
     ViewPagerAdp viewPagerAdp;
     private List<BaseFragment> fragemnts;

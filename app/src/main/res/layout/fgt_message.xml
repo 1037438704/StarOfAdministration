@@ -7,117 +7,127 @@
     android:background="#F5F5F5"
     android:orientation="vertical"
     tools:context=".fgt.MessageFragment">
-    <LinearLayout
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:background="@color/white"
-        android:orientation="horizontal">
+        app:cardElevation="2dp"
+        android:background="@mipmap/maoboli_bai"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/choose_leibie"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="@color/white"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/text_category"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/choose_leibie"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="类别"
-                android:textColor="#717173"
-                android:textSize="14dp" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/daiban_down1"
-                android:layout_width="8dp"
-                android:layout_height="4dp"
-                android:layout_marginLeft="3dp"
-                android:src="@mipmap/daiban_down" />
+                <TextView
+                    android:id="@+id/text_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="类别"
+                    android:textColor="#717173"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:id="@+id/daiban_down1"
+                    android:layout_width="8dp"
+                    android:layout_height="4dp"
+                    android:layout_marginLeft="3dp"
+                    android:src="@mipmap/daiban_down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="接收时间"
+                    android:textColor="#717173"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:id="@+id/daiban_down2"
+                    android:layout_width="8dp"
+                    android:layout_height="4dp"
+                    android:layout_marginLeft="3dp"
+                    android:src="@mipmap/daiban_down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_urgent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="紧急度"
+                    android:textColor="#717173"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:id="@+id/daiban_down3"
+                    android:layout_width="8dp"
+                    android:layout_height="4dp"
+                    android:layout_marginLeft="3dp"
+                    android:src="@mipmap/daiban_down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/text_choose"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="11dp"
+                    android:background="#D7D7D8" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:gravity="center_vertical"
+                    android:text="筛选"
+                    android:textColor="#717173"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:layout_width="11dp"
+                    android:layout_height="12dp"
+                    android:layout_marginLeft="3dp"
+                    android:src="@mipmap/daiban_shaixuan" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
+    </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/text_timer"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="接收时间"
-                android:textColor="#717173"
-                android:textSize="14dp" />
-
-            <ImageView
-                android:id="@+id/daiban_down2"
-                android:layout_width="8dp"
-                android:layout_height="4dp"
-                android:layout_marginLeft="3dp"
-                android:src="@mipmap/daiban_down" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/text_urgent"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="紧急度"
-                android:textColor="#717173"
-                android:textSize="14dp" />
-
-            <ImageView
-                android:id="@+id/daiban_down3"
-                android:layout_width="8dp"
-                android:layout_height="4dp"
-                android:layout_marginLeft="3dp"
-                android:src="@mipmap/daiban_down" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/text_choose"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="11dp"
-                android:layout_marginBottom="11dp"
-                android:background="#D7D7D8" />
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="11dp"
-                android:gravity="center_vertical"
-                android:text="筛选"
-                android:textColor="#717173"
-                android:textSize="14dp" />
-
-            <ImageView
-                android:layout_width="11dp"
-                android:layout_height="12dp"
-                android:layout_marginLeft="3dp"
-                android:src="@mipmap/daiban_shaixuan" />
-        </LinearLayout>
-    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"

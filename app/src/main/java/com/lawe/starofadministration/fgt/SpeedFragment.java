@@ -49,6 +49,7 @@ public class SpeedFragment extends BaseFgt {
     private ImageView speedImgLeibie;
     private ImageView speedImgJinji;
     private LinearLayout linearLeibie;
+    LinearLayout speedLinerarLayout;
     private int flag = 1; //类别默认标识
 
     //空集合
@@ -72,6 +73,9 @@ public class SpeedFragment extends BaseFgt {
         speedImgLeibie = (ImageView) findViewById(R.id.speed_img_leibie);
         speedImgJinji = (ImageView) findViewById(R.id.speed_img_jinji);
         linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
+
+        speedLinerarLayout = (LinearLayout) findViewById(R.id.speed_linerar_layout);
+        speedLinerarLayout.setPadding(0,me.getStatusBarHeight(),0,0);
 
         list = new ArrayList<>();
         //进度信息

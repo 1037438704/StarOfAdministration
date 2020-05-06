@@ -5,18 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/setting_linerar_layout"
     tools:context=".fgt.SettingsFragment"
-    android:background="#F5F5F5"
+    android:background="#DB1F2C"
     android:orientation="vertical">
-    <View
-        android:background="#DB1F2C"
-        android:layout_width="match_parent"
-        android:layout_height="31dp"/>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:orientation="horizontal"
         app:cardBackgroundColor="#DB1F2C"
-        android:elevation="3dp"
         app:cardCornerRadius="0dp"
         android:layout_height="50dp">
 
@@ -58,276 +55,283 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
+        android:background="#F5F5F5"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="1dp"
-        android:background="@color/white"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/linear_set_safe"
             android:layout_width="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:src="@mipmap/set_icon_safe"
-                android:layout_width="16dp"
-                android:layout_height="16dp"/>
+            <LinearLayout
+                android:id="@+id/linear_set_safe"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/set_safe"
-                android:text="安全设置"
-                android:textColor="#3E3E41"
-                android:textSize="16sp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:includeFontPadding="false"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:src="@mipmap/set_icon_safe"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
 
-            <ImageView
-                android:src="@mipmap/icon_more"
-                android:layout_width="12dp"
-                android:layout_height="12dp"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/set_safe"
+                    android:text="安全设置"
+                    android:textColor="#3E3E41"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:layout_height="wrap_content"/>
 
-        <View
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp"
-            android:background="#EFF0F2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
+                <ImageView
+                    android:src="@mipmap/icon_more"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linear_set_system"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="20dp"
-            android:layout_height="wrap_content">
+            <View
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
+                android:background="#EFF0F2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
-            <ImageView
-                android:src="@mipmap/set_icon_system"
-                android:layout_width="16dp"
-                android:layout_height="16dp"/>
+            <LinearLayout
+                android:id="@+id/linear_set_system"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/set_system"
-                android:text="系统设置"
-                android:textColor="#3E3E41"
-                android:textSize="16sp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:includeFontPadding="false"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:src="@mipmap/set_icon_system"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
 
-            <ImageView
-                android:src="@mipmap/icon_more"
-                android:layout_width="12dp"
-                android:layout_height="12dp"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/set_system"
+                    android:text="系统设置"
+                    android:textColor="#3E3E41"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:layout_height="wrap_content"/>
 
-        <View
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp"
-            android:background="#EFF0F2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
+                <ImageView
+                    android:src="@mipmap/icon_more"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linear_set_service"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="20dp"
-            android:layout_height="wrap_content">
+            <View
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
+                android:background="#EFF0F2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
-            <ImageView
-                android:src="@mipmap/set_icon_service"
-                android:layout_width="16dp"
-                android:layout_height="16dp"/>
+            <LinearLayout
+                android:id="@+id/linear_set_service"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/set_service"
-                android:text="服务中心"
-                android:textColor="#3E3E41"
-                android:textSize="16sp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:includeFontPadding="false"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:src="@mipmap/set_icon_service"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
 
-            <ImageView
-                android:src="@mipmap/icon_more"
-                android:layout_width="12dp"
-                android:layout_height="12dp"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/set_service"
+                    android:text="服务中心"
+                    android:textColor="#3E3E41"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:layout_height="wrap_content"/>
 
-        <View
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp"
-            android:background="#EFF0F2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
+                <ImageView
+                    android:src="@mipmap/icon_more"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linear_set_item"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="20dp"
-            android:layout_height="wrap_content">
+            <View
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
+                android:background="#EFF0F2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
-            <ImageView
-                android:src="@mipmap/set_icon_item"
-                android:layout_width="16dp"
-                android:layout_height="16dp"/>
+            <LinearLayout
+                android:id="@+id/linear_set_item"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/set_item"
-                android:text="服务条款"
-                android:textColor="#3E3E41"
-                android:textSize="16sp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:includeFontPadding="false"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:src="@mipmap/set_icon_item"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
 
-            <ImageView
-                android:src="@mipmap/icon_more"
-                android:layout_width="12dp"
-                android:layout_height="12dp"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/set_item"
+                    android:text="服务条款"
+                    android:textColor="#3E3E41"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:layout_height="wrap_content"/>
 
-        <View
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp"
-            android:background="#EFF0F2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
+                <ImageView
+                    android:src="@mipmap/icon_more"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linear_set_explanation"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="20dp"
-            android:layout_height="wrap_content">
+            <View
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
+                android:background="#EFF0F2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
-            <ImageView
-                android:src="@mipmap/set_icon_explanation"
-                android:layout_width="16dp"
-                android:layout_height="16dp"/>
+            <LinearLayout
+                android:id="@+id/linear_set_explanation"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/set_explanation"
-                android:text="操作说明"
-                android:textColor="#3E3E41"
-                android:textSize="16sp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:includeFontPadding="false"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:src="@mipmap/set_icon_explanation"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
 
-            <ImageView
-                android:src="@mipmap/icon_more"
-                android:layout_width="12dp"
-                android:layout_height="12dp"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/set_explanation"
+                    android:text="操作说明"
+                    android:textColor="#3E3E41"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:layout_height="wrap_content"/>
 
-        <View
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp"
-            android:background="#EFF0F2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
+                <ImageView
+                    android:src="@mipmap/icon_more"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linear_set_upgread"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="20dp"
-            android:layout_height="wrap_content">
+            <View
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
+                android:background="#EFF0F2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
-            <ImageView
-                android:src="@mipmap/set_icon_upgread"
-                android:layout_width="16dp"
-                android:layout_height="16dp"/>
+            <LinearLayout
+                android:id="@+id/linear_set_upgread"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/set_upgread"
-                android:text="升级检测"
-                android:textColor="#3E3E41"
-                android:textSize="16sp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:includeFontPadding="false"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:src="@mipmap/set_icon_upgread"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
 
-            <ImageView
-                android:src="@mipmap/icon_more"
-                android:layout_width="12dp"
-                android:layout_height="12dp"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/set_upgread"
+                    android:text="升级检测"
+                    android:textColor="#3E3E41"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:layout_height="wrap_content"/>
 
-        <View
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp"
-            android:background="#EFF0F2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
+                <ImageView
+                    android:src="@mipmap/icon_more"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linear_set_feedback"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="16dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_height="wrap_content">
+            <View
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
+                android:background="#EFF0F2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
-            <ImageView
-                android:src="@mipmap/set_icon_feedback"
-                android:layout_width="16dp"
-                android:layout_height="16dp"/>
+            <LinearLayout
+                android:id="@+id/linear_set_feedback"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/set_feedback"
-                android:text="问题反馈"
-                android:textColor="#3E3E41"
-                android:textSize="16sp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:includeFontPadding="false"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:src="@mipmap/set_icon_feedback"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
 
-            <ImageView
-                android:src="@mipmap/icon_more"
-                android:layout_width="12dp"
-                android:layout_height="12dp"/>
+                <TextView
+                    android:id="@+id/set_feedback"
+                    android:text="问题反馈"
+                    android:textColor="#3E3E41"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:src="@mipmap/icon_more"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"/>
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

@@ -41,6 +41,7 @@ public class SettingsFragment extends BaseFgt {
     private LinearLayout linearSetExplanation;
     private LinearLayout linearSetUpgread;
     private LinearLayout linearSetFeedback;
+    private LinearLayout settingLinerarLayout;
 
     private int flag = 2;
 
@@ -55,6 +56,8 @@ public class SettingsFragment extends BaseFgt {
         setExplanation = (TextView) findViewById(R.id.set_explanation);
         setUpgread = (TextView) findViewById(R.id.set_upgread);
         setFeedback = (TextView) findViewById(R.id.set_feedback);
+        settingLinerarLayout = (LinearLayout) findViewById(R.id.setting_linerar_layout);
+        settingLinerarLayout.setPadding(0,me.getStatusBarHeight(),0,0);
 
         text_set.setTypeface(getTextMedium);
         set_out.setTypeface(getTextMedium);

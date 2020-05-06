@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="#DB1F2C"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:paddingBottom="18dp"
+    android:id="@+id/center_linerar_layout"
     tools:context=".fgt.CenterFragment">
 
     <TextView

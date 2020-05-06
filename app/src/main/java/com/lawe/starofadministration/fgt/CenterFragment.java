@@ -1,6 +1,7 @@
 package com.lawe.starofadministration.fgt;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kongzue.baseframework.interfaces.Layout;
@@ -18,11 +19,14 @@ public class CenterFragment extends BaseFgt {
 
     private TextView centerTitle;
     private TextView centerNizhi;
+    private LinearLayout centerLinerarLayout;
 
     @Override
     public void initViews() {
         centerTitle = (TextView) findViewById(R.id.center_title);
         centerNizhi = (TextView) findViewById(R.id.center_nizhi);
+        centerLinerarLayout = (LinearLayout) findViewById(R.id.center_linerar_layout);
+        centerLinerarLayout.setPadding(0,me.getStatusBarHeight(),0,0);
 
         //设置字体
         centerTitle.setTypeface(getTextMedium);
