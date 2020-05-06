@@ -50,6 +50,7 @@ public class DraftActivity extends BaseAty {
     ViewPagerAdp viewPagerAdp;
     private List<BaseFragment> fragemnts;
 
+
     @Override
     public void initViews() {
         titleBack = findViewById(R.id.title_back);
