@@ -1,6 +1,7 @@
 package com.lawe.starofadministration.aty;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -254,6 +255,16 @@ public class DraftActivity extends BaseAty {
                     draftChat.setVisibility(View.GONE);
                     chatflag = 1;
                 }
+            }
+        });
+
+        //人员选择
+        bottomPerson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(ChoosePersonActivity.class,new JumpParameter()
+                            .put("flag",1)
+                );
             }
         });
     }
