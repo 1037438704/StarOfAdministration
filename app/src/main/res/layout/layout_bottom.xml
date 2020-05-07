@@ -7,6 +7,7 @@
     android:layout_height="47dp">
 
     <ImageView
+        android:id="@+id/bottom_person"
         android:src="@mipmap/icon_people"
         android:layout_marginLeft="8dp"
         android:layout_width="36dp"
@@ -14,6 +15,7 @@
 
 
     <ImageView
+        android:id="@+id/bottom_pizhu"
         android:src="@mipmap/icon_hand_writing"
         android:layout_marginLeft="2dp"
         android:layout_width="36dp"
@@ -28,6 +30,7 @@
         android:layout_height="36dp">
 
         <EditText
+            android:id="@+id/bottom_whrit"
             android:hint="请填写备注信息"
             android:textSize="14dp"
             android:layout_marginLeft="8dp"
@@ -37,6 +40,7 @@
             android:background="@null"/>
 
         <ImageView
+            android:id="@+id/bottom_chat"
             android:src="@mipmap/icon_commonly_used"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="12dp"
@@ -46,6 +50,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/bottom_button"
         android:text="提交"
         android:textColor="#ffffff"
         android:textSize="14dp"

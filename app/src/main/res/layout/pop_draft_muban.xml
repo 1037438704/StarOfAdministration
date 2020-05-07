@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="78dp"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingTop="9dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/item_img_down"/>
+
+        <TextView
+            android:text="模板列表"
+            android:textSize="14dp"
+            android:textColor="@color/text9f9fa0"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pop_draft_recycle"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

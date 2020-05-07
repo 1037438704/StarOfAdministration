@@ -1,11 +1,14 @@
 package com.lawe.starofadministration.fgt;
 
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.EnclosureAdapter;
@@ -62,7 +65,12 @@ public class EnclosureCatalogFragment extends BaseFgt {
 
     @Override
     public void setEvents() {
+        enclosureAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
 
+            }
+        });
     }
 
     public static EnclosureCatalogFragment newInstance() {
