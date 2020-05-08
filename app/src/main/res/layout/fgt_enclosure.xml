@@ -48,7 +48,7 @@
                     android:id="@+id/enclosure_text"
                     android:text="上传附件"
                     android:textSize="14dp"
-                    android:textColor="@color/textdc1f2c"
+                    android:textColor="@color/colorPrimaryDark"
                     android:includeFontPadding="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/shape_hui8"
+        android:layout_marginTop="78dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/pop_title"
+                android:text="请选择常用人"
+                android:textSize="16dp"
+                android:textColor="@color/textMedium"
+                android:includeFontPadding="false"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:id="@+id/pop_guanli"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@mipmap/icon_chang_yong_set"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
+                <TextView
+                    android:text="管理"
+                    android:textColor="@color/text717173"
+                    android:textSize="14dp"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pop_choose_group"
+            android:paddingBottom="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="@color/white"
+            android:gravity="right"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/drawer_quxiao"
+                android:layout_width="70dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="110dp"
+                android:background="@drawable/shape_white22"
+                android:text="取消"
+                android:textColor="#9f9fa0"
+                android:textSize="14dp" />
+
+            <Button
+                android:layout_width="70dp"
+                android:layout_height="39dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/shape_red22"
+                android:text="完成"
+                android:textColor="#fff"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
