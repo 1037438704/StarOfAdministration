@@ -50,11 +50,11 @@
 
     <LinearLayout
         android:id="@+id/title_new"
-        android:visibility="gone"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:layout_marginRight="12dp"
         android:layout_marginTop="25dp"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
@@ -73,4 +73,15 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/title_right"
+        android:text="常用组"
+        android:textColor="@color/textMedium"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"/>
 </LinearLayout>
