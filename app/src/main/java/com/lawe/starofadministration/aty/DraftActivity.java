@@ -263,7 +263,7 @@ public class DraftActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 jump(ChoosePersonActivity.class,new JumpParameter()
-                            .put("flag",1)
+                            .put("flagType",1)
                 );
             }
         });

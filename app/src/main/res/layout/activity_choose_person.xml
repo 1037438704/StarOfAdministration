@@ -11,6 +11,7 @@
     <include layout="@layout/layout_title_white"/>
 
     <LinearLayout
+        android:id="@+id/choose_person_seach"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:background="@color/white"
@@ -25,7 +26,7 @@
             android:layout_height="20dp"/>
 
         <EditText
-            android:id="@+id/search_edit"
+            android:id="@+id/choose_person_seach_edit"
             android:hint="搜索要选择的对象"
             android:textColorHint="#9F9FA0"
             android:textSize="14dp"
@@ -55,6 +56,45 @@
                 android:layout_marginLeft="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <include layout="@layout/item_choose_person"/>
+
+            <View
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="8dp"
+                android:background="#EFF0F2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/choose_person_select"
+                    android:background="@drawable/select_choose_qita_all"
+                    android:layout_marginLeft="14dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"/>
+
+                <TextView
+                    android:text="其他单位"
+                    android:textColor="@color/text9f9fa0"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
 
     </ScrollView>
@@ -68,6 +108,7 @@
         android:layout_height="46dp">
 
         <LinearLayout
+            android:id="@+id/choose_person_alredy_select"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
@@ -92,6 +133,7 @@
 
 
         <Button
+            android:id="@+id/choose_person_tijiao"
             android:text="提交15"
             android:textSize="14dp"
             android:textColor="#fff"
