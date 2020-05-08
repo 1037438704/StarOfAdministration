@@ -64,7 +64,7 @@ public class ChoosePersonActivity extends BaseAty {
     private List<String> list;
     private OtherBumenAdapter otherBumenAdapter;
     private LinearLayoutManager layoutManager;
-    private androidx.recyclerview.widget.RecyclerView choosePersonRecycle;
+    private RecyclerView choosePersonRecycle;
 
     @Override
     public void initViews() {
@@ -98,7 +98,7 @@ public class ChoosePersonActivity extends BaseAty {
     @Override
     public void initDatas(JumpParameter parameter) {
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             list.add("" + i);
         }
         otherBumenAdapter.setNewData(list);
