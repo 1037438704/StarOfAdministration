@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
@@ -17,7 +20,12 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.adp.FictionAdapter;
+import com.lawe.starofadministration.adp.OtherBumenAdapter;
 import com.lawe.starofadministration.base.BaseAty;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * author : fuke
@@ -35,14 +43,20 @@ public class ChoosePersonActivity extends BaseAty {
     private TextView titleRight;
     private LinearLayout choosePersonSeach;
     private EditText choosePersonSeachEdit;
-    private ImageView itemChooseMyAll;
+    private CheckBox itemChooseMyAll;
     private ImageView itemChooseMyBumen;
     private TextView itemChooseBuMenName;
     private TextView itemChooseBuMenNum;
     private ImageView itemChooseGoNext;
-    private ImageView choosePersonSelect;
+    private CheckBox choosePersonSelect;
     private LinearLayout choosePersonAlredySelect;
     private Button choosePersonTijiao;
+
+    //空集合
+    private List<String> list;
+    private OtherBumenAdapter otherBumenAdapter;
+    private LinearLayoutManager layoutManager;
+    private androidx.recyclerview.widget.RecyclerView choosePersonRecycle;
 
     @Override
     public void initViews() {
@@ -53,6 +67,7 @@ public class ChoosePersonActivity extends BaseAty {
         titleText.setTypeface(getTextBold);
         titleRight.setVisibility(View.VISIBLE);
         titleRight.setTypeface(getTextMedium);
+        itemChooseBuMenName.setTypeface(getTextMedium);
         titleRight.setText("常用组");
 
         //获取上一个页面传递的标识
@@ -62,15 +77,35 @@ public class ChoosePersonActivity extends BaseAty {
             titleText.setText("选择审核人");
         }
 
+        //其他部门列表
+        list = new ArrayList<>();
+        //待办信息
+        layoutManager = new LinearLayoutManager(me);
+        choosePersonRecycle.setLayoutManager(layoutManager);
+        otherBumenAdapter = new OtherBumenAdapter(R.layout.item_choose_person);
+        choosePersonRecycle.setAdapter(otherBumenAdapter);
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
 
+        for (int i = 0; i < 10; i++) {
+            list.add("" + i);
+        }
+        otherBumenAdapter.setNewData(list);
+        otherBumenAdapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void setEvents() {
+        //返回
+        titleBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -88,5 +123,6 @@ public class ChoosePersonActivity extends BaseAty {
         choosePersonSelect = findViewById(R.id.choose_person_select);
         choosePersonAlredySelect = findViewById(R.id.choose_person_alredy_select);
         choosePersonTijiao = findViewById(R.id.choose_person_tijiao);
+        choosePersonRecycle = findViewById(R.id.choose_person_recycle);
     }
 }
