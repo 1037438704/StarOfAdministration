@@ -54,7 +54,7 @@ dependencies {
 
     implementation 'com.jaeger.statusbarutil:library:1.5.1'
 
-    //刷新接口
+    //列表刷新接口
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-32'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-32'
 

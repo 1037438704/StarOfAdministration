@@ -313,9 +313,7 @@
             android:id="@+id/recycle_dayList"
             android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="wrap_content"/>
 
 
 
