@@ -8,9 +8,10 @@
     android:background="@color/white"
     android:layout_height="wrap_content">
 
-    <ImageView
+    <CheckBox
         android:id="@+id/item_choose_myAll"
         android:background="@drawable/select_choose_all"
+        android:button="@null"
         android:layout_marginLeft="12dp"
         android:layout_width="20dp"
         android:layout_height="20dp"/>

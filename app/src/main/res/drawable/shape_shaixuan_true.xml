@@ -4,5 +4,5 @@
     <corners android:radius="24dp" />
     <stroke
         android:width="0.5dp"
-        android:color="@color/loginbackground" />
+        android:color="@color/colorPrimaryDark" />
 </shape>

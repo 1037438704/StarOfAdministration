@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout_shaixuan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/loginbackground"
+    android:background="@color/colorPrimaryDark"
     tools:context=".MainActivity">
     <com.lawe.starofadministration.utils.NoScrollViewPager
         android:id="@+id/viewPager"

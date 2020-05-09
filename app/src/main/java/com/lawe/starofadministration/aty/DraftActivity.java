@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -244,6 +245,20 @@ public class DraftActivity extends BaseAty {
             }
         });
 
+        draftChatNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 AlertDialog.Builder builder = new AlertDialog.Builder(me);
+                 View view = View.inflate(me, R.layout.pop_add_yongyu, null);
+                 builder.setView(view);
+                 builder.setCancelable(true);
+
+                 //取消或确定按钮监听事件处理
+                 AlertDialog dialog = builder.create();
+                 dialog.show();
+
+            }
+        });
         //常用语
         bottomChat.setOnClickListener(new View.OnClickListener() {
             @Override

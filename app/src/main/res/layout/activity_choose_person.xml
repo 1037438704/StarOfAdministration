@@ -8,7 +8,17 @@
     android:orientation="vertical"
     tools:context=".aty.ChoosePersonActivity">
 
-    <include layout="@layout/layout_title_white"/>
+
+    <androidx.cardview.widget.CardView
+         android:layout_width="match_parent"
+        android:elevation="2dp"
+         android:layout_height="wrap_content">
+
+        <include layout="@layout/layout_title_white"/>
+
+    </androidx.cardview.widget.CardView>
+
+
 
     <LinearLayout
         android:id="@+id/choose_person_seach"
@@ -37,67 +47,64 @@
 
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_marginTop="8dp"
-        android:layout_weight="1">
-        <LinearLayout
-            android:orientation="vertical"
-            android:background="@color/white"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+        <TextView
+            android:text="我的单位"
+            android:textColor="@color/text9f9fa0"
+            android:textSize="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="12dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"/>
+
+        <include layout="@layout/item_choose_person"/>
+
+        <View
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="8dp"
+            android:background="#EFF0F2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/choose_person_select"
+                android:background="@drawable/select_choose_qita_all"
+                android:layout_marginLeft="14dp"
+                android:button="@null"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
 
             <TextView
-                android:text="我的单位"
+                android:text="其他单位"
                 android:textColor="@color/text9f9fa0"
-                android:textSize="12dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="12dp"
-                android:layout_width="match_parent"
+                android:textSize="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <include layout="@layout/item_choose_person"/>
-
-            <View
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginTop="8dp"
-                android:background="#EFF0F2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/choose_person_select"
-                    android:background="@drawable/select_choose_qita_all"
-                    android:layout_marginLeft="14dp"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"/>
-
-                <TextView
-                    android:text="其他单位"
-                    android:textColor="@color/text9f9fa0"
-                    android:textSize="14dp"
-                    android:layout_marginLeft="14dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
 
-    </ScrollView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/choose_person_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="1dp"

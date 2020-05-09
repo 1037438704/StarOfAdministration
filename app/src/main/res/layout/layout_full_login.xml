@@ -41,14 +41,14 @@
                     android:layout_width="match_parent"
                     android:text="隐私政策"
                     android:textSize="14dp"
-                    android:textColor="@color/loginbackground"
+                    android:textColor="@color/colorPrimaryDark"
                     android:button="@null"
                     android:gravity="center_horizontal"
                     android:layout_height="wrap_content"/>
 
                 <View
                     android:layout_width="22dp"
-                    android:background="@color/loginbackground"
+                    android:background="@color/colorPrimaryDark"
                     android:layout_marginTop="17dp"
                     android:layout_height="2dp"/>
             </LinearLayout>

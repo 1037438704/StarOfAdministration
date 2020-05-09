@@ -85,4 +85,27 @@
         android:layout_marginRight="20dp"
         android:layout_width="wrap_content"
         android:layout_height="45dp"/>
+
+    <LinearLayout
+        android:id="@+id/title_button1"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/title_button2"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:background="@drawable/shape_red42_22"
+            android:includeFontPadding="false"
+            android:layout_width="48dp"
+            android:layout_height="28dp"/>
+
+    </LinearLayout>
+
 </LinearLayout>

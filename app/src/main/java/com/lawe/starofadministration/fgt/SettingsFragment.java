@@ -43,7 +43,7 @@ public class SettingsFragment extends BaseFgt {
     private LinearLayout linearSetFeedback;
     private LinearLayout settingLinerarLayout;
 
-    private int flag = 2;
+    private int flag = 1;
 
     @Override
     public void initViews() {

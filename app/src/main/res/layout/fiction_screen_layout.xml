@@ -43,50 +43,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <CheckBox
                 android:id="@+id/fiction_text_yian"
                 android:text="议案"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginRight="6dp"
                 android:layout_columnWeight="1"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
                 android:layout_height="38dp"
                 />
 
-            <TextView
+            <CheckBox
                 android:id="@+id/fiction_text_mingling"
                 android:text="命令"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
                 android:layout_height="38dp"
                 />
 
-            <TextView
+            <CheckBox
                 android:id="@+id/fiction_text_jueding"
                 android:text="决定"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="12dp"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
                 android:layout_height="38dp"
                 />
 
-            <TextView
+            <CheckBox
                 android:id="@+id/fiction_text_zhibiao"
                 android:text="指示"
                 android:textSize="14dp"
                 android:gravity="center"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
@@ -103,49 +107,53 @@
             android:layout_height="wrap_content">
 
             <!--第二行-->
-            <TextView
+            <CheckBox
                 android:id="@+id/fiction_text_gonggao"
                 android:text="公告"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginRight="6dp"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
                 android:layout_height="38dp"
                 />
 
-            <TextView
+            <CheckBox
                 android:id="@+id/fiction_text_tonggao"
                 android:text="通告"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
                 android:layout_height="38dp"
                 />
 
-            <TextView
+            <CheckBox
                 android:id="@+id/fiction_text_tongzhi"
                 android:text="通知"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="12dp"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
                 android:layout_height="38dp"
                 />
 
-            <TextView
+            <CheckBox
                 android:id="@+id/fiction_text_tongbao"
                 android:text="通报"
                 android:textSize="14dp"
                 android:gravity="center"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
@@ -162,47 +170,51 @@
             android:layout_height="wrap_content">
 
             <!--第三行-->
-            <TextView
+            <CheckBox
                 android:id="@+id/fiction_text_baogao"
                 android:text="报告"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginRight="6dp"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
                 android:layout_height="38dp"
                 />
 
-            <TextView
+            <CheckBox
                 android:id="@+id/fiction_text_qingshi"
                 android:text="请示"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
                 android:layout_height="38dp"
                 />
 
-            <TextView
+            <CheckBox
                 android:text="批复"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="12dp"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
                 android:layout_height="38dp"
                 />
 
-            <TextView
+            <CheckBox
                 android:text="函"
                 android:textSize="14dp"
                 android:gravity="center"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="60dp"
@@ -211,11 +223,12 @@
 
         </LinearLayout>
         <!--第四行-->
-        <TextView
+        <CheckBox
             android:text="会议纪要"
             android:textSize="14dp"
             android:gravity="center"
             android:layout_marginTop="12dp"
+            android:button="@null"
             android:background="@drawable/select_shaixuan"
             android:textColor="@drawable/select_text_color"
             android:layout_width="88dp"
@@ -251,21 +264,23 @@
             android:layout_marginTop="12dp"
             android:layout_height="wrap_content">
 
-            <TextView
+            <CheckBox
                 android:text="仅显示处理中"
                 android:textSize="14dp"
                 android:gravity="center"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="116dp"
                 android:layout_height="38dp"
                 />
 
-            <TextView
+            <CheckBox
                 android:text="仅显示已归档"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginLeft="12dp"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
                 android:layout_width="116dp"
@@ -274,11 +289,12 @@
 
         </LinearLayout>
 
-        <TextView
+        <CheckBox
             android:text="仅显示草稿"
             android:textSize="14dp"
             android:gravity="center"
             android:layout_marginTop="12dp"
+            android:button="@null"
             android:background="@drawable/select_shaixuan"
             android:textColor="@drawable/select_text_color"
             android:layout_width="116dp"
@@ -336,30 +352,33 @@
             android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
-            <TextView
+            <CheckBox
                 android:layout_width="82dp"
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:layout_marginBottom="12dp"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:text="最近3天"
                 android:textColor="@drawable/select_text_color" />
 
 
-            <TextView
+            <CheckBox
                 android:layout_width="82dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="12dp"
                 android:gravity="center"
                 android:background="@drawable/select_shaixuan"
                 android:text="最近7天"
+                android:button="@null"
                 android:textColor="@drawable/select_text_color" />
 
-            <TextView
+            <CheckBox
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="12dp"
                 android:gravity="center"
+                android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:text="最近30天"
                 android:textColor="@drawable/select_text_color" />
