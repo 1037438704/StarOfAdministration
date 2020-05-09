@@ -56,7 +56,6 @@ final class FlashlightManager {
   /**
    * �����������ƿ���
    */
-  //FIXME
   static void enableFlashlight() {
     setFlashlight(false);
   }
@@ -141,9 +140,9 @@ final class FlashlightManager {
     }
   }
 
-  private static void setFlashlight(boolean active) {
+  private static void setFlashlight(boolean boolActive) {
     if (iHardwareService != null) {
-      invoke(setFlashEnabledMethod, iHardwareService, active);
+      invoke(setFlashEnabledMethod, iHardwareService, boolActive);
     }
   }
 

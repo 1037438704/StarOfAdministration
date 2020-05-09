@@ -8,6 +8,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -72,6 +73,7 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
     private String photo_path;
     private Bitmap scanBitmap;
     //	private Button cancelScanButton;
+
     /**
      * Called when the activity is first created.
      */
@@ -79,43 +81,31 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
-        //ViewUtil.addTopView(getApplicationContext(), this, R.string.scan_card);
         CameraManager.init(getApplication());
-        viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_content);
-        back = (ImageButton) findViewById(R.id.btn_back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        viewfinderView = findViewById(R.id.viewfinder_content);
+        back = findViewById(R.id.btn_back);
+        back.setOnClickListener(v -> finish());
 
-        btnFlash = (ImageButton) findViewById(R.id.btn_flash);
+        btnFlash = findViewById(R.id.btn_flash);
         btnFlash.setOnClickListener(flashListener);
 
-        btnAlbum = (Button) findViewById(R.id.btn_album);
+        btnAlbum = findViewById(R.id.btn_album);
         btnAlbum.setOnClickListener(albumOnClick);
-
-//		cancelScanButton = (Button) this.findViewById(R.id.btn_cancel_scan);
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
 
     }
 
-    private View.OnClickListener albumOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            //打开手机中的相册
-            Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); //"android.intent.action.GET_CONTENT"
-            innerIntent.setType("image/*");
-            startActivityForResult(innerIntent, REQUEST_CODE_SCAN_GALLERY);
-        }
+    private View.OnClickListener albumOnClick = view -> {  //打开手机中的相册
+        Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); //"android.intent.action.GET_CONTENT"
+        innerIntent.setType("image/*");
+        startActivityForResult(innerIntent, REQUEST_CODE_SCAN_GALLERY);
     };
 
 
     @Override
     protected void onActivityResult(final int requestCode, int resultCode, Intent data) {
-        if (resultCode==RESULT_OK) {
+        if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case REQUEST_CODE_SCAN_GALLERY:
                     handleAlbumPic(data);
@@ -127,6 +117,7 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
 
     /**
      * 处理选择的图片
+     *
      * @param data
      */
     private void handleAlbumPic(Intent data) {
@@ -146,7 +137,7 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
                 if (result != null) {
                     Intent resultIntent = new Intent();
                     Bundle bundle = new Bundle();
-                    bundle.putString(Constant.INTENT_EXTRA_KEY_QR_SCAN ,result.getText());
+                    bundle.putString(Constant.INTENT_EXTRA_KEY_QR_SCAN, result.getText());
 
                     resultIntent.putExtras(bundle);
                     CaptureActivity.this.setResult(RESULT_OK, resultIntent);
@@ -160,6 +151,7 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
 
     /**
      * 扫描二维码图片的方法
+     *
      * @param uri
      * @return
      */
@@ -189,19 +181,22 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
     @Override
     protected void onResume() {
         super.onResume();
-        SurfaceView surfaceView = (SurfaceView) findViewById(R.id.scanner_view);
+        SurfaceView surfaceView = findViewById(R.id.scanner_view);
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
         if (hasSurface) {
             initCamera(surfaceHolder);
         } else {
             surfaceHolder.addCallback(this);
-            surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB){
+                surfaceView.getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+            }
         }
         decodeFormats = null;
         characterSet = null;
 
         playBeep = true;
         AudioManager audioService = (AudioManager) getSystemService(AUDIO_SERVICE);
+        assert audioService != null;
         if (audioService.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
             playBeep = false;
         }
@@ -236,15 +231,11 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
 
     /**
      * Handler scan result
-     *
-     * @param result
-     * @param barcode
      */
     public void handleDecode(Result result, Bitmap barcode) {
         inactivityTimer.onActivity();
         playBeepSoundAndVibrate();
         String resultString = result.getText();
-        //FIXME
         if (TextUtils.isEmpty(resultString)) {
             Toast.makeText(CaptureActivity.this, "Scan failed!", Toast.LENGTH_SHORT).show();
         } else {
@@ -341,6 +332,7 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
         }
         if (vibrate) {
             Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            assert vibrator != null;
             vibrator.vibrate(VIBRATE_DURATION);
         }
     }
@@ -348,21 +340,17 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
     /**
      * When the beep has finished playing, rewind to queue up another one.
      */
-    private final OnCompletionListener beepListener = new OnCompletionListener() {
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            mediaPlayer.seekTo(0);
-        }
-    };
+    private final OnCompletionListener beepListener = mediaPlayer -> mediaPlayer.seekTo(0);
 
     /**
-     *  闪光灯开关按钮
+     * 闪光灯开关按钮
      */
     private View.OnClickListener flashListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             try {
                 boolean isSuccess = CameraManager.get().setFlashLight(!isFlashOn);
-                if(!isSuccess){
+                if (!isSuccess) {
                     Toast.makeText(CaptureActivity.this, "暂时无法开启闪光灯", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -375,7 +363,7 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
                     btnFlash.setImageResource(R.drawable.flash_on);
                     isFlashOn = true;
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
