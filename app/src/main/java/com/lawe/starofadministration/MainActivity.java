@@ -41,7 +41,7 @@ import java.util.List;
 
 @Layout(R.layout.activity_main)
 @DarkStatusBarTheme(false)           //开启顶部状态栏图标、文字暗色模式
-@DarkNavigationBarTheme(false)       //开启底部导航栏按钮暗色模式
+@DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
 public class MainActivity extends BaseAty {
     private RadioGroup mainRgp;
