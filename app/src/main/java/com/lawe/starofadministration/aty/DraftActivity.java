@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -87,6 +88,8 @@ public class DraftActivity extends BaseAty {
     private List<String> listchat;
     private DraftChatAdapter draftChatAdapter;
     private LinearLayoutManager layoutManager;
+    private ImageView draftChatNewImg;
+    private ImageView draftChatSetImg;
 
     @Override
     public void initViews() {
@@ -317,6 +320,29 @@ public class DraftActivity extends BaseAty {
 
             }
         });
+
+        //管理常用语
+        draftChatSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = draftChatSetText.getText().toString();
+                if (text.equals("管理")){
+                    draftChatNewText.setText("取消");
+                    draftChatSetText.setText("保存");
+                    draftChatSetText.setTextColor(ContextCompat.getColor(me, R.color.colorPrimaryDark));
+                    draftChatNewImg.setVisibility(View.GONE);
+                    draftChatSetImg.setVisibility(View.GONE);
+                }else{
+                    draftChatNewText.setText("新建");
+                    draftChatSetText.setText("管理");
+                    draftChatSetText.setTextColor(ContextCompat.getColor(me, R.color.textMedium));
+                    draftChatNewImg.setVisibility(View.VISIBLE);
+                    draftChatSetImg.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+
         //常用语
         bottomChat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -377,6 +403,8 @@ public class DraftActivity extends BaseAty {
         titleMore.setVisibility(View.VISIBLE);
         draftChatNewText.setTypeface(getTextMedium);
         draftChatSetText.setTypeface(getTextMedium);
+        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
+        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
     }
 
 }

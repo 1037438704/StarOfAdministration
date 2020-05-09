@@ -5,15 +5,30 @@
     android:layout_marginRight="16dp"
     android:layout_marginTop="19dp"
     android:layout_marginBottom="5dp"
+    android:gravity="center_vertical"
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/item_draft_text"
         android:text="嘟嘟嘟嘟嘟嘟嘟嘟的"
         android:textSize="15dp"
         android:textColor="@color/text717173"
         android:maxLines="1"
         android:ellipsize="end"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"/>
 
+    <ImageView
+        android:id="@+id/item_draft_bianji"
+        android:src="@mipmap/changyong_bian_ji"
+        android:layout_width="16dp"
+        android:layout_height="16dp"/>
+
+    <ImageView
+        android:id="@+id/item_draft_delete"
+        android:src="@mipmap/changyong_shan_chu"
+        android:layout_marginLeft="8dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp"/>
 </LinearLayout>

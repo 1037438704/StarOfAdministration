@@ -126,9 +126,11 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/draft_chat_new_img"
                         android:src="@mipmap/icon_chang_yong_new"
                         android:layout_width="16dp"
                         android:layout_height="16dp"/>
+
                     <TextView
                         android:id="@+id/draft_chat_new_text"
                         android:text="新建"
@@ -155,6 +157,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/draft_chat_set_img"
                         android:src="@mipmap/icon_chang_yong_set"
                         android:layout_width="16dp"
                         android:layout_height="16dp"/>
