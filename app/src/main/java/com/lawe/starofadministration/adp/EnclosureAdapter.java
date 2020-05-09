@@ -1,25 +1,17 @@
 package com.lawe.starofadministration.adp;
 
-import android.app.Dialog;
 import android.graphics.Typeface;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.zhouwei.library.CustomPopWindow;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,7 +47,7 @@ public class EnclosureAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
         item_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomPopWindow popWindow = new CustomPopWindow.PopupWindowBuilder(mContext)
+                CustomPopWindow popWindow = new CustomPopWindow.PopupWindowBuilder(getContext())
                         .setView(R.layout.pop_enclosure_quanxian)//显示的布局，还可以通过设置一个View
                         //     .size(600,400) //设置显示的大小，不设置就默认包裹内容
                         .setFocusable(true)//是否获取焦点，默认为ture

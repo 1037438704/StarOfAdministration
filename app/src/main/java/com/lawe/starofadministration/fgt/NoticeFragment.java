@@ -3,14 +3,15 @@ package com.lawe.starofadministration.fgt;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.NoticeMessageAdapter;
-import com.lawe.starofadministration.aty.ChatActivity;
 import com.lawe.starofadministration.aty.LookAllActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
@@ -94,13 +95,13 @@ public class NoticeFragment extends BaseFgt {
         });
 
         //适配器点击事件
-        noticeAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        noticeAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                jump(ChatActivity.class);
+            public void onItemClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
+                //获取适配器中的数据
+                List data = adapter.getData();
             }
         });
-
     }
 
     public static NoticeFragment newInstance() {

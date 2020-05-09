@@ -1,13 +1,10 @@
 package com.lawe.starofadministration.adp;
 
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.lawe.starofadministration.R;
-
 import java.util.List;
 
 /**

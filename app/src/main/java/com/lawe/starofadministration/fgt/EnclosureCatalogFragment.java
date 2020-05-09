@@ -1,14 +1,18 @@
 package com.lawe.starofadministration.fgt;
 
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.EnclosureAdapter;
@@ -33,6 +37,12 @@ public class EnclosureCatalogFragment extends BaseFgt {
 
     //空集合
     private List<String> list;
+
+    @Override
+    public Bitmap fastblur(Context context, Bitmap sentBitmap, int radius) {
+        return super.fastblur(context, sentBitmap, radius);
+    }
+
     private EnclosureAdapter enclosureAdapter;
 
     @Override
@@ -65,9 +75,9 @@ public class EnclosureCatalogFragment extends BaseFgt {
 
     @Override
     public void setEvents() {
-        enclosureAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+        enclosureAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+            public void onItemClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
 
             }
         });
