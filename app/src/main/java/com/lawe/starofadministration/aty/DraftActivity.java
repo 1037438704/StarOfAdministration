@@ -1,7 +1,8 @@
 package com.lawe.starofadministration.aty;
 
 import android.app.Dialog;
-import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,6 @@ import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.DraftChatAdapter;
-import com.lawe.starofadministration.adp.FictionAdapter;
 import com.lawe.starofadministration.adp.TemplateAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
@@ -183,7 +183,7 @@ public class DraftActivity extends BaseAty {
                     draftMore.setVisibility(View.GONE);
                     flag = 1;
                 }
-                if (chatflag == 2){
+                if (chatflag == 2) {
                     draftChat.setVisibility(View.GONE);
                     chatflag = 1;
                 }
@@ -245,17 +245,75 @@ public class DraftActivity extends BaseAty {
             }
         });
 
+        //新增常用语
         draftChatNew.setOnClickListener(new View.OnClickListener() {
+            private int maxnum = 200;   //设置最大字数
+
             @Override
             public void onClick(View v) {
-                 AlertDialog.Builder builder = new AlertDialog.Builder(me);
-                 View view = View.inflate(me, R.layout.pop_add_yongyu, null);
-                 builder.setView(view);
-                 builder.setCancelable(true);
+                AlertDialog.Builder builder = new AlertDialog.Builder(me);
+                View view = View.inflate(me, R.layout.pop_add_yongyu, null);
+                builder.setView(view);
+                builder.setCancelable(true);
+                AlertDialog dialog = builder.create();
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-                 //取消或确定按钮监听事件处理
-                 AlertDialog dialog = builder.create();
-                 dialog.show();
+                TextView popAddTitle = view.findViewById(R.id.pop_add_title);
+                EditText popAddEdit = view.findViewById(R.id.pop_add_edit);
+                TextView popAddNum = view.findViewById(R.id.pop_add_num);
+                Button popAddCancle = view.findViewById(R.id.pop_add_cancle);
+                Button popAddSure = view.findViewById(R.id.pop_add_sure);
+
+                //设置字体
+                popAddTitle.setTypeface(getTextMedium);
+                popAddSure.setTypeface(getTextMedium);
+                popAddNum.setTypeface(getTextNum);
+
+                //控制字数
+                //控制字数
+                popAddEdit.addTextChangedListener(new TextWatcher(){
+
+                    private CharSequence wordNum;//记录输入的字数
+                    private int selectionStart;  //开始
+                    private int selectionEnd;  //结束
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence,int i,int i1,int i2){
+                        wordNum=charSequence;//实时记录输入的字数
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable){
+                        int number = maxnum-editable.length();
+                        //TextView显示剩余字数
+                        popAddNum.setText(200-number+"/"+200);  //输入字数
+                        selectionStart=popAddEdit.getSelectionStart();
+                        selectionEnd=popAddEdit.getSelectionEnd();
+                        if(wordNum.length()>maxnum){
+                            //删除多余输入的字（不会显示出来）
+                            editable.delete(selectionStart-1,selectionEnd);
+                            int tempSelection=selectionEnd;
+                            popAddEdit.setText(editable);
+                            popAddEdit.setSelection(tempSelection);//设置光标在最后
+                        }
+                    }
+                });
+
+                //取消和保存的点击
+                popAddCancle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
 
             }
         });
@@ -277,8 +335,8 @@ public class DraftActivity extends BaseAty {
         bottomPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(ChoosePersonActivity.class,new JumpParameter()
-                            .put("flagType",1)
+                jump(ChoosePersonActivity.class, new JumpParameter()
+                        .put("flagType", 1)
                 );
             }
         });

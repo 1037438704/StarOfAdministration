@@ -128,7 +128,7 @@ public class SettingsFragment extends BaseFgt {
                     //取消或确定按钮监听事件处理
                     AlertDialog dialog = builder.create();
                     dialog.show();
-
+                    dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                     setAppCancle.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

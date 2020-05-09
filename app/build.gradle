@@ -66,8 +66,8 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.2'
 
     implementation 'com.contrarywind:Android-PickerView:4.1.9'
-    //自定义气泡弹框
-    implementation 'com.github.xujiaji:happy-bubble:1.1.4'
 
     implementation 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.1'
+    //自定义气泡弹框
+    implementation 'com.github.xujiaji:happy-bubble:1.1.4'
 }
