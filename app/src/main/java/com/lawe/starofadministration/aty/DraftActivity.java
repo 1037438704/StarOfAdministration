@@ -33,6 +33,7 @@ import com.lawe.starofadministration.adp.DraftChatAdapter;
 import com.lawe.starofadministration.adp.TemplateAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
+import com.lawe.starofadministration.bean.ListChatBean;
 import com.lawe.starofadministration.fgt.DocumentEditFragment;
 import com.lawe.starofadministration.fgt.EnclosureCatalogFragment;
 import com.lawe.starofadministration.fgt.SetMessageFragment;
@@ -85,7 +86,7 @@ public class DraftActivity extends BaseAty {
     private TextView draftChatSetText;
 
     //空集合
-    private List<String> listchat;
+    private List<ListChatBean> listchat;
     private DraftChatAdapter draftChatAdapter;
     private LinearLayoutManager layoutManager;
     private ImageView draftChatNewImg;
@@ -119,11 +120,10 @@ public class DraftActivity extends BaseAty {
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPagerData.setOffscreenPageLimit(fragemnts.size());
         viewPagerData.setAdapter(viewPagerAdp);
-
-        //常用语列表
         for (int i = 0; i < 10; i++) {
-            listchat.add("" + i);
+            listchat.add(new ListChatBean(false, "第" + i + "条"));
         }
+        //常用语列表
         draftChatAdapter.setNewData(listchat);
         draftChatAdapter.notifyDataSetChanged();
     }
@@ -274,7 +274,7 @@ public class DraftActivity extends BaseAty {
 
                 //控制字数
                 //控制字数
-                popAddEdit.addTextChangedListener(new TextWatcher(){
+                popAddEdit.addTextChangedListener(new TextWatcher() {
 
                     private CharSequence wordNum;//记录输入的字数
                     private int selectionStart;  //开始
@@ -286,22 +286,22 @@ public class DraftActivity extends BaseAty {
                     }
 
                     @Override
-                    public void onTextChanged(CharSequence charSequence,int i,int i1,int i2){
-                        wordNum=charSequence;//实时记录输入的字数
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        wordNum = charSequence;//实时记录输入的字数
 
                     }
 
                     @Override
-                    public void afterTextChanged(Editable editable){
-                        int number = maxnum-editable.length();
+                    public void afterTextChanged(Editable editable) {
+                        int number = maxnum - editable.length();
                         //TextView显示剩余字数
-                        popAddNum.setText(200-number+"/"+200);  //输入字数
-                        selectionStart=popAddEdit.getSelectionStart();
-                        selectionEnd=popAddEdit.getSelectionEnd();
-                        if(wordNum.length()>maxnum){
+                        popAddNum.setText(200 - number + "/" + 200);  //输入字数
+                        selectionStart = popAddEdit.getSelectionStart();
+                        selectionEnd = popAddEdit.getSelectionEnd();
+                        if (wordNum.length() > maxnum) {
                             //删除多余输入的字（不会显示出来）
-                            editable.delete(selectionStart-1,selectionEnd);
-                            int tempSelection=selectionEnd;
+                            editable.delete(selectionStart - 1, selectionEnd);
+                            int tempSelection = selectionEnd;
                             popAddEdit.setText(editable);
                             popAddEdit.setSelection(tempSelection);//设置光标在最后
                         }
@@ -320,19 +320,18 @@ public class DraftActivity extends BaseAty {
 
             }
         });
-
         //管理常用语
         draftChatSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String text = draftChatSetText.getText().toString();
-                if (text.equals("管理")){
+                if (text.equals("管理")) {
                     draftChatNewText.setText("取消");
                     draftChatSetText.setText("保存");
                     draftChatSetText.setTextColor(ContextCompat.getColor(me, R.color.colorPrimaryDark));
                     draftChatNewImg.setVisibility(View.GONE);
                     draftChatSetImg.setVisibility(View.GONE);
-                }else{
+                } else {
                     draftChatNewText.setText("新建");
                     draftChatSetText.setText("管理");
                     draftChatSetText.setTextColor(ContextCompat.getColor(me, R.color.textMedium));
@@ -405,6 +404,15 @@ public class DraftActivity extends BaseAty {
         draftChatSetText.setTypeface(getTextMedium);
         draftChatNewImg = findViewById(R.id.draft_chat_new_img);
         draftChatSetImg = findViewById(R.id.draft_chat_set_img);
+    }
+    //改变状态
+
+    private  void listItemstate(){
+        List<ListChatBean> list =  draftChatAdapter.getData();
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).setDisplay(!list.get(i).getDisplay());
+        }
+        draftChatAdapter.notifyDataSetChanged();
     }
 
 }
