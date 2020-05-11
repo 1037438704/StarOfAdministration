@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.aty.ChooseCompanyActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.utils.PickerView;
 
@@ -53,6 +54,8 @@ public class SetMessageFragment extends BaseFgt {
 
     @Override
     public void setEvents() {
+
+        //公文类型
         setmesType.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -90,6 +93,14 @@ public class SetMessageFragment extends BaseFgt {
                 });
                 dialog.setCanceledOnTouchOutside(true);
                 dialog.show();
+            }
+        });
+
+        //会签单位
+        setmesHuiqian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(ChooseCompanyActivity.class);
             }
         });
     }

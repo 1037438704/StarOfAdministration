@@ -200,6 +200,7 @@ public class DraftActivity extends BaseAty {
             }
         });
 
+        //点击全屏任意地方弹框消失
         draftAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
