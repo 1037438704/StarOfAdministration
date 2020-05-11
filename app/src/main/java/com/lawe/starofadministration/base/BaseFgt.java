@@ -20,6 +20,12 @@ abstract public class BaseFgt extends BaseFragment {
     public Typeface getTextBold = MyApplication.getTextBold;
     public Typeface getTextNum = MyApplication.getTextNum;
 
+    @Override
+    public void initViews() {
+
+        fgtContext = (AppCompatActivity) getActivity();
+    }
+
     /*
      * 毛玻璃
      * */
@@ -225,9 +231,5 @@ abstract public class BaseFgt extends BaseFragment {
         return (bitmap);
     }
 
-    @Override
-    public void initViews() {
 
-        fgtContext = (AppCompatActivity) getActivity();
-    }
 }

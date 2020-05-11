@@ -144,7 +144,8 @@ public class FictionActivity extends BaseAty {
         titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(DraftActivity.class);
+                jump(DraftActivity.class,new JumpParameter()
+                          .put("flagSpeed",1));
             }
         });
 

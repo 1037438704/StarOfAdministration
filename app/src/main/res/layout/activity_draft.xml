@@ -26,11 +26,25 @@
                 android:id="@+id/main_rgp"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:layout_marginLeft="12dp"
                 android:orientation="horizontal"
                 android:paddingTop="3dp"
-                android:layout_marginRight="108dp"
                 >
+
+                <RadioButton
+                    android:id="@+id/draft_speed_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="进度追踪"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="20dp"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -38,6 +52,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:text="公文编辑"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="7dp"
                     android:includeFontPadding="false"
@@ -91,90 +106,6 @@
             android:layout_height="1dp"/>
 
         <include layout="@layout/layout_bottom"/>
-
-        <LinearLayout
-            android:id="@+id/draft_chat"
-            android:orientation="vertical"
-            android:visibility="gone"
-            android:background="@color/white"
-            android:layout_marginTop="2dp"
-            android:layout_width="match_parent"
-            android:layout_height="253dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/draft_chat_recycle"
-                android:layout_width="match_parent"
-                android:layout_height="206dp">
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <View
-                android:background="#eff0f2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="46dp">
-
-                <LinearLayout
-                    android:id="@+id/draft_chat_new"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/draft_chat_new_img"
-                        android:src="@mipmap/icon_chang_yong_new"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"/>
-
-                    <TextView
-                        android:id="@+id/draft_chat_new_text"
-                        android:text="新建"
-                        android:textColor="@color/textMedium"
-                        android:textSize="16dp"
-                        android:includeFontPadding="false"
-                        android:layout_width="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-
-                <View
-                    android:background="#eff0f2"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginBottom="17dp"
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"/>
-                <LinearLayout
-                    android:id="@+id/draft_chat_set"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/draft_chat_set_img"
-                        android:src="@mipmap/icon_chang_yong_set"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"/>
-                    <TextView
-                        android:id="@+id/draft_chat_set_text"
-                        android:text="管理"
-                        android:textColor="@color/textMedium"
-                        android:textSize="16dp"
-                        android:includeFontPadding="false"
-                        android:layout_width="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -339,6 +270,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="18dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"
@@ -359,13 +291,42 @@
 
             </LinearLayout>
 
-            <View
-                android:background="#4C4C50"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="25dp"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/draft_more_end_linear"
+            android:background="@drawable/shape_pop4"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/draft_more_end"
                 android:layout_marginLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="18dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@mipmap/icon_quite"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+
+                <TextView
+                    android:text="终止文件"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

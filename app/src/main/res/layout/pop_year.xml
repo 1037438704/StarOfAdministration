@@ -52,7 +52,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#f5f5f5"
-            android:layout_marginBottom="47dp"
             />
 
         <LinearLayout
@@ -88,7 +87,7 @@
     </LinearLayout>
 
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:background="@color/white"
         android:gravity="center_vertical"
         android:layout_alignParentBottom="true"
@@ -115,5 +114,5 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+    </LinearLayout>-->
 </RelativeLayout>

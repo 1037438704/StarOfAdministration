@@ -185,6 +185,7 @@ public class ChoosePersonActivity extends BaseAty {
                 RecyclerView popChooseGroup = view.findViewById(R.id.pop_choose_group);
                 TextView popTitle = view.findViewById(R.id.pop_title);
                 LinearLayout popGuanli = view.findViewById(R.id.pop_guanli);
+                Button popCancle = view.findViewById(R.id.pop_cancle);
                 //设置字体
                 popTitle.setTypeface(getTextMedium);
 
@@ -196,6 +197,15 @@ public class ChoosePersonActivity extends BaseAty {
                     @Override
                     public void onClick(View v) {
                         jump(GroupMangerActivity.class);
+                        dialog.dismiss();
+                    }
+                });
+
+                //取消
+                popCancle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
                     }
                 });
 

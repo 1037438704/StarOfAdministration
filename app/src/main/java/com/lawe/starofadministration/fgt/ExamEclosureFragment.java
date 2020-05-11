@@ -2,21 +2,15 @@ package com.lawe.starofadministration.fgt;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.EnclosureAdapter;
-import com.lawe.starofadministration.adp.MessageAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
 
 import java.util.ArrayList;
@@ -24,12 +18,11 @@ import java.util.List;
 
 /**
  * author : fuke
- * date : 2020/4/30 16:38
- * description : 起草公文---附件目录
- **/
-
+ * date : 2020/5/11 14:08
+ * description : 公文会签----附件目录
+ */
 @Layout(R.layout.fgt_enclosure)
-public class EnclosureCatalogFragment extends BaseFgt {
+public class ExamEclosureFragment extends BaseFgt {
 
     private RecyclerView enclosureRecycle;
     private LinearLayout enclosureShangchuan;
@@ -78,8 +71,8 @@ public class EnclosureCatalogFragment extends BaseFgt {
 
     }
 
-    public static EnclosureCatalogFragment newInstance() {
-        return new EnclosureCatalogFragment();
-    }
 
+    public static ExamEclosureFragment newInstance() {
+        return new ExamEclosureFragment();
+    }
 }

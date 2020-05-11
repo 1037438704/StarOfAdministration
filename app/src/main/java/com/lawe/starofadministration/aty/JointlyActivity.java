@@ -1,15 +1,15 @@
 package com.lawe.starofadministration.aty;
 
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,13 +18,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
 import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
@@ -32,13 +25,12 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
-import com.lawe.starofadministration.adp.DraftChatAdapter;
-import com.lawe.starofadministration.adp.TemplateAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
-import com.lawe.starofadministration.bean.ListChatBean;
 import com.lawe.starofadministration.fgt.DocumentEditFragment;
 import com.lawe.starofadministration.fgt.EnclosureCatalogFragment;
+import com.lawe.starofadministration.fgt.JoinContextFragment;
+import com.lawe.starofadministration.fgt.JoinEclosureFragment;
 import com.lawe.starofadministration.fgt.JoinSpeedFragment;
 import com.lawe.starofadministration.fgt.SetMessageFragment;
 
@@ -47,106 +39,57 @@ import java.util.List;
 
 /**
  * author : fuke
- * date : 2020/4/30 15:54
- * description : 公文起草
+ * date : 2020/5/11 13:33
+ * description : 公文会签
  **/
-@Layout(R.layout.activity_draft)
+@Layout(R.layout.activity_jointly)
 @DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
-public class DraftActivity extends BaseAty {
+public class JointlyActivity extends BaseAty {
 
     private ImageView titleBack;
     private TextView titleText;
-    private LinearLayout titleNew;
     private RadioGroup mainRgp;
     private ViewPager viewPagerData;
-    private LinearLayout titleMore;
-    private int flag = 1; //更多展开隐藏标识
-    private int chatflag = 1; //常用语展开隐藏标识
-    ViewPagerAdp viewPagerAdp;
-    private List<BaseFragment> fragemnts;
-    private LinearLayout draftMore;
-    private LinearLayout draftAll;
-    private LinearLayout draftMoreAI;
-    private LinearLayout draftMoreDaoru;
-    private LinearLayout draftMoreSave;
-    private LinearLayout draftMoreTemplate;
-    private LinearLayout draftMoreGlossary;
-
-    //空集合
-    private List<String> list;
-    private TemplateAdapter templateAdapter;
-    private LinearLayout draftChat;
-    private RecyclerView draftChatRecycle;
-    private LinearLayout draftChatNew;
-    private LinearLayout draftChatSet;
     private ImageView bottomPerson;
     private ImageView bottomPizhu;
     private EditText bottomWhrit;
     private ImageView bottomChat;
     private Button bottomButton;
+    private LinearLayout draftChat;
+    private RecyclerView draftChatRecycle;
+    private LinearLayout draftChatNew;
+    private ImageView draftChatNewImg;
     private TextView draftChatNewText;
+    private LinearLayout draftChatSet;
+    private ImageView draftChatSetImg;
     private TextView draftChatSetText;
 
-    //空集合
-    private List<ListChatBean> listchat;
-    private DraftChatAdapter draftChatAdapter;
-    private LinearLayoutManager layoutManager;
-    private ImageView draftChatNewImg;
-    private ImageView draftChatSetImg;
-    private RadioButton draftSpeedOne;
-    private RadioButton rb;
+    private List<BaseFragment> fragemnts;
+    private ViewPagerAdp viewPagerAdp;
+    private int chatflag = 1; //常用语展开隐藏标识
 
     @Override
     public void initViews() {
-
         initView();
 
         fragemnts = new ArrayList<>();
-
-        //获取上一个页面传递的标识
-        int flagSpeed = (int) getParameter().get("flagSpeed");
-        Log.e("flagSpeed",flagSpeed+"");
-        if (flagSpeed == 1){
-            draftSpeedOne.setVisibility(View.GONE);
-            fragemnts.remove(JoinSpeedFragment.newInstance());
-            rb = (RadioButton) mainRgp.getChildAt(1);
-        }else{
-            draftSpeedOne.setVisibility(View.VISIBLE);
-            rb = (RadioButton) mainRgp.getChildAt(0);
-        }
-
+        RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
         rb.setTypeface(getTextMedium);
 
-        //常用语列表
-        listchat = new ArrayList<>();
-        layoutManager = new LinearLayoutManager(me);
-        draftChatRecycle.setLayoutManager(layoutManager);
-        draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
-        draftChatRecycle.setAdapter(draftChatAdapter);
     }
-
 
     @Override
     public void initDatas(JumpParameter parameter) {
-
+        fragemnts.add(JoinContextFragment.newInstance());
+        fragemnts.add(JoinEclosureFragment.newInstance());
         fragemnts.add(JoinSpeedFragment.newInstance());
-        fragemnts.add(DocumentEditFragment.newInstance());
-        fragemnts.add(EnclosureCatalogFragment.newInstance());
-        fragemnts.add(SetMessageFragment.newInstance());
 
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPagerData.setOffscreenPageLimit(fragemnts.size());
         viewPagerData.setAdapter(viewPagerAdp);
-
-        for (int i = 0; i < 10; i++) {
-            listchat.add(new ListChatBean(false, "第" + i + "条"));
-        }
-        //常用语列表
-        draftChatAdapter.setNewData(listchat);
-        draftChatAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -183,89 +126,6 @@ public class DraftActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-
-        //查看更多
-        titleMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (flag == 1) {
-                    draftMore.setVisibility(View.VISIBLE);
-                    flag = 2;
-                } else if (flag == 2) {
-                    draftMore.setVisibility(View.GONE);
-                    flag = 1;
-                }
-            }
-        });
-
-        draftAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (flag == 2) {
-                    draftMore.setVisibility(View.GONE);
-                    flag = 1;
-                }
-                if (chatflag == 2) {
-                    draftChat.setVisibility(View.GONE);
-                    chatflag = 1;
-                }
-            }
-        });
-
-        //模板列表
-        draftMoreTemplate.setOnClickListener(new View.OnClickListener() {
-
-            private RecyclerView popDraftRecycle;
-            private ImageView loginDown;
-
-            @Override
-            public void onClick(View v) {
-                draftMore.setVisibility(View.GONE);
-                flag = 1;
-                //1、使用Dialog、设置style
-                final Dialog dialog = new Dialog(me, R.style.DialogTheme);
-                //2、设置布局
-                View view = View.inflate(me, R.layout.pop_draft_muban, null);
-                dialog.setContentView(view);
-
-                Window window = dialog.getWindow();
-                //设置弹出位置
-                window.setGravity(Gravity.BOTTOM);
-                //设置弹出动画
-                window.setWindowAnimations(R.style.main_menu_animStyle);
-                //设置对话框大小
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                loginDown = view.findViewById(R.id.login_down);
-                popDraftRecycle = view.findViewById(R.id.pop_draft_recycle);
-
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(me, 2);
-                popDraftRecycle.setLayoutManager(gridLayoutManager);
-
-                //列表
-                list = new ArrayList<>();
-                //待办信息
-                templateAdapter = new TemplateAdapter(R.layout.item_pop_draft);
-                popDraftRecycle.setAdapter(templateAdapter);
-
-                for (int i = 0; i < 10; i++) {
-                    list.add("" + i);
-                }
-                templateAdapter.setNewData(list);
-                templateAdapter.notifyDataSetChanged();
-
-
-                loginDown.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
             }
         });
 
@@ -388,11 +248,11 @@ public class DraftActivity extends BaseAty {
             }
         });
 
-        //暂定提交按钮---去公文会签
+        //暂定跳往审核页面
         bottomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(JointlyActivity.class);
+                jump(ExamineActivity.class);
             }
         });
     }
@@ -400,50 +260,24 @@ public class DraftActivity extends BaseAty {
     private void initView() {
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
-        titleNew = findViewById(R.id.title_new);
-        titleMore = findViewById(R.id.title_more);
         mainRgp = findViewById(R.id.main_rgp);
         viewPagerData = findViewById(R.id.viewPagerData);
-
-        draftAll = findViewById(R.id.draft_all);
-        draftMore = findViewById(R.id.draft_more);
-        draftMoreAI = findViewById(R.id.draft_more_AI);
-        draftMoreDaoru = findViewById(R.id.draft_more_daoru);
-        draftMoreSave = findViewById(R.id.draft_more_save);
-        draftMoreTemplate = findViewById(R.id.draft_more_template);
-        draftMoreGlossary = findViewById(R.id.draft_more_glossary);
-
+        //下输入键盘常用语的部分
         bottomPerson = findViewById(R.id.bottom_person);
         bottomPizhu = findViewById(R.id.bottom_pizhu);
         bottomWhrit = findViewById(R.id.bottom_whrit);
         bottomChat = findViewById(R.id.bottom_chat);
         bottomButton = findViewById(R.id.bottom_button);
-
         draftChat = findViewById(R.id.draft_chat);
         draftChatRecycle = findViewById(R.id.draft_chat_recycle);
         draftChatNew = findViewById(R.id.draft_chat_new);
-        draftChatSet = findViewById(R.id.draft_chat_set);
+        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
         draftChatNewText = findViewById(R.id.draft_chat_new_text);
+        draftChatSet = findViewById(R.id.draft_chat_set);
+        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
         draftChatSetText = findViewById(R.id.draft_chat_set_text);
 
-        //设置字体
-        titleText.setText("起草公文");
+        titleText.setText("公文会签");
         titleText.setTypeface(getTextBold);
-        titleMore.setVisibility(View.VISIBLE);
-        draftChatNewText.setTypeface(getTextMedium);
-        draftChatSetText.setTypeface(getTextMedium);
-        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
-        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
-        draftSpeedOne = findViewById(R.id.draft_speed_one);
     }
-    //改变状态
-
-    private  void listItemstate(){
-        List<ListChatBean> list =  draftChatAdapter.getData();
-        for (int i = 0; i < list.size(); i++) {
-            list.get(i).setDisplay(!list.get(i).getDisplay());
-        }
-        draftChatAdapter.notifyDataSetChanged();
-    }
-
 }

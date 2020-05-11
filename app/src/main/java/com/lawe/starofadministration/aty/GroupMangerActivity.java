@@ -1,12 +1,17 @@
 package com.lawe.starofadministration.aty;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -45,7 +50,7 @@ public class GroupMangerActivity extends BaseAty {
     private LinearLayout titleNew;
     private TextView titleRight;
     private LinearLayout titleButton1;
-    private android.widget.Button titleButton2;
+    private Button titleButton2;
     private RecyclerView groupRecycle;
     private LinearLayout groupDelete;
     private TextView draftChatSetText;
@@ -54,16 +59,16 @@ public class GroupMangerActivity extends BaseAty {
 
     @Override
     public void initViews() {
-        RecyclerView popChooseGroup = findViewById(R.id.pop_choose_group);
+        initView();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(me);
-        popChooseGroup.setLayoutManager(layoutManager);
+        groupRecycle.setLayoutManager(layoutManager);
 
         //列表
         list = new ArrayList<>();
         //待办信息
         LookGroupAdapter lookGroupAdapter = new LookGroupAdapter(R.layout.item_group);
-        popChooseGroup.setAdapter(lookGroupAdapter);
+        groupRecycle.setAdapter(lookGroupAdapter);
 
         for (int i = 0; i < 15; i++) {
             list.add("" + i);
@@ -80,20 +85,98 @@ public class GroupMangerActivity extends BaseAty {
     @Override
     public void setEvents() {
 
+        //返回
+        titleBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        //新建常用组
+        groupNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(me);
+                View view = View.inflate(me, R.layout.pop_add_group, null);
+                builder.setView(view);
+                builder.setCancelable(true);
+                AlertDialog dialog = builder.create();
+
+                TextView popAddTitle = view.findViewById(R.id.pop_add_group_title);
+                EditText popAddEdit = view.findViewById(R.id.pop_add_group_edit);
+                Button popAddCancle = view.findViewById(R.id.pop_add_group_cancle);
+                Button popAddSure = view.findViewById(R.id.pop_add_group_sure);
+
+                //设置字体
+                popAddTitle.setTypeface(getTextMedium);
+                popAddSure.setTypeface(getTextMedium);
+
+                //取消的点击
+                popAddCancle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            }
+        });
+
+        //删除常用组
+        groupDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(me);
+                View view = View.inflate(me, R.layout.pop_delete_group, null);
+                builder.setView(view);
+                builder.setCancelable(true);
+                AlertDialog dialog = builder.create();
+
+                TextView popDeleteTitle = view.findViewById(R.id.pop_delete_group_title);
+                TextView popDeleteName = view.findViewById(R.id.pop_delete_group_name);
+                Button popDeleteCancle = view.findViewById(R.id.pop_delete_group_cancle);
+                Button popDeleteSure = view.findViewById(R.id.pop_delete_group_sure);
+
+                //设置字体
+                popDeleteTitle.setTypeface(getTextMedium);
+                popDeleteName.setTypeface(getTextMedium);
+                popDeleteSure.setTypeface(getTextMedium);
+
+                //取消的点击
+                popDeleteCancle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            }
+        });
     }
 
     private void initView() {
-        titleBack = (ImageView) findViewById(R.id.title_back);
-        titleText = (TextView) findViewById(R.id.title_text);
-        titleMore = (LinearLayout) findViewById(R.id.title_more);
-        titleNew = (LinearLayout) findViewById(R.id.title_new);
-        titleRight = (TextView) findViewById(R.id.title_right);
-        titleButton1 = (LinearLayout) findViewById(R.id.title_button1);
-        titleButton2 = (Button) findViewById(R.id.title_button2);
-        groupRecycle = (RecyclerView) findViewById(R.id.group_recycle);
-        groupDelete = (LinearLayout) findViewById(R.id.group_delete);
-        draftChatSetText = (TextView) findViewById(R.id.draft_chat_set_text);
-        groupNew = (LinearLayout) findViewById(R.id.group_new);
-        draftChatNewText = (TextView) findViewById(R.id.draft_chat_new_text);
+        titleBack = findViewById(R.id.title_back);
+        titleText = findViewById(R.id.title_text);
+        titleMore = findViewById(R.id.title_more);
+        titleNew = findViewById(R.id.title_new);
+        titleRight = findViewById(R.id.title_right);
+        titleButton1 = findViewById(R.id.title_button1);
+        titleButton2 = findViewById(R.id.title_button2);
+        groupRecycle = findViewById(R.id.group_recycle);
+        groupDelete = findViewById(R.id.group_delete);
+        draftChatSetText = findViewById(R.id.draft_chat_set_text);
+        groupNew = findViewById(R.id.group_new);
+        draftChatNewText = findViewById(R.id.draft_chat_new_text);
+
+        titleButton1.setVisibility(View.VISIBLE);
+        titleText.setText("管理常用组");
+        titleText.setTypeface(getTextBold);
+        draftChatSetText.setTypeface(getTextMedium);
+        draftChatNewText.setTypeface(getTextMedium);
     }
 }

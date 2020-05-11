@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="22dp"
+    android:paddingLeft="6dp"
+    android:paddingRight="6dp"
+    android:layout_marginBottom="2dp"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="48dp"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:src="@mipmap/me"
+            android:layout_width="48dp"
+            android:layout_height="48dp"/>
+
+        <ImageView
+            android:src="@mipmap/select1"
+            android:layout_alignParentRight="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:text="杨娜"
+        android:textSize="14dp"
+        android:textColor="@color/textMedium"
+        android:includeFontPadding="true"
+        android:layout_marginTop="10dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="岗位职称2我殴斗"
+        android:textSize="12dp"
+        android:textColor="@color/text717173"
+        android:includeFontPadding="true"
+        android:layout_marginTop="4dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
