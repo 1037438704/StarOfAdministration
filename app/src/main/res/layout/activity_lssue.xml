@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".aty.DraftActivity">
+
+    <LinearLayout
+        android:background="#F5F5F5"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/layout_title_white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:elevation="2dp"
+            android:background="@color/white"
+            android:layout_marginTop="1dp"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:id="@+id/main_rgp"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal"
+                android:paddingTop="3dp"
+                android:layout_marginRight="108dp"
+                >
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="公文内容"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:layout_marginLeft="36dp"
+                    android:gravity="center"
+                    android:text="附件目录"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="36dp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="办理进度"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerData"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+
+        <View
+            android:background="#EFF0F2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="47dp">
+
+                <ImageView
+                    android:id="@+id/bottom_zhang"
+                    android:src="@mipmap/icon_official_seal"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/shape_hui4"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="36dp">
+
+                    <EditText
+                        android:id="@+id/bottom_whrit"
+                        android:hint="请填写会签意见"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:background="@null"/>
+
+                    <ImageView
+                        android:id="@+id/bottom_chat"
+                        android:src="@mipmap/icon_commonly_used"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/bottom_button"
+                    android:text="完成"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp"
+                    android:background="@drawable/shape_red42_22"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="52dp"
+                    android:layout_height="34dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/draft_chat"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="253dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/draft_chat_recycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="206dp">
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <View
+                    android:background="#eff0f2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp">
+
+                    <LinearLayout
+                        android:id="@+id/draft_chat_new"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/draft_chat_new_img"
+                            android:src="@mipmap/icon_chang_yong_new"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"/>
+
+                        <TextView
+                            android:id="@+id/draft_chat_new_text"
+                            android:text="新建"
+                            android:textColor="@color/textMedium"
+                            android:textSize="16dp"
+                            android:includeFontPadding="false"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <View
+                        android:background="#eff0f2"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="17dp"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"/>
+                    <LinearLayout
+                        android:id="@+id/draft_chat_set"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/draft_chat_set_img"
+                            android:src="@mipmap/icon_chang_yong_set"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"/>
+                        <TextView
+                            android:id="@+id/draft_chat_set_text"
+                            android:text="管理"
+                            android:textColor="@color/textMedium"
+                            android:textSize="16dp"
+                            android:includeFontPadding="false"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

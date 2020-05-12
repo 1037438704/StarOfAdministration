@@ -1,12 +1,8 @@
 package com.lawe.starofadministration.aty;
 
-import android.app.Dialog;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,7 +13,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -28,15 +23,11 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
-import com.lawe.starofadministration.adp.DraftChatAdapter;
-import com.lawe.starofadministration.adp.TemplateAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
-import com.lawe.starofadministration.bean.ListChatBean;
-import com.lawe.starofadministration.fgt.ApproveContextFragment;
-import com.lawe.starofadministration.fgt.ApproveEclosureFragment;
-import com.lawe.starofadministration.fgt.ApproveSettingFragment;
-import com.lawe.starofadministration.fgt.ApproveSpeedFragment;
+import com.lawe.starofadministration.fgt.LssueContextFragment;
+import com.lawe.starofadministration.fgt.LssueEclosureFragment;
+import com.lawe.starofadministration.fgt.LssueSpeedFragment;
 import com.lawe.starofadministration.fgt.ReviewContextFragment;
 import com.lawe.starofadministration.fgt.ReviewEclosureFragment;
 import com.lawe.starofadministration.fgt.ReviewSpeedFragment;
@@ -46,19 +37,21 @@ import java.util.List;
 
 /**
  * author : fuke
- * date : 2020/5/12 13:54
- * description : 公文核发
+ * date : 2020/5/12 15:03
+ * description : 公文签发
  **/
-@Layout(R.layout.activity_review)
+@Layout(R.layout.activity_lssue)
 @DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
-public class ApproveActivity extends BaseAty {
+public class LssueActivity extends BaseAty {
 
     private ImageView titleBack;
     private TextView titleText;
     private RadioGroup mainRgp;
     private ViewPager viewPagerData;
+    private ImageView bottomPerson;
+    private ImageView bottomPizhu;
     private EditText bottomWhrit;
     private ImageView bottomChat;
     private Button bottomButton;
@@ -74,10 +67,6 @@ public class ApproveActivity extends BaseAty {
     private List<BaseFragment> fragemnts;
     private ViewPagerAdp viewPagerAdp;
     private int chatflag = 1; //常用语展开隐藏标识
-    private ImageView bottomZhang;
-    //空集合
-    private List<String> list;
-    private TemplateAdapter templateAdapter;
 
     @Override
     public void initViews() {
@@ -92,10 +81,9 @@ public class ApproveActivity extends BaseAty {
 
     @Override
     public void initDatas(JumpParameter parameter) {
-        fragemnts.add(ApproveContextFragment.newInstance());
-        fragemnts.add(ApproveSettingFragment.newInstance());
-        fragemnts.add(ApproveEclosureFragment.newInstance());
-        fragemnts.add(ApproveSpeedFragment.newInstance());
+        fragemnts.add(LssueContextFragment.newInstance());
+        fragemnts.add(LssueEclosureFragment.newInstance());
+        fragemnts.add(LssueSpeedFragment.newInstance());
 
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPagerData.setOffscreenPageLimit(fragemnts.size());
@@ -248,65 +236,16 @@ public class ApproveActivity extends BaseAty {
             }
         });
 
-        //公章
-        bottomZhang.setOnClickListener(new View.OnClickListener() {
-
-            private RecyclerView popDraftRecycle;
-            private ImageView loginDown;
-
+        //人员选择
+        bottomPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //1、使用Dialog、设置style
-                final Dialog dialog = new Dialog(me, R.style.DialogTheme);
-                //2、设置布局
-                View view = View.inflate(me, R.layout.pop_draft_muban, null);
-                dialog.setContentView(view);
-
-                Window window = dialog.getWindow();
-                //设置弹出位置
-                window.setGravity(Gravity.BOTTOM);
-                //设置弹出动画
-                window.setWindowAnimations(R.style.main_menu_animStyle);
-                //设置对话框大小
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                loginDown = view.findViewById(R.id.login_down);
-                popDraftRecycle = view.findViewById(R.id.pop_draft_recycle);
-
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(me, 2);
-                popDraftRecycle.setLayoutManager(gridLayoutManager);
-
-                //列表
-                list = new ArrayList<>();
-                templateAdapter = new TemplateAdapter(R.layout.item_pop_draft);
-                popDraftRecycle.setAdapter(templateAdapter);
-
-                for (int i = 0; i < 10; i++) {
-                    list.add("" + i);
-                }
-                templateAdapter.setNewData(list);
-                templateAdapter.notifyDataSetChanged();
-
-
-                loginDown.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
+                jump(ChoosePersonActivity.class, new JumpParameter()
+                        .put("flagType", 1)
+                );
             }
         });
 
-        //暂定跳往签发页面
-        bottomButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                jump(LssueActivity.class);
-            }
-        });
     }
 
     private void initView() {
@@ -315,7 +254,8 @@ public class ApproveActivity extends BaseAty {
         mainRgp = findViewById(R.id.main_rgp);
         viewPagerData = findViewById(R.id.viewPagerData);
         //下输入键盘常用语的部分
-        bottomZhang = findViewById(R.id.bottom_zhang);
+        bottomPerson = findViewById(R.id.bottom_person);
+        bottomPizhu = findViewById(R.id.bottom_pizhu);
         bottomWhrit = findViewById(R.id.bottom_whrit);
         bottomChat = findViewById(R.id.bottom_chat);
         bottomButton = findViewById(R.id.bottom_button);
@@ -330,6 +270,5 @@ public class ApproveActivity extends BaseAty {
 
         titleText.setText("公文审阅");
         titleText.setTypeface(getTextBold);
-
     }
 }

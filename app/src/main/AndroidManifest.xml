@@ -62,6 +62,8 @@
         <activity android:name=".aty.ProofreadActivity"/>
         <!--公文核发-->
         <activity android:name=".aty.ApproveActivity"/>
+        <!--公文签发-->
+        <activity android:name=".aty.LssueActivity"/>
         <!--公文会签-->
         <activity android:name=".aty.JointlyActivity"/>
         <!-- 常用组管理 -->
