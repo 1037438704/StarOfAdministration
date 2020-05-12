@@ -23,6 +23,7 @@ import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ChoosePeopleAdapter;
+import com.lawe.starofadministration.adp.LookCompanyAdapter;
 import com.lawe.starofadministration.adp.LookGroupAdapter;
 import com.lawe.starofadministration.adp.OtherBumenAdapter;
 import com.lawe.starofadministration.base.BaseAty;
@@ -107,7 +108,7 @@ public class ChooseCompanyActivity extends BaseAty {
             }
         });
 
-        //查看已选人员
+        //查看已选单位
         choosePersonAlredySelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,12 +128,14 @@ public class ChooseCompanyActivity extends BaseAty {
 
                 ImageView loginDown = view.findViewById(R.id.login_down);
                 RecyclerView popAlredyRecycle = view.findViewById(R.id.pop_alredy_recycle);
+                TextView popAlredyTitle = view.findViewById(R.id.pop_alredy_title);
+                popAlredyTitle.setText("已选单位");
                 LinearLayoutManager layoutManager = new LinearLayoutManager(me);
                 popAlredyRecycle.setLayoutManager(layoutManager);
 
                 //列表
                 list = new ArrayList<>();
-                //待办信息
+                //已选单位列表----和已选人员共用适配器
                 ChoosePeopleAdapter choosePeopleAdapter = new ChoosePeopleAdapter(R.layout.item_choose_company);
                 popAlredyRecycle.setAdapter(choosePeopleAdapter);
 
@@ -141,7 +144,6 @@ public class ChooseCompanyActivity extends BaseAty {
                 }
                 choosePeopleAdapter.setNewData(list);
                 choosePeopleAdapter.notifyDataSetChanged();
-
 
                 loginDown.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -162,7 +164,7 @@ public class ChooseCompanyActivity extends BaseAty {
                 //1、使用Dialog、设置style
                 final Dialog dialog = new Dialog(me, R.style.DialogTheme);
                 //2、设置布局
-                View view = View.inflate(me, R.layout.pop_look_group, null);
+                View view = View.inflate(me, R.layout.pop_look_company, null);
                 dialog.setContentView(view);
 
                 Window window = dialog.getWindow();
@@ -202,15 +204,14 @@ public class ChooseCompanyActivity extends BaseAty {
 
                 //列表
                 list = new ArrayList<>();
-                //待办信息
-                LookGroupAdapter lookGroupAdapter = new LookGroupAdapter(R.layout.item_group);
-                popChooseGroup.setAdapter(lookGroupAdapter);
+                LookCompanyAdapter lookCompanyAdapter = new LookCompanyAdapter(R.layout.item_group);
+                popChooseGroup.setAdapter(lookCompanyAdapter);
 
                 for (int i = 0; i < 10; i++) {
                     list.add("" + i);
                 }
-                lookGroupAdapter.setNewData(list);
-                lookGroupAdapter.notifyDataSetChanged();
+                lookCompanyAdapter.setNewData(list);
+                lookCompanyAdapter.notifyDataSetChanged();
 
                 dialog.show();
                 dialog.setCanceledOnTouchOutside(true);

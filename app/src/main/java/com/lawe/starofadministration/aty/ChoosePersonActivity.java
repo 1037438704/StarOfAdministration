@@ -79,12 +79,7 @@ public class ChoosePersonActivity extends BaseAty {
         itemChooseBuMenName.setTypeface(getTextMedium);
         titleRight.setText("常用组");
 
-        //获取上一个页面传递的标识
-        int flagType = (int) getParameter().get("flagType");
-        Log.e("flagType",flagType+"");
-        if (flagType == 1){
-            titleText.setText("选择审核人");
-        }
+        titleText.setText("选择审核人");
 
         //其他部门列表
         list = new ArrayList<>();
@@ -136,12 +131,14 @@ public class ChoosePersonActivity extends BaseAty {
 
                 ImageView loginDown = view.findViewById(R.id.login_down);
                 RecyclerView popAlredyRecycle = view.findViewById(R.id.pop_alredy_recycle);
+                TextView popAlredyTitle = view.findViewById(R.id.pop_alredy_title);
+                popAlredyTitle.setText("已选人员");
                 LinearLayoutManager layoutManager = new LinearLayoutManager(me);
                 popAlredyRecycle.setLayoutManager(layoutManager);
 
                 //列表
                 list = new ArrayList<>();
-                //待办信息
+                //已选人员---和已选单位共用适配器
                 ChoosePeopleAdapter choosePeopleAdapter = new ChoosePeopleAdapter(R.layout.item_choose_people);
                 popAlredyRecycle.setAdapter(choosePeopleAdapter);
 
@@ -211,7 +208,7 @@ public class ChoosePersonActivity extends BaseAty {
 
                 //列表
                 list = new ArrayList<>();
-                //待办信息
+                //管理常用组列表
                 LookGroupAdapter lookGroupAdapter = new LookGroupAdapter(R.layout.item_group);
                 popChooseGroup.setAdapter(lookGroupAdapter);
 
