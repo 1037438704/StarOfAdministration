@@ -246,11 +246,11 @@ public class ExamineActivity extends BaseAty {
             }
         });
 
-        //暂定跳往审核页面
+        //暂定跳往审阅页面
         bottomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                jump(ReviewActivity.class);
             }
         });
     }

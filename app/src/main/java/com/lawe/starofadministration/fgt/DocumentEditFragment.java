@@ -12,6 +12,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.kongzue.baseframework.interfaces.Layout;
+import com.kongzue.baseokhttp.HttpRequest;
+import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.Parameter;
+import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 
@@ -59,7 +63,22 @@ public class DocumentEditFragment extends BaseFgt {
 
     @Override
     public void initDatas() {
-
+        //调用模板
+        HttpRequest.POST(me, "http://192.168.0.179:8081/szzw-web/sys/poffice/showWord", new Parameter()
+                .add("depUserId", "1253514067132448770")
+                .add("temWordfile","临时文件"), new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                WaitDialog.dismiss();
+                if (error == null) {
+//                    resultHttp.setText(response);
+                } else {
+                    error.getMessage();
+//                    resultHttp.setText("请求失败");
+//                    Toast.makeText(context, "请求失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
