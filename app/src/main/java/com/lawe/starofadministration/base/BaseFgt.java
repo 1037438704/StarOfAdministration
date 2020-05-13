@@ -11,8 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kongzue.baseframework.BaseFragment;
 import com.lawe.starofadministration.MyApplication;
+import com.lawe.starofadministration.config.Constants;
 
-abstract public class BaseFgt extends BaseFragment {
+abstract public class BaseFgt extends BaseFragment implements Constants {
 
     public AppCompatActivity fgtContext;
     public Typeface getTextMedium = MyApplication.getTextMedium;

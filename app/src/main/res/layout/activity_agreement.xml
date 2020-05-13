@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="67dp"
+    android:background="@drawable/shape_background8"
+    android:paddingTop="8dp"
+    android:layout_height="wrap_content">
+
+    <include layout="@layout/item_img_down"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:elevation="2dp"
+        android:background="@color/white"
+        android:layout_marginTop="1dp"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:id="@+id/main_rgp"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="3dp"
+            >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:gravity="center"
+                android:text="公文内容"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:includeFontPadding="false"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:layout_marginLeft="36dp"
+                android:gravity="center"
+                android:text="附件目录"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:includeFontPadding="false"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="36dp"
+                android:button="@null"
+                android:gravity="center"
+                android:text="办理进度"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="7dp"
+                android:includeFontPadding="false"
+                android:drawableBottom="@drawable/select_red_xiahualine"
+                android:textColor="@drawable/select_textcolor"
+                android:textSize="14dp" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerData"
+        android:background="#F5F5F5"
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:layout_height="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="47dp"
+        >
+        <Button
+            android:id="@+id/login_jujue"
+            android:text="拒绝"
+            android:textSize="14dp"
+            android:background="@drawable/shape_white22"
+            android:textColor="#9f9fa0"
+            android:layout_width="122dp"
+            android:layout_height="36dp"/>
+
+        <Button
+            android:id="@+id/login_agree"
+            android:text="同意"
+            android:textSize="14dp"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/shape_red22"
+            android:textColor="#fff"
+            android:layout_width="122dp"
+            android:layout_height="36dp"/>
+    </LinearLayout>
+
+</LinearLayout>

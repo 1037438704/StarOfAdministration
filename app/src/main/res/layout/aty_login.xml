@@ -119,69 +119,90 @@
             android:text="欢迎使用政务之星数字政务系统"
             />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="54dp"
-            android:layout_height="30dp">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/login_zhanghao_small"
+                android:text="账号"
+                android:textSize="14dp"
+                android:visibility="gone"
+                android:includeFontPadding="false"
+                android:textColor="@color/text717173"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="33dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:orientation="vertical"
+                android:layout_marginTop="54dp"
+                android:layout_height="30dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginRight="29dp"
-                    android:gravity="center_vertical"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/login_zhanghao"
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="账号"
-                        android:includeFontPadding="false"
-                        android:textColor="#ff717173"
-                        android:textSize="18sp"
-                        android:autoSizeMaxTextSize="18sp"
-                        android:autoSizeMinTextSize="14sp"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginRight="29dp"
+                        android:gravity="center_vertical"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/login_zhanghao_big"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="账号"
+                            android:layout_marginRight="12dp"
+                            android:includeFontPadding="false"
+                            android:textColor="#ff717173"
+                            android:textSize="18sp"
+                            android:autoSizeMaxTextSize="18sp"
+                            android:autoSizeMinTextSize="14sp"
+                            />
+
+                        <EditText
+                            android:id="@+id/login_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:includeFontPadding="false"
+                            android:focusableInTouchMode="false"
+                            android:textColorHint="#ff9f9fa0"
+                            android:hint="手机号码/用户名"
+                            android:textColor="#3E3E41"
+                            android:textSize="18sp"
+                            />
+                    </LinearLayout>
+
+                    <!--验证码按钮-->
+                    <Button
+                        android:id="@+id/login_getCode"
+                        android:layout_alignParentRight="true"
+                        android:visibility="gone"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="28dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="26dp"
+                        android:text="获取验证码"
+                        android:textSize="12sp"
+                        android:textColor="#fff"
+                        android:background="@drawable/shape_button5"
                         />
 
-                    <EditText
-                        android:id="@+id/login_phone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="12dp"
-                        android:background="@null"
-                        android:textColorHint="#ff9f9fa0"
-                        android:hint="手机号码/用户名"
-                        android:textColor="#3E3E41"
-                        android:textSize="18sp"
-                        />
-                </LinearLayout>
+                </RelativeLayout>
 
-                <!--验证码按钮-->
-                <Button
-                    android:id="@+id/login_getCode"
-                    android:layout_alignParentRight="true"
-                    android:visibility="gone"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="28dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="26dp"
-                    android:text="获取验证码"
-                    android:textSize="12sp"
-                    android:textColor="#fff"
-                    android:background="@drawable/shape_button5"
-                    />
+            </LinearLayout>
 
-            </RelativeLayout>
+        </RelativeLayout>
 
-        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -192,128 +213,147 @@
             android:layout_marginTop="4dp"
             />
 
-        <LinearLayout
-
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="36dp"
             android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:id="@+id/linear_pass"
+            <TextView
+                android:id="@+id/login_password_small"
+                android:text="密码"
+                android:textSize="14dp"
+                android:textColor="@color/text717173"
+                android:includeFontPadding="false"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="14dp"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="36dp"
                 android:layout_height="wrap_content">
 
+                <RelativeLayout
+                    android:id="@+id/linear_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginRight="29dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/login_password_big"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="密码"
+                            android:includeFontPadding="false"
+                            android:layout_marginRight="12dp"
+                            android:textColor="#ff717173"
+                            android:textSize="18sp"
+                            />
+
+                        <EditText
+                            android:id="@+id/login_edpass"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:includeFontPadding="false"
+                            android:focusableInTouchMode="false"
+                            android:textColorHint="#ff9f9fa0"
+                            android:hint="请输入密码"
+                            android:textColor="#3E3E41"
+                            android:textSize="18sp"
+                            />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/login_eye"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="30dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"/>
+                </RelativeLayout>
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/linear_code"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
                     android:orientation="horizontal"
                     android:layout_marginLeft="28dp"
                     android:layout_marginRight="29dp"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/login_password"
+                        android:id="@+id/login_code"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="密码"
+                        android:text="验证码"
                         android:includeFontPadding="false"
                         android:textColor="#ff717173"
                         android:textSize="18sp"
                         />
 
                     <EditText
-                        android:id="@+id/login_edpass"
+                        android:id="@+id/login_codePass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
                         android:background="@null"
+                        android:hint="请输入验证码"
                         android:textColorHint="#ff9f9fa0"
-                        android:hint="请输入密码"
                         android:textColor="#3E3E41"
                         android:textSize="18sp"
                         />
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/login_eye"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="30dp"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"/>
-            </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/linear_code"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="29dp"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/login_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="验证码"
-                    android:includeFontPadding="false"
-                    android:textColor="#ff717173"
-                    android:textSize="18sp"
-                    />
-
-                <EditText
-                    android:id="@+id/login_codePass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:background="@null"
-                    android:hint="请输入验证码"
-                    android:textColorHint="#ff9f9fa0"
-                    android:textColor="#3E3E41"
-                    android:textSize="18sp"
-                    />
-            </LinearLayout>
-
-
-            <View
-                android:id="@+id/login_code_view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#EDEDED"
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="29dp"
-                android:layout_marginTop="8dp"
-                />
-
-            <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/linera_edit_code"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_height="wrap_content">
-                <com.wynsbin.vciv.VerificationCodeInputView
-                    android:id="@+id/vciv_code"
+                <View
+                    android:id="@+id/login_code_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    app:vciv_et_background="@android:color/white"
-                    app:vciv_et_cursor_color="@color/black"
-                    app:vciv_et_height="58dp"
-                    app:vciv_et_inputType="number"
-                    app:vciv_et_number="4"
-                    app:vciv_et_text_color="#333333"
-                    app:vciv_et_text_size="18sp"
-                    app:vciv_et_underline_focus_color="@color/black"
-                    app:vciv_et_underline_height="3dp"
-                    app:vciv_et_underline_show="true"
-                    app:vciv_et_width="58dp" />
+                    android:layout_height="1dp"
+                    android:background="#EDEDED"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginRight="29dp"
+                    android:layout_marginTop="8dp"
+                    />
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/linera_edit_code"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="wrap_content">
+                    <com.wynsbin.vciv.VerificationCodeInputView
+                        android:id="@+id/vciv_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:vciv_et_background="@android:color/white"
+                        app:vciv_et_cursor_color="@color/black"
+                        app:vciv_et_height="58dp"
+                        app:vciv_et_inputType="number"
+                        app:vciv_et_number="4"
+                        app:vciv_et_text_color="#333333"
+                        app:vciv_et_text_size="18sp"
+                        app:vciv_et_underline_focus_color="@color/black"
+                        app:vciv_et_underline_height="3dp"
+                        app:vciv_et_underline_show="true"
+                        app:vciv_et_width="58dp" />
 
 
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/button_login_immediately"
@@ -421,7 +461,6 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:background="#60000000"
-        android:visibility="gone"
         android:id="@+id/linear_popAgree"
         >
 

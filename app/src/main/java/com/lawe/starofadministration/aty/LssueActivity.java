@@ -152,7 +152,6 @@ public class LssueActivity extends BaseAty {
                 popAddNum.setTypeface(getTextNum);
 
                 //控制字数
-                //控制字数
                 popAddEdit.addTextChangedListener(new TextWatcher() {
 
                     private CharSequence wordNum;//记录输入的字数
@@ -243,6 +242,14 @@ public class LssueActivity extends BaseAty {
                 jump(ChoosePersonActivity.class, new JumpParameter()
                         .put("flagType", 1)
                 );
+            }
+        });
+
+        //手写批注
+        bottomPizhu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

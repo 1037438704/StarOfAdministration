@@ -15,11 +15,12 @@ import androidx.core.content.ContextCompat;
 
 import com.kongzue.baseframework.BaseActivity;
 import com.lawe.starofadministration.MyApplication;
+import com.lawe.starofadministration.config.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class BaseAty extends BaseActivity {
+abstract public class BaseAty extends BaseActivity implements Constants {
     public Typeface getTextMedium = MyApplication.getTextMedium;
     public Typeface getTextRegular = MyApplication.getTextRegular;
     public Typeface getTextBold = MyApplication.getTextBold;

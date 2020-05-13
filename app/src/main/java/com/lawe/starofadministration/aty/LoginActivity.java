@@ -1,30 +1,46 @@
 package com.lawe.starofadministration.aty;
 
-import android.animation.ObjectAnimator;
+import android.os.Build;
+import android.provider.Settings;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.TypedValue;
+import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.viewpager.widget.ViewPager;
+
+import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
-import com.lawe.starofadministration.MainActivity;
+import com.kongzue.baseokhttp.HttpRequest;
+import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.Parameter;
+import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
+import com.lawe.starofadministration.config.Constants;
+import com.lawe.starofadministration.fgt.JoinContextFragment;
+import com.lawe.starofadministration.fgt.JoinEclosureFragment;
+import com.lawe.starofadministration.fgt.JoinSpeedFragment;
 import com.wynsbin.vciv.VerificationCodeInputView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * author : fuke
@@ -34,7 +50,8 @@ import com.wynsbin.vciv.VerificationCodeInputView;
 @Layout(R.layout.aty_login)
 @DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
-@NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
+@NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
+//设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class LoginActivity extends BaseAty {
     FrameLayout frame_layout_bottom;
     Button buttonLoginImmediately;
@@ -51,96 +68,45 @@ public class LoginActivity extends BaseAty {
     private ImageView login_down;
     private RelativeLayout linear_popAgree;
     private Button login_agree;
-    private TextView login_zhanghao;
+    private TextView login_zhanghaoBig;
+    private TextView login_zhanghaoSmall;
     private EditText login_phone;
     private Button login_jujue;
     private TextView login_text_forget;
     private TextView login_ninhao;
-    private TextView login_password;
+    private TextView login_passwordBig;
+    private TextView login_passwordSmall;
     private TextView login_code;
+    private String phoneBrand;  //手机型号
+    private String androidId;   //手机唯一序列号
 
     @Override
     public void initViews() {
-        buttonLoginImmediately = findViewById(R.id.button_login_immediately);
-        frame_layout_bottom = findViewById(R.id.frame_layout_bottom);
-        vcivCode = findViewById(R.id.vciv_code);
-        login_eye = findViewById(R.id.login_eye);
-        login_edpass = findViewById(R.id.login_edpass);
-        login_text = findViewById(R.id.login_text);
-        login_getCode = findViewById(R.id.login_getCode);
-        linear_code = findViewById(R.id.linear_code);
-        login_code = findViewById(R.id.login_code);
-        linear_pass = findViewById(R.id.linear_pass);
-        text_zhuanwang = findViewById(R.id.text_zhuanwang);
-        linear_popNet = findViewById(R.id.linear_pop);
-        login_down = findViewById(R.id.login_down);
-        linear_popAgree = findViewById(R.id.linear_popAgree);
-        login_agree = findViewById(R.id.login_agree);
-        login_zhanghao = findViewById(R.id.login_zhanghao);
-        login_phone = findViewById(R.id.login_phone);
-        login_jujue = findViewById(R.id.login_jujue);
-        login_text_forget = findViewById(R.id.login_text_forget);
-        login_ninhao = findViewById(R.id.login_ninhao);
-        login_password = findViewById(R.id.login_password);
-        //设置字体
-        login_ninhao.setTypeface(getTextMedium);
-        login_zhanghao.setTypeface(getTextMedium);
-        login_password.setTypeface(getTextMedium);
-        buttonLoginImmediately.setTypeface(getTextMedium);
-        login_code.setTypeface(getTextMedium);
+        initView();
+
         //输入密码  不可见
         login_eye.setBackgroundResource(R.mipmap.login_biyan);
         LoginActivity.this.login_edpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+        //获取手机型号、序列号
+        phoneBrand = Build.MODEL;
+        androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        Log.e("phone", phoneBrand + "     " + androidId);
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-        //点击输入框   提示动画
-        login_phone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        //账号密码登录
+        HttpRequest.POST(me, Constants.LOGIN, new Parameter()
+                .add("account", "")
+                .add("id", "userId"), new ResponseListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    toast("有焦点");
+            public void onResponse(String response, Exception error) {
+                WaitDialog.dismiss();
+                if (error == null) {
 
-                    //账号上移
-                    TranslateAnimation translateAni = new TranslateAnimation(
-                            Animation.RELATIVE_TO_PARENT, 0, Animation.RELATIVE_TO_PARENT,
-                            0, Animation.RELATIVE_TO_PARENT, 0,
-                            Animation.RELATIVE_TO_PARENT, -0.5f);
-
-                    //设置动画执行的时间，单位是毫秒
-                    translateAni.setDuration(1000);
-                    translateAni.setFillAfter(true);
-
-                    // 设置动画重复次数
-                    // -1或者Animation.INFINITE表示无限重复，正数表示重复次数，0表示不重复只播放一次
-                    translateAni.setRepeatCount(0);
-
-                    // 设置动画模式（Animation.REVERSE设置循环反转播放动画,Animation.RESTART每次都从头开始）
-                    //translateAni.setRepeatMode(Animation.REVERSE);
-
-                    // 启动动画
-                    login_zhanghao.startAnimation(translateAni);
-                    login_zhanghao.setTextSize(TypedValue.COMPLEX_UNIT_SP,14);
-
-                    //输入框左平移
-                    TranslateAnimation translateAnied = new TranslateAnimation(
-                            Animation.RELATIVE_TO_PARENT, 0, Animation.RELATIVE_TO_PARENT,
-                            -0.2f, Animation.RELATIVE_TO_PARENT, 0,
-                            Animation.RELATIVE_TO_PARENT, 0);
-
-                    //设置动画执行的时间，单位是毫秒
-                    translateAnied.setDuration(1000);
-                    translateAnied.setFillAfter(true);
-
-                    // 设置动画重复次数
-                    // -1或者Animation.INFINITE表示无限重复，正数表示重复次数，0表示不重复只播放一次
-                    translateAnied.setRepeatCount(0);
-
-                    // 启动动画
-                    login_phone.startAnimation(translateAnied);
-                }else{
-                    toast("没有焦点");
+                } else {
+                    error.getMessage();
                 }
             }
         });
@@ -149,8 +115,51 @@ public class LoginActivity extends BaseAty {
     @Override
     public void setEvents() {
 
+        login_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login_phone.setFocusableInTouchMode(true);
+                login_zhanghaoBig.setVisibility(View.GONE);
+                login_zhanghaoSmall.setVisibility(View.VISIBLE);
+               /* //输入账号
+                login_phone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(hasFocus){
+                            toast("有焦点");
+
+                        }else{
+                            toast("没有焦点");
+                        }
+                    }
+                });*/
+
+            }
+        });
+
+        login_edpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login_edpass.setFocusableInTouchMode(true);
+                login_passwordBig.setVisibility(View.GONE);
+                login_passwordSmall.setVisibility(View.VISIBLE);
+                //输入密码
+                /*login_edpass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(hasFocus){
+                            toast("有焦点");
+
+                        }else{
+                            toast("没有焦点");
+                        }
+                    }
+                });*/
+            }
+        });
+
         //清除验证码
-//        vcivCode.clearCode();
+        vcivCode.clearCode();
 
         /*验证码输入框*/
         vcivCode.setOnInputListener(new VerificationCodeInputView.OnInputListener() {
@@ -167,29 +176,10 @@ public class LoginActivity extends BaseAty {
 
         //立即登录
         buttonLoginImmediately.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                linear_popAgree.setVisibility(View.VISIBLE);
-                login_agree.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        jump(MainActivity.class);
-                    }
-                });
-
-                login_jujue.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        linear_popAgree.setVisibility(View.GONE);
-                    }
-                });
-
-                login_down.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        linear_popAgree.setVisibility(View.GONE);
-                    }
-                });
+                //jump(AgreementActivity.class);
             }
         });
 
@@ -197,13 +187,13 @@ public class LoginActivity extends BaseAty {
         login_eye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(lock){
-                    lock=false;
+                if (lock) {
+                    lock = false;
                     LoginActivity.this.login_edpass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     login_eye.setBackgroundResource(R.mipmap.login_eye);
 
-                }else{
-                    lock=true;
+                } else {
+                    lock = true;
                     LoginActivity.this.login_edpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     login_eye.setBackgroundResource(R.mipmap.login_biyan);
 
@@ -216,13 +206,13 @@ public class LoginActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 String login_tishi = login_text.getText().toString();
-                if (login_tishi.equals("验证码登录")){
+                if (login_tishi.equals("验证码登录")) {
                     linear_code.setVisibility(View.VISIBLE);
                     login_getCode.setVisibility(View.VISIBLE);
                     login_getCode.setText("获取验证码");
                     login_text.setText("多因素登录");
                     linear_pass.setVisibility(View.GONE);
-                }else{
+                } else {
                     login_getCode.setVisibility(View.GONE);
                     login_text.setText("验证码登录");
                     linear_pass.setVisibility(View.VISIBLE);
@@ -254,4 +244,41 @@ public class LoginActivity extends BaseAty {
             }
         });
     }
+
+    private void initView() {
+        buttonLoginImmediately = findViewById(R.id.button_login_immediately);
+        frame_layout_bottom = findViewById(R.id.frame_layout_bottom);
+        vcivCode = findViewById(R.id.vciv_code);
+        login_eye = findViewById(R.id.login_eye);
+        login_edpass = findViewById(R.id.login_edpass);
+        login_text = findViewById(R.id.login_text);
+        login_getCode = findViewById(R.id.login_getCode);
+        linear_code = findViewById(R.id.linear_code);
+        login_code = findViewById(R.id.login_code);
+        linear_pass = findViewById(R.id.linear_pass);
+        text_zhuanwang = findViewById(R.id.text_zhuanwang);
+        linear_popNet = findViewById(R.id.linear_pop);
+        login_down = findViewById(R.id.login_down);
+
+        login_agree = findViewById(R.id.login_agree);
+        login_zhanghaoBig = findViewById(R.id.login_zhanghao_big);
+        login_zhanghaoSmall = findViewById(R.id.login_zhanghao_small);
+        login_phone = findViewById(R.id.login_phone);
+        login_jujue = findViewById(R.id.login_jujue);
+        login_text_forget = findViewById(R.id.login_text_forget);
+        login_ninhao = findViewById(R.id.login_ninhao);
+        login_passwordBig = findViewById(R.id.login_password_big);
+        login_passwordSmall = findViewById(R.id.login_password_small);
+        //设置字体
+        login_ninhao.setTypeface(getTextMedium);
+        login_zhanghaoBig.setTypeface(getTextMedium);
+        login_passwordBig.setTypeface(getTextMedium);
+        buttonLoginImmediately.setTypeface(getTextMedium);
+        login_zhanghaoSmall.setTypeface(getTextMedium);
+        login_passwordSmall.setTypeface(getTextMedium);
+        login_phone.setTypeface(getTextNum);
+        login_edpass.setTypeface(getTextNum);
+        login_code.setTypeface(getTextMedium);
+    }
+
 }
