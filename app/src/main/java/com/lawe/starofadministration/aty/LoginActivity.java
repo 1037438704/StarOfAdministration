@@ -1,6 +1,11 @@
 package com.lawe.starofadministration.aty;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -30,6 +35,7 @@ import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.kongzue.baseokhttp.util.Parameter;
 import com.kongzue.dialog.v3.WaitDialog;
+import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
@@ -79,6 +85,8 @@ public class LoginActivity extends BaseAty {
     private TextView login_code;
     private String phoneBrand;  //手机型号
     private String androidId;   //手机唯一序列号
+    private SharedPreferences.Editor editor;
+    private SharedPreferences frist;
 
     @Override
     public void initViews() {
@@ -179,8 +187,9 @@ public class LoginActivity extends BaseAty {
 
             @Override
             public void onClick(View v) {
-                //jump(AgreementActivity.class);
+                isFrist();
             }
+
         });
 
         /*密码可见不可见*/
@@ -245,6 +254,38 @@ public class LoginActivity extends BaseAty {
         });
     }
 
+    private void isAgree() {
+        linear_popAgree.setVisibility(View.VISIBLE);
+        login_agree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                frist.edit().putBoolean("isAgree",true).commit();
+                jump(MainActivity.class);
+            }
+        });
+
+        login_jujue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                frist.edit().putBoolean("isAgree",false).commit();
+                linear_popAgree.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void isFrist() {
+        frist = getSharedPreferences("frist", Context.MODE_PRIVATE);
+
+        if (frist.getBoolean("isAgree",true)){
+            toast("点击了");
+            jump(MainActivity.class);
+        }else{
+            //点击确定或者取消
+            toast("协议");
+            isAgree();
+        }
+    }
+
     private void initView() {
         buttonLoginImmediately = findViewById(R.id.button_login_immediately);
         frame_layout_bottom = findViewById(R.id.frame_layout_bottom);
@@ -259,7 +300,7 @@ public class LoginActivity extends BaseAty {
         text_zhuanwang = findViewById(R.id.text_zhuanwang);
         linear_popNet = findViewById(R.id.linear_pop);
         login_down = findViewById(R.id.login_down);
-
+        linear_popAgree = findViewById(R.id.linear_popAgree);
         login_agree = findViewById(R.id.login_agree);
         login_zhanghaoBig = findViewById(R.id.login_zhanghao_big);
         login_zhanghaoSmall = findViewById(R.id.login_zhanghao_small);

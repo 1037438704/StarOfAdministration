@@ -35,7 +35,7 @@ public class CompanyFragment extends BaseFgt {
     public void initViews() {
         recycleCompany = (RecyclerView) findViewById(R.id.recycle_company);
         linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
-        recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
+        //recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
 
         list = new ArrayList<>();
         //单位排名列表

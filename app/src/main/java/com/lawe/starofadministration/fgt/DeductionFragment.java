@@ -44,7 +44,7 @@ public class DeductionFragment extends BaseFgt {
         deduYear = (TextView) findViewById(R.id.dedu_year);
         recycleDeduction = (RecyclerView) findViewById(R.id.recycle_deduction);
         linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
-        recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
+        //recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
 
         list = new ArrayList<>();
         //扣分事项列表

@@ -27,7 +27,6 @@
             android:timePickerMode="spinner" />
 
 
-
     </RelativeLayout>
 
 </LinearLayout>

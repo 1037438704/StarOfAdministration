@@ -35,7 +35,7 @@ public class PersonFragment extends BaseFgt {
     public void initViews() {
         recyclePerson = (RecyclerView) findViewById(R.id.recycle_person);
         linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
-        recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
+        //recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
 
         list = new ArrayList<>();
         //个人排名列表

@@ -36,9 +36,12 @@ public class MessageFragment extends BaseFgt {
     private LinearLayout textChoose;
     private RecyclerView recycleMessage;
     private LinearLayout linearLeibie;
-    private RecyclerView recyclerLeibie;
+    private LinearLayout linear_urgent;
+    private LinearLayout linear_time;
     private LinearLayout choose_leibie;
     private int flag = 1; //类别默认标识
+    private int flag_urgent = 1; //类别默认标识
+    private int flag_time = 1; //类别默认标识
     private DrawerLayout drawerLayout;
     private Button drawer_quxiao;
 
@@ -46,6 +49,8 @@ public class MessageFragment extends BaseFgt {
     private List<String> list;
     private MessageAdapter messageAdapter;
     private TextView messageTitle;
+    private LinearLayout dealtLinerarTime;
+    private LinearLayout dealtLinerarUrgent;
 
     @Override
     public void initViews() {
@@ -58,14 +63,14 @@ public class MessageFragment extends BaseFgt {
         recycleMessage = (RecyclerView) findViewById(R.id.recycle_message);
         choose_leibie = (LinearLayout) findViewById(R.id.choose_leibie);
         linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
-        recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
-
+        linear_urgent = (LinearLayout) findViewById(R.id.linear_urgent);
+        linear_time = (LinearLayout) findViewById(R.id.linear_time);
+        dealtLinerarTime = (LinearLayout) findViewById(R.id.dealt_linerar_time);
+        dealtLinerarUrgent = (LinearLayout) findViewById(R.id.dealt_linerar_urgent);
 
         textChoose = (LinearLayout) findViewById(R.id.text_choose);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
         drawer_quxiao = getActivity().findViewById(R.id.drawer_quxiao);
-
-
 
         list = new ArrayList<>();
         //待办信息
@@ -101,6 +106,38 @@ public class MessageFragment extends BaseFgt {
             }
         });
 
+        //接收时间
+        dealtLinerarTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flag_time == 1) {
+                    linear_time.setVisibility(View.VISIBLE);
+                    daibanDown2.setImageResource(R.mipmap.shaixuan_3);
+                    flag_time = 2;
+                } else {
+                    linear_time.setVisibility(View.GONE);
+                    daibanDown2.setImageResource(R.mipmap.daiban_down);
+                    flag_time = 1;
+                }
+            }
+        });
+
+        //紧急度
+        dealtLinerarUrgent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flag_urgent == 1) {
+                    linear_urgent.setVisibility(View.VISIBLE);
+                    daibanDown3.setImageResource(R.mipmap.shaixuan_3);
+                    flag_urgent = 2;
+                } else {
+                    linear_urgent.setVisibility(View.GONE);
+                    daibanDown3.setImageResource(R.mipmap.daiban_down);
+                    flag_urgent = 1;
+                }
+            }
+        });
+
         //筛选弹出pop
         textChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,4 +157,5 @@ public class MessageFragment extends BaseFgt {
     public static MessageFragment newInstance() {
         return new MessageFragment();
     }
+
 }
