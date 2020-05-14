@@ -317,8 +317,6 @@ public class LoginActivity extends BaseAty {
         buttonLoginImmediately.setTypeface(getTextMedium);
         login_zhanghaoSmall.setTypeface(getTextMedium);
         login_passwordSmall.setTypeface(getTextMedium);
-        login_phone.setTypeface(getTextNum);
-        login_edpass.setTypeface(getTextNum);
         login_code.setTypeface(getTextMedium);
     }
 

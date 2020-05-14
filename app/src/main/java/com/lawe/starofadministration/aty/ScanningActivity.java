@@ -19,13 +19,14 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
+import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.fgt.OCRwordFragment;
 import com.lawe.starofadministration.fgt.QRcodeFragment;
 import com.lawe.starofadministration.utils.Constant;
-import com.lawe.starofadministration.zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,8 @@ public class ScanningActivity extends BaseAty {
         viewPager = findViewById(R.id.viewPager);
         backButton = findViewById(R.id.back_button);
         btnQrCode = findViewById(R.id.btn_qrcode);
+        //初始化
+        ZXingLibrary.initDisplayOpinion(ScanningActivity.this);
 
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
@@ -77,8 +80,8 @@ public class ScanningActivity extends BaseAty {
             return;
         }
         // 二维码扫码
-        Intent intent = new Intent(ScanningActivity.this, CaptureActivity.class);
-        startActivityForResult(intent, Constant.REQ_QR_CODE);
+//        Intent intent = new Intent(ScanningActivity.this, CaptureActivity.class);
+//        startActivityForResult(intent, Constant.REQ_QR_CODE);
 
     }
 
