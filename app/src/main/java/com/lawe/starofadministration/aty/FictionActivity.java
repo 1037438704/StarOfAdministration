@@ -88,30 +88,29 @@ public class FictionActivity extends BaseAty {
         factionTop = findViewById(R.id.faction_top);
         fictionTimeStart = findViewById(R.id.fiction_time_start);
         fictionTimeEnd = findViewById(R.id.fiction_time_end);
+        //列表
+        list = new ArrayList<>();
+        //待办信息
+        fictionAdapter = new FictionAdapter(R.layout.item_fiction);
+    }
 
+    @Override
+    public void initDatas(JumpParameter parameter) {
+        factionRecycle.setLayoutManager(new LinearLayoutManager(me));
+        factionRecycle.setAdapter(fictionAdapter);
         titleNew.setVisibility(View.VISIBLE);
         //设置字体
         titleText.setTypeface(getTextMedium);
         titleText.setText("公文拟制系统");
 
-        //列表
-        list = new ArrayList<>();
-        //待办信息
-        layoutManager = new LinearLayoutManager(me);
-        factionRecycle.setLayoutManager(layoutManager);
-        fictionAdapter = new FictionAdapter(R.layout.item_fiction);
-        factionRecycle.setAdapter(fictionAdapter);
-    }
-
-    @Override
-    public void initDatas(JumpParameter parameter) {
-
         for (int i = 0; i < 10; i++) {
             list.add("" + i);
         }
         fictionAdapter.setNewData(list);
-        fictionAdapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public void setEvents() {
         factionRecycle.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -127,11 +126,6 @@ public class FictionActivity extends BaseAty {
             }
 
         });
-    }
-
-    @Override
-    public void setEvents() {
-
         //返回
         titleBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +133,6 @@ public class FictionActivity extends BaseAty {
                 finish();
             }
         });
-
         //新建
         titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,7 +141,6 @@ public class FictionActivity extends BaseAty {
                           .put("flagSpeed",1));
             }
         });
-
         //回到第一条item
         factionTop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,7 +148,6 @@ public class FictionActivity extends BaseAty {
                 factionRecycle.smoothScrollToPosition(0);
             }
         });
-
         //筛选
         searchChoose.setOnClickListener(new View.OnClickListener() {
             @Override

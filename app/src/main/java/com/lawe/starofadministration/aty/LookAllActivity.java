@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,7 @@ import com.lawe.starofadministration.fgt.LookAllFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * author : fuke
@@ -40,11 +42,11 @@ import java.util.List;
 public class LookAllActivity extends BaseAty {
 
     private TextView textName;
-
+    private  TabLayoutAdapter fragmentAdater;
 
     private LinearLayout textChoose;
     private DrawerLayout drawerLayout;
-    private Button drawer_quxiao;
+    private Button drawerQuxiao;
 
     private TabLayout tablayout;
     private ViewPager viewPager;
@@ -56,14 +58,20 @@ public class LookAllActivity extends BaseAty {
     @Override
     public void initViews() {
 
-        textName = (TextView) findViewById(R.id.text_name);
-        tablayout = (TabLayout) findViewById(R.id.tablayout);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        textName =  findViewById(R.id.text_name);
+        tablayout =  findViewById(R.id.tablayout);
+        viewPager =  findViewById(R.id.viewPager);
 
-        textChoose = (LinearLayout) findViewById(R.id.text_choose);
+        textChoose =  findViewById(R.id.text_choose);
         drawerLayout = findViewById(R.id.drawer_all_day);
-        drawer_quxiao = findViewById(R.id.drawer_quxiao1);
+        drawerQuxiao = findViewById(R.id.drawer_quxiao1);
 
+
+        fragmentAdater = new  TabLayoutAdapter(getSupportFragmentManager());
+    }
+
+    @Override
+    public void initDatas(JumpParameter parameter) {
         fragmentList.add(new LookAllFragment());
         fragmentList.add(new LookAllFragment());
         fragmentList.add(new LookAllFragment());
@@ -72,14 +80,8 @@ public class LookAllActivity extends BaseAty {
         fragmentList.add(new LookAllFragment());
 
         tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        TabLayoutAdapter fragmentAdater = new  TabLayoutAdapter(getSupportFragmentManager());
         viewPager.setAdapter(fragmentAdater);
         tablayout.setupWithViewPager(viewPager);
-    }
-
-    @Override
-    public void initDatas(JumpParameter parameter) {
-
     }
 
     @Override
@@ -92,7 +94,7 @@ public class LookAllActivity extends BaseAty {
             }
         });
 
-       drawer_quxiao.setOnClickListener(new View.OnClickListener() {
+       drawerQuxiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.closeDrawer(Gravity.RIGHT);

@@ -26,8 +26,6 @@ import com.lawe.starofadministration.base.BaseAty;
 @DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
 public class ExplanaActivity extends BaseAty {
-
-
     private ImageView setExplanationBack;
     private TextView setExplanationTitle;
     private TextView setExplanationShuoming;
@@ -35,19 +33,17 @@ public class ExplanaActivity extends BaseAty {
 
     @Override
     public void initViews() {
-        setExplanationBack = (ImageView) findViewById(R.id.set_explanation_back);
-        setExplanationTitle = (TextView) findViewById(R.id.set_explanation_title);
-        setExplanationShuoming = (TextView) findViewById(R.id.set_explanation_shuoming);
-        setServicePhone = (TextView) findViewById(R.id.set_service_phone);
-
-        setExplanationTitle.setTypeface(getTextBold);
-        setExplanationShuoming.setTypeface(getTextMedium);
-        setServicePhone.setTypeface(getTextMedium);
+        setExplanationBack = findViewById(R.id.set_explanation_back);
+        setExplanationTitle = findViewById(R.id.set_explanation_title);
+        setExplanationShuoming = findViewById(R.id.set_explanation_shuoming);
+        setServicePhone = findViewById(R.id.set_service_phone);
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-
+        setExplanationTitle.setTypeface(getTextBold);
+        setExplanationShuoming.setTypeface(getTextMedium);
+        setServicePhone.setTypeface(getTextMedium);
     }
 
     @Override

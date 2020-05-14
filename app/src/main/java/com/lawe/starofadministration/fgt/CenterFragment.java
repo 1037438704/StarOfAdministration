@@ -27,7 +27,6 @@ public class CenterFragment extends BaseFgt {
         centerNizhi = (TextView) findViewById(R.id.center_nizhi);
         centerLinerarLayout = (LinearLayout) findViewById(R.id.center_linerar_layout);
         centerLinerarLayout.setPadding(0,me.getStatusBarHeight(),0,0);
-
         //设置字体
         centerTitle.setTypeface(getTextMedium);
     }

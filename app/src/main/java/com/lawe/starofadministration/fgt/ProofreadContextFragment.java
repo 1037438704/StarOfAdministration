@@ -37,8 +37,27 @@ public class ProofreadContextFragment extends BaseFgt {
 
     @Override
     public void initViews() {
-        initView();
+        joinContextTitle = (TextView) findViewById(R.id.join_context_title);
+        joinContextTongzhi = (TextView) findViewById(R.id.join_context_tongzhi);
+        joinContextGongkai = (TextView) findViewById(R.id.join_context_gongkai);
+        joinContextQicaoren = (TextView) findViewById(R.id.join_context_qicaoren);
+        joinContextHuiqian = (TextView) findViewById(R.id.join_context_huiqian);
+        joinContextNumber = (TextView) findViewById(R.id.join_context_number);
+        joinContextSubject = (TextView) findViewById(R.id.join_context_subject);
+        cebianlan = (LinearLayout) findViewById(R.id.cebianlan);
+        imgBig = (ImageView) findViewById(R.id.img_big);
+        imgSmall = (ImageView) findViewById(R.id.img_small);
+        imgTop = (ImageView) findViewById(R.id.img_top);
+        imgRead = (ImageView) findViewById(R.id.img_read);
+        imgBohui = (ImageView) findViewById(R.id.img_bohui);
 
+        cebianlan.setVisibility(View.VISIBLE);
+        imgBohui.setVisibility(View.VISIBLE);
+        imgRead.setVisibility(View.VISIBLE);
+
+        //设置字体
+        joinContextTitle.setTypeface(getTextMedium);
+        joinContextSubject.setText("父父父父父父仿佛u父父父父父父父父语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。 语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。 语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年 众多中小企业首选。语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。");
     }
 
     @Override
@@ -74,29 +93,5 @@ public class ProofreadContextFragment extends BaseFgt {
 
     public static ProofreadContextFragment newInstance() {
         return new ProofreadContextFragment();
-    }
-
-    private void initView() {
-        joinContextTitle = (TextView) findViewById(R.id.join_context_title);
-        joinContextTongzhi = (TextView) findViewById(R.id.join_context_tongzhi);
-        joinContextGongkai = (TextView) findViewById(R.id.join_context_gongkai);
-        joinContextQicaoren = (TextView) findViewById(R.id.join_context_qicaoren);
-        joinContextHuiqian = (TextView) findViewById(R.id.join_context_huiqian);
-        joinContextNumber = (TextView) findViewById(R.id.join_context_number);
-        joinContextSubject = (TextView) findViewById(R.id.join_context_subject);
-        cebianlan = (LinearLayout) findViewById(R.id.cebianlan);
-        imgBig = (ImageView) findViewById(R.id.img_big);
-        imgSmall = (ImageView) findViewById(R.id.img_small);
-        imgTop = (ImageView) findViewById(R.id.img_top);
-        imgRead = (ImageView) findViewById(R.id.img_read);
-        imgBohui = (ImageView) findViewById(R.id.img_bohui);
-
-        cebianlan.setVisibility(View.VISIBLE);
-        imgBohui.setVisibility(View.VISIBLE);
-        imgRead.setVisibility(View.VISIBLE);
-
-        //设置字体
-        joinContextTitle.setTypeface(getTextMedium);
-        joinContextSubject.setText("父父父父父父仿佛u父父父父父父父父语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。 语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。 语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年 众多中小企业首选。语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。");
     }
 }

@@ -43,6 +43,10 @@ public class BootPageAty extends BaseAty {
     public void initDatas(JumpParameter parameter) {
         initlndicator();
 
+    }
+
+    @Override
+    public void setEvents() {
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int index, float v, int i1) {
@@ -65,14 +69,8 @@ public class BootPageAty extends BaseAty {
         });
     }
 
-    @Override
-    public void setEvents() {
-
-    }
-
     private void initlndicator() {
         int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10f, getResources().getDisplayMetrics());
-
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, width);
         lp.setMargins(10, 0, 10, 0);
         for (int i = 0; i < fragments.size(); i++) {

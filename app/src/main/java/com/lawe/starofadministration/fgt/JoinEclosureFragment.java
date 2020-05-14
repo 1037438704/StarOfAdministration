@@ -44,10 +44,8 @@ public class JoinEclosureFragment extends BaseFgt {
         enclosureRecycle = (RecyclerView) findViewById(R.id.enclosure_recycle);
         enclosureShangchuan = (LinearLayout) findViewById(R.id.enclosure_shangchuan);
         enclosureText = (TextView) findViewById(R.id.enclosure_text);
-
         //设置字体
         enclosureText.setTypeface(getTextMedium);
-
         //附件列表
         list = new ArrayList<>();
         //待办信息

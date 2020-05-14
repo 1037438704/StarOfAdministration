@@ -34,14 +34,20 @@ public class SplashAty extends BaseAty {
     @Override
     public void initViews() {
         framgentLayout = findViewById(R.id.fragment_lauout);
-        decideBoolean = Preferences.getInstance().getBoolean(me, "page", "decide");
+
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
+        decideBoolean = Preferences.getInstance().getBoolean(me, "page", "decide");
         alphaAnimation.setDuration(3000);
         alphaAnimation.setFillAfter(true);
         framgentLayout.startAnimation(alphaAnimation);
+
+    }
+
+    @Override
+    public void setEvents() {
         alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -67,11 +73,6 @@ public class SplashAty extends BaseAty {
 
             }
         });
-    }
-
-    @Override
-    public void setEvents() {
-
     }
 
     /**

@@ -35,23 +35,18 @@ public class SystemActivity extends BaseAty {
         setSystemBack = findViewById(R.id.set_system_back);
         setSystemTitle = findViewById(R.id.set_system_title);
 
-        setSystemTitle.setTypeface(getTextBold);
+
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-
+        setSystemTitle.setTypeface(getTextBold);
     }
 
     @Override
     public void setEvents() {
         //返回
-        setSystemBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        setSystemBack.setOnClickListener( view -> finish());
 
         //
     }

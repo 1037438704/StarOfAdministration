@@ -46,24 +46,18 @@ public class SetSafeActivity extends BaseAty {
         setSafePass = findViewById(R.id.set_safe_pass);
         setSafeConPhone = findViewById(R.id.set_safe_conPhone);
 
-        setSafeTitle.setTypeface(getTextBold);
 
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-
+        setSafeTitle.setTypeface(getTextBold);
     }
 
     @Override
     public void setEvents() {
         //返回
-        setSafeBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        setSafeBack.setOnClickListener(view -> finish());
 
         //设置密码
         setSafePass.setOnClickListener(new View.OnClickListener() {
@@ -78,11 +72,11 @@ public class SetSafeActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 //判断功能是否开启
-                if (flag == true){
+                if (flag == true) {
                     setSafeChoose.setVisibility(View.VISIBLE);
                     setSafeNone.setVisibility(View.GONE);
                     flag = false;
-                }else{
+                } else {
                     setSafeChoose.setVisibility(View.GONE);
                     setSafeNone.setVisibility(View.VISIBLE);
                     flag = true;

@@ -37,24 +37,18 @@ public class ServiceActivity extends BaseAty {
         setServiceTitle = findViewById(R.id.set_service_title);
         setServicePhone = findViewById(R.id.set_service_phone);
 
+    }
+
+    @Override
+    public void initDatas(JumpParameter parameter) {
         setServiceTitle.setTypeface(getTextBold);
         setServicePhone.setTypeface(getTextMedium);
     }
 
     @Override
-    public void initDatas(JumpParameter parameter) {
-
-    }
-
-    @Override
     public void setEvents() {
         //返回
-        setServiceBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        setServiceBack.setOnClickListener(view -> finish());
     }
 
 }

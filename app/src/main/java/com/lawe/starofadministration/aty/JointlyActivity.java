@@ -69,20 +69,41 @@ public class JointlyActivity extends BaseAty {
     private List<BaseFragment> fragemnts;
     private ViewPagerAdp viewPagerAdp;
     private int chatflag = 1; //常用语展开隐藏标识
+    private RadioButton rb;
+
 
     @Override
     public void initViews() {
-        initView();
-
+        titleBack = findViewById(R.id.title_back);
+        titleText = findViewById(R.id.title_text);
+        mainRgp = findViewById(R.id.main_rgp);
+        viewPagerData = findViewById(R.id.viewPagerData);
+        //下输入键盘常用语的部分
+        bottomPerson = findViewById(R.id.bottom_person);
+        bottomPizhu = findViewById(R.id.bottom_pizhu);
+        bottomWhrit = findViewById(R.id.bottom_whrit);
+        bottomChat = findViewById(R.id.bottom_chat);
+        bottomButton = findViewById(R.id.bottom_button);
+        draftChat = findViewById(R.id.draft_chat);
+        draftChatRecycle = findViewById(R.id.draft_chat_recycle);
+        draftChatNew = findViewById(R.id.draft_chat_new);
+        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
+        draftChatNewText = findViewById(R.id.draft_chat_new_text);
+        draftChatSet = findViewById(R.id.draft_chat_set);
+        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
+        draftChatSetText = findViewById(R.id.draft_chat_set_text);
+        //==========================下输入键盘常用语的部分============================
         fragemnts = new ArrayList<>();
-        RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
-        rb.setChecked(true);
-        rb.setTypeface(getTextMedium);
-
+        rb = (RadioButton) mainRgp.getChildAt(0);
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
+        rb.setChecked(true);
+        rb.setTypeface(getTextMedium);
+        titleText.setText("公文会签");
+        titleText.setTypeface(getTextBold);
+
         fragemnts.add(JoinContextFragment.newInstance());
         fragemnts.add(JoinEclosureFragment.newInstance());
         fragemnts.add(JoinSpeedFragment.newInstance());
@@ -120,7 +141,6 @@ public class JointlyActivity extends BaseAty {
                 }
             }
         });
-
         //返回
         titleBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +148,6 @@ public class JointlyActivity extends BaseAty {
                 finish();
             }
         });
-
         //新增常用语
         draftChatNew.setOnClickListener(new View.OnClickListener() {
             private int maxnum = 200;   //设置最大字数
@@ -201,7 +220,6 @@ public class JointlyActivity extends BaseAty {
 
             }
         });
-
         //管理常用语
         draftChatSet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,7 +241,6 @@ public class JointlyActivity extends BaseAty {
 
             }
         });
-
         //常用语
         bottomChat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,7 +254,6 @@ public class JointlyActivity extends BaseAty {
                 }
             }
         });
-
         //人员选择
         bottomPerson.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,7 +263,6 @@ public class JointlyActivity extends BaseAty {
                 );
             }
         });
-
         //暂定跳往审核页面
         bottomButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,29 +270,5 @@ public class JointlyActivity extends BaseAty {
                 jump(ExamineActivity.class);
             }
         });
-    }
-
-    private void initView() {
-        titleBack = findViewById(R.id.title_back);
-        titleText = findViewById(R.id.title_text);
-        mainRgp = findViewById(R.id.main_rgp);
-        viewPagerData = findViewById(R.id.viewPagerData);
-        //下输入键盘常用语的部分
-        bottomPerson = findViewById(R.id.bottom_person);
-        bottomPizhu = findViewById(R.id.bottom_pizhu);
-        bottomWhrit = findViewById(R.id.bottom_whrit);
-        bottomChat = findViewById(R.id.bottom_chat);
-        bottomButton = findViewById(R.id.bottom_button);
-        draftChat = findViewById(R.id.draft_chat);
-        draftChatRecycle = findViewById(R.id.draft_chat_recycle);
-        draftChatNew = findViewById(R.id.draft_chat_new);
-        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
-        draftChatNewText = findViewById(R.id.draft_chat_new_text);
-        draftChatSet = findViewById(R.id.draft_chat_set);
-        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
-        draftChatSetText = findViewById(R.id.draft_chat_set_text);
-
-        titleText.setText("公文会签");
-        titleText.setTypeface(getTextBold);
     }
 }

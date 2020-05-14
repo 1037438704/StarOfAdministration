@@ -36,14 +36,12 @@ public class FeedBackActivity extends BaseAty {
         setFeedBack = findViewById(R.id.set_feed_back);
         setFeedTitle = findViewById(R.id.set_feed_title);
         setFeedFeed = findViewById(R.id.set_feed_feed);
-
-        setFeedTitle.setTypeface(getTextBold);
-        setFeedFeed.setTypeface(getTextMedium);
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-
+        setFeedTitle.setTypeface(getTextBold);
+        setFeedFeed.setTypeface(getTextMedium);
     }
 
     @Override

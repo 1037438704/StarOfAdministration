@@ -59,7 +59,6 @@ public class SpeedFragment extends BaseFgt {
     @Override
     public void initViews() {
         ((MainActivity) this.getActivity()).registerFragmentTouchListener(fragmentTouchListener);
-        gestrueListener();
 
         textChoose = (LinearLayout) findViewById(R.id.text_choose);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
@@ -97,6 +96,8 @@ public class SpeedFragment extends BaseFgt {
 
     @Override
     public void setEvents() {
+        gestrueListener();
+
         //筛选弹出pop
         textChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +137,7 @@ public class SpeedFragment extends BaseFgt {
                 drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
+
     }
 
     /*

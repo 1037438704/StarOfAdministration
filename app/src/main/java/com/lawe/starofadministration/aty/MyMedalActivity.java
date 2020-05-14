@@ -32,7 +32,8 @@ import java.util.List;
 @Layout(R.layout.activity_my_medal)
 @DarkStatusBarTheme(false)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(false)       //开启底部导航栏按钮暗色模式
-@NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
+@NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
+//设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 
 public class MyMedalActivity extends BaseAty {
     private TabLayout tablayout;
@@ -40,27 +41,26 @@ public class MyMedalActivity extends BaseAty {
 
     static final int NUM_ITEMS = 3;
     private List<Fragment> fragmentList = new ArrayList<Fragment>();
-    private String[] strings = new String[]{"基础勋章","荣耀勋章","国家级勋章"};
+    private String[] strings = new String[]{"基础勋章", "荣耀勋章", "国家级勋章"};
+    private  TabLayoutAdapter fragmentAdater;
+
 
     @Override
     public void initViews() {
 
-        tablayout = (TabLayout) findViewById(R.id.tablayout);
-        viewPager = (ViewPager) findViewById(R.id.viewPagerMedal);
-
-        fragmentList.add(new AllMedalFragment());
-        fragmentList.add(new AllMedalFragment());
-        fragmentList.add(new AllMedalFragment());
-
-        tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        TabLayoutAdapter fragmentAdater = new  TabLayoutAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(fragmentAdater);
-        tablayout.setupWithViewPager(viewPager);
+        tablayout = findViewById(R.id.tablayout);
+        viewPager = findViewById(R.id.viewPagerMedal);
+        fragmentAdater = new TabLayoutAdapter(getSupportFragmentManager());
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-
+        fragmentList.add(new AllMedalFragment());
+        fragmentList.add(new AllMedalFragment());
+        fragmentList.add(new AllMedalFragment());
+        tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        viewPager.setAdapter(fragmentAdater);
+        tablayout.setupWithViewPager(viewPager);
     }
 
     @Override

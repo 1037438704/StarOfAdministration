@@ -34,24 +34,17 @@ public class UpdatePassActivity extends BaseAty {
     public void initViews() {
         setPassBack = findViewById(R.id.set_pass_back);
         setPassTitle = findViewById(R.id.set_pass_title);
-
-        setPassTitle.setTypeface(getTextBold);
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-
+        setPassTitle.setTypeface(getTextBold);
     }
 
     @Override
     public void setEvents() {
         //返回
-        setPassBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        setPassBack.setOnClickListener(view -> finish());
 
     }
 

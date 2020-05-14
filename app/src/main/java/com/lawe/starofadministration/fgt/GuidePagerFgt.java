@@ -58,13 +58,9 @@ public class GuidePagerFgt extends BaseFgt {
             }
         });
     }
-
     @Override
     public void setEvents() {
-
     }
-
-
 
     public static GuidePagerFgt newInstance(int count) {
         GuidePagerFgt dHomeFragment = new GuidePagerFgt();

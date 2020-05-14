@@ -67,20 +67,41 @@ public class ExamineActivity extends BaseAty {
     private List<BaseFragment> fragemnts;
     private ViewPagerAdp viewPagerAdp;
     private int chatflag = 1; //常用语展开隐藏标识
-
+    private RadioButton rb;
     @Override
     public void initViews() {
-        initView();
-
+        titleBack = findViewById(R.id.title_back);
+        titleText = findViewById(R.id.title_text);
+        mainRgp = findViewById(R.id.main_rgp);
+        viewPagerData = findViewById(R.id.viewPagerData);
+        //下输入键盘常用语的部分
+        bottomPerson = findViewById(R.id.bottom_person);
+        bottomPizhu = findViewById(R.id.bottom_pizhu);
+        bottomWhrit = findViewById(R.id.bottom_whrit);
+        bottomChat = findViewById(R.id.bottom_chat);
+        bottomButton = findViewById(R.id.bottom_button);
+        draftChat = findViewById(R.id.draft_chat);
+        draftChatRecycle = findViewById(R.id.draft_chat_recycle);
+        draftChatNew = findViewById(R.id.draft_chat_new);
+        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
+        draftChatNewText = findViewById(R.id.draft_chat_new_text);
+        draftChatSet = findViewById(R.id.draft_chat_set);
+        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
+        draftChatSetText = findViewById(R.id.draft_chat_set_text);
         fragemnts = new ArrayList<>();
-        RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
-        rb.setChecked(true);
-        rb.setTypeface(getTextMedium);
-
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
+
+        rb = (RadioButton) mainRgp.getChildAt(0);
+        rb.setChecked(true);
+        rb.setTypeface(getTextMedium);
+
+        titleText.setText("公文审核");
+        titleText.setTypeface(getTextBold);
+
+
         fragemnts.add(ExamContextFragment.newInstance());
         fragemnts.add(ExamEclosureFragment.newInstance());
         fragemnts.add(ExamSpeedFragment.newInstance());
@@ -255,27 +276,4 @@ public class ExamineActivity extends BaseAty {
         });
     }
 
-    private void initView() {
-        titleBack = findViewById(R.id.title_back);
-        titleText = findViewById(R.id.title_text);
-        mainRgp = findViewById(R.id.main_rgp);
-        viewPagerData = findViewById(R.id.viewPagerData);
-        //下输入键盘常用语的部分
-        bottomPerson = findViewById(R.id.bottom_person);
-        bottomPizhu = findViewById(R.id.bottom_pizhu);
-        bottomWhrit = findViewById(R.id.bottom_whrit);
-        bottomChat = findViewById(R.id.bottom_chat);
-        bottomButton = findViewById(R.id.bottom_button);
-        draftChat = findViewById(R.id.draft_chat);
-        draftChatRecycle = findViewById(R.id.draft_chat_recycle);
-        draftChatNew = findViewById(R.id.draft_chat_new);
-        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
-        draftChatNewText = findViewById(R.id.draft_chat_new_text);
-        draftChatSet = findViewById(R.id.draft_chat_set);
-        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
-        draftChatSetText = findViewById(R.id.draft_chat_set_text);
-
-        titleText.setText("公文审核");
-        titleText.setTypeface(getTextBold);
-    }
 }

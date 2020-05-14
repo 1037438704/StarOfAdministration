@@ -23,7 +23,6 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
 
     @Override
     public void initViews() {
-
         fgtContext = (AppCompatActivity) getActivity();
     }
 

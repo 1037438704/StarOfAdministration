@@ -82,7 +82,44 @@ public class LoginActivity extends BaseAty {
 
     @Override
     public void initViews() {
-        initView();
+        buttonLoginImmediately = findViewById(R.id.button_login_immediately);
+        frame_layout_bottom = findViewById(R.id.frame_layout_bottom);
+        vcivCode = findViewById(R.id.vciv_code);
+        login_eye = findViewById(R.id.login_eye);
+        login_edpass = findViewById(R.id.login_edpass);
+        login_text = findViewById(R.id.login_text);
+        login_getCode = findViewById(R.id.login_getCode);
+        linear_code = findViewById(R.id.linear_code);
+        login_code = findViewById(R.id.login_code);
+        linear_pass = findViewById(R.id.linear_pass);
+        text_zhuanwang = findViewById(R.id.text_zhuanwang);
+        linear_popNet = findViewById(R.id.linear_pop);
+        login_down = findViewById(R.id.login_down);
+        login_agree = findViewById(R.id.login_agree);
+        login_zhanghaoBig = findViewById(R.id.login_zhanghao_big);
+        login_zhanghaoSmall = findViewById(R.id.login_zhanghao_small);
+        login_phone = findViewById(R.id.login_phone);
+        login_jujue = findViewById(R.id.login_jujue);
+        login_text_forget = findViewById(R.id.login_text_forget);
+        login_ninhao = findViewById(R.id.login_ninhao);
+        login_passwordBig = findViewById(R.id.login_password_big);
+        login_passwordSmall = findViewById(R.id.login_password_small);
+
+
+    }
+
+    @Override
+    public void initDatas(JumpParameter parameter) {
+        //设置字体
+        login_ninhao.setTypeface(getTextMedium);
+        login_zhanghaoBig.setTypeface(getTextMedium);
+        login_passwordBig.setTypeface(getTextMedium);
+        buttonLoginImmediately.setTypeface(getTextMedium);
+        login_zhanghaoSmall.setTypeface(getTextMedium);
+        login_passwordSmall.setTypeface(getTextMedium);
+        login_phone.setTypeface(getTextNum);
+        login_edpass.setTypeface(getTextNum);
+        login_code.setTypeface(getTextMedium);
 
         //输入密码  不可见
         login_eye.setBackgroundResource(R.mipmap.login_biyan);
@@ -92,10 +129,8 @@ public class LoginActivity extends BaseAty {
         phoneBrand = Build.MODEL;
         androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         Log.e("phone", phoneBrand + "     " + androidId);
-    }
 
-    @Override
-    public void initDatas(JumpParameter parameter) {
+
         //账号密码登录
         HttpRequest.POST(me, Constants.LOGIN, new Parameter()
                 .add("account", "")
@@ -243,42 +278,6 @@ public class LoginActivity extends BaseAty {
                 jump(ForgetPassActivity.class);
             }
         });
-    }
-
-    private void initView() {
-        buttonLoginImmediately = findViewById(R.id.button_login_immediately);
-        frame_layout_bottom = findViewById(R.id.frame_layout_bottom);
-        vcivCode = findViewById(R.id.vciv_code);
-        login_eye = findViewById(R.id.login_eye);
-        login_edpass = findViewById(R.id.login_edpass);
-        login_text = findViewById(R.id.login_text);
-        login_getCode = findViewById(R.id.login_getCode);
-        linear_code = findViewById(R.id.linear_code);
-        login_code = findViewById(R.id.login_code);
-        linear_pass = findViewById(R.id.linear_pass);
-        text_zhuanwang = findViewById(R.id.text_zhuanwang);
-        linear_popNet = findViewById(R.id.linear_pop);
-        login_down = findViewById(R.id.login_down);
-
-        login_agree = findViewById(R.id.login_agree);
-        login_zhanghaoBig = findViewById(R.id.login_zhanghao_big);
-        login_zhanghaoSmall = findViewById(R.id.login_zhanghao_small);
-        login_phone = findViewById(R.id.login_phone);
-        login_jujue = findViewById(R.id.login_jujue);
-        login_text_forget = findViewById(R.id.login_text_forget);
-        login_ninhao = findViewById(R.id.login_ninhao);
-        login_passwordBig = findViewById(R.id.login_password_big);
-        login_passwordSmall = findViewById(R.id.login_password_small);
-        //设置字体
-        login_ninhao.setTypeface(getTextMedium);
-        login_zhanghaoBig.setTypeface(getTextMedium);
-        login_passwordBig.setTypeface(getTextMedium);
-        buttonLoginImmediately.setTypeface(getTextMedium);
-        login_zhanghaoSmall.setTypeface(getTextMedium);
-        login_passwordSmall.setTypeface(getTextMedium);
-        login_phone.setTypeface(getTextNum);
-        login_edpass.setTypeface(getTextNum);
-        login_code.setTypeface(getTextMedium);
     }
 
 }

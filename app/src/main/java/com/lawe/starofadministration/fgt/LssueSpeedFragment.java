@@ -27,8 +27,7 @@ public class LssueSpeedFragment extends BaseFgt {
 
     @Override
     public void initViews() {
-        initView();
-
+        joinSpeedRecycle = (RecyclerView) findViewById(R.id.join_speed_recycle);
         //进度列表
         list = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(me);
@@ -57,7 +56,4 @@ public class LssueSpeedFragment extends BaseFgt {
         return new LssueSpeedFragment();
     }
 
-    private void initView() {
-        joinSpeedRecycle = (RecyclerView) findViewById(R.id.join_speed_recycle);
-    }
 }

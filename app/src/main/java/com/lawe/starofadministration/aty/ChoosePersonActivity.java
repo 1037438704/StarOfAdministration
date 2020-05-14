@@ -68,19 +68,20 @@ public class ChoosePersonActivity extends BaseAty {
 
     @Override
     public void initViews() {
-        initView();
-        setFinishOnTouchOutside(true);
-
-        //设置字体
-        choosePersonTijiao.setTypeface(getTextMedium);
-        titleText.setTypeface(getTextBold);
-        titleRight.setVisibility(View.VISIBLE);
-        titleRight.setTypeface(getTextMedium);
-        itemChooseBuMenName.setTypeface(getTextMedium);
-        titleRight.setText("常用组");
-
-        titleText.setText("选择审核人");
-
+        titleBack = findViewById(R.id.title_back);
+        titleText = findViewById(R.id.title_text);
+        titleRight = findViewById(R.id.title_right);
+        choosePersonSeach = findViewById(R.id.choose_person_seach);
+        choosePersonSeachEdit = findViewById(R.id.choose_person_seach_edit);
+        itemChooseMyAll = findViewById(R.id.item_choose_myAll);
+        itemChooseMyBumen = findViewById(R.id.item_choose_myBumen);
+        itemChooseBuMenName = findViewById(R.id.item_choose_buMen_name);
+        itemChooseBuMenNum = findViewById(R.id.item_choose_buMen_num);
+        itemChooseGoNext = findViewById(R.id.item_choose_goNext);
+        choosePersonSelect = findViewById(R.id.choose_person_select);
+        choosePersonAlredySelect = findViewById(R.id.choose_person_alredy_select);
+        choosePersonTijiao = findViewById(R.id.choose_person_tijiao);
+        choosePersonRecycle = findViewById(R.id.choose_person_recycle);
         //其他部门列表
         list = new ArrayList<>();
         //待办信息
@@ -92,7 +93,15 @@ public class ChoosePersonActivity extends BaseAty {
 
     @Override
     public void initDatas(JumpParameter parameter) {
-
+        setFinishOnTouchOutside(true);
+        //设置字体
+        choosePersonTijiao.setTypeface(getTextMedium);
+        titleText.setTypeface(getTextBold);
+        titleRight.setVisibility(View.VISIBLE);
+        titleRight.setTypeface(getTextMedium);
+        itemChooseBuMenName.setTypeface(getTextMedium);
+        titleRight.setText("常用组");
+        titleText.setText("选择审核人");
         for (int i = 0; i < 15; i++) {
             list.add("" + i);
         }
@@ -224,20 +233,4 @@ public class ChoosePersonActivity extends BaseAty {
         });
     }
 
-    private void initView() {
-        titleBack = findViewById(R.id.title_back);
-        titleText = findViewById(R.id.title_text);
-        titleRight = findViewById(R.id.title_right);
-        choosePersonSeach = findViewById(R.id.choose_person_seach);
-        choosePersonSeachEdit = findViewById(R.id.choose_person_seach_edit);
-        itemChooseMyAll = findViewById(R.id.item_choose_myAll);
-        itemChooseMyBumen = findViewById(R.id.item_choose_myBumen);
-        itemChooseBuMenName = findViewById(R.id.item_choose_buMen_name);
-        itemChooseBuMenNum = findViewById(R.id.item_choose_buMen_num);
-        itemChooseGoNext = findViewById(R.id.item_choose_goNext);
-        choosePersonSelect = findViewById(R.id.choose_person_select);
-        choosePersonAlredySelect = findViewById(R.id.choose_person_alredy_select);
-        choosePersonTijiao = findViewById(R.id.choose_person_tijiao);
-        choosePersonRecycle = findViewById(R.id.choose_person_recycle);
-    }
 }

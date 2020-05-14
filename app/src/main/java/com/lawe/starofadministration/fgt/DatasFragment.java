@@ -51,9 +51,7 @@ public class DatasFragment extends BaseFgt {
 
     @Override
     public void initViews() {
-
         //me.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         fragemnts = new ArrayList<>();
         mainRgp = (RadioGroup) findViewById(R.id.main_rgp);
         viewPager = (ViewPager) findViewById(R.id.viewPagerData);

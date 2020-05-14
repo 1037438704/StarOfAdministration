@@ -47,7 +47,20 @@ public class ApproveSettingFragment extends BaseFgt {
 
     @Override
     public void initViews() {
-        initView();
+        appSetJiguan = (LinearLayout) findViewById(R.id.app_set_jiguan);
+        appSetJiguanText = (TextView) findViewById(R.id.app_set_jiguan_text);
+        appSetWenzhong = (LinearLayout) findViewById(R.id.app_set_wenzhong);
+        appSetWenzhongText = (TextView) findViewById(R.id.app_set_wenzhong_text);
+        appSetYear = (LinearLayout) findViewById(R.id.app_set_year);
+        appSetYearText = (TextView) findViewById(R.id.app_set_year_text);
+        appSetTextnum = (LinearLayout) findViewById(R.id.app_set_textnum);
+        appSetTextnumText = (TextView) findViewById(R.id.app_set_textnum_text);
+        appSetChooseCompany = (LinearLayout) findViewById(R.id.app_set_choose_company);
+        appSetChooseCompanyNum = (TextView) findViewById(R.id.app_set_choose_company_num);
+        appSetPerson = (LinearLayout) findViewById(R.id.app_set_person);
+        appSetPersonNum = (TextView) findViewById(R.id.app_set_person_num);
+        appSetPerson2 = (LinearLayout) findViewById(R.id.app_set_person2);
+        appSetPersonNum2 = (TextView) findViewById(R.id.app_set_person_num2);
     }
 
     @Override
@@ -126,20 +139,4 @@ public class ApproveSettingFragment extends BaseFgt {
         return new ApproveSettingFragment();
     }
 
-    private void initView() {
-        appSetJiguan = (LinearLayout) findViewById(R.id.app_set_jiguan);
-        appSetJiguanText = (TextView) findViewById(R.id.app_set_jiguan_text);
-        appSetWenzhong = (LinearLayout) findViewById(R.id.app_set_wenzhong);
-        appSetWenzhongText = (TextView) findViewById(R.id.app_set_wenzhong_text);
-        appSetYear = (LinearLayout) findViewById(R.id.app_set_year);
-        appSetYearText = (TextView) findViewById(R.id.app_set_year_text);
-        appSetTextnum = (LinearLayout) findViewById(R.id.app_set_textnum);
-        appSetTextnumText = (TextView) findViewById(R.id.app_set_textnum_text);
-        appSetChooseCompany = (LinearLayout) findViewById(R.id.app_set_choose_company);
-        appSetChooseCompanyNum = (TextView) findViewById(R.id.app_set_choose_company_num);
-        appSetPerson = (LinearLayout) findViewById(R.id.app_set_person);
-        appSetPersonNum = (TextView) findViewById(R.id.app_set_person_num);
-        appSetPerson2 = (LinearLayout) findViewById(R.id.app_set_person2);
-        appSetPersonNum2 = (TextView) findViewById(R.id.app_set_person_num2);
-    }
 }

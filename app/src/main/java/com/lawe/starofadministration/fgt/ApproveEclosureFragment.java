@@ -27,7 +27,7 @@ public class ApproveEclosureFragment extends BaseFgt {
     private RecyclerView enclosureRecycle;
     private LinearLayout enclosureShangchuan;
     private TextView enclosureText;
-
+    private EnclosureAdapter enclosureAdapter;
     //空集合
     private List<String> list;
 
@@ -36,17 +36,13 @@ public class ApproveEclosureFragment extends BaseFgt {
         return super.fastblur(context, sentBitmap, radius);
     }
 
-    private EnclosureAdapter enclosureAdapter;
-
     @Override
     public void initViews() {
         enclosureRecycle = (RecyclerView) findViewById(R.id.enclosure_recycle);
         enclosureShangchuan = (LinearLayout) findViewById(R.id.enclosure_shangchuan);
         enclosureText = (TextView) findViewById(R.id.enclosure_text);
-
         //设置字体
         enclosureText.setTypeface(getTextMedium);
-
         //附件列表
         list = new ArrayList<>();
         //待办信息

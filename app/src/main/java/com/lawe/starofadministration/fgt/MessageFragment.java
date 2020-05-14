@@ -59,14 +59,9 @@ public class MessageFragment extends BaseFgt {
         choose_leibie = (LinearLayout) findViewById(R.id.choose_leibie);
         linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
         recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
-
-
         textChoose = (LinearLayout) findViewById(R.id.text_choose);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
         drawer_quxiao = getActivity().findViewById(R.id.drawer_quxiao);
-
-
-
         list = new ArrayList<>();
         //待办信息
         recycleMessage.setLayoutManager(new LinearLayoutManager(me));

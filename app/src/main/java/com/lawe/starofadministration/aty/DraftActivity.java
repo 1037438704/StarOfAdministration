@@ -100,11 +100,54 @@ public class DraftActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        titleBack = findViewById(R.id.title_back);
+        titleText = findViewById(R.id.title_text);
+        titleNew = findViewById(R.id.title_new);
+        titleMore = findViewById(R.id.title_more);
+        mainRgp = findViewById(R.id.main_rgp);
+        viewPagerData = findViewById(R.id.viewPagerData);
 
-        initView();
+        draftAll = findViewById(R.id.draft_all);
+        draftMore = findViewById(R.id.draft_more);
+        draftMoreAI = findViewById(R.id.draft_more_AI);
+        draftMoreDaoru = findViewById(R.id.draft_more_daoru);
+        draftMoreSave = findViewById(R.id.draft_more_save);
+        draftMoreTemplate = findViewById(R.id.draft_more_template);
+        draftMoreGlossary = findViewById(R.id.draft_more_glossary);
 
+        bottomPerson = findViewById(R.id.bottom_person);
+        bottomPizhu = findViewById(R.id.bottom_pizhu);
+        bottomWhrit = findViewById(R.id.bottom_whrit);
+        bottomChat = findViewById(R.id.bottom_chat);
+        bottomButton = findViewById(R.id.bottom_button);
+
+        draftChat = findViewById(R.id.draft_chat);
+        draftChatRecycle = findViewById(R.id.draft_chat_recycle);
+        draftChatNew = findViewById(R.id.draft_chat_new);
+        draftChatSet = findViewById(R.id.draft_chat_set);
+        draftChatNewText = findViewById(R.id.draft_chat_new_text);
+        draftChatSetText = findViewById(R.id.draft_chat_set_text);
+
+        //设置字体
+        titleText.setText("起草公文");
+        titleText.setTypeface(getTextBold);
+        titleMore.setVisibility(View.VISIBLE);
+        draftChatNewText.setTypeface(getTextMedium);
+        draftChatSetText.setTypeface(getTextMedium);
+        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
+        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
+        draftSpeedOne = findViewById(R.id.draft_speed_one);
         fragemnts = new ArrayList<>();
+        //常用语列表
+        listchat = new ArrayList<>();
+        layoutManager = new LinearLayoutManager(me);
+        draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
 
+    }
+
+
+    @Override
+    public void initDatas(JumpParameter parameter) {
         //获取上一个页面传递的标识
         int flagSpeed = (int) getParameter().get("flagSpeed");
         Log.e("flagSpeed",flagSpeed+"");
@@ -119,18 +162,8 @@ public class DraftActivity extends BaseAty {
 
         rb.setChecked(true);
         rb.setTypeface(getTextMedium);
-
-        //常用语列表
-        listchat = new ArrayList<>();
-        layoutManager = new LinearLayoutManager(me);
         draftChatRecycle.setLayoutManager(layoutManager);
-        draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
         draftChatRecycle.setAdapter(draftChatAdapter);
-    }
-
-
-    @Override
-    public void initDatas(JumpParameter parameter) {
 
         fragemnts.add(JoinSpeedFragment.newInstance());
         fragemnts.add(DocumentEditFragment.newInstance());
@@ -396,47 +429,7 @@ public class DraftActivity extends BaseAty {
         });
     }
 
-    private void initView() {
-        titleBack = findViewById(R.id.title_back);
-        titleText = findViewById(R.id.title_text);
-        titleNew = findViewById(R.id.title_new);
-        titleMore = findViewById(R.id.title_more);
-        mainRgp = findViewById(R.id.main_rgp);
-        viewPagerData = findViewById(R.id.viewPagerData);
-
-        draftAll = findViewById(R.id.draft_all);
-        draftMore = findViewById(R.id.draft_more);
-        draftMoreAI = findViewById(R.id.draft_more_AI);
-        draftMoreDaoru = findViewById(R.id.draft_more_daoru);
-        draftMoreSave = findViewById(R.id.draft_more_save);
-        draftMoreTemplate = findViewById(R.id.draft_more_template);
-        draftMoreGlossary = findViewById(R.id.draft_more_glossary);
-
-        bottomPerson = findViewById(R.id.bottom_person);
-        bottomPizhu = findViewById(R.id.bottom_pizhu);
-        bottomWhrit = findViewById(R.id.bottom_whrit);
-        bottomChat = findViewById(R.id.bottom_chat);
-        bottomButton = findViewById(R.id.bottom_button);
-
-        draftChat = findViewById(R.id.draft_chat);
-        draftChatRecycle = findViewById(R.id.draft_chat_recycle);
-        draftChatNew = findViewById(R.id.draft_chat_new);
-        draftChatSet = findViewById(R.id.draft_chat_set);
-        draftChatNewText = findViewById(R.id.draft_chat_new_text);
-        draftChatSetText = findViewById(R.id.draft_chat_set_text);
-
-        //设置字体
-        titleText.setText("起草公文");
-        titleText.setTypeface(getTextBold);
-        titleMore.setVisibility(View.VISIBLE);
-        draftChatNewText.setTypeface(getTextMedium);
-        draftChatSetText.setTypeface(getTextMedium);
-        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
-        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
-        draftSpeedOne = findViewById(R.id.draft_speed_one);
-    }
     //改变状态
-
     private  void listItemstate(){
         List<ListChatBean> list =  draftChatAdapter.getData();
         for (int i = 0; i < list.size(); i++) {

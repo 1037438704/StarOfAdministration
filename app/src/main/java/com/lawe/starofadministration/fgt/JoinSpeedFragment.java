@@ -29,7 +29,7 @@ public class JoinSpeedFragment extends BaseFgt {
 
     @Override
     public void initViews() {
-        initView();
+        joinSpeedRecycle = (RecyclerView) findViewById(R.id.join_speed_recycle);
 
         //进度列表
         list = new ArrayList<>();
@@ -54,12 +54,7 @@ public class JoinSpeedFragment extends BaseFgt {
     public void setEvents() {
 
     }
-
     public static JoinSpeedFragment newInstance() {
         return new JoinSpeedFragment();
-    }
-
-    private void initView() {
-        joinSpeedRecycle = (RecyclerView) findViewById(R.id.join_speed_recycle);
     }
 }

@@ -46,7 +46,11 @@ public class AgreementActivity extends BaseAty {
 
     @Override
     public void initViews() {
-        initView();
+        loginDown = findViewById(R.id.login_down);
+        mainRgp = findViewById(R.id.main_rgp);
+        viewPagerData = findViewById(R.id.viewPagerData);
+        loginJujue = findViewById(R.id.login_jujue);
+        loginAgree = findViewById(R.id.login_agree);
     }
 
     @Override
@@ -88,13 +92,5 @@ public class AgreementActivity extends BaseAty {
                 }
             }
         });
-    }
-
-    private void initView() {
-        loginDown = findViewById(R.id.login_down);
-        mainRgp = findViewById(R.id.main_rgp);
-        viewPagerData = findViewById(R.id.viewPagerData);
-        loginJujue = findViewById(R.id.login_jujue);
-        loginAgree = findViewById(R.id.login_agree);
     }
 }

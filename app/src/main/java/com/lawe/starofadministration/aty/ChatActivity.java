@@ -29,15 +29,15 @@ import com.lawe.starofadministration.base.BaseAty;
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
 public class ChatActivity extends BaseAty {
 
-    private android.widget.ImageView chatBack;
-    private android.widget.EditText chatEdit;
-    private android.widget.Button chatButton;
+    private ImageView chatBack;
+    private EditText chatEdit;
+    private Button chatButton;
 
     @Override
     public void initViews() {
-        chatBack = (ImageView) findViewById(R.id.chat_back);
-        chatEdit = (EditText) findViewById(R.id.chat_edit);
-        chatButton = (Button) findViewById(R.id.chat_button);
+        chatBack = findViewById(R.id.chat_back);
+        chatEdit = findViewById(R.id.chat_edit);
+        chatButton = findViewById(R.id.chat_button);
     }
 
     @Override

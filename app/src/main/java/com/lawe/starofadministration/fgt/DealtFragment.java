@@ -65,7 +65,6 @@ public class DealtFragment extends BaseFgt {
         linear_myXunzhang = getActivity().findViewById(R.id.linear_myXunzhang);
         dealtLinerarLayout = (LinearLayout) findViewById(R.id.dealt_linerar_layout);
         dealtLinerarLayout.setPadding(0,me.getStatusBarHeight(),0,0);
-
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
         rb.setTypeface(getTextMedium);
