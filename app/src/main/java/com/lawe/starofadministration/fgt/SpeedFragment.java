@@ -67,7 +67,7 @@ public class SpeedFragment extends BaseFgt {
 
         chooseLeibie = (LinearLayout) findViewById(R.id.choose_leibie);
         recycleSpeed = (RecyclerView) findViewById(R.id.recycle_speed);
-        recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
+        //recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);
 
         speedImgLeibie = (ImageView) findViewById(R.id.speed_img_leibie);
         speedImgJinji = (ImageView) findViewById(R.id.speed_img_jinji);

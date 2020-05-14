@@ -14,13 +14,6 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_leibie"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_white_xia_12"
-            android:visibility="gone" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,6 +58,22 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="13dp"
                 android:layout_marginBottom="12dp"
+                android:text="督查督办"
+                android:textColor="#ff3e3e41"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="24dp"
+                android:background="@color/backgroundHui" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="12dp"
                 android:text="收文传阅"
                 android:textColor="#ff3e3e41"
                 android:textSize="14sp" />
@@ -81,7 +90,39 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="13dp"
                 android:layout_marginBottom="12dp"
+                android:text="工作计划"
+                android:textColor="#ff3e3e41"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="24dp"
+                android:background="@color/backgroundHui" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="12dp"
                 android:text="公文归档"
+                android:textColor="#ff3e3e41"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="24dp"
+                android:background="@color/backgroundHui" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="12dp"
+                android:text="文件报发"
                 android:textColor="#ff3e3e41"
                 android:textSize="14sp" />
 

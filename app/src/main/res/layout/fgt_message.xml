@@ -46,6 +46,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/dealt_linerar_time"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -70,6 +71,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/dealt_linerar_urgent"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -140,6 +142,10 @@
             android:background="#F5F5F5" />
 
         <include layout="@layout/view_screen_layout" />
+
+        <include layout="@layout/view_jinji_layout" />
+
+        <include layout="@layout/view_time_layout" />
     </FrameLayout>
 
 </LinearLayout>
