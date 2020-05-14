@@ -1,11 +1,8 @@
 package com.lawe.starofadministration.aty;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -16,16 +13,10 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.viewpager.widget.ViewPager;
-
-import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
@@ -37,16 +28,9 @@ import com.kongzue.baseokhttp.util.Parameter;
 import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
-import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.config.Constants;
-import com.lawe.starofadministration.fgt.JoinContextFragment;
-import com.lawe.starofadministration.fgt.JoinEclosureFragment;
-import com.lawe.starofadministration.fgt.JoinSpeedFragment;
 import com.wynsbin.vciv.VerificationCodeInputView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * author : fuke
