@@ -13,16 +13,17 @@ import android.widget.EditText;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.gson.Gson;
 import com.kongzue.baseframework.BaseActivity;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.config.Constants;
+import com.lawe.starofadministration.utils.Preferences;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import baseokhttp3.MediaType;
 
 abstract public class BaseAty extends BaseActivity implements Constants {
     public Typeface getTextMedium = MyApplication.getTextMedium;
@@ -31,11 +32,11 @@ abstract public class BaseAty extends BaseActivity implements Constants {
     public Typeface getTextNum = MyApplication.getTextNum;
 
     public JSONObject json=new JSONObject();
-
+    public Gson gson = new Gson();
+  //  public String token = Preferences.getInstance().getString(me, "user", "token");
     //权限申请回调
     private OnPermissionResponseListener onPermissionResponseListener;
     private int REQUEST_CODE_PERMISSION = 0x00099;
-
     /**
      * 点击页面空白处时，让键盘消失
      *

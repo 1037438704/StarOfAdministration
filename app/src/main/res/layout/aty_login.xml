@@ -237,11 +237,12 @@
 
                 <RelativeLayout
                     android:id="@+id/linear_pass"
+                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:orientation="horizontal"
                         android:layout_marginLeft="28dp"
                         android:layout_marginRight="29dp"
@@ -280,38 +281,46 @@
                         android:layout_height="22dp"/>
                 </RelativeLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/linear_code"
                     android:visibility="gone"
+                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginRight="29dp"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/login_code"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="验证码"
-                        android:includeFontPadding="false"
-                        android:textColor="#ff717173"
-                        android:textSize="18sp"
-                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginRight="29dp"
+                        android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/login_codePass"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="12dp"
-                        android:background="@null"
-                        android:hint="请输入验证码"
-                        android:textColorHint="#ff9f9fa0"
-                        android:textColor="#3E3E41"
-                        android:textSize="18sp"
-                        />
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/login_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="验证码"
+                            android:includeFontPadding="false"
+                            android:layout_marginRight="12dp"
+                            android:textColor="#ff717173"
+                            android:textSize="18sp"
+                            />
 
+                        <EditText
+                            android:id="@+id/login_codePass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:includeFontPadding="false"
+                            android:focusableInTouchMode="false"
+                            android:textColorHint="#ff9f9fa0"
+                            android:hint="请输入验证码"
+                            android:textColor="#3E3E41"
+                            android:textSize="18sp"
+                            />
+                    </LinearLayout>
+
+                </RelativeLayout>
 
                 <View
                     android:id="@+id/login_code_view"
@@ -324,33 +333,34 @@
                     />
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:id="@+id/linera_edit_code"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_height="wrap_content">
+
                     <com.wynsbin.vciv.VerificationCodeInputView
                         android:id="@+id/vciv_code"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        app:vciv_et_background="@android:color/white"
-                        app:vciv_et_cursor_color="@color/black"
+                        app:vciv_et_background="#EDEDED"
+                        app:vciv_et_cursor_color="#EDEDED"
                         app:vciv_et_height="58dp"
                         app:vciv_et_inputType="number"
                         app:vciv_et_number="4"
-                        app:vciv_et_text_color="#333333"
+                        app:vciv_et_text_color="#3F3F42"
                         app:vciv_et_text_size="18sp"
-                        app:vciv_et_underline_focus_color="@color/black"
+                        app:vciv_et_underline_focus_color="#EDEDED"
                         app:vciv_et_underline_height="3dp"
                         app:vciv_et_underline_show="true"
                         app:vciv_et_width="58dp" />
 
-
                 </LinearLayout>
+
             </LinearLayout>
 
         </RelativeLayout>
@@ -558,6 +568,7 @@
             </LinearLayout>
 
             <WebView
+                android:id="@+id/login_webview"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="139dp"
                 android:layout_height="match_parent"/>

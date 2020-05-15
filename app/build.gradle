@@ -60,8 +60,6 @@ dependencies {
 
     //堆叠标签
     implementation 'com.kongzue.stacklabel:stacklabelview:1.1.9'
-    //二维码
-//    implementation 'com.google.zxing:core:3.3.3'
     //万能适配器
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.2'
 
@@ -72,4 +70,5 @@ dependencies {
     implementation 'com.github.xujiaji:happy-bubble:1.1.4'
     //依赖Zxing Moudle
     implementation project(path: ':lib-zxing')
+    implementation 'com.google.code.gson:gson:2.7'
 }
