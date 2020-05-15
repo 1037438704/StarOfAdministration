@@ -140,12 +140,9 @@ public class LoginActivity extends BaseAty {
         phoneBrand = Build.MODEL;
         androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         Log.e("phone", phoneBrand + "     " + androidId);
-    }
-
-    @Override
-    public void initDatas(JumpParameter parameter) {
         postLogin();
     }
+
 
     //登录请求
     private void postLogin() {
