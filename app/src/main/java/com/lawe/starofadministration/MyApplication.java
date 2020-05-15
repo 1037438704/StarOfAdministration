@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import com.kongzue.baseokhttp.util.BaseOkHttp;
 import com.kongzue.dialog.util.BaseDialog;
 import com.kongzue.dialog.util.DialogSettings;
+import com.okhttplib.OkHttpUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -28,22 +29,17 @@ public class MyApplication extends Application {
     public static Typeface getTextBold;
     public static Typeface getTextRegular;
     public static Typeface getTextNum;
+    Context context;
 
     @Override
     public void onCreate() {
         BaseDialog.unload();
         DialogSettings.init();
-        //DialogSettings.checkRenderscriptSupport(this);
-//        DialogSettings.DEBUGMODE = true;
-//        DialogSettings.isUseBlur = true;
-//        DialogSettings.autoShowInputKeyboard = true;
-        //DialogSettings.backgroundColor = Color.BLUE;
-        //DialogSettings.titleTextInfo = new TextInfo().setFontSize(50);
-        //DialogSettings.buttonPositiveTextInfo = new TextInfo().setFontColor(Color.GREEN);
         DialogSettings.style = DialogSettings.STYLE.STYLE_IOS;
         DialogSettings.theme = DialogSettings.THEME.LIGHT;
         //开启请求日志
         BaseOkHttp.DEBUGMODE = true;
+        OkHttpUtil.init(getApplicationContext()).setShowHttpLog(true).build();
         //请求公共链接
         BaseOkHttp.serviceUrl = "http://192.168.0.179:8081/szzw-web";
 

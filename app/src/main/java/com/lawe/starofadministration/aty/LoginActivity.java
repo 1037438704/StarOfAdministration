@@ -51,6 +51,13 @@ import com.lawe.starofadministration.fgt.JoinContextFragment;
 import com.lawe.starofadministration.fgt.JoinEclosureFragment;
 import com.lawe.starofadministration.fgt.JoinSpeedFragment;
 import com.lawe.starofadministration.utils.Constant;
+import com.okhttplib.HttpInfo;
+import com.okhttplib.OkHttpUtil;
+import com.okhttplib.annotation.CacheType;
+import com.okhttplib.annotation.ContentType;
+import com.okhttplib.annotation.RequestType;
+import com.okhttplib.bean.DownloadFileInfo;
+import com.okhttplib.callback.Callback;
 import com.wynsbin.vciv.VerificationCodeInputView;
 
 import org.json.JSONArray;
@@ -58,6 +65,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -65,7 +73,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * author : fuke
@@ -135,7 +145,7 @@ public class LoginActivity extends BaseAty {
         linear_code = findViewById(R.id.linear_code);
         login_code = findViewById(R.id.login_code);
         linera_edit_code = findViewById(R.id.linera_edit_code);
-        linear_pass = findViewById(R.id.linear_pass);
+         linear_pass = findViewById(R.id.linear_pass);
         text_zhuanwang = findViewById(R.id.text_zhuanwang);
         linear_popAgree = findViewById(R.id.linear_popAgree);
         linear_popNet = findViewById(R.id.linear_pop);
@@ -157,7 +167,7 @@ public class LoginActivity extends BaseAty {
             login_edpass.setText(psd);
         }
         //加载协议
-        //webXieyi();
+        webXieyi();
         //sss();
     }
 
@@ -230,7 +240,6 @@ public class LoginActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 postLogin();
-                // isFrist();
             }
         });
 
@@ -317,6 +326,7 @@ public class LoginActivity extends BaseAty {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
             HttpRequest.JSONPOST(me, Constants.LOGIN, json1, new ResponseListener() {
                 @Override
                 public void onResponse(String response, Exception error) {
@@ -337,88 +347,71 @@ public class LoginActivity extends BaseAty {
     //加载登陆协议
     private  void webXieyi(){
         //json转化为string类型
-        json1 = String.valueOf(json);
-        HttpRequest.build(me,Constants.FINDUSERAGREEMENT)
-                .setResponseListener(new ResponseListener() {
-                    @Override
-                    public void onResponse(String response, Exception error) {
-                        if (error == null) {
-                            Log.e("shuju",response);
-                            LoginWebBean loginWebBean = gson.fromJson(response, LoginWebBean.class);
-                            String userAgreementUrl = loginWebBean.getUserAgreementUrl();
-                            WebSettings webSettings = loginWeb.getSettings();
-                            if (Build.VERSION.SDK_INT >= 21) {
-                                webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
-                            }
-                            // 加快HTML网页加载完成速度
-                            if (Build.VERSION.SDK_INT >= 19) {
-                                webSettings.setLoadsImagesAutomatically(true);
-                            } else {
-                                webSettings.setLoadsImagesAutomatically(false);
-                            }
-                            webSettings.setDomStorageEnabled(true);//设置适应Html5的一些方法
-                            //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
-                            webSettings.setJavaScriptEnabled(true);
-                            loginWeb.loadUrl(userAgreementUrl);
-                        } else {
+        try {
+            json.put("name","123");
 
-                        }
-                    }
-                }).doGet();
-    }
-
-    private void sss(){
-        new Thread(new Runnable() {
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String json2 = String.valueOf(json);
+        /*        HttpRequest.GET(me,FINDUSERAGREEMENT,new Parameter().add(json1,""),new ResponseListener(){
             @Override
-            public void run() {
-                try {
-                    //打开链接
-                    URL url = new URL(Constants.FINDUSERAGREEMENT);
-                    //找到输入流
-                    URLConnection conn = url.openConnection();
-                    InputStream is = conn.getInputStream();
-                    //添加到缓冲输入区里
-                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
-                    //字符串变量
-                    StringBuffer sb = new StringBuffer();
-                    String s = "";
-                    //一行一行读下来
-                    while ((s = br.readLine()) != null) {
-                        sb.append(s);
+            public void onResponse(String response, Exception error) {
+                if (error == null) {
+                    Log.e("shuju",response);
+                    LoginWebBean loginWebBean = gson.fromJson(response, LoginWebBean.class);
+                    String userAgreementUrl = loginWebBean.getUserAgreementUrl();
+                    WebSettings webSettings = loginWeb.getSettings();
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
                     }
-                    br.close();
-                    is.close();
-                    String string = sb.toString();
-
-                    //第一步，参数相当于一个JSON,依次解析下一步
-                    JSONObject json = new JSONObject(string);
-                    JSONObject result = json.getJSONObject("result");
-                    //当你获得Array类型的时候，然后要遍历获取代表里面面每一个个Object
-                    JSONArray data = result.getJSONArray("data");
-                    for (int i = 0; i < data.length(); i++) {
-                        JSONObject value = data.getJSONObject(i);
-                        String title = value.getString("title");
-                        //                        String title = value.optString("title");
-                        Log.e("sss", title);
-                        //传送
-                        Message message = hand.obtainMessage();
-                        message.what = 1;
-                        message.obj = title;
-                        hand.sendMessage(message);
+                    // 加快HTML网页加载完成速度
+                    if (Build.VERSION.SDK_INT >= 19) {
+                        webSettings.setLoadsImagesAutomatically(true);
+                    } else {
+                        webSettings.setLoadsImagesAutomatically(false);
                     }
+                    webSettings.setDomStorageEnabled(true);//设置适应Html5的一些方法
+                    //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
+                    webSettings.setJavaScriptEnabled(true);
+                    loginWeb.loadUrl(userAgreementUrl);
+                } else {
 
-                    //Message message = hand.obtainMessage();
-                    //message.what = 1;
-                    //message.obj = string;
-                    //hand.sendMessage(message);
-
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
                 }
             }
-        }).start();
-
+        });*/
+      /*  OkHttpUtil.Builder().setCacheType(CacheType.FORCE_NETWORK).build(this)
+                .doGetAsync(
+                        HttpInfo.Builder()
+                                .setUrl("http://192.168.0.179:8081/szzw-web"+Constants.FINDUSERAGREEMENT)
+                                .setRequestType(RequestType.POST)//请求方式
+                                .setNeedResponse(true)//设置返回结果为Response
+                                .addParamJson(json2)//添加Json参数
+                                .build(),
+                        new Callback() {
+                            @Override
+                            public void onSuccess(HttpInfo info) throws IOException {
+                                toast("111");
+                                String result =  info.getResponse().body().string();
+                                Log.e("ddd",result);
+                            }
+                            @Override
+                            public void onFailure(HttpInfo info) throws IOException {
+                                toast("222");
+                            }
+                        }
+                );*/
+        HttpRequest.JSONPOST(me, Constants.FINDUSERAGREEMENT, json2, new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                WaitDialog.dismiss();
+                if (error == null) {
+                    Log.e("shuju",response);
+                } else {
+                    error.getMessage();
+                }
+            }
+        });
     }
 
     //短信验证
@@ -433,19 +426,22 @@ public class LoginActivity extends BaseAty {
         }else if(loginPass.equals("")){
             toast("请输入密码");
         }else {
-            try {
-                json.put("account", loginPhone);
-                json.put("password", loginPass);
-                //json转化为string类型
-                json1 = String.valueOf(json);
+//            try {
+//                json.put("account", loginPhone);
+//                json.put("password", loginPass);
+//                //json转化为string类型
+//                json1 = String.valueOf(json);
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            HttpRequest.JSONPOST(me, Constants.LOGIN, json1, new ResponseListener() {
+            HttpRequest.POST(me, LOGIN, new Parameter()
+                    .add("account",loginPhone)
+                    .add("password",loginPass)
+                    , new ResponseListener() {
                 @Override
                 public void onResponse(String response, Exception error) {
-                    WaitDialog.dismiss();
                     if (error == null) {
                         Log.e("shuju",response);
                         LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);
