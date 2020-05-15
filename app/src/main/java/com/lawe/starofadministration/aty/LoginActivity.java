@@ -128,6 +128,8 @@ public class LoginActivity extends BaseAty {
         buttonLoginImmediately.setTypeface(getTextMedium);
         login_zhanghaoSmall.setTypeface(getTextMedium);
         login_passwordSmall.setTypeface(getTextMedium);
+        login_phone.setTypeface(getTextNum);
+        login_edpass.setTypeface(getTextNum);
         login_code.setTypeface(getTextMedium);
 
         //输入密码  不可见
@@ -138,7 +140,10 @@ public class LoginActivity extends BaseAty {
         phoneBrand = Build.MODEL;
         androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         Log.e("phone", phoneBrand + "     " + androidId);
+    }
 
+    @Override
+    public void initDatas(JumpParameter parameter) {
         postLogin();
     }
 
