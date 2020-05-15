@@ -30,7 +30,7 @@ import com.lawe.starofadministration.base.BaseFgt;
 @NavigationBarBackgroundColor(a = 255,r = 255,g = 255,b = 255)      //设置底部导航栏背景颜色（a = 0,r = 0,g = 0,b = 0可透明）
 public class GuidePagerFgt extends BaseFgt {
     private FrameLayout frameLayout;
-    private int[] bgRes = {R.mipmap.icon_start, R.mipmap.icon_start, R.mipmap.icon_start};
+    private int[] bgRes = {R.mipmap.me, R.mipmap.me, R.mipmap.me};
     ImageView imageButton;
     private int index;
 

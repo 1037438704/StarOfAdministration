@@ -13,6 +13,10 @@ import com.kongzue.baseframework.BaseFragment;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.config.Constants;
 
+import org.json.JSONObject;
+
+import baseokhttp3.MediaType;
+
 abstract public class BaseFgt extends BaseFragment implements Constants {
 
     public AppCompatActivity fgtContext;
@@ -20,6 +24,8 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
     public Typeface getTextRegular = MyApplication.getTextRegular;
     public Typeface getTextBold = MyApplication.getTextBold;
     public Typeface getTextNum = MyApplication.getTextNum;
+
+    JSONObject json=new JSONObject();
 
     @Override
     public void initViews() {

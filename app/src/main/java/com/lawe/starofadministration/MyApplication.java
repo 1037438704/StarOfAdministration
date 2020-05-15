@@ -45,7 +45,7 @@ public class MyApplication extends Application {
         //开启请求日志
         BaseOkHttp.DEBUGMODE = true;
         //请求公共链接
-        BaseOkHttp.serviceUrl = "http://47.94.15.30:8081/szzw-web";
+        BaseOkHttp.serviceUrl = "http://192.168.0.179:8081/szzw-web";
 
         //字体
         AssetManager textType = this.getAssets();

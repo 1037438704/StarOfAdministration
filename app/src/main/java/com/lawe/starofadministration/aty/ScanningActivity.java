@@ -19,13 +19,14 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
+import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.fgt.OCRwordFragment;
 import com.lawe.starofadministration.fgt.QRcodeFragment;
 import com.lawe.starofadministration.utils.Constant;
-import com.lawe.starofadministration.zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,31 @@ public class ScanningActivity extends BaseAty {
         viewPager = findViewById(R.id.viewPager);
         backButton = findViewById(R.id.back_button);
         btnQrCode = findViewById(R.id.btn_qrcode);
+        //初始化
+        ZXingLibrary.initDisplayOpinion(ScanningActivity.this);
+
+        RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
+        rb.setChecked(true);
+    }
+
+    // 开始扫码
+    private void startQrCode() {
+        // 申请相机权限
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            // 申请权限
+            ActivityCompat.requestPermissions(ScanningActivity.this, new String[]{Manifest.permission.CAMERA}, Constant.REQ_PERM_CAMERA);
+            return;
+        }
+        // 申请文件读写权限（部分朋友遇到相册选图需要读写权限的情况，这里一并写一下）
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            // 申请权限
+            ActivityCompat.requestPermissions(ScanningActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Constant.REQ_PERM_EXTERNAL_STORAGE);
+            return;
+        }
+        // 二维码扫码
+//        Intent intent = new Intent(ScanningActivity.this, CaptureActivity.class);
+//        startActivityForResult(intent, Constant.REQ_QR_CODE);
+
     }
 
     @Override
@@ -149,27 +175,6 @@ public class ScanningActivity extends BaseAty {
                 }
                 break;
         }
-    }
-
-
-    // 开始扫码
-    private void startQrCode() {
-        // 申请相机权限
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            // 申请权限
-            ActivityCompat.requestPermissions(ScanningActivity.this, new String[]{Manifest.permission.CAMERA}, Constant.REQ_PERM_CAMERA);
-            return;
-        }
-        // 申请文件读写权限（部分朋友遇到相册选图需要读写权限的情况，这里一并写一下）
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            // 申请权限
-            ActivityCompat.requestPermissions(ScanningActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Constant.REQ_PERM_EXTERNAL_STORAGE);
-            return;
-        }
-        // 二维码扫码
-        Intent intent = new Intent(ScanningActivity.this, CaptureActivity.class);
-        startActivityForResult(intent, Constant.REQ_QR_CODE);
-
     }
 
 }

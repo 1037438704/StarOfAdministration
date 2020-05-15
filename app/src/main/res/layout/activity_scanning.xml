@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4A4A4A"
+    android:background="#01000000"
     tools:context=".aty.ScanningActivity">
 
     <ImageView
@@ -33,7 +33,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:background="#4A4A4A"
             android:orientation="horizontal"
             >
 
@@ -65,4 +64,11 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:background="@drawable/shape_chage_qr"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="135dp">
+
+    </RelativeLayout>
 </RelativeLayout>

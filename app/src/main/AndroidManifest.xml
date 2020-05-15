@@ -36,7 +36,7 @@
         </activity> <!-- 主页面 -->
         <activity android:name=".MainActivity" /> <!-- 启动页面 -->
         <activity android:name=".aty.BootPageAty" /> <!-- 二维码 -->
-        <activity android:name=".zxing.activity.CaptureActivity" /> <!-- 公文拟制列表 -->
+<!--        <activity android:name=".zxing.activity.CaptureActivity" /> &lt;!&ndash; 公文拟制列表 &ndash;&gt;-->
         <activity android:name=".aty.FictionActivity" /> <!-- 操作中心 -->
         <activity android:name=".aty.ExplanaActivity" /> <!-- 服务中心 -->
         <activity android:name=".aty.ServiceActivity" /> <!-- 问题反馈 -->
@@ -50,7 +50,8 @@
             android:windowSoftInputMode="stateVisible|adjustResize" /> <!-- 今日日程 -->
         <activity android:name=".aty.LookAllActivity" /> <!-- 忘记密码 -->
         <activity android:name=".aty.ForgetPassActivity" /> <!-- 扫一扫 -->
-        <activity android:name=".aty.ScanningActivity" /> <!-- 公文起草 -->
+        <activity android:name=".aty.ScanningActivity"
+            android:screenOrientation="portrait"/> <!-- 公文起草 -->
         <activity android:name=".aty.DraftActivity" /> <!-- 公文审核 -->
         <activity android:name=".aty.ExamineActivity" /> <!-- 公文审阅 -->
         <activity android:name=".aty.ReviewActivity" /> <!-- 公文校对 -->

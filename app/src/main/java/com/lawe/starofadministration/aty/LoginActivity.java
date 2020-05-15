@@ -1,8 +1,11 @@
 package com.lawe.starofadministration.aty;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -13,10 +16,16 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.viewpager.widget.ViewPager;
+
+import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
@@ -28,9 +37,18 @@ import com.kongzue.baseokhttp.util.Parameter;
 import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.config.Constants;
+import com.lawe.starofadministration.fgt.JoinContextFragment;
+import com.lawe.starofadministration.fgt.JoinEclosureFragment;
+import com.lawe.starofadministration.fgt.JoinSpeedFragment;
 import com.wynsbin.vciv.VerificationCodeInputView;
+
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * author : fuke
@@ -71,6 +89,7 @@ public class LoginActivity extends BaseAty {
     private String androidId;   //手机唯一序列号
     private SharedPreferences.Editor editor;
     private SharedPreferences frist;
+    private String json1;
 
     @Override
     public void initViews() {
@@ -121,12 +140,33 @@ public class LoginActivity extends BaseAty {
         phoneBrand = Build.MODEL;
         androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         Log.e("phone", phoneBrand + "     " + androidId);
+    }
 
+    @Override
+    public void initDatas(JumpParameter parameter) {
+        postLogin();
+    }
 
+    //登录请求
+    private void postLogin() {
         //账号密码登录
-        HttpRequest.POST(me, Constants.LOGIN, new Parameter()
-                .add("account", "")
-                .add("id", "userId"), new ResponseListener() {
+        /*String loginPhone = login_phone.getText().toString();
+        String loginPass = login_edpass.getText().toString();
+        if (loginPhone.equals("")){
+            toast("请输入账号");
+        }else if(loginPass.equals("")){
+            toast("请输入密码");
+        }else{*/
+        try {
+            json.put("account","15033044576");
+            json.put("password", "123456");
+            //json转化为string类型
+            json1 = String.valueOf(json);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        HttpRequest.JSONPOST(me,Constants.LOGIN,json1,new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
                 WaitDialog.dismiss();
@@ -137,6 +177,25 @@ public class LoginActivity extends BaseAty {
                 }
             }
         });
+       /* HttpRequest.POST(me, Constants.LOGIN, new Parameter()
+                            .add("account", "15033044576")
+                            .add("password", "123456")
+                          *//*  .add("deviceNum", phoneBrand)
+                            .add("loginTerminal", "2")
+                            .add("firstLoginImei", androidId)
+                            .add("firstLoginTsp", "移动")*//*
+                    , new ResponseListener() {
+                        @Override
+                        public void onResponse(String response, Exception error) {
+                            WaitDialog.dismiss();
+                            if (error == null) {
+
+                            } else {
+                                error.getMessage();
+                            }
+                        }
+                    });*/
+
     }
 
     @Override
@@ -148,18 +207,6 @@ public class LoginActivity extends BaseAty {
                 login_phone.setFocusableInTouchMode(true);
                 login_zhanghaoBig.setVisibility(View.GONE);
                 login_zhanghaoSmall.setVisibility(View.VISIBLE);
-               /* //输入账号
-                login_phone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                    @Override
-                    public void onFocusChange(View v, boolean hasFocus) {
-                        if(hasFocus){
-                            toast("有焦点");
-
-                        }else{
-                            toast("没有焦点");
-                        }
-                    }
-                });*/
 
             }
         });
@@ -170,18 +217,6 @@ public class LoginActivity extends BaseAty {
                 login_edpass.setFocusableInTouchMode(true);
                 login_passwordBig.setVisibility(View.GONE);
                 login_passwordSmall.setVisibility(View.VISIBLE);
-                //输入密码
-                /*login_edpass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                    @Override
-                    public void onFocusChange(View v, boolean hasFocus) {
-                        if(hasFocus){
-                            toast("有焦点");
-
-                        }else{
-                            toast("没有焦点");
-                        }
-                    }
-                });*/
             }
         });
 
@@ -206,9 +241,9 @@ public class LoginActivity extends BaseAty {
 
             @Override
             public void onClick(View v) {
+
                 isFrist();
             }
-
         });
 
         /*密码可见不可见*/
@@ -273,6 +308,7 @@ public class LoginActivity extends BaseAty {
         });
     }
 
+    //是否同意协议
     private void isAgree() {
         linear_popAgree.setVisibility(View.VISIBLE);
         login_agree.setOnClickListener(new View.OnClickListener() {
@@ -292,6 +328,7 @@ public class LoginActivity extends BaseAty {
         });
     }
 
+    //判断是否第一次登录同意协议
     private void isFrist() {
         frist = getSharedPreferences("frist", Context.MODE_PRIVATE);
 
@@ -304,4 +341,5 @@ public class LoginActivity extends BaseAty {
             isAgree();
         }
     }
+
 }
