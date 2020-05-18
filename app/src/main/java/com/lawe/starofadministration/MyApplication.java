@@ -41,7 +41,7 @@ public class MyApplication extends Application {
         BaseOkHttp.DEBUGMODE = true;
         OkHttpUtil.init(getApplicationContext()).setShowHttpLog(true).build();
         //请求公共链接
-        BaseOkHttp.serviceUrl = "http://192.168.0.179:8081/szzw-web";
+        BaseOkHttp.serviceUrl = "http://192.168.0.100:8081/szzw-web";
 
         //字体
         AssetManager textType = this.getAssets();

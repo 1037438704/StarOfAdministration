@@ -116,10 +116,12 @@ public class LoginActivity extends BaseAty {
     private String androidId;   //手机唯一序列号
     private SharedPreferences.Editor editor;
     private SharedPreferences frist;
-    private String json1;
+    private String jsonLogin;
     private String loginPhone;
     private String loginPass;
     private WebView loginWeb;
+    private String ids = "/118";
+    private String codes;
 
     private Handler hand = new Handler() {
         @Override
@@ -132,6 +134,7 @@ public class LoginActivity extends BaseAty {
 
     };
     private LinearLayout linera_edit_code;
+    private String jsonCode;
 
     @Override
     public void initViews() {
@@ -168,7 +171,22 @@ public class LoginActivity extends BaseAty {
         }
         //加载协议
         webXieyi();
-        //sss();
+       // shouye();
+
+    }
+
+    private void shouye() {
+
+        HttpRequest.GET(me,Constants.DOCUMENTFICTION + ids,new Parameter(),new ResponseListener(){
+            @Override
+            public void onResponse(String response, Exception error) {
+                if (error == null) {
+                    Log.e("shuju",response);
+                } else {
+
+                }
+            }
+        });
     }
 
     @Override
@@ -217,6 +235,9 @@ public class LoginActivity extends BaseAty {
         //清除验证码
         vcivCode.clearCode();
 
+        //发送验证码
+        sendCode();
+
         /*验证码输入框*/
         vcivCode.setOnInputListener(new VerificationCodeInputView.OnInputListener() {
             @Override
@@ -226,6 +247,7 @@ public class LoginActivity extends BaseAty {
                 login_passwordSmall.setText("验证码");
                 linera_edit_code.setVisibility(View.VISIBLE);
                 Toast.makeText(me, code, Toast.LENGTH_SHORT).show();
+                codes = code;
             }
 
             @Override
@@ -305,58 +327,89 @@ public class LoginActivity extends BaseAty {
         });
     }
 
+    //发送短信验证码
+    private void sendCode() {
+        login_getCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //账号密码登录
+                String loginPhoneCode = login_phone.getText().toString();
+                try {
+                    json.put("account",loginPhoneCode);
+                    jsonCode = String.valueOf(json);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //请求接口
+                HttpRequest.JSONPOST(me, Constants.GETPASSWORDBYSENDNOTE, jsonCode, new ResponseListener() {
+                    @Override
+                    public void onResponse(String response, Exception error) {
+                        WaitDialog.dismiss();
+                        if (error == null) {
+                            toast("发送成功");
+                        } else {
+                            error.getMessage();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
     //登录请求
     private void postLogin() {
-        //账号密码登录
-        loginPhone = login_phone.getText().toString();
-        loginPass = login_edpass.getText().toString();
-        Preferences.getInstance().commit(me, "phone", "phone", login_phone.getText().toString().trim());
-        Preferences.getInstance().commit(me, "phone", "psd", login_edpass.getText().toString().trim());
-        if (loginPhone.equals("")){
-            toast("请输入账号");
-        }else if(loginPass.equals("")){
-            toast("请输入密码");
-        }else {
-            try {
-                json.put("account", loginPhone);
-                json.put("password", loginPass);
-                //json转化为string类型
-                json1 = String.valueOf(json);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            HttpRequest.JSONPOST(me, Constants.LOGIN, json1, new ResponseListener() {
-                @Override
-                public void onResponse(String response, Exception error) {
-                    WaitDialog.dismiss();
-                    if (error == null) {
-                        Log.e("shuju",response);
-                        LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);
-                        Preferences.getInstance().commit(me, "user", "token", loginDefaltBean.getToken());
-                        isFrist();
-                    } else {
-                        error.getMessage();
-                    }
+        String login_tishi = login_text.getText().toString();
+        if (login_tishi.equals("验证码登录")) {
+            validCode();
+        } else {
+            //账号密码登录
+            loginPhone = login_phone.getText().toString();
+            loginPass = login_edpass.getText().toString();
+            Preferences.getInstance().commit(me, "phone", "phone", login_phone.getText().toString().trim());
+            Preferences.getInstance().commit(me, "phone", "psd", login_edpass.getText().toString().trim());
+            if (loginPhone.equals("")){
+                toast("请输入账号");
+            }else if(loginPass.equals("")){
+                toast("请输入密码");
+            }else {
+                try {
+                    json.put("account", loginPhone);
+                    json.put("password", loginPass);
+                    //json转化为string类型
+                    jsonLogin = String.valueOf(json);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            });
+                HttpRequest.JSONPOST(me, Constants.LOGIN, jsonLogin, new ResponseListener() {
+                    @Override
+                    public void onResponse(String response, Exception error) {
+                        WaitDialog.dismiss();
+                        if (error == null) {
+                            Log.e("shuju",response);
+                            LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);
+                            Preferences.getInstance().commit(me, "user", "token", loginDefaltBean.getToken());
+                            isFrist();
+                        } else {
+                            error.getMessage();
+                        }
+                    }
+                });
+            }
         }
     }
 
     //加载登陆协议
     private  void webXieyi(){
-        //json转化为string类型
         try {
             json.put("name","123");
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
         String json2 = String.valueOf(json);
-        /*        HttpRequest.GET(me,FINDUSERAGREEMENT,new Parameter().add(json1,""),new ResponseListener(){
+        HttpRequest.JSONPOST(me, Constants.FINDUSERAGREEMENT, json2, new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
+                WaitDialog.dismiss();
                 if (error == null) {
                     Log.e("shuju",response);
                     LoginWebBean loginWebBean = gson.fromJson(response, LoginWebBean.class);
@@ -376,38 +429,6 @@ public class LoginActivity extends BaseAty {
                     webSettings.setJavaScriptEnabled(true);
                     loginWeb.loadUrl(userAgreementUrl);
                 } else {
-
-                }
-            }
-        });*/
-      /*  OkHttpUtil.Builder().setCacheType(CacheType.FORCE_NETWORK).build(this)
-                .doGetAsync(
-                        HttpInfo.Builder()
-                                .setUrl("http://192.168.0.179:8081/szzw-web"+Constants.FINDUSERAGREEMENT)
-                                .setRequestType(RequestType.POST)//请求方式
-                                .setNeedResponse(true)//设置返回结果为Response
-                                .addParamJson(json2)//添加Json参数
-                                .build(),
-                        new Callback() {
-                            @Override
-                            public void onSuccess(HttpInfo info) throws IOException {
-                                toast("111");
-                                String result =  info.getResponse().body().string();
-                                Log.e("ddd",result);
-                            }
-                            @Override
-                            public void onFailure(HttpInfo info) throws IOException {
-                                toast("222");
-                            }
-                        }
-                );*/
-        HttpRequest.JSONPOST(me, Constants.FINDUSERAGREEMENT, json2, new ResponseListener() {
-            @Override
-            public void onResponse(String response, Exception error) {
-                WaitDialog.dismiss();
-                if (error == null) {
-                    Log.e("shuju",response);
-                } else {
                     error.getMessage();
                 }
             }
@@ -418,30 +439,24 @@ public class LoginActivity extends BaseAty {
     private void validCode(){
         //账号密码登录
         loginPhone = login_phone.getText().toString();
-        loginPass = login_edpass.getText().toString();
         Preferences.getInstance().commit(me, "phone", "phone", login_phone.getText().toString().trim());
-        Preferences.getInstance().commit(me, "phone", "psd", login_edpass.getText().toString().trim());
         if (loginPhone.equals("")){
             toast("请输入账号");
-        }else if(loginPass.equals("")){
-            toast("请输入密码");
+        }else if(codes.equals("")){
+            toast("请输入验证码");
         }else {
-//            try {
-//                json.put("account", loginPhone);
-//                json.put("password", loginPass);
-//                //json转化为string类型
-//                json1 = String.valueOf(json);
-//
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-
-            HttpRequest.POST(me, LOGIN, new Parameter()
-                    .add("account",loginPhone)
-                    .add("password",loginPass)
-                    , new ResponseListener() {
+           try {
+                json.put("account", loginPhone);
+                json.put("password", loginPass);
+                //json转化为string类型
+                jsonCode = String.valueOf(json);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            HttpRequest.JSONPOST(me, Constants.LOGIN, jsonCode, new ResponseListener() {
                 @Override
                 public void onResponse(String response, Exception error) {
+                    WaitDialog.dismiss();
                     if (error == null) {
                         Log.e("shuju",response);
                         LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);
