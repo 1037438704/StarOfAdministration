@@ -157,36 +157,41 @@ public class DraftActivity extends BaseAty {
         layoutManager = new LinearLayoutManager(me);
         draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
     }
-
+    int pageCounte = 0;
     @Override
     public void initDatas(JumpParameter parameter) {
-        //获取上一个页面传递的标识
+        //获取上一个页面传递的标识、
         flagSpeed = (int) getParameter().get("flagSpeed");
-        Log.e("flagSpeed", flagSpeed +"");
+        log("=================================="+flagSpeed);
         if (flagSpeed == 1){
+            pageCounte = 0;
             draftSpeedOne.setVisibility(View.GONE);
             fragemnts.add(DocumentEditFragment.newInstance());
             fragemnts.add(EnclosureCatalogFragment.newInstance());
             fragemnts.add(SetMessageFragment.newInstance());
-            rb = (RadioButton) mainRgp.getChildAt(0);
+            rb = (RadioButton) mainRgp.getChildAt(pageCounte);
         }else{
+            pageCounte = 3;
             draftSpeedOne.setVisibility(View.VISIBLE);
             fragemnts.add(DocumentEditFragment.newInstance());
             fragemnts.add(EnclosureCatalogFragment.newInstance());
             fragemnts.add(SetMessageFragment.newInstance());
             fragemnts.add(JoinSpeedFragment.newInstance());
-            rb = (RadioButton) mainRgp.getChildAt(3);
+            rb = (RadioButton) mainRgp.getChildAt(pageCounte);
         }
-
+        //好了么  好啦
         rb.setChecked(true);
+        //字体
         rb.setTypeface(getTextMedium);
-        draftChatRecycle.setLayoutManager(layoutManager);
-        draftChatRecycle.setAdapter(draftChatAdapter);
-
+        //看着没有毛病  有毛病的  加载4个的时候  按钮选中的是第四个  但是viewpager  shi diyige
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPagerData.setOffscreenPageLimit(fragemnts.size());
         viewPagerData.setAdapter(viewPagerAdp);
+        viewPagerData.setCurrentItem(pageCounte);
 
+
+        draftChatRecycle.setLayoutManager(layoutManager);
+        draftChatRecycle.setAdapter(draftChatAdapter);
         for (int i = 0; i < 10; i++) {
             listchat.add(new ListChatBean(false, "第" + i + "条"));
         }
@@ -223,10 +228,6 @@ public class DraftActivity extends BaseAty {
                 }
             }
         });
-
-
-
-
         //返回
         titleBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,7 +249,6 @@ public class DraftActivity extends BaseAty {
                 }
             }
         });
-
         //点击全屏任意地方弹框消失
         draftAll.setOnClickListener(new View.OnClickListener() {
             @Override

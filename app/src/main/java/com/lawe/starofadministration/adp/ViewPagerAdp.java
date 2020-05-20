@@ -30,6 +30,4 @@ public class ViewPagerAdp extends FragmentPagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((View) object);
     }
-
-
 }
