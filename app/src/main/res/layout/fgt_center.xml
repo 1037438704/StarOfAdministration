@@ -65,6 +65,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/center_chuanyue"
                     android:layout_height="60dp"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
@@ -76,6 +77,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/center_guidang"
                     android:layout_height="60dp"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
@@ -87,6 +89,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/center_baofa"
                     android:layout_height="60dp"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
@@ -98,6 +101,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/center_gongxiang"
                     android:layout_height="60dp"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
@@ -127,6 +131,7 @@
                 android:rowCount="2">
 
                 <TextView
+                    android:id="@+id/center_tongzhi"
                     android:layout_height="60dp"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
@@ -138,6 +143,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/center_ducha"
                     android:layout_height="60dp"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
@@ -149,6 +155,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/center_jihua"
                     android:layout_height="60dp"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"

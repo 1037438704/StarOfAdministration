@@ -31,22 +31,6 @@
                 >
 
                 <RadioButton
-                    android:id="@+id/draft_speed_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="进度追踪"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginBottom="7dp"
-                    android:includeFontPadding="false"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="20dp"
-                    android:drawableBottom="@drawable/select_red_xiahualine"
-                    android:textColor="@drawable/select_textcolor"
-                    android:textSize="14dp" />
-
-                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:button="@null"
@@ -84,6 +68,21 @@
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="7dp"
                     android:includeFontPadding="false"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:id="@+id/draft_speed_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="进度追踪"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:layout_marginLeft="36dp"
                     android:drawableBottom="@drawable/select_red_xiahualine"
                     android:textColor="@drawable/select_textcolor"
                     android:textSize="14dp" />

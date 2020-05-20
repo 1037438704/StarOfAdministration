@@ -31,7 +31,6 @@ abstract public class BaseAty extends BaseActivity implements Constants {
     public Typeface getTextBold = MyApplication.getTextBold;
     public Typeface getTextNum = MyApplication.getTextNum;
 
-    public JSONObject json=new JSONObject();
     public Gson gson = new Gson();
   //  public String token = Preferences.getInstance().getString(me, "user", "token");
     //权限申请回调

@@ -2,12 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:elevation="5dp"
     android:layout_marginTop="12dp"
-    android:layout_marginLeft="12dp"
-    android:layout_marginRight="12dp"
-    android:paddingRight="12dp"
-    android:paddingLeft="12dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
     android:layout_height="wrap_content">
 
 
@@ -25,22 +22,22 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="起草人：某某某"
+            android:text="要求办结：2020/03/12 13:42:23"
             android:textColor="#ff717173"
             android:textSize="14sp"
             />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="状态：等待处理"
-            android:layout_marginLeft="70dp"
             android:textColor="#ff717173"
             android:textSize="14sp"
             />
@@ -50,10 +47,33 @@
         android:layout_width="match_parent"
         android:layout_marginTop="12dp"
         android:layout_height="wrap_content"
-        android:text="起草日期：2020/03/26 13:45:29"
+        android:text="收文时间：2020/03/26 13:45:29"
         android:textColor="#ff717173"
         android:textSize="14sp"
         />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="来文单位："
+            android:textColor="#ff717173"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="某某某某某某"
+            android:textColor="#ff717173"
+            android:textSize="14sp"
+            />
+    </LinearLayout>
 
     <View
         android:layout_marginTop="16dp"

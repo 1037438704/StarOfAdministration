@@ -15,4 +15,10 @@ public interface Constants {
 
     //根据逐渐查询详情
     String DOCUMENTFICTION = "/sys/documentfiction/info";
+
+    //调用word模板
+    String SHOWWORDTEMPLATE = "/sys/poffice/showWordTemplate";
+
+    //调用word接口
+    String SHOWWORD = "/sys/poffice/showWord";
 }

@@ -24,16 +24,18 @@
             android:src="@mipmap/avatar" />
 
         <TextView
+            android:id="@+id/person_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="86dp"
             android:layout_marginTop="102dp"
-            android:fontFamily="sans-serif-medium"
             android:text="高寒"
+            android:includeFontPadding="false"
             android:textColor="#fff"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/person_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="86dp"
@@ -43,7 +45,7 @@
             android:maxLines="1"
             android:text="天津市蓝威科技发展有限公司"
             android:textColor="#717173"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,13 +62,14 @@
 
 
                 <TextView
+                    android:id="@+id/person_xunzhang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:includeFontPadding="false"
                     android:text="勋章墙"
                     android:textColor="#3E3E41"
-                    android:textSize="16dp" />
+                    android:textSize="18dp" />
 
                 <ImageView
                     android:layout_width="14dp"
@@ -82,9 +85,7 @@
                 android:id="@+id/linear_myXunzhang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginRight="16dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -173,20 +174,29 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_marginTop="24dp"
+                android:background="#30CACACC"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
+                android:layout_marginTop="23dp"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/person_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:includeFontPadding="false"
                     android:text="数据信息"
                     android:textColor="#3E3E41"
-                    android:textSize="16dp" />
+                    android:textSize="18dp" />
 
                 <ImageView
                     android:layout_width="14dp"
@@ -307,20 +317,29 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <View
+                android:layout_marginTop="24dp"
+                android:background="#30CACACC"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="23dp"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/person_setting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
-                    android:text="个人信息设置"
                     android:includeFontPadding="false"
+                    android:text="个人信息设置"
                     android:textColor="#3E3E41"
-                    android:textSize="16dp" />
+                    android:textSize="18dp" />
 
             </LinearLayout>
 

@@ -73,9 +73,14 @@
             android:layout_width="match_parent"
             android:layout_height="44dp"/>
 
+            <WebView
+                android:id="@+id/webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
             <EditText
                 android:id="@+id/document_subject"
                 android:textSize="16dp"
+                android:visibility="gone"
                 android:textColor="@color/textMedium"
                 android:hint="请输入公文内容"
                 android:textColorHint="#D7D7D8"
@@ -85,8 +90,6 @@
                 android:paddingRight="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-
-
 
     </LinearLayout>
 

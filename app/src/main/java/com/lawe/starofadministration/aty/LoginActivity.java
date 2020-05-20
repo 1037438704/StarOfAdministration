@@ -207,7 +207,6 @@ public class LoginActivity extends BaseAty {
         //获取手机型号、序列号
         phoneBrand = Build.MODEL;
         androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-
     }
 
     @Override
@@ -335,6 +334,7 @@ public class LoginActivity extends BaseAty {
                 //账号密码登录
                 String loginPhoneCode = login_phone.getText().toString();
                 try {
+                    JSONObject json=new JSONObject();
                     json.put("account",loginPhoneCode);
                     jsonCode = String.valueOf(json);
                 } catch (JSONException e) {
@@ -358,10 +358,6 @@ public class LoginActivity extends BaseAty {
 
     //登录请求
     private void postLogin() {
-        String login_tishi = login_text.getText().toString();
-        if (login_tishi.equals("验证码登录")) {
-            validCode();
-        } else {
             //账号密码登录
             loginPhone = login_phone.getText().toString();
             loginPass = login_edpass.getText().toString();
@@ -373,6 +369,7 @@ public class LoginActivity extends BaseAty {
                 toast("请输入密码");
             }else {
                 try {
+                    JSONObject json=new JSONObject();
                     json.put("account", loginPhone);
                     json.put("password", loginPass);
                     //json转化为string类型
@@ -394,12 +391,13 @@ public class LoginActivity extends BaseAty {
                         }
                     }
                 });
-            }
+
         }
     }
 
     //加载登陆协议
     private  void webXieyi(){
+        JSONObject json=new JSONObject();
         try {
             json.put("name","123");
         } catch (JSONException e) {
@@ -437,7 +435,6 @@ public class LoginActivity extends BaseAty {
 
     //短信验证
     private void validCode(){
-        //账号密码登录
         loginPhone = login_phone.getText().toString();
         Preferences.getInstance().commit(me, "phone", "phone", login_phone.getText().toString().trim());
         if (loginPhone.equals("")){
@@ -446,6 +443,7 @@ public class LoginActivity extends BaseAty {
             toast("请输入验证码");
         }else {
            try {
+                JSONObject json=new JSONObject();
                 json.put("account", loginPhone);
                 json.put("password", loginPass);
                 //json转化为string类型
@@ -456,7 +454,6 @@ public class LoginActivity extends BaseAty {
             HttpRequest.JSONPOST(me, Constants.LOGIN, jsonCode, new ResponseListener() {
                 @Override
                 public void onResponse(String response, Exception error) {
-                    WaitDialog.dismiss();
                     if (error == null) {
                         Log.e("shuju",response);
                         LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);

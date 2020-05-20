@@ -9,6 +9,7 @@
     tools:context=".fgt.MessageFragment">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
         android:layout_width="match_parent"
         app:cardElevation="2dp"
         android:background="@mipmap/maoboli_bai"
@@ -17,7 +18,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="38dp"
-            android:background="@color/white"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -146,6 +146,7 @@
         <include layout="@layout/view_jinji_layout" />
 
         <include layout="@layout/view_time_layout" />
+
     </FrameLayout>
 
 </LinearLayout>

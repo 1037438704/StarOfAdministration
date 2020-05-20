@@ -31,16 +31,26 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
+import com.kongzue.baseframework.util.Preferences;
+import com.kongzue.baseokhttp.HttpRequest;
+import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.Parameter;
+import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.DraftChatAdapter;
 import com.lawe.starofadministration.adp.TemplateAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.bean.ListChatBean;
+import com.lawe.starofadministration.bean.LoginDefaltBean;
+import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.fgt.DocumentEditFragment;
 import com.lawe.starofadministration.fgt.EnclosureCatalogFragment;
 import com.lawe.starofadministration.fgt.JoinSpeedFragment;
 import com.lawe.starofadministration.fgt.SetMessageFragment;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,10 +91,10 @@ public class DraftActivity extends BaseAty {
     private RecyclerView draftChatRecycle;
     private LinearLayout draftChatNew;
     private LinearLayout draftChatSet;
-    private ImageView bottomPerson;
+    private LinearLayout bottomPerson;
     private ImageView bottomPizhu;
     private EditText bottomWhrit;
-    private ImageView bottomChat;
+    private Button bottomChat;
     private Button bottomButton;
     private TextView draftChatNewText;
     private TextView draftChatSetText;
@@ -97,6 +107,9 @@ public class DraftActivity extends BaseAty {
     private ImageView draftChatSetImg;
     private RadioButton draftSpeedOne;
     private RadioButton rb;
+    private String jsons;
+    private LinearLayout bottomGongneng;
+    private int flagSpeed;
 
     @Override
     public void initViews() {
@@ -120,6 +133,7 @@ public class DraftActivity extends BaseAty {
         bottomWhrit = findViewById(R.id.bottom_whrit);
         bottomChat = findViewById(R.id.bottom_chat);
         bottomButton = findViewById(R.id.bottom_button);
+        bottomGongneng = findViewById(R.id.bottom_gongneng);
 
         draftChat = findViewById(R.id.draft_chat);
         draftChatRecycle = findViewById(R.id.draft_chat_recycle);
@@ -142,33 +156,32 @@ public class DraftActivity extends BaseAty {
         listchat = new ArrayList<>();
         layoutManager = new LinearLayoutManager(me);
         draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
-
     }
-
 
     @Override
     public void initDatas(JumpParameter parameter) {
         //获取上一个页面传递的标识
-        int flagSpeed = (int) getParameter().get("flagSpeed");
-        Log.e("flagSpeed",flagSpeed+"");
+        flagSpeed = (int) getParameter().get("flagSpeed");
+        Log.e("flagSpeed", flagSpeed +"");
         if (flagSpeed == 1){
             draftSpeedOne.setVisibility(View.GONE);
-            fragemnts.remove(JoinSpeedFragment.newInstance());
-            rb = (RadioButton) mainRgp.getChildAt(1);
+            fragemnts.add(DocumentEditFragment.newInstance());
+            fragemnts.add(EnclosureCatalogFragment.newInstance());
+            fragemnts.add(SetMessageFragment.newInstance());
+            rb = (RadioButton) mainRgp.getChildAt(0);
         }else{
             draftSpeedOne.setVisibility(View.VISIBLE);
-            rb = (RadioButton) mainRgp.getChildAt(0);
+            fragemnts.add(DocumentEditFragment.newInstance());
+            fragemnts.add(EnclosureCatalogFragment.newInstance());
+            fragemnts.add(SetMessageFragment.newInstance());
+            fragemnts.add(JoinSpeedFragment.newInstance());
+            rb = (RadioButton) mainRgp.getChildAt(3);
         }
 
         rb.setChecked(true);
         rb.setTypeface(getTextMedium);
         draftChatRecycle.setLayoutManager(layoutManager);
         draftChatRecycle.setAdapter(draftChatAdapter);
-
-        fragemnts.add(JoinSpeedFragment.newInstance());
-        fragemnts.add(DocumentEditFragment.newInstance());
-        fragemnts.add(EnclosureCatalogFragment.newInstance());
-        fragemnts.add(SetMessageFragment.newInstance());
 
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPagerData.setOffscreenPageLimit(fragemnts.size());
@@ -210,6 +223,9 @@ public class DraftActivity extends BaseAty {
                 }
             }
         });
+
+
+
 
         //返回
         titleBack.setOnClickListener(new View.OnClickListener() {
@@ -272,6 +288,7 @@ public class DraftActivity extends BaseAty {
                 //设置对话框大小
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
+                wordMuban();
                 loginDown = view.findViewById(R.id.login_down);
                 popDraftRecycle = view.findViewById(R.id.pop_draft_recycle);
 
@@ -301,6 +318,7 @@ public class DraftActivity extends BaseAty {
                 dialog.setCanceledOnTouchOutside(true);
                 dialog.show();
             }
+
         });
 
         //新增常用语
@@ -404,9 +422,11 @@ public class DraftActivity extends BaseAty {
             public void onClick(View v) {
                 if (chatflag == 1) {
                     draftChat.setVisibility(View.VISIBLE);
+                    bottomGongneng.setVisibility(View.GONE);
                     chatflag = 2;
                 } else if (chatflag == 2) {
                     draftChat.setVisibility(View.GONE);
+                    bottomGongneng.setVisibility(View.VISIBLE);
                     chatflag = 1;
                 }
             }
@@ -438,4 +458,9 @@ public class DraftActivity extends BaseAty {
         draftChatAdapter.notifyDataSetChanged();
     }
 
+    // 调用模板接口
+    private void wordMuban() {
+
+
+    }
 }

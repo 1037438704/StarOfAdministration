@@ -1,5 +1,9 @@
 package com.lawe.starofadministration.fgt;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +20,7 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.MessageAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
+import com.lawe.starofadministration.utils.FastBlurUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +54,9 @@ public class MessageFragment extends BaseFgt {
     //空集合
     private List<String> list;
     private MessageAdapter messageAdapter;
-    private TextView messageTitle;
     private LinearLayout dealtLinerarTime;
     private LinearLayout dealtLinerarUrgent;
+    private CardView cardView;
 
     @Override
     public void initViews() {
@@ -67,10 +73,12 @@ public class MessageFragment extends BaseFgt {
         linear_time = (LinearLayout) findViewById(R.id.linear_time);
         dealtLinerarTime = (LinearLayout) findViewById(R.id.dealt_linerar_time);
         dealtLinerarUrgent = (LinearLayout) findViewById(R.id.dealt_linerar_urgent);
+        cardView = (CardView) findViewById(R.id.cardview);
 
         textChoose = (LinearLayout) findViewById(R.id.text_choose);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
         drawer_quxiao = getActivity().findViewById(R.id.drawer_quxiao);
+
 
         list = new ArrayList<>();
         //待办信息
@@ -86,6 +94,12 @@ public class MessageFragment extends BaseFgt {
         }
         messageAdapter.setNewData(list);
         messageAdapter.notifyDataSetChanged();
+        //毛玻璃
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.maoboli_bai, null);
+        Bitmap bitmap1 = FastBlurUtil.doBlur(bitmap, 0, true);
+
+       // BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap1);
+       // cardView.setBackground(bitmapDrawable);
     }
 
     @Override

@@ -14,9 +14,17 @@
         android:layout_marginLeft="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:background="@drawable/shape_chage_qr"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"/>
+
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:background="#01000000"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -64,11 +72,4 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:background="@drawable/shape_chage_qr"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="135dp">
-
-    </RelativeLayout>
 </RelativeLayout>

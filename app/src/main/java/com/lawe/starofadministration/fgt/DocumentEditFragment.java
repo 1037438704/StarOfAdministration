@@ -3,8 +3,11 @@ package com.lawe.starofadministration.fgt;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,6 +21,7 @@ import com.kongzue.baseokhttp.util.Parameter;
 import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
+import com.lawe.starofadministration.config.Constants;
 
 /**
  * author : fuke
@@ -40,6 +44,7 @@ public class DocumentEditFragment extends BaseFgt {
     private boolean isEmpty;
     private ScrollView documentScroll;
     private int textsize = 16;
+    private WebView webview;
 
     @Override
     public void initViews() {
@@ -53,32 +58,42 @@ public class DocumentEditFragment extends BaseFgt {
         imgTop = (ImageView) findViewById(R.id.img_top);
         imgRead = (ImageView) findViewById(R.id.img_read);
         imgBohui = (ImageView) findViewById(R.id.img_bohui);
-
+        webview = (WebView) findViewById(R.id.webview);
         //设置字体
         documentTitle.setTypeface(getTextMedium);
 
         //判断公文主体是否为空
         isEmpty = TextUtils.isEmpty(documentSubject.getText());
+
+        showWord();
     }
 
     @Override
     public void initDatas() {
-        //调用模板
-        HttpRequest.POST(me, "http://192.168.0.179:8081/szzw-web/sys/poffice/showWord", new Parameter()
-                .add("depUserId", "1253514067132448770")
-                .add("temWordfile","临时文件"), new ResponseListener() {
-            @Override
-            public void onResponse(String response, Exception error) {
-                WaitDialog.dismiss();
-                if (error == null) {
-//                    resultHttp.setText(response);
-                } else {
-                    error.getMessage();
-//                    resultHttp.setText("请求失败");
-//                    Toast.makeText(context, "请求失败", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+
+    }
+
+    private void showWord() {
+        HttpRequest.POST(me, Constants.SHOWWORD, new Parameter()
+                        .add("temWordfile","临时文件")
+                        .add("depUserId","1253514067132448770")
+                , new ResponseListener() {
+                    @Override
+                    public void onResponse(String response, Exception error) {
+                        if (error == null) {
+                            Log.e("shuju",response);
+                            WebSettings webSettings = webview.getSettings();
+                            webSettings.setDomStorageEnabled(true);//设置适应Html5的一些方法
+                            //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
+                            webSettings.setJavaScriptEnabled(true);
+                            webSettings.setUseWideViewPort(true);
+                            webSettings.setLoadWithOverviewMode(true);
+                            webview.loadData(response, "text/html; charset=UTF-8", null);
+                        } else {
+                            error.getMessage();
+                        }
+                    }
+                });
     }
 
     @Override

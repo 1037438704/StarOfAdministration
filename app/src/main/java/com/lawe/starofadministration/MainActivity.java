@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,11 @@ public class MainActivity extends BaseAty {
     ViewPagerAdp viewPagerAdp;
     private DrawerLayout drawer;
     private ArrayList<FragmentTouchListener> mFragmentTouchListeners;
+    private TextView personName;
+    private TextView personCompany;
+    private TextView personXunzhang;
+    private TextView personData;
+    private TextView personSetting;
 
     @Override
     public void initViews() {
@@ -58,6 +64,17 @@ public class MainActivity extends BaseAty {
         mFragmentTouchListeners = new ArrayList<>();
         mainRgp = findViewById(R.id.main_rgp);
         viewPager = findViewById(R.id.viewPager);
+
+        personName = findViewById(R.id.person_name);
+        personCompany = findViewById(R.id.person_company);
+        personXunzhang = findViewById(R.id.person_xunzhang);
+        personData = findViewById(R.id.person_data);
+        personSetting = findViewById(R.id.person_setting);
+
+        personName.setTypeface(getTextBold);
+        personXunzhang.setTypeface(getTextMedium);
+        personData.setTypeface(getTextMedium);
+        personSetting.setTypeface(getTextMedium);
 
         drawer = findViewById(R.id.drawer_layout_shaixuan);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);

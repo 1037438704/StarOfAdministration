@@ -63,6 +63,7 @@
             android:layout_height="12dp"/>
 
         <TextView
+            android:id="@+id/title_right"
             android:text="新建"
             android:textSize="15dp"
             android:textColor="@color/white"

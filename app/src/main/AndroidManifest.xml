@@ -36,9 +36,12 @@
         </activity> <!-- 主页面 -->
         <activity android:name=".MainActivity" />
         <!-- 启动页面 -->
-        <activity android:name=".aty.BootPageAty" /> <!-- 二维码 -->
-<!--        <activity android:name=".zxing.activity.CaptureActivity" /> &lt;!&ndash; 公文拟制列表 &ndash;&gt;-->
-        <activity android:name=".aty.FictionActivity" /> <!-- 操作中心 -->
+        <activity android:name=".aty.BootPageAty" />
+        <!--公文拟制列表 -->
+        <activity android:name=".aty.FictionActivity" />
+        <!--收文传阅列表 -->
+        <activity android:name=".aty.CirculationActivity" />
+        <!-- 操作中心 -->
         <activity android:name=".aty.ExplanaActivity" /> <!-- 服务中心 -->
         <activity android:name=".aty.ServiceActivity" /> <!-- 问题反馈 -->
         <activity android:name=".aty.FeedBackActivity" /> <!-- 系统设置 -->
