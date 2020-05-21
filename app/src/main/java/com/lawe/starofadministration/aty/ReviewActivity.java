@@ -25,12 +25,9 @@ import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
-import com.lawe.starofadministration.fgt.ExamContextFragment;
-import com.lawe.starofadministration.fgt.ExamEclosureFragment;
-import com.lawe.starofadministration.fgt.ExamSpeedFragment;
-import com.lawe.starofadministration.fgt.ReviewContextFragment;
-import com.lawe.starofadministration.fgt.ReviewEclosureFragment;
-import com.lawe.starofadministration.fgt.ReviewSpeedFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.ReviewContextFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.ReviewEclosureFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.ReviewSpeedFragment;
 
 import java.util.ArrayList;
 import java.util.List;

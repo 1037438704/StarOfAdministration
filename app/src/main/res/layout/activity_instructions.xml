@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".aty.DraftActivity">
+
+    <LinearLayout
+        android:background="#F5F5F5"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/layout_title_white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:elevation="2dp"
+            android:background="@color/white"
+            android:layout_marginTop="1dp"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:id="@+id/main_rgp"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:orientation="horizontal"
+                android:paddingTop="3dp"
+                >
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="公文内容"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:layout_marginLeft="36dp"
+                    android:gravity="center"
+                    android:text="附件目录"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="36dp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="设置信息"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerData"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+
+        <View
+            android:background="#EFF0F2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <include layout="@layout/layout_bottom"/>
+
+    </LinearLayout>
+
+    <!--更多小黑框-->
+    <LinearLayout
+        android:id="@+id/draft_more"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:gravity="right"
+        android:visibility="gone"
+        android:layout_marginTop="55dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/icon_angle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:background="@drawable/shape_pop4"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/instru_tuiban"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@mipmap/icon_aibian_ji"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+
+                <TextView
+                    android:text="申请退办"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <View
+                android:background="#4C4C50"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <LinearLayout
+                android:id="@+id/instru_yanqi"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@mipmap/icon_daoru"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+
+                <TextView
+                    android:text="申请延期"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

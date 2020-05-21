@@ -39,6 +39,24 @@
         <activity android:name=".aty.BootPageAty" />
         <!--公文拟制列表 -->
         <activity android:name=".aty.FictionActivity" />
+        <!--创建人查看-->
+        <activity android:name=".aty.EntryActivity" />
+        <!--办理人查看-->
+        <activity android:name=".aty.HandledLookActivity" />
+        <!--办理文件-->
+        <activity android:name=".aty.HandledActivity" />
+        <!--公文协办-->
+        <activity android:name=".aty.SponsorActivity" />
+        <!--公文批示-->
+        <activity android:name=".aty.InstructionsActivity" />
+        <!--公文承办-->
+        <activity android:name=".aty.UndertakeActivity" />
+        <!--公文拟办-->
+        <activity android:name=".aty.PropsedActivity" />
+        <!--收文录入-->
+        <activity android:name=".aty.EntryEntryActivity" />
+        <!--文件签收-->
+        <activity android:name=".aty.SignActivity" />
         <!--收文传阅列表 -->
         <activity android:name=".aty.CirculationActivity" />
         <!-- 操作中心 -->

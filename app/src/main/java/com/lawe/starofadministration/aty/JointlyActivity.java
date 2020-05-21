@@ -1,12 +1,10 @@
 package com.lawe.starofadministration.aty;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -27,12 +25,9 @@ import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
-import com.lawe.starofadministration.fgt.DocumentEditFragment;
-import com.lawe.starofadministration.fgt.EnclosureCatalogFragment;
-import com.lawe.starofadministration.fgt.JoinContextFragment;
-import com.lawe.starofadministration.fgt.JoinEclosureFragment;
-import com.lawe.starofadministration.fgt.JoinSpeedFragment;
-import com.lawe.starofadministration.fgt.SetMessageFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinContextFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinEclosureFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinSpeedFragment;
 
 import java.util.ArrayList;
 import java.util.List;

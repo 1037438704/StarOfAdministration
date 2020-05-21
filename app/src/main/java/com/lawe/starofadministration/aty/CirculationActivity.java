@@ -59,6 +59,7 @@ public class CirculationActivity extends BaseAty {
     private TextView fictionTimeStart;
     private TextView fictionTimeEnd;
     private TextView titleRight;
+    private int flag = 7;
 
     @Override
     public void initViews() {
@@ -120,12 +121,39 @@ public class CirculationActivity extends BaseAty {
                 finish();
             }
         });
-        //新建
+        //录入
         titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(DraftActivity.class,new JumpParameter()
-                          .put("flagSpeed",1));
+               /*// 办理人查看：1
+                    创建人查看：2
+                    办理 ：3
+                    协办：4
+                    批示：5
+                    承办：6
+                    拟办：7
+                    收文录入：8
+                    文件签收：9*/
+                if (flag == 1){
+                    jump(HandledLookActivity.class);
+                }else if(flag == 2){
+                    jump(EntryActivity.class);
+                }else if(flag == 3){
+                    jump(HandledActivity.class);
+                } else if(flag == 4){
+                    jump(SponsorActivity.class);
+                }else if(flag == 5){
+                    jump(InstructionsActivity.class);
+                }else if(flag == 6){
+                    jump(UndertakeActivity.class);
+                }else if(flag == 7){
+                    jump(PropsedActivity.class);
+                }else if(flag == 8){
+                    jump(EntryEntryActivity.class);
+                }else if(flag == 9){
+                    jump(SignActivity.class);
+                }
+
             }
         });
         //回到第一条item

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -23,89 +24,141 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.adp.DraftChatAdapter;
+import com.lawe.starofadministration.adp.TemplateAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
-import com.lawe.starofadministration.fgt.gongwen_nizhi.ExamContextFragment;
-import com.lawe.starofadministration.fgt.gongwen_nizhi.ExamEclosureFragment;
-import com.lawe.starofadministration.fgt.gongwen_nizhi.ExamSpeedFragment;
+import com.lawe.starofadministration.bean.ListChatBean;
+import com.lawe.starofadministration.fgt.shouwen_chuanyue.EntryContextFragment;
+import com.lawe.starofadministration.fgt.shouwen_chuanyue.EntryEclosureFragment;
+import com.lawe.starofadministration.fgt.shouwen_chuanyue.EntrySetMessageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * author : fuke
- * date : 2020/5/11 16:02
- * description : 公文审核
+ * date : 2020/5/21 11:54
+ * description : 收文传阅---文件签收
  **/
-@Layout(R.layout.activity_examine)
+@Layout(R.layout.activity_sign)
 @DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
-public class ExamineActivity extends BaseAty {
+public class SignActivity extends BaseAty {
 
     private ImageView titleBack;
     private TextView titleText;
+    private LinearLayout titleMore;
     private RadioGroup mainRgp;
     private ViewPager viewPagerData;
-    private ImageView bottomPerson;
-    private ImageView bottomPizhu;
-    private EditText bottomWhrit;
-    private ImageView bottomChat;
-    private Button bottomButton;
+    private LinearLayout draftMore;
+    private int flag = 1; //更多展开隐藏标识
+    private int chatflag = 1; //常用语展开隐藏标识
+    ViewPagerAdp viewPagerAdp;
+    private List<BaseFragment> fragemnts;
+
+    //空集合
+    private List<String> list;
+    private TemplateAdapter templateAdapter;
     private LinearLayout draftChat;
     private RecyclerView draftChatRecycle;
     private LinearLayout draftChatNew;
-    private ImageView draftChatNewImg;
-    private TextView draftChatNewText;
     private LinearLayout draftChatSet;
-    private ImageView draftChatSetImg;
+    private LinearLayout bottomPerson;
+    private ImageView bottomPizhu;
+    private EditText bottomWhrit;
+    private Button bottomChat;
+    private Button bottomButton;
+    private TextView draftChatNewText;
     private TextView draftChatSetText;
 
-    private List<BaseFragment> fragemnts;
-    private ViewPagerAdp viewPagerAdp;
-    private int chatflag = 1; //常用语展开隐藏标识
+    //空集合
+    private List<ListChatBean> listchat;
+    private DraftChatAdapter draftChatAdapter;
+    private LinearLayoutManager layoutManager;
+    private ImageView draftChatNewImg;
+    private ImageView draftChatSetImg;
+    private RadioButton draftSpeedOne;
     private RadioButton rb;
+    private LinearLayout bottomGongneng;
+    private int flagSpeed;
+    private ImageView bottomImg1;
+    private TextView bottomChooseper1;
+    private ImageView bottomImg2;
+    private TextView bottomChooseper2;
+    private LinearLayout bottomOne;
+    int pageCounte = 0;
+
     @Override
     public void initViews() {
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
+        titleMore = findViewById(R.id.title_more);
+        titleMore.setVisibility(View.VISIBLE);
+        draftMore = findViewById(R.id.draft_more);
         mainRgp = findViewById(R.id.main_rgp);
         viewPagerData = findViewById(R.id.viewPagerData);
-        //下输入键盘常用语的部分
+
         bottomPerson = findViewById(R.id.bottom_person);
         bottomPizhu = findViewById(R.id.bottom_pizhu);
         bottomWhrit = findViewById(R.id.bottom_whrit);
         bottomChat = findViewById(R.id.bottom_chat);
         bottomButton = findViewById(R.id.bottom_button);
+        bottomGongneng = findViewById(R.id.bottom_gongneng);
+        bottomImg1 = findViewById(R.id.bottom_img1);
+        bottomChooseper1 = findViewById(R.id.bottom_chooseper1);
+        bottomImg2 = findViewById(R.id.bottom_img2);
+        bottomChooseper2 = findViewById(R.id.bottom_chooseper2);
+        bottomOne = findViewById(R.id.bottom_one);
+        bottomOne.setVisibility(View.GONE);
+        bottomChooseper2.setText("添加拟办人");
+
         draftChat = findViewById(R.id.draft_chat);
         draftChatRecycle = findViewById(R.id.draft_chat_recycle);
         draftChatNew = findViewById(R.id.draft_chat_new);
-        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
-        draftChatNewText = findViewById(R.id.draft_chat_new_text);
         draftChatSet = findViewById(R.id.draft_chat_set);
-        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
+        draftChatNewText = findViewById(R.id.draft_chat_new_text);
         draftChatSetText = findViewById(R.id.draft_chat_set_text);
+
+
+        //设置字体
+        titleText.setText("收文录入");
+        titleText.setTypeface(getTextBold);
+        draftChatNewText.setTypeface(getTextMedium);
+        draftChatSetText.setTypeface(getTextMedium);
+        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
+        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
+        draftSpeedOne = findViewById(R.id.draft_speed_one);
         fragemnts = new ArrayList<>();
+        //常用语列表
+        listchat = new ArrayList<>();
+        layoutManager = new LinearLayoutManager(me);
+        draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-
+        fragemnts.add(EntryContextFragment.newInstance());
+        fragemnts.add(EntryEclosureFragment.newInstance());
+        fragemnts.add(EntrySetMessageFragment.newInstance());
         rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);
+        //字体
         rb.setTypeface(getTextMedium);
-
-        titleText.setText("公文审核");
-        titleText.setTypeface(getTextBold);
-
-
-        fragemnts.add(ExamContextFragment.newInstance());
-        fragemnts.add(ExamEclosureFragment.newInstance());
-        fragemnts.add(ExamSpeedFragment.newInstance());
-
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPagerData.setOffscreenPageLimit(fragemnts.size());
         viewPagerData.setAdapter(viewPagerAdp);
+        viewPagerData.setCurrentItem(pageCounte);
+
+        draftChatRecycle.setLayoutManager(layoutManager);
+        draftChatRecycle.setAdapter(draftChatAdapter);
+        for (int i = 0; i < 10; i++) {
+            listchat.add(new ListChatBean(false, "第" + i + "条"));
+        }
+        //常用语列表
+        draftChatAdapter.setNewData(listchat);
+        draftChatAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -142,6 +195,20 @@ public class ExamineActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        //查看更多
+        titleMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flag == 1) {
+                    draftMore.setVisibility(View.VISIBLE);
+                    flag = 2;
+                } else if (flag == 2) {
+                    draftMore.setVisibility(View.GONE);
+                    flag = 1;
+                }
             }
         });
 
@@ -246,9 +313,11 @@ public class ExamineActivity extends BaseAty {
             public void onClick(View v) {
                 if (chatflag == 1) {
                     draftChat.setVisibility(View.VISIBLE);
+                    bottomGongneng.setVisibility(View.GONE);
                     chatflag = 2;
                 } else if (chatflag == 2) {
                     draftChat.setVisibility(View.GONE);
+                    bottomGongneng.setVisibility(View.VISIBLE);
                     chatflag = 1;
                 }
             }
@@ -258,19 +327,9 @@ public class ExamineActivity extends BaseAty {
         bottomPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(ChoosePersonActivity.class, new JumpParameter()
-                        .put("flagType", 1)
-                );
+                jump(ChoosePersonActivity.class);
             }
         });
 
-        //暂定跳往审阅页面
-        bottomButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                jump(ReviewActivity.class);
-            }
-        });
     }
-
 }

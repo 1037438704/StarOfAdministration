@@ -38,6 +38,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:focusable="false"
                 android:layout_height="match_parent"
                 android:background="@null"/>
 
@@ -159,6 +160,7 @@
         android:layout_height="46dp">
 
         <LinearLayout
+            android:id="@+id/bottom_one"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
@@ -166,11 +168,13 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/bottom_img1"
                 android:src="@mipmap/icon_chang_yong_new"
                 android:layout_width="16dp"
                 android:layout_height="16dp"/>
 
             <TextView
+                android:id="@+id/bottom_chooseper1"
                 android:text="驳回"
                 android:textColor="@color/textMedium"
                 android:textSize="16dp"
@@ -196,11 +200,13 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/bottom_img2"
                 android:src="@mipmap/icon_chang_yong_set"
                 android:layout_width="16dp"
                 android:layout_height="16dp"/>
 
             <TextView
+                android:id="@+id/bottom_chooseper2"
                 android:text="添加审核人"
                 android:textColor="@color/textMedium"
                 android:textSize="16dp"

@@ -30,13 +30,13 @@
             <LinearLayout
                 android:id="@+id/enclosure_shangchuan"
                 android:layout_marginTop="16dp"
-                android:layout_gravity="right"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/vciv_et_focus_bg"
-                android:gravity="center_vertical"
-                android:layout_width="100dp"
-                android:layout_height="28dp">
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/shape_red20"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
 
                 <ImageView
                     android:src="@mipmap/icon_upload"
@@ -48,7 +48,7 @@
                     android:id="@+id/enclosure_text"
                     android:text="上传附件"
                     android:textSize="14dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/white"
                     android:includeFontPadding="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>

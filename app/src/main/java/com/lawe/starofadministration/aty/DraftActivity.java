@@ -1,11 +1,8 @@
 package com.lawe.starofadministration.aty;
 
 import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,26 +28,16 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
-import com.kongzue.baseframework.util.Preferences;
-import com.kongzue.baseokhttp.HttpRequest;
-import com.kongzue.baseokhttp.listener.ResponseListener;
-import com.kongzue.baseokhttp.util.Parameter;
-import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.DraftChatAdapter;
 import com.lawe.starofadministration.adp.TemplateAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.bean.ListChatBean;
-import com.lawe.starofadministration.bean.LoginDefaltBean;
-import com.lawe.starofadministration.config.Constants;
-import com.lawe.starofadministration.fgt.DocumentEditFragment;
-import com.lawe.starofadministration.fgt.EnclosureCatalogFragment;
-import com.lawe.starofadministration.fgt.JoinSpeedFragment;
-import com.lawe.starofadministration.fgt.SetMessageFragment;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.DocumentEditFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.EnclosureCatalogFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinSpeedFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.SetMessageFragment;
 
 import java.util.ArrayList;
 import java.util.List;

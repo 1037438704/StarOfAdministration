@@ -51,6 +51,6 @@
     </RelativeLayout>
 
     <!--筛选-->
-    <include layout="@layout/fiction_screen_layout"/>
+    <include layout="@layout/circulation_screen_layout"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

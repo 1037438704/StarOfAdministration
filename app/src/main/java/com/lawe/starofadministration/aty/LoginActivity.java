@@ -1,13 +1,10 @@
 package com.lawe.starofadministration.aty;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -20,16 +17,10 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.viewpager.widget.ViewPager;
-
-import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
@@ -42,40 +33,14 @@ import com.kongzue.baseokhttp.util.Parameter;
 import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
-import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.bean.LoginDefaltBean;
 import com.lawe.starofadministration.bean.LoginWebBean;
 import com.lawe.starofadministration.config.Constants;
-import com.lawe.starofadministration.fgt.JoinContextFragment;
-import com.lawe.starofadministration.fgt.JoinEclosureFragment;
-import com.lawe.starofadministration.fgt.JoinSpeedFragment;
-import com.lawe.starofadministration.utils.Constant;
-import com.okhttplib.HttpInfo;
-import com.okhttplib.OkHttpUtil;
-import com.okhttplib.annotation.CacheType;
-import com.okhttplib.annotation.ContentType;
-import com.okhttplib.annotation.RequestType;
-import com.okhttplib.bean.DownloadFileInfo;
-import com.okhttplib.callback.Callback;
 import com.wynsbin.vciv.VerificationCodeInputView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * author : fuke
@@ -358,7 +323,8 @@ public class LoginActivity extends BaseAty {
 
     //登录请求
     private void postLogin() {
-            //账号密码登录
+        jump(MainActivity.class);
+           /* //账号密码登录
             loginPhone = login_phone.getText().toString();
             loginPass = login_edpass.getText().toString();
             Preferences.getInstance().commit(me, "phone", "phone", login_phone.getText().toString().trim());
@@ -392,7 +358,7 @@ public class LoginActivity extends BaseAty {
                     }
                 });
 
-        }
+        }*/
     }
 
     //加载登陆协议
