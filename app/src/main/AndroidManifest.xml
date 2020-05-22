@@ -84,6 +84,12 @@
         <activity android:name=".aty.GroupMangerActivity" /> <!-- 人员选择 -->
         <activity android:name=".aty.ChoosePersonActivity" /> <!-- 单位选择 -->
         <activity android:name=".aty.ChooseCompanyActivity" />
+        <!--公文归档 -->
+        <activity android:name=".aty.FileActivity" />
+        <!--拟制文件归档 -->
+        <activity android:name=".aty.SimulacrumActivity" />
+        <!--收文归档 -->
+        <activity android:name=".aty.ReceiptActivity" />
     </application>
 
 </manifest>
