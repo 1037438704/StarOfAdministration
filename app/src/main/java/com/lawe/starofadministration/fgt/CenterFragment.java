@@ -49,6 +49,11 @@ public class CenterFragment extends BaseFgt {
 
     @Override
     public void initDatas() {
+
+    }
+
+    @Override
+    public void setEvents() {
         //公文拟制
         centerNizhi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,11 +77,30 @@ public class CenterFragment extends BaseFgt {
                 jump(FileActivity.class);
             }
         });
-    }
 
-    @Override
-    public void setEvents() {
+        //文件报发
+        centerBaofa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+        //共享文件
+        centerGongxiang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //公告通知
+        centerTongzhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     public static CenterFragment newInstance() {
