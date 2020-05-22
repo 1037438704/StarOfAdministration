@@ -56,8 +56,6 @@ public class CirculationActivity extends BaseAty {
     private LinearLayoutManager layoutManager;
     private ImageView circulatTop;
     private DrawerLayout fictionDrawer;
-    private TextView fictionTimeStart;
-    private TextView fictionTimeEnd;
     private TextView titleRight;
     private int flag = 7;
 
@@ -72,8 +70,6 @@ public class CirculationActivity extends BaseAty {
         searchChoose = findViewById(R.id.search_choose);
         circulatRecycle = findViewById(R.id.circulat_recycle);
         circulatTop = findViewById(R.id.circulat_top);
-        fictionTimeStart = findViewById(R.id.fiction_time_start);
-        fictionTimeEnd = findViewById(R.id.fiction_time_end);
         //列表
         list = new ArrayList<>();
         layoutManager = new LinearLayoutManager(me);
@@ -171,7 +167,7 @@ public class CirculationActivity extends BaseAty {
             }
         });
 
-        //时间选择器
+       /* //时间选择器
         fictionTimeStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,7 +180,7 @@ public class CirculationActivity extends BaseAty {
             public void onClick(View v) {
                 showEndDatePickerDialog(me,  2, fictionTimeEnd, calendar);
             }
-        });
+        });*/
     }
 
 
@@ -195,7 +191,7 @@ public class CirculationActivity extends BaseAty {
      * @param tv
      * @param calendar
      */
-    public static void showStartDatePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
+   /* public static void showStartDatePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
         // 直接创建一个DatePickerDialog对话框实例，并将它显示出来
         new DatePickerDialog(activity, themeResId, new DatePickerDialog.OnDateSetListener() {
             // 绑定监听器(How the parent is notified that the date is set.)
@@ -225,5 +221,5 @@ public class CirculationActivity extends BaseAty {
                 , calendar.get(Calendar.YEAR)
                 , calendar.get(Calendar.MONTH)
                 , calendar.get(Calendar.DAY_OF_MONTH)).show();
-    }
+    }*/
 }

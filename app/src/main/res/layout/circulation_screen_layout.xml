@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fiction_drawerlayout"
     android:layout_width="310dp"
     android:layout_height="match_parent"
@@ -35,6 +33,61 @@
             android:textColor="@color/text9f9fa0"
             android:textSize="14dp" />
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/vciv_et_text_bg"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:text="请选择来文单位"
+                android:textSize="14dp"
+                android:textColor="#D7D7D8"
+                android:layout_marginLeft="8dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/speed_img_leibie"
+                android:layout_marginRight="8dp"
+                android:src="@mipmap/daiban_down"
+                android:layout_width="8dp"
+                android:layout_height="4dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="按公文字号筛选"
+            android:textColor="@color/text9f9fa0"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/vciv_et_text_bg"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <EditText
+                android:text=""
+                android:textSize="14dp"
+                android:textColor="#D7D7D8"
+                android:hint="请输入公文字号"
+                android:layout_marginLeft="8dp"
+                android:layout_width="match_parent"
+                android:background="@null"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -79,6 +132,76 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:text="按办结状态筛选"
+            android:textColor="@color/text9f9fa0"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:text="逾期办结"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:button="@null"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="88dp"
+                android:layout_height="38dp"
+                />
+
+            <CheckBox
+                android:text="挂牌后办结"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginLeft="12dp"
+                android:button="@null"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="88dp"
+                android:layout_height="38dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:text="被督办后办结"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:button="@null"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="116dp"
+                android:layout_height="38dp"
+                />
+
+            <CheckBox
+                android:text="被约谈后办结"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginLeft="12dp"
+                android:button="@null"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="116dp"
+                android:layout_height="38dp"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:text="模糊时间搜索"
             android:textColor="@color/text9f9fa0"
             android:textSize="14sp" />
@@ -93,7 +216,6 @@
                 android:layout_width="82dp"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:layout_marginBottom="12dp"
                 android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:text="最近3天"
@@ -123,6 +245,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="47dp"
