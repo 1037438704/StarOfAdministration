@@ -98,6 +98,10 @@
         <activity android:name=".aty.ShareActivity" />
         <!--共享文件库 -->
         <activity android:name=".aty.ShareLookActivity" />
+        <!--公告通知列表 -->
+        <activity android:name=".aty.NoticeActivity" />
+        <!--公告通知 -->
+        <activity android:name=".aty.NoticeLookActivity" />
     </application>
 
 </manifest>

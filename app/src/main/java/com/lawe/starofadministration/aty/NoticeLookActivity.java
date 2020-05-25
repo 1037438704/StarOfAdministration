@@ -34,136 +34,103 @@ import com.lawe.starofadministration.adp.TemplateAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.bean.ListChatBean;
+import com.lawe.starofadministration.fgt.gonggao_tongzhi.NoticeContextFragment;
+import com.lawe.starofadministration.fgt.gonggao_tongzhi.NoticeEclosureFragment;
+import com.lawe.starofadministration.fgt.gonggao_tongzhi.NoticeSettingFragment;
+import com.lawe.starofadministration.fgt.gonggao_tongzhi.NoticeSpeedFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.DocumentEditFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.EnclosureCatalogFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinSpeedFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.SetMessageFragment;
+import com.lawe.starofadministration.fgt.gongxiang_wenjian.ShareEditFragment;
+import com.lawe.starofadministration.fgt.gongxiang_wenjian.ShareEnclosureCatalogFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * author : fuke
- * date : 2020/4/30 15:54
- * description : 公文起草
+ * date : 2020/5/25 14:14
+ * description : 公告通知查看、编辑
  **/
-@Layout(R.layout.activity_draft)
+@Layout(R.layout.activity_notice_look)
 @DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
-public class DraftActivity extends BaseAty {
+public class NoticeLookActivity extends BaseAty {
 
     private ImageView titleBack;
     private TextView titleText;
-    private LinearLayout titleNew;
     private RadioGroup mainRgp;
     private ViewPager viewPagerData;
-    private LinearLayout titleMore;
-    private int flag = 1; //更多展开隐藏标识
-    private int chatflag = 1; //常用语展开隐藏标识
     ViewPagerAdp viewPagerAdp;
     private List<BaseFragment> fragemnts;
-    private LinearLayout draftMore;
-    private LinearLayout draftAll;
-    private LinearLayout draftMoreAI;
-    private LinearLayout draftMoreDaoru;
-    private LinearLayout draftMoreSave;
-    private LinearLayout draftMoreTemplate;
-    private LinearLayout draftMoreGlossary;
 
-    //空集合
-    private List<String> list;
-    private TemplateAdapter templateAdapter;
+    private int flag = 1; //更多展开隐藏标识
+    private int chatflag = 1; //常用语展开隐藏标识
+
+    private RadioButton rb;
+    private  int pageCounte = 0;
+    private String noticeFlag;
+    private RadioButton draftSpeedOne;
+    private Button bottomChat;
     private LinearLayout draftChat;
     private RecyclerView draftChatRecycle;
     private LinearLayout draftChatNew;
-    private LinearLayout draftChatSet;
-    private LinearLayout bottomPerson;
-    private ImageView bottomPizhu;
-    private EditText bottomWhrit;
-    private Button bottomChat;
-    private Button bottomButton;
+    private ImageView draftChatNewImg;
     private TextView draftChatNewText;
+    private android.widget.LinearLayout draftChatSet;
+    private ImageView draftChatSetImg;
     private TextView draftChatSetText;
+    private LinearLayout bottomGongneng;
+    private LinearLayout bottomOne;
+    private LinearLayout bottomPerson;
+    private ImageView bottomImg2;
+    private TextView bottomChooseper2;
 
     //空集合
     private List<ListChatBean> listchat;
     private DraftChatAdapter draftChatAdapter;
+    private List<String> list;
+    private TemplateAdapter templateAdapter;
     private LinearLayoutManager layoutManager;
-    private ImageView draftChatNewImg;
-    private ImageView draftChatSetImg;
-    private RadioButton draftSpeedOne;
-    private RadioButton rb;
-    private String jsons;
-    private LinearLayout bottomGongneng;
-    private int flagSpeed;
+    private LinearLayout draftMore;
+    private LinearLayout draftMoreAI;
+    private LinearLayout draftMoreTemplate;
+    private LinearLayout titleMore;
 
     @Override
     public void initViews() {
-        titleBack = findViewById(R.id.title_back);
-        titleText = findViewById(R.id.title_text);
-        titleNew = findViewById(R.id.title_new);
-        titleMore = findViewById(R.id.title_more);
-        mainRgp = findViewById(R.id.main_rgp);
-        viewPagerData = findViewById(R.id.viewPagerData);
+        initView();
 
-        draftAll = findViewById(R.id.draft_all);
-        draftMore = findViewById(R.id.draft_more);
-        draftMoreAI = findViewById(R.id.draft_more_AI);
-        draftMoreDaoru = findViewById(R.id.draft_more_daoru);
-        draftMoreSave = findViewById(R.id.draft_more_save);
-        draftMoreTemplate = findViewById(R.id.draft_more_template);
-        draftMoreGlossary = findViewById(R.id.draft_more_glossary);
-
-        bottomPerson = findViewById(R.id.bottom_person);
-        bottomPizhu = findViewById(R.id.bottom_pizhu);
-        bottomWhrit = findViewById(R.id.bottom_whrit);
-        bottomChat = findViewById(R.id.bottom_chat);
-        bottomButton = findViewById(R.id.bottom_button);
-        bottomGongneng = findViewById(R.id.bottom_gongneng);
-
-        draftChat = findViewById(R.id.draft_chat);
-        draftChatRecycle = findViewById(R.id.draft_chat_recycle);
-        draftChatNew = findViewById(R.id.draft_chat_new);
-        draftChatSet = findViewById(R.id.draft_chat_set);
-        draftChatNewText = findViewById(R.id.draft_chat_new_text);
-        draftChatSetText = findViewById(R.id.draft_chat_set_text);
-
-        //设置字体
-        titleText.setText("起草公文");
-        titleText.setTypeface(getTextBold);
-        titleMore.setVisibility(View.VISIBLE);
-        draftChatNewText.setTypeface(getTextMedium);
-        draftChatSetText.setTypeface(getTextMedium);
-        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
-        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
-        draftSpeedOne = findViewById(R.id.draft_speed_one);
-        fragemnts = new ArrayList<>();
+        if (noticeFlag.equals("1")){
+            titleText.setText("创建人查看");
+        }else{
+            titleText.setText("发布公告");
+        }
         //常用语列表
         listchat = new ArrayList<>();
         layoutManager = new LinearLayoutManager(me);
         draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
     }
-    int pageCounte = 0;
+
     @Override
     public void initDatas(JumpParameter parameter) {
-        //获取上一个页面传递的标识、
-        flagSpeed = (int) getParameter().get("flagSpeed");
-        log("=================================="+flagSpeed);
-        if (flagSpeed == 1){
+        fragemnts = new ArrayList<>();
+        if (noticeFlag.equals("2")){
             pageCounte = 0;
             draftSpeedOne.setVisibility(View.GONE);
-            fragemnts.add(DocumentEditFragment.newInstance());
-            fragemnts.add(EnclosureCatalogFragment.newInstance());
-            fragemnts.add(SetMessageFragment.newInstance());
+            fragemnts.add(NoticeContextFragment.newInstance());
+            fragemnts.add(NoticeEclosureFragment.newInstance());
+            fragemnts.add(NoticeSettingFragment.newInstance());
             rb = (RadioButton) mainRgp.getChildAt(pageCounte);
         }else{
             pageCounte = 3;
             draftSpeedOne.setVisibility(View.VISIBLE);
-            fragemnts.add(DocumentEditFragment.newInstance());
-            fragemnts.add(EnclosureCatalogFragment.newInstance());
-            fragemnts.add(SetMessageFragment.newInstance());
-            fragemnts.add(JoinSpeedFragment.newInstance());
+            fragemnts.add(NoticeContextFragment.newInstance());
+            fragemnts.add(NoticeEclosureFragment.newInstance());
+            fragemnts.add(NoticeSettingFragment.newInstance());
+            fragemnts.add(NoticeSpeedFragment.newInstance());
             rb = (RadioButton) mainRgp.getChildAt(pageCounte);
         }
         rb.setChecked(true);
@@ -174,7 +141,6 @@ public class DraftActivity extends BaseAty {
         viewPagerData.setAdapter(viewPagerAdp);
         viewPagerData.setCurrentItem(pageCounte);
 
-
         draftChatRecycle.setLayoutManager(layoutManager);
         draftChatRecycle.setAdapter(draftChatAdapter);
         for (int i = 0; i < 10; i++) {
@@ -183,6 +149,7 @@ public class DraftActivity extends BaseAty {
         //常用语列表
         draftChatAdapter.setNewData(listchat);
         draftChatAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -218,22 +185,6 @@ public class DraftActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-
-
-        //点击全屏任意地方弹框消失
-        draftAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (flag == 2) {
-                    draftMore.setVisibility(View.GONE);
-                    flag = 1;
-                }
-                if (chatflag == 2) {
-                    draftChat.setVisibility(View.GONE);
-                    chatflag = 1;
-                }
             }
         });
 
@@ -274,7 +225,6 @@ public class DraftActivity extends BaseAty {
                 //设置对话框大小
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-                wordMuban();
                 loginDown = view.findViewById(R.id.login_down);
                 popDraftRecycle = view.findViewById(R.id.pop_draft_recycle);
 
@@ -426,27 +376,37 @@ public class DraftActivity extends BaseAty {
             }
         });
 
-        //暂定提交按钮---去公文会签
-        bottomButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                jump(JointlyActivity.class);
-            }
-        });
     }
 
-    //改变状态
-    private  void listItemstate(){
-        List<ListChatBean> list =  draftChatAdapter.getData();
-        for (int i = 0; i < list.size(); i++) {
-            list.get(i).setDisplay(!list.get(i).getDisplay());
-        }
-        draftChatAdapter.notifyDataSetChanged();
-    }
+    private void initView() {
+        titleBack = findViewById(R.id.title_back);
+        titleText = findViewById(R.id.title_text);
+        mainRgp = findViewById(R.id.main_rgp);
+        viewPagerData = findViewById(R.id.viewPagerData);
+        draftSpeedOne = findViewById(R.id.draft_speed_one);
 
-    // 调用模板接口
-    private void wordMuban() {
+        //设置字体
+        titleText.setTypeface(getTextBold);
 
-
+        noticeFlag = getIntent().getExtras().getString("noticeFlag");
+        bottomChat = findViewById(R.id.bottom_chat);
+        draftChat = findViewById(R.id.draft_chat);
+        draftChatRecycle = findViewById(R.id.draft_chat_recycle);
+        draftChatNew = findViewById(R.id.draft_chat_new);
+        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
+        draftChatNewText = findViewById(R.id.draft_chat_new_text);
+        draftChatSet = findViewById(R.id.draft_chat_set);
+        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
+        draftChatSetText = findViewById(R.id.draft_chat_set_text);
+        bottomGongneng = findViewById(R.id.bottom_gongneng);
+        bottomOne = findViewById(R.id.bottom_one);
+        bottomOne.setVisibility(View.GONE);
+        bottomPerson = findViewById(R.id.bottom_person);
+        bottomImg2 = findViewById(R.id.bottom_img2);
+        bottomChooseper2 = findViewById(R.id.bottom_chooseper2);
+        draftMore = findViewById(R.id.draft_more);
+        draftMoreAI = findViewById(R.id.draft_more_AI);
+        draftMoreTemplate = findViewById(R.id.draft_more_template);
+        titleMore = findViewById(R.id.title_more);
     }
 }

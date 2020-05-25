@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/share_drawer"
     android:background="@color/colorPrimaryDark"
-    tools:context=".aty.FictionActivity">
+    tools:context=".aty.ShareActivity">
 
     <RelativeLayout
         android:background="#F5F5F5"
