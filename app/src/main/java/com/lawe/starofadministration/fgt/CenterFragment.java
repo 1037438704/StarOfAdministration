@@ -9,6 +9,8 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.aty.CirculationActivity;
 import com.lawe.starofadministration.aty.FictionActivity;
 import com.lawe.starofadministration.aty.FileActivity;
+import com.lawe.starofadministration.aty.ReportActivity;
+import com.lawe.starofadministration.aty.ShareActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
@@ -82,7 +84,7 @@ public class CenterFragment extends BaseFgt {
         centerBaofa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                jump(ReportActivity.class);
             }
         });
 
@@ -90,7 +92,7 @@ public class CenterFragment extends BaseFgt {
         centerGongxiang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                jump(ShareActivity.class);
             }
         });
 

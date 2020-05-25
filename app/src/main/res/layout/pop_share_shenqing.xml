@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingTop="8dp"
+    android:layout_marginTop="81dp"
+    android:layout_height="wrap_content">
+
+    <include layout="@layout/item_img_down"/>
+
+    <TextView
+        android:text="共享申请"
+        android:textColor="@color/text9f9fa0"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="申请原由"
+        android:textColor="@color/textMedium"
+        android:textSize="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:hint="请输入申请共享文件的理由"
+        android:textColor="@color/textMedium"
+        android:textSize="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="@null"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:background="#EFF0F2"
+        android:layout_marginTop="353dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="申请类型"
+            android:textColor="@color/textMedium"
+            android:textSize="16dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text=""
+            android:textColor="@color/text717173"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@mipmap/icon_turn_down1"
+            android:layout_marginLeft="8dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp"/>
+    </LinearLayout>
+
+    <Button
+        android:background="@drawable/shape_red42_22"
+        android:layout_marginTop="20dp"
+        android:text="申请共享"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:includeFontPadding="false"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"/>
+</LinearLayout>

@@ -90,6 +90,14 @@
         <activity android:name=".aty.SimulacrumActivity" />
         <!--收文归档 -->
         <activity android:name=".aty.ReceiptActivity" />
+        <!--文件报发列表 -->
+        <activity android:name=".aty.ReportActivity" />
+        <!--文件报发 -->
+        <activity android:name=".aty.IssueActivity" />
+        <!--共享文件列表 -->
+        <activity android:name=".aty.ShareActivity" />
+        <!--共享文件库 -->
+        <activity android:name=".aty.ShareLookActivity" />
     </application>
 
 </manifest>
