@@ -21,7 +21,7 @@ import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.NoticeAdapter;
-import com.lawe.starofadministration.adp.ShareAdapter;
+import com.lawe.starofadministration.adp.SupervisionAdapter;
 import com.lawe.starofadministration.base.BaseAty;
 
 import java.util.ArrayList;
@@ -31,77 +31,78 @@ import java.util.Locale;
 
 /**
  * author : fuke
- * date : 2020/5/25 14:34
- * description : 公告通知
+ * date : 2020/5/26 14:34
+ * description : 督察督办
  **/
-@Layout(R.layout.activity_notice)
+@Layout(R.layout.activity_supervision)
 @DarkStatusBarTheme(false)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(false)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
-public class NoticeActivity extends BaseAty {
+public class SupervisionActivity extends BaseAty {
 
     private ImageView titleBack;
     private TextView titleText;
     private LinearLayout titleNew;
     private EditText searchEdit;
     private LinearLayout searchChoose;
-    private RecyclerView noticeRecycle;
+    private RecyclerView superRecycle;
     private int maxRecycleCount = 3; //第三条item
     Calendar calendar= Calendar.getInstance(Locale.CHINA);
 
     //空集合
     private List<String> list;
-    private NoticeAdapter noticeAdapter;
+    private SupervisionAdapter supervisionAdapter;
     private LinearLayoutManager layoutManager;
-    private ImageView noticeTop;
-    private DrawerLayout shareDrawer;
+    private ImageView superTop;
+    private DrawerLayout superDrawer;
     private TextView titleRight;
 
     @Override
     public void initViews() {
-        shareDrawer = findViewById(R.id.share_drawer);
+        superDrawer = findViewById(R.id.super_drawer);
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
         titleNew = findViewById(R.id.title_new);
         titleRight = findViewById(R.id.title_right);
         searchEdit = findViewById(R.id.search_edit);
         searchChoose = findViewById(R.id.search_choose);
-        noticeRecycle = findViewById(R.id.notice_recycle);
-        noticeTop = findViewById(R.id.notice_top);
+        superRecycle = findViewById(R.id.super_recycle);
+        superTop = findViewById(R.id.super_top);
+        titleRight.setText("发布");
         //列表
         list = new ArrayList<>();
         //待办信息
-        noticeAdapter = new NoticeAdapter(R.layout.item_file);
+        supervisionAdapter = new SupervisionAdapter(R.layout.item_supervision);
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
         layoutManager = new LinearLayoutManager(me);
-        noticeRecycle.setLayoutManager(layoutManager);
-        noticeRecycle.setAdapter(noticeAdapter);
+        superRecycle.setLayoutManager(layoutManager);
+        superRecycle.setAdapter(supervisionAdapter);
         titleNew.setVisibility(View.VISIBLE);
         //设置字体
         titleText.setTypeface(getTextMedium);
-        titleText.setText("公告通知");
+        titleText.setText("督察督办系统");
 
         for (int i = 0; i < 10; i++) {
             list.add("" + i);
         }
-        noticeAdapter.setNewData(list);
+        supervisionAdapter.setNewData(list);
     }
 
     @Override
     public void setEvents() {
-        noticeRecycle.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        superRecycle.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 int firstCompletelyVisibleItemPosition = layoutManager.findFirstCompletelyVisibleItemPosition();
                 Log.e("ssssss_itemCount",firstCompletelyVisibleItemPosition+"");
                 if(firstCompletelyVisibleItemPosition >= maxRecycleCount){
-                    noticeTop.setVisibility(View.VISIBLE);
+                    superTop.setVisibility(View.VISIBLE);
                 }else if(firstCompletelyVisibleItemPosition == 0){
-                    noticeTop.setVisibility(View.GONE);
+                    superTop.setVisibility(View.GONE);
                 }
             }
 
@@ -114,21 +115,21 @@ public class NoticeActivity extends BaseAty {
             }
         });
 
-        //新建
+        //发布
         titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NoticeActivity.this, NoticeLookActivity.class);
-                intent.putExtra("noticeFlag","2");
+                Intent intent = new Intent(SupervisionActivity.this, SuperLookActivity.class);
+                intent.putExtra("superFlag","2");
                 startActivity(intent);
             }
         });
 
         //回到第一条item
-        noticeTop.setOnClickListener(new View.OnClickListener() {
+        superTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                noticeRecycle.smoothScrollToPosition(0);
+                superRecycle.smoothScrollToPosition(0);
             }
         });
 
@@ -136,7 +137,7 @@ public class NoticeActivity extends BaseAty {
         searchChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shareDrawer.openDrawer(Gravity.RIGHT);
+                superDrawer.openDrawer(Gravity.RIGHT);
             }
         });
 

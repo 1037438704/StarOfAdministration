@@ -12,6 +12,7 @@ import com.lawe.starofadministration.aty.FileActivity;
 import com.lawe.starofadministration.aty.NoticeActivity;
 import com.lawe.starofadministration.aty.ReportActivity;
 import com.lawe.starofadministration.aty.ShareActivity;
+import com.lawe.starofadministration.aty.SupervisionActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
@@ -102,6 +103,14 @@ public class CenterFragment extends BaseFgt {
             @Override
             public void onClick(View v) {
                 jump(NoticeActivity.class);
+            }
+        });
+
+        //督察督办
+        centerDucha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(SupervisionActivity.class);
             }
         });
     }

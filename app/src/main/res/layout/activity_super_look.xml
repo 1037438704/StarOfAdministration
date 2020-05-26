@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".aty.NoticeLookActivity">
+    tools:context=".aty.SuperLookActivity">
 
     <LinearLayout
         android:id="@+id/draft_all"
@@ -35,7 +35,7 @@
                     android:layout_height="match_parent"
                     android:button="@null"
                     android:gravity="center"
-                    android:text="通知内容"
+                    android:text="督查内容"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="7dp"
@@ -59,6 +59,7 @@
                     android:textSize="14dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_setting"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="36dp"
@@ -78,7 +79,7 @@
                     android:layout_height="match_parent"
                     android:button="@null"
                     android:gravity="center"
-                    android:text="进度追踪"
+                    android:text="办理流程"
                     android:visibility="gone"
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="7dp"

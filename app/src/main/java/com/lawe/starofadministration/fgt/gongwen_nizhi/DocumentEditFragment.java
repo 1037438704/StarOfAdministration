@@ -1,11 +1,16 @@
 package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.JavascriptInterface;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.EditText;
@@ -14,10 +19,13 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.kongzue.baseokhttp.util.Parameter;
+import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.config.Constants;
@@ -62,7 +70,7 @@ public class DocumentEditFragment extends BaseFgt {
         documentTitle.setTypeface(getTextMedium);
 
         //判断公文主体是否为空
-        isEmpty = TextUtils.isEmpty(documentSubject.getText());
+       // isEmpty = TextUtils.isEmpty(documentSubject.getText());
 
         showWord();
     }
@@ -72,9 +80,26 @@ public class DocumentEditFragment extends BaseFgt {
 
     }
 
+    @SuppressLint("JavascriptInterface")
+    @JavascriptInterface
     private void showWord() {
-        HttpRequest.POST(me, Constants.SHOWWORD, new Parameter()
-                        .add("temWordfile","临时文件")
+        WebSettings webSettings = webview.getSettings();
+        webSettings.setDomStorageEnabled(true);//设置适应Html5的一些方法
+        // 设置与Js交互的权限
+        webSettings.setJavaScriptEnabled(true);
+        // 设置允许JS弹窗
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setUseWideViewPort(true);
+        //webSettings.setLoadWithOverviewMode(true);
+
+       // webview.loadUrl("file:///android_asset/mobileTemp22.html");
+        webview.loadUrl("http://192.168.0.178:8081/szzw-web/sys/poffice/mobileShowWord");
+        // 注意调用的JS方法名要对应上
+        // 调用javascript的callJS()方法
+        webview.loadUrl("javascript:aa()");
+
+       /* HttpRequest.POST(me, Constants.SHOWWORD, new Parameter()
+                        .add("temWordfile","aa")
                         .add("depUserId","1253514067132448770")
                 , new ResponseListener() {
                     @Override
@@ -87,17 +112,18 @@ public class DocumentEditFragment extends BaseFgt {
                             webSettings.setJavaScriptEnabled(true);
                             webSettings.setUseWideViewPort(true);
                             webSettings.setLoadWithOverviewMode(true);
-                            webview.loadData(response, "text/html; charset=UTF-8", null);
+                            webview.loadUrl("file:///android_asset/mobileTemp.html");
+                            //webview.loadData(response, "text/html; charset=UTF-8", null);
                         } else {
                             error.getMessage();
                         }
                     }
-                });
+                });*/
     }
 
     @Override
     public void setEvents() {
-        //实时监听edittext内容变化
+       /* //实时监听edittext内容变化
         documentSubject.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -119,7 +145,7 @@ public class DocumentEditFragment extends BaseFgt {
             public void afterTextChanged(Editable s) {
 
             }
-        });
+        });*/
         //监听edittext滚动
         documentSubject.setOnTouchListener(new View.OnTouchListener() {
             @Override

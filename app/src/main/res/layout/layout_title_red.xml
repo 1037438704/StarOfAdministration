@@ -65,7 +65,7 @@
         <TextView
             android:id="@+id/title_right"
             android:text="新建"
-            android:textSize="15dp"
+            android:textSize="16dp"
             android:textColor="@color/white"
             android:layout_marginLeft="4dp"
             android:layout_width="wrap_content"

@@ -20,5 +20,5 @@ public interface Constants {
     String SHOWWORDTEMPLATE = "/sys/poffice/showWordTemplate";
 
     //调用word接口
-    String SHOWWORD = "/sys/poffice/showWord";
+    String SHOWWORD = "/sys/poffice/test";
 }

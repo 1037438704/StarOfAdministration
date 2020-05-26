@@ -102,6 +102,10 @@
         <activity android:name=".aty.NoticeActivity" />
         <!--公告通知 -->
         <activity android:name=".aty.NoticeLookActivity" />
+        <!--督察督办 -->
+        <activity android:name=".aty.SupervisionActivity" />
+        <!--督察督办查看 -->
+        <activity android:name=".aty.SuperLookActivity" />
     </application>
 
 </manifest>
