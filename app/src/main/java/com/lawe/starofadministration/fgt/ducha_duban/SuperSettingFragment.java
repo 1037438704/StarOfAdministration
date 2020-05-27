@@ -23,7 +23,7 @@ import java.util.List;
  * date : 2020/5/26 14:09
  * description : 督察督办---设置信息
  */
-@Layout(R.layout.fgt_file_setting)
+@Layout(R.layout.fgt_super_setting)
 public class SuperSettingFragment extends BaseFgt {
 
     @Override

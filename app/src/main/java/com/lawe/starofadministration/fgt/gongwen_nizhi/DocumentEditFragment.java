@@ -1,6 +1,7 @@
 package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -52,6 +54,8 @@ public class DocumentEditFragment extends BaseFgt {
     private ScrollView documentScroll;
     private int textsize = 16;
     private WebView webview;
+    private String filePath = "0",depUserId = "1253514067132448770",temWordfile = "aa",documentationType = "0";
+    private TextView webceshi;
 
     @Override
     public void initViews() {
@@ -66,6 +70,7 @@ public class DocumentEditFragment extends BaseFgt {
         imgRead = (ImageView) findViewById(R.id.img_read);
         imgBohui = (ImageView) findViewById(R.id.img_bohui);
         webview = (WebView) findViewById(R.id.webview);
+        webceshi = (TextView) findViewById(R.id.webceshi);
         //设置字体
         documentTitle.setTypeface(getTextMedium);
 
@@ -90,14 +95,23 @@ public class DocumentEditFragment extends BaseFgt {
         // 设置允许JS弹窗
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         webSettings.setUseWideViewPort(true);
+        webSettings.setDefaultTextEncodingName("utf-8");
         //webSettings.setLoadWithOverviewMode(true);
-
-       // webview.loadUrl("file:///android_asset/mobileTemp22.html");
+        //webview.loadUrl("file:///android_asset/mobileTemp22.html");
         webview.loadUrl("http://192.168.0.178:8081/szzw-web/sys/poffice/mobileShowWord");
-        // 注意调用的JS方法名要对应上
-        // 调用javascript的callJS()方法
-        webview.loadUrl("javascript:aa()");
+        //在js中调用本地java方法
+        webview.addJavascriptInterface(new JsInterface(me), "AndroidWebView");
+        //调用js中的函数：
+        webview.loadUrl("javascript:aa('"+filePath +"','"+depUserId +"','"+temWordfile +"','"+documentationType +"')");
+        //添加客户端支持
+        webview.setWebChromeClient(new WebChromeClient());
 
+        webceshi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendInfoToJs();
+            }
+        });
        /* HttpRequest.POST(me, Constants.SHOWWORD, new Parameter()
                         .add("temWordfile","aa")
                         .add("depUserId","1253514067132448770")
@@ -119,6 +133,23 @@ public class DocumentEditFragment extends BaseFgt {
                         }
                     }
                 });*/
+    }
+
+    private void sendInfoToJs() {
+        webview.loadUrl("javascript:aa('"+filePath +"','"+depUserId +"','"+temWordfile +"')");
+    }
+
+    private class JsInterface {
+        private Context mContext;
+
+        public JsInterface(Context context) {
+            this.mContext = context;
+        }
+
+        @JavascriptInterface
+        public void showInfoFromJs(String name) {
+            Toast.makeText(mContext, name, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

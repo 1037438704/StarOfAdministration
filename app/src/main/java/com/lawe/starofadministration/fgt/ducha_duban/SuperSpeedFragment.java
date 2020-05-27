@@ -1,5 +1,9 @@
 package com.lawe.starofadministration.fgt.ducha_duban;
 
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -56,4 +60,7 @@ public class SuperSpeedFragment extends BaseFgt {
         return new SuperSpeedFragment();
     }
 
+    private void initView() {
+
+    }
 }

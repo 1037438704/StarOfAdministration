@@ -65,6 +65,7 @@
             android:layout_height="8dp"/>
 
         <TextView
+            android:id="@+id/webceshi"
             android:text="公文主体："
             android:textSize="16dp"
             android:layout_marginLeft="12dp"

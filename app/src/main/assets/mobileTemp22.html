@@ -6,13 +6,22 @@
     <script type="text/javascript" language="javascript" src="http://192.168.0.178:8081/szzw-web/jquery.min.js"></script>
     <script type="text/javascript" language="javascript" src="http://192.168.0.178:8081/szzw-web/moboffice.js" id="mob_js_main"></script>
     <script type="text/javascript">
-       function aa(){
-         alert("ddd")
+       function aa(filePath,depUserId,temWordfile){
+    	   alert(filePath+"===="+depUserId+"===="+temWordfile);
+    	   //MobAPP.openWindow('http://192.168.0.178:8081/szzw-web/sys/poffice/test?filePath=D:/temp/files/aa.xls&depUserId=322')
+       }
+       function bb(){
+    	  window.location.href="MobAPP.openWindow('http://192.168.0.178:8081/szzw-web/sys/poffice/test?temWordfile=aa&depUserId=322')";
        }
     </script>
 </head>
 
 <body>
-    <button onclick="aa()">编辑</button>
+<button onclick="bb()">
+    编辑2
+</button>
+<button onclick="javascript:MobAPP.openWindow('http://192.168.0.178:8081/szzw-web/sys/poffice/test?temWordfile=aa&depUserId=322');">
+    编辑3
+</button>
 </body>
 </html>
