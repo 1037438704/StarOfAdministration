@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.webkit.WebView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -236,6 +237,5 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
         bitmap.setPixels(pix, 0, w, 0, 0, w, h);
         return (bitmap);
     }
-
 
 }

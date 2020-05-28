@@ -47,7 +47,7 @@ public class JointlyActivity extends BaseAty {
     private TextView titleText;
     private RadioGroup mainRgp;
     private ViewPager viewPagerData;
-    private ImageView bottomPerson;
+    private LinearLayout bottomPerson;
     private ImageView bottomPizhu;
     private EditText bottomWhrit;
     private ImageView bottomChat;

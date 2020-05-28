@@ -92,6 +92,9 @@ public class SuperLookActivity extends BaseAty {
     private RadioButton radioSetting;
     private EditText bottomWhrit;
     private LinearLayout bottomPerson;
+    private LinearLayout bottomOne;
+    private ImageView bottomImg2;
+    private TextView bottomChooseper2;
 
     @Override
     public void initViews() {
@@ -103,6 +106,9 @@ public class SuperLookActivity extends BaseAty {
                 bottomWhrit.setHint("请输入文件摘要");
             }else{
                 titleText.setText("督查事项任务办理");
+                bottomOne.setVisibility(View.GONE);
+                bottomChooseper2.setText("添加转发人");
+                bottomWhrit.setHint("请输入验收备注");
             }
         }else{
             titleText.setText("创建督查任务");
@@ -362,6 +368,9 @@ public class SuperLookActivity extends BaseAty {
         draftMore = findViewById(R.id.draft_more);
         titleMore = findViewById(R.id.title_more);
         bottomWhrit = findViewById(R.id.bottom_whrit);
-        bottomPerson = (LinearLayout) findViewById(R.id.bottom_person);
+        bottomPerson = findViewById(R.id.bottom_person);
+        bottomOne = findViewById(R.id.bottom_one);
+        bottomImg2 = findViewById(R.id.bottom_img2);
+        bottomChooseper2 = findViewById(R.id.bottom_chooseper2);
     }
 }

@@ -76,6 +76,7 @@
 
             <WebView
                 android:id="@+id/webview"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
@@ -87,7 +88,6 @@
                 android:textColorHint="#D7D7D8"
                 android:background="@null"
                 android:gravity="top"
-                android:visibility="gone"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:layout_width="match_parent"

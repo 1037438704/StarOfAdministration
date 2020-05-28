@@ -45,7 +45,7 @@ public class SupervisionAdapter extends BaseQuickAdapter<String, BaseViewHolder>
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), SuperLookActivity.class);
                 intent.putExtra("superFlag","1");
-                intent.putExtra("typePerson","false");
+                intent.putExtra("typePerson","true");
                 getContext().startActivity(intent);
             }
         });

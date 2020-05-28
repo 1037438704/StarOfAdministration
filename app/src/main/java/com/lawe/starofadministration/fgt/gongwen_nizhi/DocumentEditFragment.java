@@ -1,8 +1,10 @@
 package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -14,6 +16,7 @@ import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,6 +34,8 @@ import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.config.Constants;
+
+import java.net.URISyntaxException;
 
 /**
  * author : fuke
@@ -101,10 +106,17 @@ public class DocumentEditFragment extends BaseFgt {
         webview.loadUrl("http://192.168.0.178:8081/szzw-web/sys/poffice/mobileShowWord");
         //在js中调用本地java方法
         webview.addJavascriptInterface(new JsInterface(me), "AndroidWebView");
-        //调用js中的函数：
-        webview.loadUrl("javascript:aa('"+filePath +"','"+depUserId +"','"+temWordfile +"','"+documentationType +"')");
+        
         //添加客户端支持
-        webview.setWebChromeClient(new WebChromeClient());
+        webview.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (shouldOverrideUrlLoadingByApp(view, url)) {
+                    return true;
+                }
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+        });
 
         webceshi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,31 +124,34 @@ public class DocumentEditFragment extends BaseFgt {
                 sendInfoToJs();
             }
         });
-       /* HttpRequest.POST(me, Constants.SHOWWORD, new Parameter()
-                        .add("temWordfile","aa")
-                        .add("depUserId","1253514067132448770")
-                , new ResponseListener() {
-                    @Override
-                    public void onResponse(String response, Exception error) {
-                        if (error == null) {
-                            Log.e("shuju",response);
-                            WebSettings webSettings = webview.getSettings();
-                            webSettings.setDomStorageEnabled(true);//设置适应Html5的一些方法
-                            //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
-                            webSettings.setJavaScriptEnabled(true);
-                            webSettings.setUseWideViewPort(true);
-                            webSettings.setLoadWithOverviewMode(true);
-                            webview.loadUrl("file:///android_asset/mobileTemp.html");
-                            //webview.loadData(response, "text/html; charset=UTF-8", null);
-                        } else {
-                            error.getMessage();
-                        }
-                    }
-                });*/
+    }
+
+    /**
+     * 根据url的scheme处理跳转第三方app的业务
+     */
+    private boolean shouldOverrideUrlLoadingByApp(WebView view, String url) {
+        if (url.startsWith("http") || url.startsWith("https") || url.startsWith("ftp")) {
+            //不处理http, https, ftp的请求
+            return false;
+        }
+        Intent intent;
+        try {
+            intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
+        } catch (URISyntaxException e) {
+            return false;
+        }
+        intent.setComponent(null);
+        try {
+            getContext().startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            return false;
+        }
+        return true;
     }
 
     private void sendInfoToJs() {
-        webview.loadUrl("javascript:aa('"+filePath +"','"+depUserId +"','"+temWordfile +"')");
+        //调用js中的函数：
+        webview.loadUrl("javascript:aa('"+filePath +"','"+depUserId +"','"+temWordfile +"','"+documentationType +"')");
     }
 
     private class JsInterface {

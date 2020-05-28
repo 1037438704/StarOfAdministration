@@ -13,6 +13,7 @@ import com.lawe.starofadministration.aty.NoticeActivity;
 import com.lawe.starofadministration.aty.ReportActivity;
 import com.lawe.starofadministration.aty.ShareActivity;
 import com.lawe.starofadministration.aty.SupervisionActivity;
+import com.lawe.starofadministration.aty.WorkPlanActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
 /**
@@ -111,6 +112,14 @@ public class CenterFragment extends BaseFgt {
             @Override
             public void onClick(View v) {
                 jump(SupervisionActivity.class);
+            }
+        });
+
+        //工作计划
+        centerJihua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(WorkPlanActivity.class);
             }
         });
     }

@@ -20,6 +20,8 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/AppTheme">
+        <activity android:name=".aty.WorkPlanActivity"></activity>
+        <activity android:name=".aty.NewWorkActivity"></activity>
         <!-- ========今日头条适配========= -->
         <meta-data
             android:name="design_width_in_dp"
@@ -34,32 +36,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- 主页面 -->
-        <activity android:name=".MainActivity" />
-        <!-- 启动页面 -->
-        <activity android:name=".aty.BootPageAty" />
-        <!--公文拟制列表 -->
-        <activity android:name=".aty.FictionActivity" />
-        <!--创建人查看-->
-        <activity android:name=".aty.EntryActivity" />
-        <!--办理人查看-->
-        <activity android:name=".aty.HandledLookActivity" />
-        <!--办理文件-->
-        <activity android:name=".aty.HandledActivity" />
-        <!--公文协办-->
-        <activity android:name=".aty.SponsorActivity" />
-        <!--公文批示-->
-        <activity android:name=".aty.InstructionsActivity" />
-        <!--公文承办-->
-        <activity android:name=".aty.UndertakeActivity" />
-        <!--公文拟办-->
-        <activity android:name=".aty.PropsedActivity" />
-        <!--收文录入-->
-        <activity android:name=".aty.EntryEntryActivity" />
-        <!--文件签收-->
-        <activity android:name=".aty.SignActivity" />
-        <!--收文传阅列表 -->
-        <activity android:name=".aty.CirculationActivity" />
-        <!-- 操作中心 -->
+        <activity android:name=".MainActivity" /> <!-- 启动页面 -->
+        <activity android:name=".aty.BootPageAty" /> <!-- 公文拟制列表 -->
+        <activity android:name=".aty.FictionActivity" /> <!-- 创建人查看 -->
+        <activity android:name=".aty.EntryActivity" /> <!-- 办理人查看 -->
+        <activity android:name=".aty.HandledLookActivity" /> <!-- 办理文件 -->
+        <activity android:name=".aty.HandledActivity" /> <!-- 公文协办 -->
+        <activity android:name=".aty.SponsorActivity" /> <!-- 公文批示 -->
+        <activity android:name=".aty.InstructionsActivity" /> <!-- 公文承办 -->
+        <activity android:name=".aty.UndertakeActivity" /> <!-- 公文拟办 -->
+        <activity android:name=".aty.PropsedActivity" /> <!-- 收文录入 -->
+        <activity android:name=".aty.EntryEntryActivity" /> <!-- 文件签收 -->
+        <activity android:name=".aty.SignActivity" /> <!-- 收文传阅列表 -->
+        <activity android:name=".aty.CirculationActivity" /> <!-- 操作中心 -->
         <activity android:name=".aty.ExplanaActivity" /> <!-- 服务中心 -->
         <activity android:name=".aty.ServiceActivity" /> <!-- 问题反馈 -->
         <activity android:name=".aty.FeedBackActivity" /> <!-- 系统设置 -->
@@ -72,8 +61,9 @@
             android:windowSoftInputMode="stateVisible|adjustResize" /> <!-- 今日日程 -->
         <activity android:name=".aty.LookAllActivity" /> <!-- 忘记密码 -->
         <activity android:name=".aty.ForgetPassActivity" /> <!-- 扫一扫 -->
-        <activity android:name=".aty.ScanningActivity"
-            android:screenOrientation="portrait"/> <!-- 公文起草 -->
+        <activity
+            android:name=".aty.ScanningActivity"
+            android:screenOrientation="portrait" /> <!-- 公文起草 -->
         <activity android:name=".aty.DraftActivity" /> <!-- 公文审核 -->
         <activity android:name=".aty.ExamineActivity" /> <!-- 公文审阅 -->
         <activity android:name=".aty.ReviewActivity" /> <!-- 公文校对 -->
@@ -83,28 +73,17 @@
         <activity android:name=".aty.JointlyActivity" /> <!-- 常用组管理 -->
         <activity android:name=".aty.GroupMangerActivity" /> <!-- 人员选择 -->
         <activity android:name=".aty.ChoosePersonActivity" /> <!-- 单位选择 -->
-        <activity android:name=".aty.ChooseCompanyActivity" />
-        <!--公文归档 -->
-        <activity android:name=".aty.FileActivity" />
-        <!--拟制文件归档 -->
-        <activity android:name=".aty.SimulacrumActivity" />
-        <!--收文归档 -->
-        <activity android:name=".aty.ReceiptActivity" />
-        <!--文件报发列表 -->
-        <activity android:name=".aty.ReportActivity" />
-        <!--文件报发 -->
-        <activity android:name=".aty.IssueActivity" />
-        <!--共享文件列表 -->
-        <activity android:name=".aty.ShareActivity" />
-        <!--共享文件库 -->
-        <activity android:name=".aty.ShareLookActivity" />
-        <!--公告通知列表 -->
-        <activity android:name=".aty.NoticeActivity" />
-        <!--公告通知 -->
-        <activity android:name=".aty.NoticeLookActivity" />
-        <!--督察督办 -->
-        <activity android:name=".aty.SupervisionActivity" />
-        <!--督察督办查看 -->
+        <activity android:name=".aty.ChooseCompanyActivity" /> <!-- 公文归档 -->
+        <activity android:name=".aty.FileActivity" /> <!-- 拟制文件归档 -->
+        <activity android:name=".aty.SimulacrumActivity" /> <!-- 收文归档 -->
+        <activity android:name=".aty.ReceiptActivity" /> <!-- 文件报发列表 -->
+        <activity android:name=".aty.ReportActivity" /> <!-- 文件报发 -->
+        <activity android:name=".aty.IssueActivity" /> <!-- 共享文件列表 -->
+        <activity android:name=".aty.ShareActivity" /> <!-- 共享文件库 -->
+        <activity android:name=".aty.ShareLookActivity" /> <!-- 公告通知列表 -->
+        <activity android:name=".aty.NoticeActivity" /> <!-- 公告通知 -->
+        <activity android:name=".aty.NoticeLookActivity" /> <!-- 督察督办 -->
+        <activity android:name=".aty.SupervisionActivity" /> <!-- 督察督办查看 -->
         <activity android:name=".aty.SuperLookActivity" />
     </application>
 
