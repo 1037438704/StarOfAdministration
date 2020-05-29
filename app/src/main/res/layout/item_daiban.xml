@@ -28,7 +28,7 @@
                 android:src="@mipmap/daiban_book"/>
 
             <TextView
-                android:layout_width="240dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:text="关于疫情防控工作的重要指导意见"

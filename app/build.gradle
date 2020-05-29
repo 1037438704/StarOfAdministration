@@ -56,7 +56,7 @@ dependencies {
 
     //列表刷新接口
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-32'
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-32'
+    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.2.1'
 
     //堆叠标签
     implementation 'com.kongzue.stacklabel:stacklabelview:1.1.9'

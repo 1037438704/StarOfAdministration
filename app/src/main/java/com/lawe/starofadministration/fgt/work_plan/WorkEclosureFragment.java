@@ -21,11 +21,10 @@ import java.util.List;
  * date : 2020/5/29 14:08
  * description : 工作计划----附件目录
  */
-@Layout(R.layout.fgt_enclosure)
+@Layout(R.layout.fgt_work_enclosure)
 public class WorkEclosureFragment extends BaseFgt {
 
     private RecyclerView enclosureRecycle;
-    private LinearLayout enclosureShangchuan;
     private TextView enclosureText;
     private EnclosureAdapter enclosureAdapter;
     //空集合
@@ -39,13 +38,9 @@ public class WorkEclosureFragment extends BaseFgt {
     @Override
     public void initViews() {
         enclosureRecycle = (RecyclerView) findViewById(R.id.enclosure_recycle);
-        enclosureShangchuan = (LinearLayout) findViewById(R.id.enclosure_shangchuan);
-        enclosureText = (TextView) findViewById(R.id.enclosure_text);
-        //设置字体
-        enclosureText.setTypeface(getTextMedium);
+
         //附件列表
         list = new ArrayList<>();
-        //待办信息
         enclosureRecycle.setNestedScrollingEnabled(false);
         enclosureRecycle.setLayoutManager(new LinearLayoutManager(me));
         enclosureAdapter = new EnclosureAdapter(R.layout.item_enclosure);

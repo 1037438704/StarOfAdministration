@@ -15,9 +15,9 @@ import com.lawe.starofadministration.R;
 import java.util.List;
 
 /**
- * author :
+ * author : fuke
  * date : 2020/4/13 15:15
- * description :
+ * description :  附件列表
  */
 public class EnclosureAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 

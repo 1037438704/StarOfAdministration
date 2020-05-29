@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/item_title"
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
             android:text="关于疫情防控工作的重要指导意见"

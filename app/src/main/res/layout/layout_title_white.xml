@@ -30,6 +30,25 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/title_new_back"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="25dp"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <Button
+            android:text="返回上级"
+            android:textSize="14dp"
+            android:background="@drawable/shape_hui8"
+            android:textColor="@color/text717173"
+            android:layout_width="80dp"
+            android:layout_height="30dp"/>
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/title_more"

@@ -1,13 +1,16 @@
 package com.lawe.starofadministration.fgt.work_plan;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
@@ -18,46 +21,29 @@ import com.lawe.starofadministration.base.BaseFgt;
  * date : 2020/5/29 14:08
  * description : 工作计划----项目内容
  */
-@Layout(R.layout.fgt_join_context)
+@Layout(R.layout.fgt_document_edit)
 public class WorkContextFragment extends BaseFgt {
 
-    private TextView joinContextTitle;
-    private TextView joinContextTongzhi;
-    private TextView joinContextGongkai;
-    private TextView joinContextQicaoren;
-    private TextView joinContextHuiqian;
-    private TextView joinContextNumber;
-    private TextView joinContextSubject;
     private LinearLayout cebianlan;
-    private ImageView imgBig;
-    private ImageView imgSmall;
-    private ImageView imgTop;
-    private ImageView imgRead;
-    private ImageView imgBohui;
+    private String newWorkFlag;
+    private LinearLayout workTitle;
+    private EditText documentSubject;
 
     @Override
     public void initViews() {
-        joinContextTitle = (TextView) findViewById(R.id.join_context_title);
-        joinContextTongzhi = (TextView) findViewById(R.id.join_context_tongzhi);
-        joinContextGongkai = (TextView) findViewById(R.id.join_context_gongkai);
-        joinContextQicaoren = (TextView) findViewById(R.id.join_context_qicaoren);
-        joinContextHuiqian = (TextView) findViewById(R.id.join_context_huiqian);
-        joinContextNumber = (TextView) findViewById(R.id.join_context_number);
-        joinContextSubject = (TextView) findViewById(R.id.join_context_subject);
+
         cebianlan = (LinearLayout) findViewById(R.id.cebianlan);
-        imgBig = (ImageView) findViewById(R.id.img_big);
-        imgSmall = (ImageView) findViewById(R.id.img_small);
-        imgTop = (ImageView) findViewById(R.id.img_top);
-        imgRead = (ImageView) findViewById(R.id.img_read);
-        imgBohui = (ImageView) findViewById(R.id.img_bohui);
+        workTitle = (LinearLayout) findViewById(R.id.work_title);
+        documentSubject = (EditText) findViewById(R.id.document_subject);
 
-        cebianlan.setVisibility(View.VISIBLE);
-        imgBohui.setVisibility(View.VISIBLE);
-        imgRead.setVisibility(View.VISIBLE);
+        SharedPreferences sp = me.getSharedPreferences("id", Context.MODE_PRIVATE);
+        newWorkFlag = sp.getString("newWorkFlag", "");
+        Log.e("newWorkFlag1", newWorkFlag);
 
-        //设置字体
-        joinContextTitle.setTypeface(getTextMedium);
-        joinContextSubject.setText("父父父父父父仿佛u父父父父父父父父语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。 语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。 语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年 众多中小企业首选。语雀是一款优雅高效的在线文档编辑与协同工具， 让每个企业轻松拥有文档中心阿里巴巴集团内部使用多年，众多中小企业首选。");
+        if (newWorkFlag.equals("2")) {
+            workTitle.setVisibility(View.GONE);
+            documentSubject.setHint("请对任务进行描述");
+        }
 
     }
 
@@ -68,30 +54,11 @@ public class WorkContextFragment extends BaseFgt {
 
     @Override
     public void setEvents() {
-        //立即驳回
-        imgBohui.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //1、使用Dialog、设置style
-                final Dialog dialog = new Dialog(me, R.style.DialogTheme);
-                //2、设置布局
-                View view = View.inflate(me, R.layout.pop_bohui, null);
-                dialog.setContentView(view);
 
-                Window window = dialog.getWindow();
-                //设置弹出位置
-                window.setGravity(Gravity.BOTTOM);
-                //设置弹出动画
-                window.setWindowAnimations(R.style.main_menu_animStyle);
-                //设置对话框大小
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
-            }
-        });
     }
+
     public static WorkContextFragment newInstance() {
         return new WorkContextFragment();
     }
+
 }

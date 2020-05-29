@@ -1,5 +1,6 @@
 package com.lawe.starofadministration.adp;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -9,8 +10,10 @@ import androidx.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
+import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.aty.LookWorkActivity;
 
 import java.util.List;
 
@@ -40,7 +43,11 @@ public class WorkPlanAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
         itemLinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), LookWorkActivity.class);
+                //1:创建者   2：执行者    true:项目    flase:任务
+                intent.putExtra("personType","2");
+                intent.putExtra("workType","false");
+                getContext().startActivity(intent);
             }
         });
     }

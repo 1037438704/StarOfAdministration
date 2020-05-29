@@ -1,13 +1,9 @@
 package com.lawe.starofadministration.aty;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,9 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -29,18 +22,13 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
-import com.lawe.starofadministration.adp.DraftChatAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
-import com.lawe.starofadministration.bean.ListChatBean;
-import com.lawe.starofadministration.fgt.ducha_duban.SuperContextFragment;
-import com.lawe.starofadministration.fgt.ducha_duban.SuperEclosureFragment;
-import com.lawe.starofadministration.fgt.ducha_duban.SuperSettingFragment;
-import com.lawe.starofadministration.fgt.ducha_duban.SuperSpeedFragment;
 import com.lawe.starofadministration.fgt.work_plan.WorkContextFragment;
 import com.lawe.starofadministration.fgt.work_plan.WorkEclosureFragment;
 import com.lawe.starofadministration.fgt.work_plan.WorkNewFragment;
 import com.lawe.starofadministration.fgt.work_plan.WorkSettingFragment;
+import com.lawe.starofadministration.fgt.work_plan.WorkSpeedFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,13 +36,13 @@ import java.util.List;
 /**
  * author : fuke
  * date : 2020/5/26 14:14
- * description : 新建项目
+ * description : 查看项目/任务
  **/
-@Layout(R.layout.activity_new_work)
+@Layout(R.layout.activity_look_work)
 @DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
 @DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
-public class NewWorkActivity extends BaseAty {
+public class LookWorkActivity extends BaseAty {
 
     private ImageView titleBack;
     private TextView titleText;
@@ -71,20 +59,55 @@ public class NewWorkActivity extends BaseAty {
     private RadioButton draftSpeedOne;
     private String newWorkFlag;
     private LinearLayout titleNewBack;
+    private String workType;
+    private String personType;
+    private android.widget.Button bottomChat;
+    private android.widget.EditText bottomWhrit;
+    private ImageView bottomPizhu;
+    private android.widget.Button bottomButton;
+    private LinearLayout draftChat;
+    private androidx.recyclerview.widget.RecyclerView draftChatRecycle;
+    private LinearLayout draftChatNew;
+    private ImageView draftChatNewImg;
+    private TextView draftChatNewText;
+    private LinearLayout draftChatSet;
+    private ImageView draftChatSetImg;
+    private TextView draftChatSetText;
+    private LinearLayout bottomGongneng;
+    private LinearLayout bottomOne;
+    private ImageView bottomImg1;
+    private TextView bottomChooseper1;
+    private LinearLayout bottomPerson;
+    private ImageView bottomImg2;
+    private TextView bottomChooseper2;
+    private android.webkit.WebView workLookWebview;
+    private LinearLayout bottomZong;
+    private Button workLookWancheng;
 
     @Override
     public void initViews() {
         initView();
 
-        newWorkFlag = (String) getParameter().get("newWorkFlag");
-        Log.e("newWorkFlag2",newWorkFlag);
-        if (newWorkFlag.equals("1")){
-            titleText.setText("新建项目");
-        }else if(newWorkFlag.equals("2")){
-            titleText.setText("新建任务");
-            titleNewBack.setVisibility(View.VISIBLE);
+        if (workType.equals("true")){
+            titleText.setText("查看项目");
+            workLookWebview.setVisibility(View.VISIBLE);
+            if (personType.equals("1")){
+                bottomZong.setVisibility(View.GONE);
+                workLookWancheng.setVisibility(View.VISIBLE);
+            }else{
+                bottomZong.setVisibility(View.GONE);
+            }
+        }else{
+            titleText.setText("查看任务");
+            if (personType.equals("1")){
+                bottomGongneng.setVisibility(View.GONE);
+            }else{
+                bottomChooseper1.setText("申请延期");
+                bottomChooseper2.setText("申请退办");
+                bottomImg1.setImageResource(R.mipmap.icon_yan_qi);
+                bottomImg2.setImageResource(R.mipmap.icon_tui_ban);
+            }
         }
-
     }
 
     @Override
@@ -93,7 +116,7 @@ public class NewWorkActivity extends BaseAty {
 
         pageCounte = 0;
         draftSpeedOne.setVisibility(View.VISIBLE);
-
+        fragemnts.add(WorkSpeedFragment.newInstance());
         fragemnts.add(WorkContextFragment.newInstance());
         fragemnts.add(WorkEclosureFragment.newInstance());
         fragemnts.add(WorkSettingFragment.newInstance());
@@ -107,10 +130,6 @@ public class NewWorkActivity extends BaseAty {
         viewPagerData.setAdapter(viewPagerAdp);
         viewPagerData.setCurrentItem(pageCounte);
 
-        //activity向fragment传值
-        SharedPreferences sharedPreferences1=getSharedPreferences("id",MODE_PRIVATE);
-        SharedPreferences.Editor edit=sharedPreferences1.edit();
-        edit.putString("newWorkFlag",newWorkFlag).commit();
     }
 
     @Override
@@ -159,10 +178,32 @@ public class NewWorkActivity extends BaseAty {
         draftSpeedOne = findViewById(R.id.draft_speed_one);
         //设置字体
         titleText.setTypeface(getTextBold);
+        //1:创建者   2：执行者    true:项目    flase:任务
+        personType = getIntent().getExtras().getString("personType");
+        workType = getIntent().getExtras().getString("workType");
 
-      /*  superFlag = getIntent().getExtras().getString("superFlag");
-        typePerson = getIntent().getExtras().getString("typePerson");*/
-
-        titleNewBack = (LinearLayout) findViewById(R.id.title_new_back);
+        titleNewBack = findViewById(R.id.title_new_back);
+        bottomChat = findViewById(R.id.bottom_chat);
+        bottomWhrit = findViewById(R.id.bottom_whrit);
+        bottomPizhu = findViewById(R.id.bottom_pizhu);
+        bottomButton = findViewById(R.id.bottom_button);
+        draftChat = findViewById(R.id.draft_chat);
+        draftChatRecycle = findViewById(R.id.draft_chat_recycle);
+        draftChatNew = findViewById(R.id.draft_chat_new);
+        draftChatNewImg = findViewById(R.id.draft_chat_new_img);
+        draftChatNewText = findViewById(R.id.draft_chat_new_text);
+        draftChatSet = findViewById(R.id.draft_chat_set);
+        draftChatSetImg = findViewById(R.id.draft_chat_set_img);
+        draftChatSetText = findViewById(R.id.draft_chat_set_text);
+        bottomGongneng = findViewById(R.id.bottom_gongneng);
+        bottomOne = findViewById(R.id.bottom_one);
+        bottomImg1 = findViewById(R.id.bottom_img1);
+        bottomChooseper1 = findViewById(R.id.bottom_chooseper1);
+        bottomPerson = findViewById(R.id.bottom_person);
+        bottomImg2 = findViewById(R.id.bottom_img2);
+        bottomChooseper2 = findViewById(R.id.bottom_chooseper2);
+        workLookWebview = (WebView) findViewById(R.id.work_look_webview);
+        bottomZong = (LinearLayout) findViewById(R.id.bottom_zong);
+        workLookWancheng = (Button) findViewById(R.id.work_look_wancheng);
     }
 }

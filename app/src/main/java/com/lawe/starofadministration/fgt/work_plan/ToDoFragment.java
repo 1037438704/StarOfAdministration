@@ -23,7 +23,7 @@ import java.util.Locale;
  * date : 2020/5/28 11:50
  * description : 工作计划---待办
  */
-@Layout(R.layout.fgt_document_edit)
+@Layout(R.layout.fgt_work_plan)
 public class ToDoFragment extends BaseFgt {
 
     private RecyclerView workRecycle;
@@ -42,7 +42,6 @@ public class ToDoFragment extends BaseFgt {
         workTop = (ImageView) findViewById(R.id.work_top);
         //列表
         list = new ArrayList<>();
-        //待办信息
         workPlanAdapter = new WorkPlanAdapter(R.layout.item_work_todo);
     }
 

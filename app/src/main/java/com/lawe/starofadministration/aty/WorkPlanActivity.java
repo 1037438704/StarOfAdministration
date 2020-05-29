@@ -149,10 +149,13 @@ public class WorkPlanActivity extends BaseAty {
             }
         });
 
+        //新建项目
         titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(NewWorkActivity.class);
+                jump(NewWorkActivity.class, new JumpParameter()
+                        .put("newWorkFlag","1")
+                     );
             }
         });
     }

@@ -42,7 +42,6 @@ public class ConductFragment extends BaseFgt {
         workTop = (ImageView) findViewById(R.id.work_top);
         //列表
         list = new ArrayList<>();
-        //待办信息
         workPlanAdapter = new WorkPlanAdapter(R.layout.item_work_conduct);
     }
 
