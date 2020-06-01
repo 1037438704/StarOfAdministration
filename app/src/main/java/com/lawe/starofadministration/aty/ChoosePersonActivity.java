@@ -100,8 +100,14 @@ public class ChoosePersonActivity extends BaseAty {
         titleRight.setVisibility(View.VISIBLE);
         titleRight.setTypeface(getTextMedium);
         itemChooseBuMenName.setTypeface(getTextMedium);
+        int flagType = (int) getParameter().get("flagType");
+        if (flagType == 1){
+            titleText.setText("选择审核人");
+        }else if(flagType == 3){
+            titleText.setText("共享给他人");
+        }
         titleRight.setText("常用组");
-        titleText.setText("选择审核人");
+
         for (int i = 0; i < 15; i++) {
             list.add("" + i);
         }

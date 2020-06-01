@@ -372,7 +372,9 @@ public class NoticeLookActivity extends BaseAty {
         bottomPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(ChoosePersonActivity.class);
+                jump(ChoosePersonActivity.class, new JumpParameter()
+                        .put("flagType", 1)
+                );
             }
         });
 

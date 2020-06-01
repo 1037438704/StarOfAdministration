@@ -308,10 +308,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:columnCount="4"
+                android:paddingBottom="10dp"
                 android:orientation="horizontal"
                 android:rowCount="2">
 
                 <TextView
+                    android:id="@+id/center_ditu"
                     android:layout_height="60dp"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"
@@ -323,6 +325,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/center_tongxunlu"
                     android:layout_height="60dp"
                     android:layout_columnSpan="1"
                     android:layout_columnWeight="1"

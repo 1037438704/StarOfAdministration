@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".aty.MapInjoyActivity">
+
+    <include layout="@layout/layout_title_red"/>
+
+    <LinearLayout
+        android:elevation="2dp"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:layout_height="43dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/shape_hui12"
+            android:layout_height="30dp">
+
+            <ImageView
+                android:layout_marginLeft="8dp"
+                android:src="@mipmap/icon_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+            <EditText
+                android:id="@+id/search_edit"
+                android:hint="请输入要搜索的地址"
+                android:textColorHint="#9F9FA0"
+                android:textSize="14dp"
+                android:layout_marginLeft="8dp"
+                android:background="@null"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/map_give_me"
+                android:src="@mipmap/map_give_me"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:src="@mipmap/map_fangda"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="48dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@mipmap/icon_delete_red"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+
+            <TextView
+                android:text="清空标记"
+                android:textSize="14dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <View
+            android:background="#CACACC"
+            android:layout_width="1dp"
+            android:layout_height="10dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@mipmap/icon_che_hui"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+
+            <TextView
+                android:text="撤销"
+                android:textSize="14dp"
+                android:textColor="@color/text717173"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <View
+            android:background="#CACACC"
+            android:layout_width="1dp"
+            android:layout_height="10dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@mipmap/icon_shua_xin"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+
+            <TextView
+                android:text="刷新"
+                android:textSize="14dp"
+                android:textColor="@color/text717173"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

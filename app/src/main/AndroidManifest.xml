@@ -20,9 +20,9 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/AppTheme">
-        <!--项目数据-->
-        <activity android:name=".aty.WorkDataActivity"></activity>
-        <!-- 工作计划 -->
+        <activity android:name=".aty.MapInjoyActivity"></activity>
+        <!-- 项目数据 -->
+        <activity android:name=".aty.WorkDataActivity" /> <!-- 工作计划 -->
         <activity android:name=".aty.WorkPlanActivity" /> <!-- 创建任务 -->
         <activity android:name=".aty.NewWorkActivity" /> <!-- 查看任务 -->
         <activity android:name=".aty.LookWorkActivity" /> <!-- ========今日头条适配========= -->
@@ -84,7 +84,7 @@
         <activity android:name=".aty.IssueActivity" /> <!-- 共享文件列表 -->
         <activity android:name=".aty.ShareActivity" /> <!-- 共享文件库 -->
         <activity android:name=".aty.ShareLookActivity" /> <!-- 公告通知列表 -->
-        <activity android:name=".aty.NoticeActivity" /> <!-- 公告通知 -->
+        <activity android:name=".aty.NoticeActivity" /> <!-- 发布公告 -->
         <activity android:name=".aty.NoticeLookActivity" /> <!-- 督察督办 -->
         <activity android:name=".aty.SupervisionActivity" /> <!-- 督察督办查看 -->
         <activity android:name=".aty.SuperLookActivity" />

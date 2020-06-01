@@ -58,6 +58,7 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/title_img"
             android:src="@mipmap/icon_new"
             android:layout_width="12dp"
             android:layout_height="12dp"/>

@@ -9,6 +9,7 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.aty.CirculationActivity;
 import com.lawe.starofadministration.aty.FictionActivity;
 import com.lawe.starofadministration.aty.FileActivity;
+import com.lawe.starofadministration.aty.MapInjoyActivity;
 import com.lawe.starofadministration.aty.NoticeActivity;
 import com.lawe.starofadministration.aty.ReportActivity;
 import com.lawe.starofadministration.aty.ShareActivity;
@@ -34,6 +35,8 @@ public class CenterFragment extends BaseFgt {
     private TextView centerTongzhi;
     private TextView centerDucha;
     private TextView centerJihua;
+    private TextView centerDitu;
+    private TextView centerTongxunlu;
 
     @Override
     public void initViews() {
@@ -46,6 +49,9 @@ public class CenterFragment extends BaseFgt {
         centerTongzhi = (TextView) findViewById(R.id.center_tongzhi);
         centerDucha = (TextView) findViewById(R.id.center_ducha);
         centerJihua = (TextView) findViewById(R.id.center_jihua);
+        centerDitu = (TextView) findViewById(R.id.center_ditu);
+        centerTongxunlu = (TextView) findViewById(R.id.center_tongxunlu);
+
         centerLinerarLayout = (LinearLayout) findViewById(R.id.center_linerar_layout);
         centerLinerarLayout.setPadding(0, me.getStatusBarHeight(), 0, 0);
         //设置字体
@@ -122,9 +128,18 @@ public class CenterFragment extends BaseFgt {
                 jump(WorkPlanActivity.class);
             }
         });
+
+        //共享地图
+        centerDitu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(MapInjoyActivity.class);
+            }
+        });
     }
 
     public static CenterFragment newInstance() {
         return new CenterFragment();
     }
+
 }

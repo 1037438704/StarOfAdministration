@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="81dp"
+    android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:background="@drawable/shape_white_up_12"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:orientation="vertical"
+            android:paddingTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/item_img_down"/>
+
+            <TextView
+                android:text="共享给我的"
+                android:textColor="@color/text9f9fa0"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/pop_map_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+       </LinearLayout>
+
+</RelativeLayout>
