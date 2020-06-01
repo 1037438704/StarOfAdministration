@@ -13,11 +13,19 @@
         android:layout_height="match_parent">
         <include layout="@layout/layout_title_white"/>
 
-        <WebView
-            android:id="@+id/work_look_webview"
-            android:visibility="gone"
+        <LinearLayout
+            android:id="@+id/work_look_web_linear"
             android:layout_width="match_parent"
-            android:layout_height="195dp"/>
+            android:visibility="gone"
+            android:layout_height="195dp">
+
+            <WebView
+                android:id="@+id/work_look_webview"
+                android:layout_width="match_parent"
+                android:layout_height="195dp"/>
+
+        </LinearLayout>
+
 
         <HorizontalScrollView
             android:scrollbars="none"

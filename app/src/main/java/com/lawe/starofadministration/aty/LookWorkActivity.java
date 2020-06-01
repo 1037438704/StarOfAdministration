@@ -80,9 +80,10 @@ public class LookWorkActivity extends BaseAty {
     private LinearLayout bottomPerson;
     private ImageView bottomImg2;
     private TextView bottomChooseper2;
-    private android.webkit.WebView workLookWebview;
+    private WebView workLookWebview;
     private LinearLayout bottomZong;
     private Button workLookWancheng;
+    private LinearLayout workLookWebLinear;
 
     @Override
     public void initViews() {
@@ -90,7 +91,7 @@ public class LookWorkActivity extends BaseAty {
 
         if (workType.equals("true")){
             titleText.setText("查看项目");
-            workLookWebview.setVisibility(View.VISIBLE);
+            workLookWebLinear.setVisibility(View.VISIBLE);
             if (personType.equals("1")){
                 bottomZong.setVisibility(View.GONE);
                 workLookWancheng.setVisibility(View.VISIBLE);
@@ -168,6 +169,14 @@ public class LookWorkActivity extends BaseAty {
             }
         });
 
+        //项目数据
+        workLookWebLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toast("vvvvv");
+                jump(WorkDataActivity.class);
+            }
+        });
     }
 
     private void initView() {
@@ -202,8 +211,9 @@ public class LookWorkActivity extends BaseAty {
         bottomPerson = findViewById(R.id.bottom_person);
         bottomImg2 = findViewById(R.id.bottom_img2);
         bottomChooseper2 = findViewById(R.id.bottom_chooseper2);
-        workLookWebview = (WebView) findViewById(R.id.work_look_webview);
-        bottomZong = (LinearLayout) findViewById(R.id.bottom_zong);
-        workLookWancheng = (Button) findViewById(R.id.work_look_wancheng);
+        workLookWebview = findViewById(R.id.work_look_webview);
+        bottomZong = findViewById(R.id.bottom_zong);
+        workLookWancheng = findViewById(R.id.work_look_wancheng);
+        workLookWebLinear = findViewById(R.id.work_look_web_linear);
     }
 }

@@ -84,7 +84,6 @@ public class MyCreatFragment extends BaseFgt {
         });
     }
 
-
     public static MyCreatFragment newInstance() {
         return new MyCreatFragment();
     }

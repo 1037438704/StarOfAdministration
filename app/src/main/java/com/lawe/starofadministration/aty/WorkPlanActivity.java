@@ -46,8 +46,8 @@ import java.util.Locale;
  * description : 工作计划列表
  **/
 @Layout(R.layout.activity_work_plan)
-@DarkStatusBarTheme(true)           //开启顶部状态栏图标、文字暗色模式
-@DarkNavigationBarTheme(true)       //开启底部导航栏按钮暗色模式
+@DarkStatusBarTheme(false)           //开启顶部状态栏图标、文字暗色模式
+@DarkNavigationBarTheme(false)       //开启底部导航栏按钮暗色模式
 @NavigationBarBackgroundColor(a = 255, r = 255, g = 255, b = 255)
 public class WorkPlanActivity extends BaseAty {
 

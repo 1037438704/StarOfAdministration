@@ -20,13 +20,12 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/AppTheme">
-        <!--工作计划-->
-        <activity android:name=".aty.WorkPlanActivity"></activity>
-        <!--创建任务-->
-        <activity android:name=".aty.NewWorkActivity"></activity>
-        <!--查看任务-->
-        <activity android:name=".aty.LookWorkActivity"></activity>
-        <!-- ========今日头条适配========= -->
+        <!--项目数据-->
+        <activity android:name=".aty.WorkDataActivity"></activity>
+        <!-- 工作计划 -->
+        <activity android:name=".aty.WorkPlanActivity" /> <!-- 创建任务 -->
+        <activity android:name=".aty.NewWorkActivity" /> <!-- 查看任务 -->
+        <activity android:name=".aty.LookWorkActivity" /> <!-- ========今日头条适配========= -->
         <meta-data
             android:name="design_width_in_dp"
             android:value="360" />
