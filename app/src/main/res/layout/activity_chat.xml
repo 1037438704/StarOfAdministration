@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#F5F2F2"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".aty.ChatActivity">
 
@@ -24,6 +25,7 @@
             android:layout_height="22dp"/>
 
         <TextView
+            android:id="@+id/chat_name"
             android:text="程祥"
             android:layout_marginTop="43dp"
             android:textSize="18dp"
@@ -33,6 +35,7 @@
             android:layout_height="wrap_content"/>
 
         <ImageView
+            android:id="@+id/chat_message"
             android:layout_marginTop="44dp"
             android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
@@ -46,59 +49,107 @@
         android:layout_marginBottom="48dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_weight="1"
+        android:layout_height="0dp">
 
     </LinearLayout>
 
-    <FrameLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_gravity="bottom"
+        app:cardElevation="3dp"
+        android:background="#fff"
+        android:orientation="horizontal"
         android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
-
-            app:cardElevation="3dp"
-            android:background="#fff"
-            android:orientation="horizontal"
             android:layout_height="47dp">
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/chat_more"
+                android:src="@mipmap/talk_icon_more"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"/>
+
+            <EditText
+                android:id="@+id/chat_edit"
                 android:layout_width="match_parent"
-                android:layout_height="47dp">
+                android:layout_marginLeft="48dp"
+                android:background="@drawable/shape_hui8"
+                android:layout_marginTop="7dp"
+                android:paddingLeft="7dp"
+                android:layout_marginRight="86dp"
+                android:layout_height="34dp"/>
+
+            <Button
+                android:id="@+id/chat_button"
+                android:layout_width="66dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/shape_red8"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="12dp"
+                android:textColor="#fff"
+                android:text="常用语"
+                android:layout_height="34dp"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/chat_more_list"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_marginTop="47dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="118dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
                 <ImageView
-                    android:src="@mipmap/talk_icon_more"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"/>
+                    android:src="@mipmap/wen_jian"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"/>
+                <TextView
+                    android:id="@+id/center_nizhi"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="文件"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp" />
+            </LinearLayout>
 
-                <EditText
-                    android:id="@+id/chat_edit"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="48dp"
-                    android:background="@drawable/shape_hui8"
-                    android:layout_marginTop="7dp"
-                    android:paddingLeft="7dp"
-                    android:layout_marginRight="86dp"
-                    android:layout_height="34dp"/>
 
-                <Button
-                    android:id="@+id/chat_button"
-                    android:layout_width="66dp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/shape_red8"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginRight="12dp"
-                    android:textColor="#fff"
-                    android:text="常用语"
-                    android:layout_height="34dp"/>
-            </RelativeLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="36dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:src="@mipmap/picture"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="图片"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/textMedium"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-    </FrameLayout>
 
-
-
-</FrameLayout>
+</LinearLayout>

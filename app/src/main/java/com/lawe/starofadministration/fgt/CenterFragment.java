@@ -9,6 +9,7 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.aty.CirculationActivity;
 import com.lawe.starofadministration.aty.FictionActivity;
 import com.lawe.starofadministration.aty.FileActivity;
+import com.lawe.starofadministration.aty.MailListActivity;
 import com.lawe.starofadministration.aty.MapInjoyActivity;
 import com.lawe.starofadministration.aty.NoticeActivity;
 import com.lawe.starofadministration.aty.ReportActivity;
@@ -134,6 +135,14 @@ public class CenterFragment extends BaseFgt {
             @Override
             public void onClick(View v) {
                 jump(MapInjoyActivity.class);
+            }
+        });
+
+        //通讯录
+        centerTongxunlu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jump(MailListActivity.class);
             }
         });
     }

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".aty.ChatPersonMessActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:layout_marginTop="25dp"
+            android:layout_height="45dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_height="45dp">
+
+                <ImageView
+                    android:id="@+id/title_back"
+                    android:src="@mipmap/icon_back"
+                    android:layout_width="22dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_height="22dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/chat_name"
+                android:text="个人信息"
+                android:textSize="18dp"
+                android:textColor="@color/textMedium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <LinearLayout
+                android:id="@+id/title_more"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginRight="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:src="@mipmap/icon_more_dian"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/textMedium"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:elevation="2dp"
+            android:background="@color/white"
+            android:layout_marginTop="1dp"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:id="@+id/main_rgp"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:orientation="horizontal"
+                android:paddingTop="3dp"
+                >
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="个人信息"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:layout_marginLeft="36dp"
+                    android:gravity="center"
+                    android:text="数据信息"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="36dp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="勋章目录"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="7dp"
+                    android:includeFontPadding="false"
+                    android:drawableBottom="@drawable/select_red_xiahualine"
+                    android:textColor="@drawable/select_textcolor"
+                    android:textSize="14dp" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerData"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="39dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/shape_red20"
+            android:layout_width="164dp"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/icon_call"
+                android:layout_width="17dp"
+                android:layout_gravity="center"
+                android:layout_height="17dp"/>
+
+            <TextView
+                android:text="拨打电话"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/shape_red20"
+            android:layout_width="164dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/icon_message"
+                android:layout_width="17dp"
+                android:layout_gravity="center"
+                android:layout_height="17dp"/>
+
+            <TextView
+                android:text="发送消息"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

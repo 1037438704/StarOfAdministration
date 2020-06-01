@@ -62,11 +62,11 @@ public class SuperLookActivity extends BaseAty {
     private RadioGroup mainRgp;
     private ViewPager viewPagerData;
     ViewPagerAdp viewPagerAdp;
-    private List<BaseFragment> fragemnts;
 
     private int flag = 1; //更多展开隐藏标识
     private int chatflag = 1; //常用语展开隐藏标识
 
+    private List<BaseFragment> fragemnts;
     private RadioButton rb;
     private  int pageCounte = 0;
     private String superFlag;
