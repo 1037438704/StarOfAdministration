@@ -1,5 +1,7 @@
 package com.lawe.starofadministration.fgt.chat;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
@@ -7,14 +9,18 @@ import com.lawe.starofadministration.base.BaseFgt;
 /**
  * author : fuke
  * date : 2020/6/1 17:16
- * description : 个人信息---个人信息
+ * description : 个人信息---勋章信息
  */
-@Layout(R.layout.fgt_chat_person)
+@Layout(R.layout.fgt_chat_xunzhang)
 public class ChatxunzhangFragment extends BaseFgt {
 
-    @Override
-    public void initViews(){
+    private RecyclerView chatXunJichuRecycle;
+    private RecyclerView chatXunRongRecycle;
 
+    @Override
+    public void initViews() {
+        chatXunJichuRecycle = (RecyclerView) findViewById(R.id.chat_xun_jichu_recycle);
+        chatXunRongRecycle = (RecyclerView) findViewById(R.id.chat_xun_rong_recycle);
     }
 
     @Override
@@ -30,4 +36,5 @@ public class ChatxunzhangFragment extends BaseFgt {
     public static ChatxunzhangFragment newInstance() {
         return new ChatxunzhangFragment();
     }
+
 }

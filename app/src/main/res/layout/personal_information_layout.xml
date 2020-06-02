@@ -72,13 +72,12 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="195dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="13dp"
-                    android:src="@mipmap/icon_more" />
+                    android:layout_marginRight="12dp"
+                    android:src="@mipmap/mian_bao_xue" />
             </RelativeLayout>
 
             <LinearLayout
@@ -199,13 +198,13 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="179dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginRight="13dp"
-                    android:src="@mipmap/icon_more" />
+                    android:layout_marginRight="12dp"
+                    android:src="@mipmap/mian_bao_xue" />
             </RelativeLayout>
 
             <LinearLayout

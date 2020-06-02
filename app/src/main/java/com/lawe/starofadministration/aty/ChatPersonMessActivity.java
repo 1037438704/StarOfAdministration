@@ -77,6 +77,7 @@ public class ChatPersonMessActivity extends BaseAty {
 
     @Override
     public void setEvents() {
+
         //viewPager的滑动监听
         viewPagerData.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -88,6 +89,7 @@ public class ChatPersonMessActivity extends BaseAty {
                 rb.setTypeface(getTextMedium);
             }
         });
+
         //RadioGroup的事件监听
         mainRgp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

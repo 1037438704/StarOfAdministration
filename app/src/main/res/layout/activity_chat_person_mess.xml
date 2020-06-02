@@ -63,10 +63,38 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:orientation="vertical"
-            android:background="@color/textMedium"
+            android:background="@mipmap/background"
             android:layout_width="match_parent"
             android:layout_height="150dp">
+
+            <LinearLayout
+                android:background="#33000000"
+                android:orientation="vertical"
+                android:gravity="bottom"
+                android:paddingLeft="16dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="花仙宜"
+                    android:textColor="@color/white"
+                    android:textSize="24dp"
+                    android:includeFontPadding="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="天津市蓝威科技发展有限公司"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:layout_marginTop="12dp"
+                    android:includeFontPadding="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

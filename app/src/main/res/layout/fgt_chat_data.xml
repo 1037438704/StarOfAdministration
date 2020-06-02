@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingRight="12dp"
+    android:paddingLeft="12dp"
+    android:paddingTop="8dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/vciv_eview_bg"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="186dp">
+
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:text="工作时效"
+        android:textSize="12dp"
+        android:textColor="#373741"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="44"
+            android:progressDrawable="@drawable/shape_progress_work"
+            android:visibility="visible" />
+
+        <TextView
+            android:textColor="@color/text717173"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_height="wrap_content"
+            android:text="44/100" />
+
+    </LinearLayout>
+
+    <TextView
+        android:text="服务好差评"
+        android:textSize="12dp"
+        android:textColor="#373741"
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="22"
+            android:progressDrawable="@drawable/shape_progress_server"
+            android:visibility="visible" />
+
+        <TextView
+            android:textColor="@color/text717173"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_height="wrap_content"
+            android:text="22/100" />
+
+    </LinearLayout>
+
+    <TextView
+        android:text="公务员信用"
+        android:textSize="12dp"
+        android:textColor="#373741"
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:max="400"
+            android:progress="302"
+            android:progressDrawable="@drawable/shape_progress_xinyong"
+            android:visibility="visible" />
+
+        <TextView
+            android:textColor="@color/text717173"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_height="wrap_content"
+            android:text="302/400" />
+
+    </LinearLayout>
+
+</LinearLayout>

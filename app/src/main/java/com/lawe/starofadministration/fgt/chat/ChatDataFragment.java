@@ -9,7 +9,7 @@ import com.lawe.starofadministration.base.BaseFgt;
  * date : 2020/6/1 17:16
  * description : 个人信息---数据信息
  */
-@Layout(R.layout.fgt_chat_person)
+@Layout(R.layout.fgt_chat_data)
 public class ChatDataFragment extends BaseFgt {
 
     @Override

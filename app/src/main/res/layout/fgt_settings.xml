@@ -92,9 +92,9 @@
                     android:layout_height="wrap_content"/>
 
                 <ImageView
-                    android:src="@mipmap/icon_more"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"/>
+                    android:src="@mipmap/mian_bao_xue"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
             </LinearLayout>
 
             <View
@@ -131,9 +131,9 @@
                     android:layout_height="wrap_content"/>
 
                 <ImageView
-                    android:src="@mipmap/icon_more"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"/>
+                    android:src="@mipmap/mian_bao_xue"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
             </LinearLayout>
 
             <View
@@ -170,9 +170,9 @@
                     android:layout_height="wrap_content"/>
 
                 <ImageView
-                    android:src="@mipmap/icon_more"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"/>
+                    android:src="@mipmap/mian_bao_xue"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
             </LinearLayout>
 
             <View
@@ -209,9 +209,9 @@
                     android:layout_height="wrap_content"/>
 
                 <ImageView
-                    android:src="@mipmap/icon_more"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"/>
+                    android:src="@mipmap/mian_bao_xue"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
             </LinearLayout>
 
             <View
@@ -248,9 +248,9 @@
                     android:layout_height="wrap_content"/>
 
                 <ImageView
-                    android:src="@mipmap/icon_more"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"/>
+                    android:src="@mipmap/mian_bao_xue"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
             </LinearLayout>
 
             <View
@@ -287,9 +287,9 @@
                     android:layout_height="wrap_content"/>
 
                 <ImageView
-                    android:src="@mipmap/icon_more"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"/>
+                    android:src="@mipmap/mian_bao_xue"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
             </LinearLayout>
 
             <View
@@ -327,9 +327,9 @@
                     android:layout_height="wrap_content"/>
 
                 <ImageView
-                    android:src="@mipmap/icon_more"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"/>
+                    android:src="@mipmap/mian_bao_xue"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
             </LinearLayout>
 
         </LinearLayout>
