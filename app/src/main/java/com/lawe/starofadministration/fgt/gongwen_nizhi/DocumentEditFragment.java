@@ -75,7 +75,7 @@ public class DocumentEditFragment extends BaseFgt {
         imgRead = (ImageView) findViewById(R.id.img_read);
         imgBohui = (ImageView) findViewById(R.id.img_bohui);
         webview = (WebView) findViewById(R.id.webview);
-        webceshi = (TextView) findViewById(R.id.webceshi);
+        webceshi = (TextView) findViewById(R.id.document_sub_title);
         //设置字体
         documentTitle.setTypeface(getTextMedium);
 

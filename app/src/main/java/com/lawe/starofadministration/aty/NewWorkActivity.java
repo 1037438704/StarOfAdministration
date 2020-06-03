@@ -69,22 +69,33 @@ public class NewWorkActivity extends BaseAty {
     private RadioButton rb;
     private  int pageCounte = 0;
     private RadioButton draftSpeedOne;
-    private String newWorkFlag;
+    private String newWorkFlags;
     private LinearLayout titleNewBack;
+    private Button newWorkButton;
+    private RadioButton radioOne;
+    private RadioButton radioTwo;
+    private RadioButton radioSetting;
 
     @Override
     public void initViews() {
         initView();
-
-        newWorkFlag = (String) getParameter().get("newWorkFlag");
-        Log.e("newWorkFlag2",newWorkFlag);
-        if (newWorkFlag.equals("1")){
+        newWorkFlags = (String) getParameter().get("newWorkFlag");
+        //activity向fragment传值
+        SharedPreferences sharedPreferences1 = getSharedPreferences("ids",MODE_PRIVATE);
+        SharedPreferences.Editor edit= sharedPreferences1.edit();
+        edit.putString("newWorkFlag",newWorkFlags).commit();
+        if (newWorkFlags.equals("1")){
             titleText.setText("新建项目");
-        }else if(newWorkFlag.equals("2")){
+        }else if(newWorkFlags.equals("2")){
             titleText.setText("新建任务");
+            draftSpeedOne.setText("子任务");
+            radioOne.setText("任务内容");
+            radioTwo.setText("任务附件");
+            radioSetting.setText("任务设置");
+            newWorkButton.setText("立即添加");
+            //titleNewBack展示的时候根据子任务的层级  显示一个、两个、或三个按钮   后期继续判断
             titleNewBack.setVisibility(View.VISIBLE);
         }
-
     }
 
     @Override
@@ -107,10 +118,6 @@ public class NewWorkActivity extends BaseAty {
         viewPagerData.setAdapter(viewPagerAdp);
         viewPagerData.setCurrentItem(pageCounte);
 
-        //activity向fragment传值
-        SharedPreferences sharedPreferences1=getSharedPreferences("id",MODE_PRIVATE);
-        SharedPreferences.Editor edit=sharedPreferences1.edit();
-        edit.putString("newWorkFlag",newWorkFlag).commit();
     }
 
     @Override
@@ -163,6 +170,10 @@ public class NewWorkActivity extends BaseAty {
       /*  superFlag = getIntent().getExtras().getString("superFlag");
         typePerson = getIntent().getExtras().getString("typePerson");*/
 
-        titleNewBack = (LinearLayout) findViewById(R.id.title_new_back);
+        titleNewBack = findViewById(R.id.title_new_back);
+        newWorkButton = findViewById(R.id.new_work_button);
+        radioOne = findViewById(R.id.radio_one);
+        radioTwo = findViewById(R.id.radio_two);
+        radioSetting = findViewById(R.id.radio_setting);
     }
 }

@@ -23,9 +23,10 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="公文标题："
+                    android:id="@+id/new_work_title"
+                    android:text="项目标题："
                     android:textSize="16dp"
-                    android:textColor="@color/textMedium"
+                    android:textColor="#8D8D93"
                     android:layout_marginTop="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -34,12 +35,13 @@
                     android:id="@+id/document_title"
                     android:textSize="16dp"
                     android:textColor="@color/textMedium"
-                    android:hint="请输入公文标题"
+                    android:hint=""
                     android:includeFontPadding="false"
                     android:textColorHint="#D7D7D8"
                     android:background="@null"
                     android:layout_marginTop="16dp"
-                    android:layout_width="wrap_content"
+                    android:paddingRight="16dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
@@ -74,12 +76,12 @@
 
 
         <TextView
-            android:id="@+id/webceshi"
-            android:text="公文主体："
+            android:id="@+id/document_sub_title"
+            android:text="项目描述："
             android:textSize="16dp"
             android:layout_marginLeft="12dp"
             android:gravity="center_vertical"
-            android:textColor="@color/textMedium"
+            android:textColor="#8D8D93"
             android:layout_width="match_parent"
             android:layout_height="44dp"/>
 
@@ -93,7 +95,7 @@
                 android:id="@+id/document_subject"
                 android:textSize="16dp"
                 android:textColor="@color/textMedium"
-                android:hint="请输入公文内容"
+                android:hint=""
                 android:textColorHint="#D7D7D8"
                 android:background="@null"
                 android:gravity="top"

@@ -1,5 +1,7 @@
 package com.lawe.starofadministration.fgt.chat;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kongzue.baseframework.interfaces.Layout;
@@ -16,11 +18,17 @@ public class ChatxunzhangFragment extends BaseFgt {
 
     private RecyclerView chatXunJichuRecycle;
     private RecyclerView chatXunRongRecycle;
+    private GridLayoutManager gridLayoutManager;
 
     @Override
     public void initViews() {
         chatXunJichuRecycle = (RecyclerView) findViewById(R.id.chat_xun_jichu_recycle);
         chatXunRongRecycle = (RecyclerView) findViewById(R.id.chat_xun_rong_recycle);
+
+        gridLayoutManager = new GridLayoutManager(me, 4);
+
+        chatXunJichuRecycle.setLayoutManager(gridLayoutManager);
+        chatXunRongRecycle.setLayoutManager(gridLayoutManager);
     }
 
     @Override

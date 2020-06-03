@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:layout_marginTop="18dp"
+    android:layout_marginBottom="8dp"
+    android:paddingRight="12dp"
+    android:paddingLeft="12dp"
+    android:layout_height="wrap_content">
+
+   <ImageView
+       android:src="@mipmap/icon_dong_tai_cao_zuo"
+       android:layout_width="16dp"
+       android:layout_height="16dp"/>
+
+    <LinearLayout
+        android:layout_marginLeft="8dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="某某某"
+                android:textColor="#ff777779"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="退回了某某某的任务"
+                android:textColor="#ff777779"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020/03/20 16:48:32"
+                android:textColor="#ff777779"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="利系器少但支速满离真目反工流后类"
+            android:textColor="#ff3f3f42"
+            android:textSize="14sp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

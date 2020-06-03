@@ -45,8 +45,8 @@ public class WorkPlanAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), LookWorkActivity.class);
                 //1:创建者   2：执行者    true:项目    flase:任务
-                intent.putExtra("personType","2");
-                intent.putExtra("workType","true");
+                intent.putExtra("personType","1");
+                intent.putExtra("workType","false");
                 getContext().startActivity(intent);
             }
         });

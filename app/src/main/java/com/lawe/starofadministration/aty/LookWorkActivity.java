@@ -1,8 +1,13 @@
 package com.lawe.starofadministration.aty;
 
+import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -22,13 +28,17 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.adp.MapAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.fgt.work_plan.WorkContextFragment;
+import com.lawe.starofadministration.fgt.work_plan.WorkDongFragment;
 import com.lawe.starofadministration.fgt.work_plan.WorkEclosureFragment;
 import com.lawe.starofadministration.fgt.work_plan.WorkNewFragment;
 import com.lawe.starofadministration.fgt.work_plan.WorkSettingFragment;
 import com.lawe.starofadministration.fgt.work_plan.WorkSpeedFragment;
+
+import org.xmlpull.v1.XmlPullParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,17 +66,16 @@ public class LookWorkActivity extends BaseAty {
 
     private RadioButton rb;
     private  int pageCounte = 0;
-    private RadioButton draftSpeedOne;
     private String newWorkFlag;
     private LinearLayout titleNewBack;
     private String workType;
     private String personType;
-    private android.widget.Button bottomChat;
-    private android.widget.EditText bottomWhrit;
+    private Button bottomChat;
+    private EditText bottomWhrit;
     private ImageView bottomPizhu;
-    private android.widget.Button bottomButton;
+    private Button bottomButton;
     private LinearLayout draftChat;
-    private androidx.recyclerview.widget.RecyclerView draftChatRecycle;
+    private RecyclerView draftChatRecycle;
     private LinearLayout draftChatNew;
     private ImageView draftChatNewImg;
     private TextView draftChatNewText;
@@ -84,6 +93,13 @@ public class LookWorkActivity extends BaseAty {
     private LinearLayout bottomZong;
     private Button workLookWancheng;
     private LinearLayout workLookWebLinear;
+    private RadioButton radioOne;
+    private RadioButton radioTwo;
+    private RadioButton radioThree;
+    private RadioButton radioFour;
+    private RadioButton radioFive;
+    private RadioButton radioSix;
+    private TextView newWorkShow;
 
     @Override
     public void initViews() {
@@ -91,6 +107,11 @@ public class LookWorkActivity extends BaseAty {
 
         if (workType.equals("true")){
             titleText.setText("查看项目");
+            radioOne.setText("项目内容");
+            radioTwo.setText("项目附件");
+            radioThree.setText("项目设置");
+            mainRgp.removeView(radioFive);
+            mainRgp.removeView(radioSix);
             workLookWebLinear.setVisibility(View.VISIBLE);
             if (personType.equals("1")){
                 bottomZong.setVisibility(View.GONE);
@@ -100,8 +121,14 @@ public class LookWorkActivity extends BaseAty {
             }
         }else{
             titleText.setText("查看任务");
+            radioOne.setText("任务内容");
+            radioTwo.setText("任务附件");
+            radioThree.setText("任务设置");
+            titleNewBack.setVisibility(View.VISIBLE);
             if (personType.equals("1")){
-                bottomGongneng.setVisibility(View.GONE);
+                bottomZong.setVisibility(View.GONE);
+                workLookWancheng.setVisibility(View.VISIBLE);
+                workLookWancheng.setText("强制完成任务");
             }else{
                 bottomChooseper1.setText("申请延期");
                 bottomChooseper2.setText("申请退办");
@@ -109,20 +136,36 @@ public class LookWorkActivity extends BaseAty {
                 bottomImg2.setImageResource(R.mipmap.icon_tui_ban);
             }
         }
+
+        //activity向fragment传值
+        SharedPreferences sharedPreferences1=getSharedPreferences("id",MODE_PRIVATE);
+        SharedPreferences.Editor edit=sharedPreferences1.edit();
+        edit.putString("workType",workType).commit();
+        edit.putString("personType",personType).commit();
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
         fragemnts = new ArrayList<>();
+        if(workType.equals("true")){
+            pageCounte = 0;
+            //fragemnts.add(WorkSpeedFragment.newInstance());
+            fragemnts.add(WorkContextFragment.newInstance());
+            fragemnts.add(WorkEclosureFragment.newInstance());
+            fragemnts.add(WorkSettingFragment.newInstance());
+            fragemnts.add(WorkNewFragment.newInstance());
+            rb = (RadioButton) mainRgp.getChildAt(pageCounte);
+        }else if(workType.equals("false")){
+            pageCounte = 0;
+            fragemnts.add(WorkContextFragment.newInstance());
+            fragemnts.add(WorkEclosureFragment.newInstance());
+            fragemnts.add(WorkSettingFragment.newInstance());
+            fragemnts.add(WorkNewFragment.newInstance());
+            fragemnts.add(WorkSpeedFragment.newInstance());
+            fragemnts.add(WorkDongFragment.newInstance());
+            rb = (RadioButton) mainRgp.getChildAt(pageCounte);
+        }
 
-        pageCounte = 0;
-        draftSpeedOne.setVisibility(View.VISIBLE);
-        fragemnts.add(WorkSpeedFragment.newInstance());
-        fragemnts.add(WorkContextFragment.newInstance());
-        fragemnts.add(WorkEclosureFragment.newInstance());
-        fragemnts.add(WorkSettingFragment.newInstance());
-        fragemnts.add(WorkNewFragment.newInstance());
-        rb = (RadioButton) mainRgp.getChildAt(pageCounte);
         rb.setChecked(true);
         //字体
         rb.setTypeface(getTextMedium);
@@ -146,6 +189,7 @@ public class LookWorkActivity extends BaseAty {
                 rb.setTypeface(getTextMedium);
             }
         });
+
         //RadioGroup的事件监听
         mainRgp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -173,8 +217,51 @@ public class LookWorkActivity extends BaseAty {
         workLookWebLinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast("vvvvv");
                 jump(WorkDataActivity.class);
+            }
+        });
+
+        //展开
+        newWorkShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //1、使用Dialog、设置style
+                final Dialog dialog = new Dialog(me, R.style.DialogTheme);
+                //2、设置布局
+                View view = View.inflate(me, R.layout.pop_work_show, null);
+                dialog.setContentView(view);
+
+                Window window = dialog.getWindow();
+                //设置弹出位置
+                window.setGravity(Gravity.BOTTOM);
+                //设置弹出动画
+                window.setWindowAnimations(R.style.main_menu_animStyle);
+                //设置对话框大小
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                ImageView loginDown = view.findViewById(R.id.login_down);
+                RecyclerView mapRecycle = view.findViewById(R.id.popwork_recycle);
+                //列表
+                List list = new ArrayList<>();
+                MapAdapter mapAdapter = new MapAdapter(R.layout.item_map);
+                //到时候修改适配器   现在和地图用的一个
+                mapRecycle.setLayoutManager(new LinearLayoutManager(me));
+                mapRecycle.setAdapter(mapAdapter);
+
+                for (int i = 0; i < 10; i++) {
+                    list.add("" + i);
+                }
+                mapAdapter.setNewData(list);
+
+                loginDown.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
             }
         });
     }
@@ -184,7 +271,6 @@ public class LookWorkActivity extends BaseAty {
         titleText = findViewById(R.id.title_text);
         mainRgp = findViewById(R.id.main_rgp);
         viewPagerData = findViewById(R.id.viewPagerData);
-        draftSpeedOne = findViewById(R.id.draft_speed_one);
         //设置字体
         titleText.setTypeface(getTextBold);
         //1:创建者   2：执行者    true:项目    flase:任务
@@ -215,5 +301,13 @@ public class LookWorkActivity extends BaseAty {
         bottomZong = findViewById(R.id.bottom_zong);
         workLookWancheng = findViewById(R.id.work_look_wancheng);
         workLookWebLinear = findViewById(R.id.work_look_web_linear);
+        radioOne = findViewById(R.id.radio_one);
+        radioTwo = findViewById(R.id.radio_two);
+        radioThree = findViewById(R.id.radio_three);
+        radioFour =findViewById(R.id.radio_four);
+        radioFive = findViewById(R.id.radio_five);
+        radioSix = findViewById(R.id.radio_six);
+        newWorkShow = (TextView) findViewById(R.id.new_work_show);
     }
+
 }
