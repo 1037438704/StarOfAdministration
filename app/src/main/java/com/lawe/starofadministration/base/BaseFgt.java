@@ -10,6 +10,7 @@ import android.webkit.WebView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
 import com.kongzue.baseframework.BaseFragment;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.config.Constants;
@@ -25,8 +26,7 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
     public Typeface getTextRegular = MyApplication.getTextRegular;
     public Typeface getTextBold = MyApplication.getTextBold;
     public Typeface getTextNum = MyApplication.getTextNum;
-
-    JSONObject json=new JSONObject();
+    public Gson gson = new Gson();
 
     @Override
     public void initViews() {

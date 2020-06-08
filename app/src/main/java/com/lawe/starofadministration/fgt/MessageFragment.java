@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +18,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kongzue.baseframework.interfaces.Layout;
+import com.kongzue.baseokhttp.HttpRequest;
+import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.MessageAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
+import com.lawe.starofadministration.bean.LoginDefaltBean;
+import com.lawe.starofadministration.bean.MessageBean;
+import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.utils.FastBlurUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,17 +99,44 @@ public class MessageFragment extends BaseFgt {
 
     @Override
     public void initDatas() {
-        for (int i = 0; i < 10; i++) {
-            list.add("" + i);
-        }
-        messageAdapter.setNewData(list);
-        messageAdapter.notifyDataSetChanged();
         //毛玻璃
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.maoboli_bai, null);
         Bitmap bitmap1 = FastBlurUtil.doBlur(bitmap, 0, true);
 
-       // BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap1);
-       // cardView.setBackground(bitmapDrawable);
+        //加载首页数据
+        messageData();
+    }
+
+    private String page = "1";
+    private String limit = "10";
+    private String depUserId = "1253514067132448770";
+    private void messageData() {
+        WaitDialog.show(me, "请稍候...");
+        JSONObject json = new JSONObject();
+        try {
+            json.put("page", page);
+            json.put("limit", limit);
+            json.put("depUserId",depUserId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //json转化为string类型
+        String jsonMess = String.valueOf(json);
+        HttpRequest.JSONPOST(me, Constants.LISTFINDALLBYCURRENTUSER, jsonMess, new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                WaitDialog.dismiss();
+                if (error == null) {
+                    Log.e("shuju",response);
+                    MessageBean messageBean = gson.fromJson(response, MessageBean.class);
+                    List<MessageBean.PageBean.ListBean> list = messageBean.getPage().getList();
+                    messageAdapter.setNewData(list);
+                    messageAdapter.notifyDataSetChanged();
+                } else {
+                    error.getMessage();
+                }
+            }
+        });
     }
 
     @Override

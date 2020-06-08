@@ -324,7 +324,7 @@ public class LoginActivity extends BaseAty {
     //登录请求
     private void postLogin() {
         jump(MainActivity.class);
-           /* //账号密码登录
+        /*   //账号密码登录
             loginPhone = login_phone.getText().toString();
             loginPass = login_edpass.getText().toString();
             Preferences.getInstance().commit(me, "phone", "phone", login_phone.getText().toString().trim());
@@ -335,7 +335,7 @@ public class LoginActivity extends BaseAty {
                 toast("请输入密码");
             }else {
                 try {
-                    JSONObject json=new JSONObject();
+                    JSONObject json = new JSONObject();
                     json.put("account", loginPhone);
                     json.put("password", loginPass);
                     //json转化为string类型

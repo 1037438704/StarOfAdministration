@@ -104,7 +104,6 @@ public class LookWorkActivity extends BaseAty {
     @Override
     public void initViews() {
         initView();
-
         if (workType.equals("true")){
             titleText.setText("查看项目");
             radioOne.setText("项目内容");
@@ -136,7 +135,6 @@ public class LookWorkActivity extends BaseAty {
                 bottomImg2.setImageResource(R.mipmap.icon_tui_ban);
             }
         }
-
         //activity向fragment传值
         SharedPreferences sharedPreferences1=getSharedPreferences("id",MODE_PRIVATE);
         SharedPreferences.Editor edit=sharedPreferences1.edit();
@@ -149,7 +147,6 @@ public class LookWorkActivity extends BaseAty {
         fragemnts = new ArrayList<>();
         if(workType.equals("true")){
             pageCounte = 0;
-            //fragemnts.add(WorkSpeedFragment.newInstance());
             fragemnts.add(WorkContextFragment.newInstance());
             fragemnts.add(WorkEclosureFragment.newInstance());
             fragemnts.add(WorkSettingFragment.newInstance());

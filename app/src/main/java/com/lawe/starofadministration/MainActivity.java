@@ -90,13 +90,13 @@ public class MainActivity extends BaseAty {
         viewPagerAdp = new ViewPagerAdp(getSupportFragmentManager(), fragemnts);
         viewPager.setOffscreenPageLimit(fragemnts.size());
         viewPager.setAdapter(viewPagerAdp);
+        //禁止viewpager滑动
         viewPager.setNoScroll(true);
-
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-
+/*
         WaitDialog.show(me, "请稍候...");
         HttpRequest.POST(me, "http://你的接口地址", new Parameter()
                 .add("userHeadler", "")
@@ -112,8 +112,7 @@ public class MainActivity extends BaseAty {
 //                    Toast.makeText(context, "请求失败", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
-
+        });*/
     }
 
     @Override

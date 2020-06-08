@@ -167,9 +167,6 @@ public class NewWorkActivity extends BaseAty {
         //设置字体
         titleText.setTypeface(getTextBold);
 
-      /*  superFlag = getIntent().getExtras().getString("superFlag");
-        typePerson = getIntent().getExtras().getString("typePerson");*/
-
         titleNewBack = findViewById(R.id.title_new_back);
         newWorkButton = findViewById(R.id.new_work_button);
         radioOne = findViewById(R.id.radio_one);

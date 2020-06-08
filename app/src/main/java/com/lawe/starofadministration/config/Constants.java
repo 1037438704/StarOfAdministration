@@ -13,6 +13,12 @@ public interface Constants {
     //验证码验证
     String VALIDCODE = "/login/validCode";
 
+    //首页待办信息
+    String LISTFINDALLBYCURRENTUSER = "/sys/homepage/listFindAllByCurrentUser";
+
+    //首页个人信息
+    String QUERYPAGE = "/sys/center/queryPage";
+
     //根据逐渐查询详情
     String DOCUMENTFICTION = "/sys/documentfiction/info";
 

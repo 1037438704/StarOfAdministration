@@ -3,7 +3,7 @@ package com.lawe.starofadministration.bean;
 /**
  * author : fuke
  * date : 2020/5/15 10:47
- * description : 描述
+ * description : 登录协议
  */
 public class LoginWebBean {
 

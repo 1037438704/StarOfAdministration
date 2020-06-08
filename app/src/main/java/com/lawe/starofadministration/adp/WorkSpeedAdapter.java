@@ -91,6 +91,7 @@ public class WorkSpeedAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
         workSpeedAdapter.setNewData(list);
     }
 
+    //展开全部----收起标题
     private void getLastIndexForLimit(TextView tv, int maxLine, String content) {
         //获取TextView的画笔对象
         TextPaint paint = tv.getPaint();
@@ -103,15 +104,14 @@ public class WorkSpeedAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
             //定义展开后的文本内容
             String string1 = content + "    收起";
             notElipseString = new SpannableString(string1);
-            //给收起两个字设成蓝色
+            //给收起两个字设成灰色
             notElipseString.setSpan(new ForegroundColorSpan(Color.parseColor("#CACACC")), string1.length() - 2, string1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
             //获取到第er行最后一个文字的下标
             int index = staticLayout.getLineStart(maxLine) - 1;
             //定义收起后的文本内容
             String substring = content.substring(0, index - 4) + "..." + "查看全部";
             elipseString = new SpannableString(substring);
-            //给查看全部设成蓝色
+            //给查看全部设成灰色
             elipseString.setSpan(new ForegroundColorSpan(Color.parseColor("#CACACC")), substring.length() - 4, substring.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             //设置收起后的文本内容
             tv.setText(elipseString);
