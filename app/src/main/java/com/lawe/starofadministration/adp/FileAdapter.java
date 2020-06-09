@@ -13,6 +13,8 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.aty.ReceiptActivity;
+import com.lawe.starofadministration.aty.SimulacrumActivity;
 
 import java.util.List;
 
@@ -24,6 +26,7 @@ import java.util.List;
 public class FileAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
     public Typeface getTextMedium = MyApplication.getTextMedium;
+    private int flag = 1;
 
     public FileAdapter(int layoutResId, @Nullable List<String> data) {
         super(layoutResId, data);
@@ -42,7 +45,14 @@ public class FileAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
         item_file_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //1:拟制文件归档    2：收文归档
+                if (flag == 1){
+                    Intent intent = new Intent(getContext(), SimulacrumActivity.class);
+                    getContext().startActivity(intent);
+                }else if(flag == 2){
+                    Intent intent = new Intent(getContext(), ReceiptActivity.class);
+                    getContext().startActivity(intent);
+                }
             }
         });
     }

@@ -96,7 +96,7 @@ public class DraftActivity extends BaseAty {
     private RadioButton rb;
     private String jsons;
     private LinearLayout bottomGongneng;
-    private int flagSpeed;
+    private String flagSpeed;
 
     @Override
     public void initViews() {
@@ -129,8 +129,16 @@ public class DraftActivity extends BaseAty {
         draftChatNewText = findViewById(R.id.draft_chat_new_text);
         draftChatSetText = findViewById(R.id.draft_chat_set_text);
 
-        //设置字体
-        titleText.setText("起草公文");
+        //获取上一个页面传递的标识、
+        flagSpeed = getIntent().getExtras().getString("flagSpeed");
+        if (flagSpeed.equals("1")){
+            //设置字体
+            titleText.setText("起草公文");
+        }else if(flagSpeed.equals("2")){
+            //设置字体
+            titleText.setText("创建人查看");
+        }
+
         titleText.setTypeface(getTextBold);
         titleMore.setVisibility(View.VISIBLE);
         draftChatNewText.setTypeface(getTextMedium);
@@ -147,10 +155,8 @@ public class DraftActivity extends BaseAty {
     int pageCounte = 0;
     @Override
     public void initDatas(JumpParameter parameter) {
-        //获取上一个页面传递的标识、
-        flagSpeed = (int) getParameter().get("flagSpeed");
-        log("=================================="+flagSpeed);
-        if (flagSpeed == 1){
+
+        if (flagSpeed.equals("1")){
             pageCounte = 0;
             draftSpeedOne.setVisibility(View.GONE);
             fragemnts.add(DocumentEditFragment.newInstance());

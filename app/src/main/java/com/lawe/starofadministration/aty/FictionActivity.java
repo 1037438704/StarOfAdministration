@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -138,8 +139,9 @@ public class FictionActivity extends BaseAty {
         titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(DraftActivity.class,new JumpParameter()
-                          .put("flagSpeed",2));
+                Intent intent = new Intent(FictionActivity.this, DraftActivity.class);
+                intent.putExtra("flagSpeed","1");
+                startActivity(intent);
             }
         });
         //回到第一条item

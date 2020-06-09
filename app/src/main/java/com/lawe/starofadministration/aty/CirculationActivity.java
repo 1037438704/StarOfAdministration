@@ -22,6 +22,7 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.adp.CirculationAdapter;
 import com.lawe.starofadministration.adp.FictionAdapter;
 import com.lawe.starofadministration.base.BaseAty;
 
@@ -52,7 +53,7 @@ public class CirculationActivity extends BaseAty {
 
     //空集合
     private List<String> list;
-    private FictionAdapter fictionAdapter;
+    private CirculationAdapter circulationAdapter;
     private LinearLayoutManager layoutManager;
     private ImageView circulatTop;
     private DrawerLayout fictionDrawer;
@@ -74,13 +75,13 @@ public class CirculationActivity extends BaseAty {
         list = new ArrayList<>();
         layoutManager = new LinearLayoutManager(me);
         //待办信息
-        fictionAdapter = new FictionAdapter(R.layout.item_circulation);
+        circulationAdapter = new CirculationAdapter(R.layout.item_circulation);
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
         circulatRecycle.setLayoutManager(layoutManager);
-        circulatRecycle.setAdapter(fictionAdapter);
+        circulatRecycle.setAdapter(circulationAdapter);
         titleNew.setVisibility(View.VISIBLE);
         titleRight.setText("录入");
         //设置字体
@@ -90,7 +91,7 @@ public class CirculationActivity extends BaseAty {
         for (int i = 0; i < 10; i++) {
             list.add("" + i);
         }
-        fictionAdapter.setNewData(list);
+        circulationAdapter.setNewData(list);
     }
 
     @Override
@@ -130,26 +131,7 @@ public class CirculationActivity extends BaseAty {
                     拟办：7
                     收文录入：8
                     文件签收：9*/
-                if (flag == 1){
-                    jump(HandledLookActivity.class);
-                }else if(flag == 2){
-                    jump(EntryActivity.class);
-                }else if(flag == 3){
-                    jump(HandledActivity.class);
-                } else if(flag == 4){
-                    jump(SponsorActivity.class);
-                }else if(flag == 5){
-                    jump(InstructionsActivity.class);
-                }else if(flag == 6){
-                    jump(UndertakeActivity.class);
-                }else if(flag == 7){
-                    jump(PropsedActivity.class);
-                }else if(flag == 8){
-                    jump(EntryEntryActivity.class);
-                }else if(flag == 9){
-                    jump(SignActivity.class);
-                }
-
+               jump(EntryEntryActivity.class);
             }
         });
         //回到第一条item

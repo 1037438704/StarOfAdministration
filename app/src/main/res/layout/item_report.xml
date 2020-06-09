@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:elevation="5dp"
+    android:id="@+id/item_report_linear"
     android:layout_marginTop="12dp"
     android:layout_marginLeft="12dp"
     android:layout_marginRight="12dp"

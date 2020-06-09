@@ -19,9 +19,9 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 /**
- * @author
+ * @author  fuke
  * @date
- * 功能描述：
+ * 功能描述： Application
  */
 public class MyApplication extends Application {
 
@@ -29,7 +29,6 @@ public class MyApplication extends Application {
     public static Typeface getTextBold;
     public static Typeface getTextRegular;
     public static Typeface getTextNum;
-    Context context;
 
     @Override
     public void onCreate() {
@@ -40,6 +39,7 @@ public class MyApplication extends Application {
         //开启请求日志
         BaseOkHttp.DEBUGMODE = true;
         OkHttpUtil.init(getApplicationContext()).setShowHttpLog(true).build();
+
         //请求公共链接
         BaseOkHttp.serviceUrl = "http://192.168.0.177:8082/szzw-web";
 

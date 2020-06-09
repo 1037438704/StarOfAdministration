@@ -305,7 +305,7 @@ public class SimulacrumActivity extends BaseAty {
 
 
         //设置字体
-        titleText.setText("创建人查看");
+        titleText.setText("文件归档");
         titleText.setTypeface(getTextBold);
         draftChatNewText.setTypeface(getTextMedium);
         draftChatSetText.setTypeface(getTextMedium);

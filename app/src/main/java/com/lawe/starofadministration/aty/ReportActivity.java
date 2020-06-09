@@ -2,6 +2,7 @@ package com.lawe.starofadministration.aty;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -49,7 +50,7 @@ public class ReportActivity extends BaseAty {
     private LinearLayout searchChoose;
     private RecyclerView reportRecycle;
     private int maxRecycleCount = 3; //第三条item
-    Calendar calendar= Calendar.getInstance(Locale.CHINA);
+    Calendar calendar = Calendar.getInstance(Locale.CHINA);
 
     //空集合
     private List<String> list;
@@ -114,12 +115,14 @@ public class ReportActivity extends BaseAty {
                 finish();
             }
         });
+
         //新建
         titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(IssueActivity.class,new JumpParameter()
-                          .put("flagSpeed",2));
+                Intent intent = new Intent(ReportActivity.this, IssueActivity.class);
+                intent.putExtra("flagSpeed","1");
+                startActivity(intent);
             }
         });
         //回到第一条item

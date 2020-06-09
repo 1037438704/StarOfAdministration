@@ -61,8 +61,6 @@ public class MessageFragment extends BaseFgt {
     private DrawerLayout drawerLayout;
     private Button drawer_quxiao;
 
-    //空集合
-    private List<String> list;
     private MessageAdapter messageAdapter;
     private LinearLayout dealtLinerarTime;
     private LinearLayout dealtLinerarUrgent;
@@ -89,8 +87,6 @@ public class MessageFragment extends BaseFgt {
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
         drawer_quxiao = getActivity().findViewById(R.id.drawer_quxiao);
 
-
-        list = new ArrayList<>();
         //待办信息
         recycleMessage.setLayoutManager(new LinearLayoutManager(me));
         messageAdapter = new MessageAdapter(R.layout.item_message_layout);
@@ -110,6 +106,7 @@ public class MessageFragment extends BaseFgt {
     private String page = "1";
     private String limit = "10";
     private String depUserId = "1253514067132448770";
+
     private void messageData() {
         WaitDialog.show(me, "请稍候...");
         JSONObject json = new JSONObject();

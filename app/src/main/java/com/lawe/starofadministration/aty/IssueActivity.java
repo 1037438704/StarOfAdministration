@@ -100,7 +100,7 @@ public class IssueActivity extends BaseAty {
     private RadioButton rb;
     private String jsons;
     private LinearLayout bottomGongneng;
-    private int flagSpeed;
+    private String flagSpeed;
 
     @Override
     public void initViews() {
@@ -111,12 +111,10 @@ public class IssueActivity extends BaseAty {
         layoutManager = new LinearLayoutManager(me);
         draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
     }
-
-
     int pageCounte = 0;
     @Override
     public void initDatas(JumpParameter parameter) {
-        if (flagSpeed == 1){
+        if (flagSpeed.equals("1")){
             pageCounte = 0;
             draftSpeedOne.setVisibility(View.GONE);
             fragemnts.add(IssueDocumentEditFragment.newInstance());
@@ -353,10 +351,9 @@ public class IssueActivity extends BaseAty {
         draftChatSetText = findViewById(R.id.draft_chat_set_text);
 
         //获取上一个页面传递的标识、
-        flagSpeed = (int) getParameter().get("flagSpeed");
-        log("=================================="+flagSpeed);
+        flagSpeed = getIntent().getExtras().getString("flagSpeed");
         //设置字体
-        if (flagSpeed == 1){
+        if (flagSpeed.equals("1")){
             titleText.setText("新建报发文件");
         }else{
             titleText.setText("创建人查看");

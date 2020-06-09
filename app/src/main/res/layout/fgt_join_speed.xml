@@ -9,7 +9,6 @@
         android:id="@+id/join_speed_recycle"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        android:paddingBottom="60dp"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
 

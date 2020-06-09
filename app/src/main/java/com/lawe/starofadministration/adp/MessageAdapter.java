@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class MessageAdapter extends BaseQuickAdapter< MessageBean.PageBean.ListBean, BaseViewHolder> {
 
-    public MessageAdapter(int layoutResId, @Nullable List<MessageBean.PageBean.ListBean> data) {
+    public MessageAdapter(int layoutResId, List<MessageBean.PageBean.ListBean> data) {
         super(layoutResId, data);
     }
 
