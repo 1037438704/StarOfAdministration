@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#DB1F2C"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
+    android:background="#DB1F2C"
     android:id="@+id/speed_linerar_layout"
     tools:context=".fgt.SpeedFragment"
     android:layout_height="match_parent">
@@ -48,11 +48,13 @@
             android:hint="搜索要查找的内容"
             android:textColorHint="#fff"
             android:textSize="14dp"
+            android:textColor="#fff"
             android:paddingLeft="30dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="3dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="12dp"
+
             android:background="@drawable/shape_white15"
             android:layout_width="match_parent"
             android:layout_height="30dp"/>
@@ -171,6 +173,7 @@
         android:layout_width="match_parent"
         android:background="#F5F5F5"
         android:layout_height="match_parent">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle_speed"
             android:layout_width="match_parent"

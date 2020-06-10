@@ -151,6 +151,7 @@ public class FictionActivity extends BaseAty {
                 factionRecycle.smoothScrollToPosition(0);
             }
         });
+
         //筛选
         searchChoose.setOnClickListener(new View.OnClickListener() {
             @Override

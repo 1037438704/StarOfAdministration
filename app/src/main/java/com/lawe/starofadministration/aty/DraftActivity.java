@@ -137,6 +137,14 @@ public class DraftActivity extends BaseAty {
         }else if(flagSpeed.equals("2")){
             //设置字体
             titleText.setText("创建人查看");
+            draftChat.setClickable(false);
+            bottomPizhu.setClickable(false);
+            bottomGongneng.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    toast("禁止修改");
+                }
+            });
         }
 
         titleText.setTypeface(getTextBold);

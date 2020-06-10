@@ -97,16 +97,14 @@ public class ShareActivity extends BaseAty {
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 int firstCompletelyVisibleItemPosition = layoutManager.findFirstCompletelyVisibleItemPosition();
-                Log.e("ssssss_itemCount",firstCompletelyVisibleItemPosition+"");
                 if(firstCompletelyVisibleItemPosition >= maxRecycleCount){
                     shareTop.setVisibility(View.VISIBLE);
                 }else if(firstCompletelyVisibleItemPosition == 0){
                     shareTop.setVisibility(View.GONE);
                 }
-
             }
-
         });
+
         //返回
         titleBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +112,7 @@ public class ShareActivity extends BaseAty {
                 finish();
             }
         });
+
         //添加
         titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +120,7 @@ public class ShareActivity extends BaseAty {
                 jump(ShareLookActivity.class);
             }
         });
+
         //回到第一条item
         shareTop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +128,7 @@ public class ShareActivity extends BaseAty {
                 shareRecycle.smoothScrollToPosition(0);
             }
         });
+
         //筛选
         searchChoose.setOnClickListener(new View.OnClickListener() {
             @Override

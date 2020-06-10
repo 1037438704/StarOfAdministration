@@ -98,16 +98,15 @@ public class ReportActivity extends BaseAty {
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 int firstCompletelyVisibleItemPosition = layoutManager.findFirstCompletelyVisibleItemPosition();
-                Log.e("ssssss_itemCount",firstCompletelyVisibleItemPosition+"");
                 if(firstCompletelyVisibleItemPosition >= maxRecycleCount){
                     reportTop.setVisibility(View.VISIBLE);
                 }else if(firstCompletelyVisibleItemPosition == 0){
                     reportTop.setVisibility(View.GONE);
                 }
-
             }
 
         });
+
         //返回
         titleBack.setOnClickListener(new View.OnClickListener() {
             @Override
