@@ -39,6 +39,7 @@ public class SetSafeActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         setSafeBack = findViewById(R.id.set_safe_back);
         setSafeTitle = findViewById(R.id.set_safe_title);
         setSafeNone = findViewById(R.id.set_safe_none);

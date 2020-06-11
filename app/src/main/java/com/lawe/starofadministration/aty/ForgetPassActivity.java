@@ -25,6 +25,7 @@ public class ForgetPassActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
 
     }
 

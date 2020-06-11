@@ -53,6 +53,7 @@ public class ScanningActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         fragemnts = new ArrayList<>();
         mainRgp = findViewById(R.id.main_rgp);
         viewPager = findViewById(R.id.viewPager);

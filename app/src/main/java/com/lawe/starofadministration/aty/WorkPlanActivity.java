@@ -76,7 +76,22 @@ public class WorkPlanActivity extends BaseAty {
 
     @Override
     public void initViews() {
-        initView();
+        super.initViews();
+        workDrawer = findViewById(R.id.work_drawer);
+        titleBack = findViewById(R.id.title_back);
+        titleText = findViewById(R.id.title_text);
+        titleMore = findViewById(R.id.title_more);
+        titleNew = findViewById(R.id.title_new);
+        titleRight = findViewById(R.id.title_right);
+        searchEdit = findViewById(R.id.search_edit);
+        searchChoose = findViewById(R.id.search_choose);
+        mainRgp = findViewById(R.id.main_rgp);
+        viewPagerData = findViewById(R.id.viewPagerData);
+        workTop = findViewById(R.id.work_top);
+        fictionDrawerlayout = findViewById(R.id.fiction_drawerlayout);
+        fictionChoose = findViewById(R.id.fiction_choose);
+        speedImgLeibie = findViewById(R.id.speed_img_leibie);
+        drawerQuxiao = findViewById(R.id.drawer_quxiao);
 
         titleNew.setVisibility(View.VISIBLE);
         titleText.setText("工作计划");
@@ -160,21 +175,4 @@ public class WorkPlanActivity extends BaseAty {
         });
     }
 
-    private void initView() {
-        workDrawer = findViewById(R.id.work_drawer);
-        titleBack = findViewById(R.id.title_back);
-        titleText = findViewById(R.id.title_text);
-        titleMore = findViewById(R.id.title_more);
-        titleNew = findViewById(R.id.title_new);
-        titleRight = findViewById(R.id.title_right);
-        searchEdit = findViewById(R.id.search_edit);
-        searchChoose = findViewById(R.id.search_choose);
-        mainRgp = findViewById(R.id.main_rgp);
-        viewPagerData = findViewById(R.id.viewPagerData);
-        workTop = findViewById(R.id.work_top);
-        fictionDrawerlayout = findViewById(R.id.fiction_drawerlayout);
-        fictionChoose = findViewById(R.id.fiction_choose);
-        speedImgLeibie = findViewById(R.id.speed_img_leibie);
-        drawerQuxiao = findViewById(R.id.drawer_quxiao);
-    }
 }

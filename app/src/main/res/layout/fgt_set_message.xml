@@ -103,7 +103,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="公开属性"
+                android:text="选择共享条件"
                 android:textSize="16dp"
                 android:textColor="@color/textMedium"
                 android:layout_marginLeft="16dp"

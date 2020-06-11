@@ -58,6 +58,7 @@ public class ShareActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         shareDrawer = findViewById(R.id.share_drawer);
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);

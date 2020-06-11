@@ -64,6 +64,7 @@ public class ChooseCompanyActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
         titleRight = findViewById(R.id.title_right);

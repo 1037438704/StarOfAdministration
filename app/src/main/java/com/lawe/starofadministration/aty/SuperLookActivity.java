@@ -98,6 +98,7 @@ public class SuperLookActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         initView();
         if (superFlag.equals("1")){
             if (typePerson.equals("true")){

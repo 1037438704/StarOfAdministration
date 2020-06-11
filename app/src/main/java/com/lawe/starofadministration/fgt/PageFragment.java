@@ -14,7 +14,7 @@ import com.lawe.starofadministration.base.BaseFgt;
 public class PageFragment extends BaseFgt {
     @Override
     public void initViews() {
-
+        super.initViews();
     }
 
     @Override

@@ -1,10 +1,12 @@
 package com.lawe.starofadministration.base;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebView;
 
 import androidx.annotation.Nullable;
@@ -12,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.kongzue.baseframework.BaseFragment;
+import com.kongzue.baseframework.util.Preferences;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.config.Constants;
 
@@ -28,9 +31,21 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
     public Typeface getTextNum = MyApplication.getTextNum;
     public Gson gson = new Gson();
 
+    public String token;
+    public String depUserId;
+
     @Override
     public void initViews() {
         fgtContext = (AppCompatActivity) getActivity();
+        token = Preferences.getInstance().getString(me,"login","token");
+        depUserId = Preferences.getInstance().getString(me,"login","depUserId");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        token = Preferences.getInstance().getString(me,"login","token");
+        depUserId = Preferences.getInstance().getString(me,"login","depUserId");
     }
 
     /*

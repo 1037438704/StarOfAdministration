@@ -33,6 +33,7 @@ public class WorkNewFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         enclosureRecycle = (RecyclerView) findViewById(R.id.enclosure_recycle);
         newNewChild = (LinearLayout) findViewById(R.id.new_new_child);
         //任务列表

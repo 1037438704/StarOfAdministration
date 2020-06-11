@@ -59,6 +59,7 @@ public class SupervisionActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         superDrawer = findViewById(R.id.super_drawer);
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);

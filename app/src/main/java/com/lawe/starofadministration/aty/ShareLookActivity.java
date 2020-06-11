@@ -62,6 +62,7 @@ public class ShareLookActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         initView();
     }
 

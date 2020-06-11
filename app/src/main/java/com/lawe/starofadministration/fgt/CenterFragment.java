@@ -41,6 +41,7 @@ public class CenterFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         centerTitle = (TextView) findViewById(R.id.center_title);
         centerNizhi = (TextView) findViewById(R.id.center_nizhi);
         centerChuanyue = (TextView) findViewById(R.id.center_chuanyue);

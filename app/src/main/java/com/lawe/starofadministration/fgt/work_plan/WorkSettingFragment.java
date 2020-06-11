@@ -14,7 +14,7 @@ public class WorkSettingFragment extends BaseFgt {
 
     @Override
     public void initViews() {
-
+        super.initViews();
     }
 
     @Override

@@ -41,6 +41,7 @@ public class EnclosureCatalogFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         enclosureRecycle = (RecyclerView) findViewById(R.id.enclosure_recycle);
         enclosureShangchuan = (LinearLayout) findViewById(R.id.enclosure_shangchuan);
         enclosureText = (TextView) findViewById(R.id.enclosure_text);

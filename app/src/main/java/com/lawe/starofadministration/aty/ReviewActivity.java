@@ -47,7 +47,7 @@ public class ReviewActivity extends BaseAty {
     private TextView titleText;
     private RadioGroup mainRgp;
     private ViewPager viewPagerData;
-    private ImageView bottomPerson;
+    private LinearLayout bottomPerson;
     private ImageView bottomPizhu;
     private EditText bottomWhrit;
     private ImageView bottomChat;
@@ -68,6 +68,7 @@ public class ReviewActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
         mainRgp = findViewById(R.id.main_rgp);

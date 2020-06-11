@@ -57,7 +57,7 @@ public class LookAllActivity extends BaseAty {
 
     @Override
     public void initViews() {
-
+        super.initViews();
         textName =  findViewById(R.id.text_name);
         tablayout =  findViewById(R.id.tablayout);
         viewPager =  findViewById(R.id.viewPager);

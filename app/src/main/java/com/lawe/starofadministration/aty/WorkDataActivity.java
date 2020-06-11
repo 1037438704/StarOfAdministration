@@ -31,6 +31,7 @@ public class WorkDataActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
 

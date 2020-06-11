@@ -99,6 +99,7 @@ public class SponsorActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
        initView();
         //设置字体
         titleText.setText("公文协办");

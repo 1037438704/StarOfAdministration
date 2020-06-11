@@ -103,6 +103,7 @@ public class LoginActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         buttonLoginImmediately = findViewById(R.id.button_login_immediately);
         frame_layout_bottom = findViewById(R.id.frame_layout_bottom);
         vcivCode = findViewById(R.id.vciv_code);
@@ -130,28 +131,14 @@ public class LoginActivity extends BaseAty {
         loginWeb = findViewById(R.id.login_webview);
         String phone = Preferences.getInstance().getString(me, "phone", "phone");
         String psd = Preferences.getInstance().getString(me, "phone", "psd");
+
         if (phone != null && psd != null){
             login_phone.setText(phone);
             login_edpass.setText(psd);
         }
         //加载协议
         webXieyi();
-       // shouye();
 
-    }
-
-    private void shouye() {
-
-        HttpRequest.GET(me,Constants.DOCUMENTFICTION + ids,new Parameter(),new ResponseListener(){
-            @Override
-            public void onResponse(String response, Exception error) {
-                if (error == null) {
-                    Log.e("shuju",response);
-                } else {
-
-                }
-            }
-        });
     }
 
     @Override
@@ -323,8 +310,8 @@ public class LoginActivity extends BaseAty {
 
     //登录请求
     private void postLogin() {
-        jump(MainActivity.class);
-        /*   //账号密码登录
+        //jump(MainActivity.class);
+          //账号密码登录
             loginPhone = login_phone.getText().toString();
             loginPass = login_edpass.getText().toString();
             Preferences.getInstance().commit(me, "phone", "phone", login_phone.getText().toString().trim());
@@ -338,6 +325,10 @@ public class LoginActivity extends BaseAty {
                     JSONObject json = new JSONObject();
                     json.put("account", loginPhone);
                     json.put("password", loginPass);
+                    json.put("deviceNum", phoneBrand);
+                    json.put("loginTerminal","2");
+                    json.put("firstLoginImei",androidId);
+                    json.put("firstLoginIsp","移动");
                     //json转化为string类型
                     jsonLogin = String.valueOf(json);
                 } catch (JSONException e) {
@@ -346,19 +337,15 @@ public class LoginActivity extends BaseAty {
                 HttpRequest.JSONPOST(me, Constants.LOGIN, jsonLogin, new ResponseListener() {
                     @Override
                     public void onResponse(String response, Exception error) {
-                        WaitDialog.dismiss();
-                        if (error == null) {
-                            Log.e("shuju",response);
-                            LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);
-                            Preferences.getInstance().commit(me, "user", "token", loginDefaltBean.getToken());
-                            isFrist();
-                        } else {
-                            error.getMessage();
-                        }
+                        LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);
+                        String depUserId = loginDefaltBean.getEntityBO().getId();
+                        Preferences.getInstance().set(me, "login", "token",loginDefaltBean.getToken());
+                        Preferences.getInstance().set(me, "login", "depUserId",depUserId);
+                        isFrist();
+
                     }
                 });
-
-        }*/
+        }
     }
 
     //加载登陆协议
@@ -457,8 +444,8 @@ public class LoginActivity extends BaseAty {
     private void isFrist() {
         frist = getSharedPreferences("frist", Context.MODE_PRIVATE);
         if (frist.getBoolean("isAgree",false)){
-            login_phone.setText(frist.getString("phone",null));
-            login_edpass.setText(frist.getString("pwd",null));
+           /* login_phone.setText(frist.getString("phone",null));
+            login_edpass.setText(frist.getString("pwd",null));*/
             jump(MainActivity.class);
         }else{
             //点击确定或者取消

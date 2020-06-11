@@ -58,6 +58,7 @@ public class SpeedFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         ((MainActivity) this.getActivity()).registerFragmentTouchListener(fragmentTouchListener);
 
         textChoose = (LinearLayout) findViewById(R.id.text_choose);

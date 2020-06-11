@@ -101,6 +101,7 @@ public class NoticeLookActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         initView();
 
         if (noticeFlag.equals("1")){

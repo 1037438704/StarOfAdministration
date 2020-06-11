@@ -13,7 +13,7 @@ import com.lawe.starofadministration.base.BaseFgt;
 public class LookDataFragment extends BaseFgt {
     @Override
     public void initViews() {
-
+        super.initViews();
     }
 
     @Override

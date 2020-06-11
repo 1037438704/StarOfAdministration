@@ -47,6 +47,7 @@ public class MyMedalActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
 
         tablayout = findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.viewPagerMedal);

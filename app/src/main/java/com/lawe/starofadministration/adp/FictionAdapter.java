@@ -15,17 +15,18 @@ import com.lawe.starofadministration.aty.DraftActivity;
 import com.lawe.starofadministration.aty.FictionActivity;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * author :  fuke
  * date : 2020/4/29 15:52
  * description : 公文拟制列表
  */
-public class FictionAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+public class FictionAdapter extends BaseQuickAdapter<Map<String,String>, BaseViewHolder> {
 
     public Typeface getTextMedium = MyApplication.getTextMedium;
 
-    public FictionAdapter(int layoutResId, @Nullable List<String> data) {
+    public FictionAdapter(int layoutResId, @Nullable List<Map<String,String>> data) {
         super(layoutResId, data);
     }
 
@@ -33,10 +34,13 @@ public class FictionAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
         super(item_message_layout);
     }
 
+
     @Override
-    protected void convert(BaseViewHolder helper, String item) {
-        TextView itemFictionTitle = helper.itemView.findViewById(R.id.item_fiction_title);
-        LinearLayout item_fiction_linear = helper.itemView.findViewById(R.id.item_fiction_linear);
+    protected void convert(BaseViewHolder baseViewHolder, Map<String, String> itemData) {
+//        itemData["aaaa"];
+        String aaa = itemData.get("aaa");
+        TextView itemFictionTitle = baseViewHolder.itemView.findViewById(R.id.item_fiction_title);
+        LinearLayout item_fiction_linear = baseViewHolder.itemView.findViewById(R.id.item_fiction_linear);
         itemFictionTitle.setTypeface(getTextMedium);
 
         item_fiction_linear.setOnClickListener(new View.OnClickListener() {

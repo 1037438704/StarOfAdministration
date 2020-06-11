@@ -2,9 +2,6 @@ package com.lawe.starofadministration.fgt;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,15 +22,16 @@ import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.MessageAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
-import com.lawe.starofadministration.bean.LoginDefaltBean;
 import com.lawe.starofadministration.bean.MessageBean;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.utils.FastBlurUtil;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,9 +64,13 @@ public class MessageFragment extends BaseFgt {
     private LinearLayout dealtLinerarTime;
     private LinearLayout dealtLinerarUrgent;
     private CardView cardView;
+    private SmartRefreshLayout refreshLayout;
+    private int page = 1;
+    private int limit = 10;
 
     @Override
     public void initViews() {
+        super.initViews();
         textCategory = (TextView) findViewById(R.id.text_category);
         daibanDown1 = (ImageView) findViewById(R.id.daiban_down1);
         textTimer = (TextView) findViewById(R.id.text_timer);
@@ -82,6 +85,7 @@ public class MessageFragment extends BaseFgt {
         dealtLinerarTime = (LinearLayout) findViewById(R.id.dealt_linerar_time);
         dealtLinerarUrgent = (LinearLayout) findViewById(R.id.dealt_linerar_urgent);
         cardView = (CardView) findViewById(R.id.cardview);
+        refreshLayout = (SmartRefreshLayout) findViewById(R.id.refreshLayout);
 
         textChoose = (LinearLayout) findViewById(R.id.text_choose);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout_shaixuan);
@@ -91,6 +95,9 @@ public class MessageFragment extends BaseFgt {
         recycleMessage.setLayoutManager(new LinearLayoutManager(me));
         messageAdapter = new MessageAdapter(R.layout.item_message_layout);
         recycleMessage.setAdapter(messageAdapter);
+
+        //加载首页数据
+        messageData();
     }
 
     @Override
@@ -99,16 +106,28 @@ public class MessageFragment extends BaseFgt {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.maoboli_bai, null);
         Bitmap bitmap1 = FastBlurUtil.doBlur(bitmap, 0, true);
 
-        //加载首页数据
-        messageData();
+        //刷新
+
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                page = 1;
+                limit = 10;
+                messageData();
+            }
+        });
+        //加载更多
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                page++;
+                messageData();
+            }
+        });
     }
 
-    private String page = "1";
-    private String limit = "10";
-    private String depUserId = "1253514067132448770";
-
     private void messageData() {
-        WaitDialog.show(me, "请稍候...");
+        //WaitDialog.show(me, "请稍候...");
         JSONObject json = new JSONObject();
         try {
             json.put("page", page);
@@ -122,16 +141,13 @@ public class MessageFragment extends BaseFgt {
         HttpRequest.JSONPOST(me, Constants.LISTFINDALLBYCURRENTUSER, jsonMess, new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
-                WaitDialog.dismiss();
-                if (error == null) {
-                    Log.e("shuju",response);
-                    MessageBean messageBean = gson.fromJson(response, MessageBean.class);
-                    List<MessageBean.PageBean.ListBean> list = messageBean.getPage().getList();
-                    messageAdapter.setNewData(list);
-                    messageAdapter.notifyDataSetChanged();
-                } else {
-                    error.getMessage();
-                }
+                refreshLayout.finishRefresh();
+                refreshLayout.finishLoadMore();
+                MessageBean messageBean = gson.fromJson(response, MessageBean.class);
+                List<MessageBean.PageBean.ListBean> list = messageBean.getPage().getList();
+                messageAdapter.setNewData(list);
+                messageAdapter.notifyDataSetChanged();
+
             }
         });
     }

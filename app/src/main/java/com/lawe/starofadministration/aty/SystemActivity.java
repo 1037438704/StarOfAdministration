@@ -32,6 +32,7 @@ public class SystemActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         setSystemBack = findViewById(R.id.set_system_back);
         setSystemTitle = findViewById(R.id.set_system_title);
 

@@ -38,6 +38,7 @@ public class DeductionFragment extends BaseFgt {
     private DeductionAdapter deductionAdapter;
     @Override
     public void initViews() {
+        super.initViews();
         deduLeibie = (LinearLayout) findViewById(R.id.dedu_leibie);
         deduLeibieText = (TextView) findViewById(R.id.dedu_leibie_text);
         deduLeibieImg = (ImageView) findViewById(R.id.dedu_leibie_img);

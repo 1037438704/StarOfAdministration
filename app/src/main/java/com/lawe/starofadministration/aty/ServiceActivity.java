@@ -33,6 +33,7 @@ public class ServiceActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         setServiceBack = findViewById(R.id.set_service_back);
         setServiceTitle = findViewById(R.id.set_service_title);
         setServicePhone = findViewById(R.id.set_service_phone);

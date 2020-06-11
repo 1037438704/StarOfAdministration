@@ -21,7 +21,7 @@ public class LookAllFragment extends BaseFgt {
 
     @Override
     public void initViews() {
-
+        super.initViews();
     }
 
     @Override

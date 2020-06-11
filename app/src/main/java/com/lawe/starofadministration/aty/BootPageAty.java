@@ -29,6 +29,7 @@ public class BootPageAty extends BaseAty {
     LinearLayout llIndicator;
     @Override
     public void initViews() {
+        super.initViews();
         viewPager = findViewById(R.id.viewPager);
         llIndicator = findViewById(R.id.ll_indicator);
         for (int i = 0; i < 3; i++) {

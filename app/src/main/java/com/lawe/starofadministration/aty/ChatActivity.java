@@ -39,6 +39,7 @@ public class ChatActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         chatBack = findViewById(R.id.chat_back);
         chatEdit = findViewById(R.id.chat_edit);
         chatButton = findViewById(R.id.chat_button);

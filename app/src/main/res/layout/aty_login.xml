@@ -45,7 +45,6 @@
 
         </LinearLayout>
 
-
     </FrameLayout>
 
     <LinearLayout
@@ -312,7 +311,7 @@
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:includeFontPadding="false"
-                            android:focusableInTouchMode="false"
+
                             android:textColorHint="#ff9f9fa0"
                             android:hint="请输入验证码"
                             android:textColor="#3E3E41"

@@ -60,6 +60,7 @@ public class MainActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         fragemnts = new ArrayList<>();
         mFragmentTouchListeners = new ArrayList<>();
         mainRgp = findViewById(R.id.main_rgp);

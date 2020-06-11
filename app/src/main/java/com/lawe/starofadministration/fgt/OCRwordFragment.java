@@ -16,7 +16,7 @@ import com.lawe.starofadministration.base.BaseFgt;
 public class OCRwordFragment extends BaseFgt {
     @Override
     public void initViews() {
-
+        super.initViews();
     }
 
     @Override

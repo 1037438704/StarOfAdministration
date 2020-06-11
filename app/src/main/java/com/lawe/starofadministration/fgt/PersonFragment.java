@@ -33,6 +33,7 @@ public class PersonFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         recyclePerson = (RecyclerView) findViewById(R.id.recycle_person);
         linearLeibie = (LinearLayout) findViewById(R.id.linear_leibie);
         //recyclerLeibie = (RecyclerView) findViewById(R.id.recycler_leibie);

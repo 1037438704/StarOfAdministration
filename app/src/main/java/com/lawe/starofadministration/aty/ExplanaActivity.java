@@ -33,6 +33,7 @@ public class ExplanaActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         setExplanationBack = findViewById(R.id.set_explanation_back);
         setExplanationTitle = findViewById(R.id.set_explanation_title);
         setExplanationShuoming = findViewById(R.id.set_explanation_shuoming);

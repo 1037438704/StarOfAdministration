@@ -59,6 +59,7 @@ public class FileActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         fictionDrawer = findViewById(R.id.fiction_drawer);
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);

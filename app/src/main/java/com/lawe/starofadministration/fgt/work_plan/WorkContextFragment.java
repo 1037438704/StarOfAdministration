@@ -35,7 +35,7 @@ public class WorkContextFragment extends BaseFgt {
 
     @Override
     public void initViews() {
-
+        super.initViews();
         cebianlan = (LinearLayout) findViewById(R.id.cebianlan);
         workTitle = (LinearLayout) findViewById(R.id.work_title);
         documentSubject = (EditText) findViewById(R.id.document_subject);

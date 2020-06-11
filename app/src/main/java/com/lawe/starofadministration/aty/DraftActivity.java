@@ -100,6 +100,7 @@ public class DraftActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
         titleNew = findViewById(R.id.title_new);

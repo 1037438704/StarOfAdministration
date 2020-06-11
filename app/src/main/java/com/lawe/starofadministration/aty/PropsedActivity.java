@@ -98,6 +98,7 @@ public class PropsedActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         initView();
 
         //设置字体

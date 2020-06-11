@@ -33,6 +33,7 @@ public class SplashAty extends BaseAty {
     private LinearLayout framgentLayout;
     @Override
     public void initViews() {
+        super.initViews();
         framgentLayout = findViewById(R.id.fragment_lauout);
 
     }

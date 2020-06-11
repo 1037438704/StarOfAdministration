@@ -35,11 +35,20 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
+import com.kongzue.baseokhttp.HttpRequest;
+import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.FictionAdapter;
 import com.lawe.starofadministration.adp.MessageAdapter;
 import com.lawe.starofadministration.base.BaseAty;
+import com.lawe.starofadministration.bean.MessageBean;
+import com.lawe.starofadministration.config.Constants;
+import com.lawe.starofadministration.utils.map.JSONUtils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -47,6 +56,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * author : fuke
@@ -76,9 +86,12 @@ public class FictionActivity extends BaseAty {
     private DrawerLayout fictionDrawer;
     private TextView fictionTimeStart;
     private TextView fictionTimeEnd;
+    private int page = 1;
+    private int limit = 10;
 
     @Override
     public void initViews() {
+        super.initViews();
         fictionDrawer = findViewById(R.id.fiction_drawer);
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
@@ -89,26 +102,44 @@ public class FictionActivity extends BaseAty {
         factionTop = findViewById(R.id.faction_top);
         fictionTimeStart = findViewById(R.id.fiction_time_start);
         fictionTimeEnd = findViewById(R.id.fiction_time_end);
-        //列表
-        list = new ArrayList<>();
+        //查询信息
+        getMessage();
         //待办信息
         fictionAdapter = new FictionAdapter(R.layout.item_fiction);
+        layoutManager = new LinearLayoutManager(me);
+        factionRecycle.setLayoutManager(layoutManager);
+        factionRecycle.setAdapter(fictionAdapter);
+    }
+
+    private void getMessage() {
+        //WaitDialog.show(me, "请稍候...");
+        JSONObject json = new JSONObject();
+        try {
+            json.put("page", page);
+            json.put("limit", limit);
+            json.put("depUserId",depUserId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //json转化为string类型
+        String jsonMess = String.valueOf(json);
+        HttpRequest.JSONPOST(me, Constants.DOCUMENT_QUERYPAGE, jsonMess, new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
+                ArrayList<Map<String, String>> list = JSONUtils.parseKeyAndValueToMapList(map.get("list"));
+                fictionAdapter.setNewData(list);
+            }
+        });
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-        layoutManager = new LinearLayoutManager(me);
-        factionRecycle.setLayoutManager(layoutManager);
-        factionRecycle.setAdapter(fictionAdapter);
         titleNew.setVisibility(View.VISIBLE);
         //设置字体
         titleText.setTypeface(getTextMedium);
         titleText.setText("公文拟制系统");
 
-        for (int i = 0; i < 10; i++) {
-            list.add("" + i);
-        }
-        fictionAdapter.setNewData(list);
     }
 
     @Override

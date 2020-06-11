@@ -4,25 +4,31 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.IBinder;
+import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.gson.Gson;
 import com.kongzue.baseframework.BaseActivity;
+import com.kongzue.baseframework.util.Preferences;
+import com.kongzue.baseokhttp.listener.ResponseInterceptListener;
+import com.kongzue.baseokhttp.util.BaseOkHttp;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.config.Constants;
-import com.lawe.starofadministration.utils.Preferences;
-
-import org.json.JSONObject;
+import com.lawe.starofadministration.utils.map.JSONUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 abstract public class BaseAty extends BaseActivity implements Constants {
@@ -32,10 +38,51 @@ abstract public class BaseAty extends BaseActivity implements Constants {
     public Typeface getTextNum = MyApplication.getTextNum;
 
     public Gson gson = new Gson();
-  //  public String token = Preferences.getInstance().getString(me, "user", "token");
+
     //权限申请回调
     private OnPermissionResponseListener onPermissionResponseListener;
     private int REQUEST_CODE_PERMISSION = 0x00099;
+
+    public String token;
+    public String depUserId;
+
+    //所有的页面都要加
+    @Override
+    public void initViews() {
+        //我的日志呢
+        interceptDate();
+        token = Preferences.getInstance().getString(me,"login","token");
+        depUserId = Preferences.getInstance().getString(me,"login","depUserId");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        token = Preferences.getInstance().getString(me,"login","token");
+        depUserId = Preferences.getInstance().getString(me,"login","depUserId");
+    }
+
+    //网络请求数据拦截器
+    public void interceptDate(){
+        BaseOkHttp.responseInterceptListener = new ResponseInterceptListener() {
+            @Override
+            public boolean onResponse(Context context, String url, String response, Exception error) {
+                if (error == null) {
+                    Map<String, String> data = JSONUtils.parseKeyAndValueToMap(response);
+                    if (data.get("msg") == "success"){
+                        return true;
+                    }else{
+                        toast(data.get("msg"));
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        };
+    }
+
+
     /**
      * 点击页面空白处时，让键盘消失
      *

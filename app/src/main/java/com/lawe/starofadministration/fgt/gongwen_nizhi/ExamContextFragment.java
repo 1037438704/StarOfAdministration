@@ -37,6 +37,7 @@ public class ExamContextFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         joinContextTitle = (TextView) findViewById(R.id.join_context_title);
         joinContextTongzhi = (TextView) findViewById(R.id.join_context_tongzhi);
         joinContextGongkai = (TextView) findViewById(R.id.join_context_gongkai);

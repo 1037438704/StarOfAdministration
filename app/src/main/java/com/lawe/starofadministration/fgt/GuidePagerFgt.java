@@ -36,6 +36,7 @@ public class GuidePagerFgt extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
         imageButton = (ImageView) findViewById(R.id.imageButton);
     }

@@ -28,6 +28,7 @@ public class UpdatePassActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         setPassBack = findViewById(R.id.set_pass_back);
         setPassTitle = findViewById(R.id.set_pass_title);
     }

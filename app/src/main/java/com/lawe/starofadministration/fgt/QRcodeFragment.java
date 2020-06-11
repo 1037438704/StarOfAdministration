@@ -31,6 +31,7 @@ public class QRcodeFragment extends BaseFgt {
     private String TAG = "QRcodeFragment";
     @Override
     public void initViews() {
+        super.initViews();
         CaptureFragment captureFragment = new CaptureFragment();
         captureFragment.setAnalyzeCallback(analyzeCallback);
 

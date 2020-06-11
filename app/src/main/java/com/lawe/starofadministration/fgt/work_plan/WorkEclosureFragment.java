@@ -37,6 +37,7 @@ public class WorkEclosureFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         enclosureRecycle = (RecyclerView) findViewById(R.id.enclosure_recycle);
 
         //附件列表

@@ -89,6 +89,7 @@ public class SimulacrumActivity extends BaseAty {
 
     @Override
     public void initViews() {
+        super.initViews();
         initView();
         fragemnts = new ArrayList<>();
         //常用语列表

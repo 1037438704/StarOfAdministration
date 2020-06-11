@@ -47,6 +47,7 @@ public class ShareEditFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         documentTitle = (EditText) findViewById(R.id.document_title);
         documentNumber = (TextView) findViewById(R.id.document_number);
         documentSubject = (EditText) findViewById(R.id.document_subject);

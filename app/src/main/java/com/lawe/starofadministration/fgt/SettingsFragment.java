@@ -47,6 +47,7 @@ public class SettingsFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         text_set = (TextView) findViewById(R.id.text_set);
         set_out = (TextView) findViewById(R.id.set_out);
         set_safe = (TextView) findViewById(R.id.set_safe);

@@ -38,6 +38,7 @@ public class CompleteFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         workRecycle = (RecyclerView) findViewById(R.id.work_recycle);
         workTop = (ImageView) findViewById(R.id.work_top);
         //列表

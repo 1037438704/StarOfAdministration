@@ -53,6 +53,7 @@ public class DealtFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         fragemnts = new ArrayList<>();
         mainRgp = (RadioGroup) findViewById(R.id.main_rgp);
         viewPager = (ViewPager) findViewById(R.id.viewPager);

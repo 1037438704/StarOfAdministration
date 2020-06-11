@@ -28,7 +28,7 @@ public class SuperSettingFragment extends BaseFgt {
 
     @Override
     public void initViews() {
-
+        super.initViews();
     }
 
     @Override

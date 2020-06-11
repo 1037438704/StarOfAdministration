@@ -3,7 +3,7 @@ package com.lawe.starofadministration.config;
 public interface Constants {
 
     //默认登录
-    String LOGIN = "/login/login";
+    String LOGIN = "/sys/login";
 
     //登陆协议
     String FINDUSERAGREEMENT = "/sys/config/findUserAgreement";
@@ -19,6 +19,9 @@ public interface Constants {
 
     //首页个人信息
     String QUERYPAGE = "/sys/center/queryPage";
+
+    //公文拟制查询所有
+    String DOCUMENT_QUERYPAGE = "/sys/documentfiction/queryPage";
 
     //根据逐渐查询详情
     String DOCUMENTFICTION = "/sys/documentfiction/info";

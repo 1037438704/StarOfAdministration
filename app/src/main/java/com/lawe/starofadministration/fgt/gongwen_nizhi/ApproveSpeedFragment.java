@@ -27,6 +27,7 @@ public class ApproveSpeedFragment extends BaseFgt {
 
     @Override
     public void initViews() {
+        super.initViews();
         joinSpeedRecycle = (RecyclerView) findViewById(R.id.join_speed_recycle);
         //进度列表
         list = new ArrayList<>();
