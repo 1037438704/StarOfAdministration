@@ -13,19 +13,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:descendantFocusability="blocksDescendants"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/enclosure_recycle_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/enclosure_recycle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            </androidx.recyclerview.widget.RecyclerView>
 
-                </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/enclosure_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            </RelativeLayout>
+            </androidx.recyclerview.widget.RecyclerView>
+
 
             <LinearLayout
                 android:id="@+id/enclosure_shangchuan"
@@ -39,7 +40,7 @@
                 android:layout_height="40dp">
 
                 <ImageView
-                    android:src="@mipmap/icon_upload"
+                    android:src="@mipmap/icon_upload_lian"
                     android:layout_marginLeft="12dp"
                     android:layout_width="16dp"
                     android:layout_height="16dp"/>

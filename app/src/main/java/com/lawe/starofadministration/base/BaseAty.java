@@ -45,14 +45,15 @@ abstract public class BaseAty extends BaseActivity implements Constants {
 
     public String token;
     public String depUserId;
+    public String departmentId;
 
     //所有的页面都要加
     @Override
     public void initViews() {
-        //我的日志呢
         interceptDate();
         token = Preferences.getInstance().getString(me,"login","token");
         depUserId = Preferences.getInstance().getString(me,"login","depUserId");
+        departmentId = Preferences.getInstance().getString(me,"login","departmentId");
     }
 
     @Override
@@ -60,6 +61,7 @@ abstract public class BaseAty extends BaseActivity implements Constants {
         super.onResume();
         token = Preferences.getInstance().getString(me,"login","token");
         depUserId = Preferences.getInstance().getString(me,"login","depUserId");
+        departmentId = Preferences.getInstance().getString(me,"login","departmentId");
     }
 
     //网络请求数据拦截器
@@ -69,7 +71,7 @@ abstract public class BaseAty extends BaseActivity implements Constants {
             public boolean onResponse(Context context, String url, String response, Exception error) {
                 if (error == null) {
                     Map<String, String> data = JSONUtils.parseKeyAndValueToMap(response);
-                    if (data.get("msg") == "success"){
+                    if (data.get("msg").equals("success")){
                         return true;
                     }else{
                         toast(data.get("msg"));

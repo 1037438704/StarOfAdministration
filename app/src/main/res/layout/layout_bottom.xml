@@ -170,7 +170,7 @@
 
             <ImageView
                 android:id="@+id/bottom_img1"
-                android:src="@mipmap/icon_chang_yong_new"
+                android:src="@mipmap/icon_bo_hui"
                 android:layout_width="16dp"
                 android:layout_height="16dp"/>
 
@@ -202,7 +202,7 @@
 
             <ImageView
                 android:id="@+id/bottom_img2"
-                android:src="@mipmap/icon_chang_yong_set"
+                android:src="@mipmap/icon_people"
                 android:layout_width="16dp"
                 android:layout_height="16dp"/>
 

@@ -74,4 +74,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.7'
 
     implementation 'com.zhousf.lib:okhttp3:2.9.9'
+    //富文本编辑器
+    implementation 'com.zzhoujay.richtext:richtext:3.0.7'
 }

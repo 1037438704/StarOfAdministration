@@ -27,15 +27,22 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
 import com.kongzue.baseframework.interfaces.Layout;
+import com.kongzue.baseframework.util.Preferences;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
+import com.lawe.starofadministration.bean.LoginDefaltBean;
 import com.lawe.starofadministration.config.Constants;
+import com.lawe.starofadministration.utils.map.JSONUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.net.URISyntaxException;
+import java.util.Map;
 
 /**
  * author : fuke
@@ -61,6 +68,10 @@ public class DocumentEditFragment extends BaseFgt {
     private WebView webview;
     private String filePath = "0",depUserId = "1253514067132448770",temWordfile = "aa",documentationType = "0";
     private TextView webceshi;
+    private TextView newWorkTitle;
+    private TextView documentSubTitle;
+    private String qNumber;  //拟编号的数字
+    private String quasiNumber;  //公文拟编号
 
     @Override
     public void initViews() {
@@ -68,6 +79,8 @@ public class DocumentEditFragment extends BaseFgt {
         documentTitle = (EditText) findViewById(R.id.document_title);
         documentNumber = (TextView) findViewById(R.id.document_number);
         documentSubject = (EditText) findViewById(R.id.document_subject);
+        newWorkTitle = (TextView) findViewById(R.id.new_work_title);
+        documentSubTitle = (TextView) findViewById(R.id.document_sub_title);
         //documentScroll = (ScrollView) findViewById(R.id.document_scroll);
         cebianlan = (LinearLayout) findViewById(R.id.cebianlan);
         imgBig = (ImageView) findViewById(R.id.img_big);
@@ -79,11 +92,53 @@ public class DocumentEditFragment extends BaseFgt {
         webceshi = (TextView) findViewById(R.id.document_sub_title);
         //设置字体
         documentTitle.setTypeface(getTextMedium);
+        newWorkTitle.setText("公文标题：");
+        documentSubTitle.setText("公文主体：");
 
         //判断公文主体是否为空
        // isEmpty = TextUtils.isEmpty(documentSubject.getText());
 
+        //获取拟编号
+        getQuasiNumber();
+        //查询公文拟制公文字号数值
+        getNumber();
+
         showWord();
+    }
+
+    private void getNumber() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("id","");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //json转化为string类型
+        String jsonLogin = String.valueOf(json);
+        HttpRequest.JSONPOST(me, Constants.GETNUMBER, jsonLogin, new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
+                qNumber = map.get("number");
+            }
+        });
+    }
+
+    private void getQuasiNumber() {
+
+        HttpRequest.build(me,Constants.GETQUASINUMBER + departmentId)
+                .setResponseListener(new ResponseListener() {
+                    @Override
+                    public void onResponse(String response, Exception error) {
+                        if(error == null){
+                            Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
+                            quasiNumber = map.get("newQuasiNumber");
+                            documentNumber.setText("拟编号："+ quasiNumber);
+                        }else{
+                            error.getMessage();
+                        }
+                    }
+                }).doGet();
     }
 
     @Override
@@ -103,11 +158,9 @@ public class DocumentEditFragment extends BaseFgt {
         webSettings.setUseWideViewPort(true);
         webSettings.setDefaultTextEncodingName("utf-8");
         //webSettings.setLoadWithOverviewMode(true);
-        //webview.loadUrl("file:///android_asset/mobileTemp22.html");
         webview.loadUrl("http://192.168.0.178:8081/szzw-web/sys/poffice/mobileShowWord");
         //在js中调用本地java方法
         webview.addJavascriptInterface(new JsInterface(me), "AndroidWebView");
-        
         //添加客户端支持
         webview.setWebViewClient(new WebViewClient() {
             @Override

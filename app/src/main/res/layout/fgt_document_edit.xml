@@ -91,6 +91,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
             <EditText
                 android:id="@+id/document_subject"
                 android:textSize="16dp"
@@ -103,6 +108,8 @@
                 android:paddingRight="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+
+        </ScrollView>
 
     </LinearLayout>
 

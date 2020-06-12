@@ -265,6 +265,38 @@
                 android:layout_height="1dp"/>
 
             <LinearLayout
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@mipmap/icon_aibian_ji"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+
+                <TextView
+                    android:text="变更文档类型"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <View
+                android:background="#4C4C50"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <LinearLayout
                 android:id="@+id/draft_more_glossary"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="25dp"

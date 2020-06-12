@@ -28,19 +28,27 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
+import com.kongzue.baseokhttp.HttpRequest;
+import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.DraftChatAdapter;
 import com.lawe.starofadministration.adp.TemplateAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.bean.ListChatBean;
+import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.DocumentEditFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.EnclosureCatalogFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinSpeedFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.SetMessageFragment;
+import com.lawe.starofadministration.utils.map.JSONUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * author : fuke
@@ -122,6 +130,7 @@ public class DraftActivity extends BaseAty {
         bottomChat = findViewById(R.id.bottom_chat);
         bottomButton = findViewById(R.id.bottom_button);
         bottomGongneng = findViewById(R.id.bottom_gongneng);
+        LinearLayout bottomOne = findViewById(R.id.bottom_one);
 
         draftChat = findViewById(R.id.draft_chat);
         draftChatRecycle = findViewById(R.id.draft_chat_recycle);
@@ -135,6 +144,8 @@ public class DraftActivity extends BaseAty {
         if (flagSpeed.equals("1")){
             //设置字体
             titleText.setText("起草公文");
+            bottomOne.setVisibility(View.GONE);
+
         }else if(flagSpeed.equals("2")){
             //设置字体
             titleText.setText("创建人查看");
@@ -443,11 +454,29 @@ public class DraftActivity extends BaseAty {
             }
         });
 
-        //暂定提交按钮---去公文会签
+        //保存
         bottomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(JointlyActivity.class);
+                //调用保存
+                fileSave();
+            }
+        });
+    }
+
+    private void fileSave() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("depUserId",depUserId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //json转化为string类型
+        String jsonMess = String.valueOf(json);
+        HttpRequest.JSONPOST(me, Constants.DOCUMENT_QUERYPAGE, jsonMess, new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+
             }
         });
     }

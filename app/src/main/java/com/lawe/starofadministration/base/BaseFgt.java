@@ -15,10 +15,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.util.Preferences;
+import com.kongzue.baseokhttp.listener.ResponseInterceptListener;
+import com.kongzue.baseokhttp.util.BaseOkHttp;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.config.Constants;
+import com.lawe.starofadministration.utils.map.JSONUtils;
 
 import org.json.JSONObject;
+
+import java.util.Map;
 
 import baseokhttp3.MediaType;
 
@@ -33,12 +38,15 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
 
     public String token;
     public String depUserId;
+    public String departmentId;
 
     @Override
     public void initViews() {
+        interceptDate();
         fgtContext = (AppCompatActivity) getActivity();
         token = Preferences.getInstance().getString(me,"login","token");
         depUserId = Preferences.getInstance().getString(me,"login","depUserId");
+        departmentId = Preferences.getInstance().getString(me,"login","departmentId");
     }
 
     @Override
@@ -46,6 +54,27 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
         super.onResume();
         token = Preferences.getInstance().getString(me,"login","token");
         depUserId = Preferences.getInstance().getString(me,"login","depUserId");
+        departmentId = Preferences.getInstance().getString(me,"login","departmentId");
+    }
+
+    //网络请求数据拦截器
+    public void interceptDate(){
+        BaseOkHttp.responseInterceptListener = new ResponseInterceptListener() {
+            @Override
+            public boolean onResponse(Context context, String url, String response, Exception error) {
+                if (error == null) {
+                    Map<String, String> data = JSONUtils.parseKeyAndValueToMap(response);
+                    if (data.get("msg").equals("success")){
+                        return true;
+                    }else{
+                        toast(data.get("msg"));
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        };
     }
 
     /*

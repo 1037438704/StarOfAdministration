@@ -23,6 +23,15 @@ public interface Constants {
     //公文拟制查询所有
     String DOCUMENT_QUERYPAGE = "/sys/documentfiction/queryPage";
 
+    //公文拟制新建保存
+    String DOCUMENT_SAVE = "/sys/documentfiction/save";
+
+    //根据部门id拟编号
+    String GETQUASINUMBER = "/sys/documentfiction/getQuasiNumber/";
+
+    //查询公文拟制公文字号数值
+    String GETNUMBER = "/sys/documentfiction/getNumber";
+
     //根据逐渐查询详情
     String DOCUMENTFICTION = "/sys/documentfiction/info";
 
