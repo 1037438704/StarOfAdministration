@@ -1,6 +1,8 @@
 package com.lawe.starofadministration.aty;
 
 import android.app.Dialog;
+import android.graphics.Bitmap;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -30,6 +32,7 @@ import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.DraftChatAdapter;
 import com.lawe.starofadministration.adp.TemplateAdapter;
@@ -42,10 +45,16 @@ import com.lawe.starofadministration.fgt.gongwen_nizhi.EnclosureCatalogFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinSpeedFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.SetMessageFragment;
 import com.lawe.starofadministration.utils.map.JSONUtils;
+import com.lawe.starofadministration.view.tuya.WriteDialogListener;
+import com.lawe.starofadministration.view.tuya.WritePadDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -105,6 +114,8 @@ public class DraftActivity extends BaseAty {
     private String jsons;
     private LinearLayout bottomGongneng;
     private String flagSpeed;
+    private Bitmap mSignBitmap;
+    private ImageView mIVSign;
 
     @Override
     public void initViews() {
@@ -138,6 +149,7 @@ public class DraftActivity extends BaseAty {
         draftChatSet = findViewById(R.id.draft_chat_set);
         draftChatNewText = findViewById(R.id.draft_chat_new_text);
         draftChatSetText = findViewById(R.id.draft_chat_set_text);
+
 
         //获取上一个页面传递的标识、
         flagSpeed = getIntent().getExtras().getString("flagSpeed");
@@ -173,6 +185,7 @@ public class DraftActivity extends BaseAty {
         draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
     }
     int pageCounte = 0;
+
     @Override
     public void initDatas(JumpParameter parameter) {
 
@@ -462,6 +475,48 @@ public class DraftActivity extends BaseAty {
                 fileSave();
             }
         });
+
+        //手写批注
+        bottomPizhu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                writeDocument();
+            }
+        });
+    }
+
+    private void writeDocument() {
+
+        WritePadDialog mWritePadDialog = new WritePadDialog(
+                DraftActivity.this, new WriteDialogListener() {
+            @Override
+            public void onPaintDone(Object object) {
+
+                //1、使用Dialog、设置style
+                final Dialog dialog = new Dialog(me, R.style.DialogTheme);
+                //2、设置布局
+                View view = View.inflate(me, R.layout.write_pad2, null);
+                dialog.setContentView(view);
+
+                Window window = dialog.getWindow();
+                //设置弹出位置
+                window.setGravity(Gravity.BOTTOM);
+                //设置弹出动画
+                window.setWindowAnimations(R.style.main_menu_animStyle);
+                //设置对话框大小
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                mIVSign = view.findViewById(R.id.iv_sign);
+
+                mSignBitmap = (Bitmap) object;
+                createSignFile();
+                mIVSign.setImageBitmap(mSignBitmap);
+
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
+            }
+        });
+        mWritePadDialog.show();
     }
 
     private void fileSave() {
@@ -494,5 +549,38 @@ public class DraftActivity extends BaseAty {
     private void wordMuban() {
 
 
+    }
+
+    //创建签名文件
+    private void createSignFile() {
+        ByteArrayOutputStream baos = null;
+        FileOutputStream fos = null;
+        String path = null;
+        File file = null;
+        try {
+            path = Environment.getExternalStorageDirectory() + File.separator + System.currentTimeMillis() + ".jpg";
+            file = new File(path);
+            fos = new FileOutputStream(file);
+            baos = new ByteArrayOutputStream();
+            //如果设置成Bitmap.compress(CompressFormat.JPEG, 100, fos) 图片的背景都是黑色的
+            mSignBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            byte[] b = baos.toByteArray();
+            if (b != null) {
+                fos.write(b);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+                if (baos != null) {
+                    baos.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -108,7 +108,8 @@ public class EnclosureCatalogFragment extends BaseFgt {
                 Toast.makeText(fgtContext, path +"11111",Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {//4.4以后
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+                //4.4以后
                 //path = getPath(this, uri);
                 path = uri.getPath();
                 Toast.makeText(fgtContext,path+"333",Toast.LENGTH_SHORT).show();

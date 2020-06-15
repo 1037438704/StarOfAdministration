@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.lawe.starofadministration.view.FontStyleSelectView
+        android:id="@+id/fontStyleSelectView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+    </com.lawe.starofadministration.view.FontStyleSelectView>
+
+    <Button
+        android:id="@+id/btn_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="8dp"
+        android:text="图片"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/fontSizeSelectView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fontStyleSelectView" />
+
+    <com.lawe.starofadministration.view.FontSizeSelectView
+        android:id="@+id/fontSizeSelectView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_img"
+        app:layout_constraintTop_toBottomOf="@+id/fontStyleSelectView">
+    </com.lawe.starofadministration.view.FontSizeSelectView>
+
+    <com.lawe.starofadministration.view.FontsColorSelectView
+        android:id="@+id/fontColorSelectView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_img">
+
+    </com.lawe.starofadministration.view.FontsColorSelectView>
+</LinearLayout>

@@ -1,19 +1,19 @@
 package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.text.Editable;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.JavascriptInterface;
-import android.webkit.JsResult;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -24,19 +24,21 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 
 import com.kongzue.baseframework.interfaces.Layout;
-import com.kongzue.baseframework.util.Preferences;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
-import com.kongzue.baseokhttp.util.Parameter;
-import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
-import com.lawe.starofadministration.bean.LoginDefaltBean;
+import com.lawe.starofadministration.bean.fontbean.FontStyle;
 import com.lawe.starofadministration.config.Constants;
+import com.lawe.starofadministration.handle.CustomHtml;
+import com.lawe.starofadministration.handle.RichEditImageGetter;
+import com.lawe.starofadministration.handle.Utils;
 import com.lawe.starofadministration.utils.map.JSONUtils;
+import com.lawe.starofadministration.view.FontStylePanel;
+import com.lawe.starofadministration.view.RichEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,15 +46,24 @@ import org.json.JSONObject;
 import java.net.URISyntaxException;
 import java.util.Map;
 
+import butterknife.OnClick;
+
+import static androidx.core.content.ContextCompat.checkSelfPermission;
+
 /**
  * author : fuke
  * date : 2020/4/30 16:36
  * description : 起草公文---公文编辑
  **/
-
 @Layout(R.layout.fgt_document_edit)
-public class DocumentEditFragment extends BaseFgt {
+public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFontPanelListener
+        , RichEditText.OnSelectChangeListener {
 
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
     private EditText documentTitle;
     private TextView documentNumber;
     private EditText documentSubject;
@@ -72,6 +83,8 @@ public class DocumentEditFragment extends BaseFgt {
     private TextView documentSubTitle;
     private String qNumber;  //拟编号的数字
     private String quasiNumber;  //公文拟编号
+    private FontStylePanel fontStylePanel;
+    private RichEditText richEditText;
 
     @Override
     public void initViews() {
@@ -90,6 +103,10 @@ public class DocumentEditFragment extends BaseFgt {
         imgBohui = (ImageView) findViewById(R.id.img_bohui);
         webview = (WebView) findViewById(R.id.webview);
         webceshi = (TextView) findViewById(R.id.document_sub_title);
+        fontStylePanel = (FontStylePanel) findViewById(R.id.fontStylePanel);
+        richEditText = (RichEditText) findViewById(R.id.richEditText);
+        fontStylePanel.setOnFontPanelListener(this);
+        richEditText.setOnSelectChangeListener(this);
         //设置字体
         documentTitle.setTypeface(getTextMedium);
         newWorkTitle.setText("公文标题：");
@@ -104,6 +121,17 @@ public class DocumentEditFragment extends BaseFgt {
         getNumber();
 
         showWord();
+
+        initRichTextCon();
+    }
+
+    private void initRichTextCon(){
+        String html_content = fgtContext.getIntent().getStringExtra("html_content");
+        if(!TextUtils.isEmpty(html_content)){
+            Log.d("richText","html转span:"+html_content);
+            Spanned spanned = CustomHtml.fromHtml(html_content,CustomHtml.FROM_HTML_MODE_LEGACY,new RichEditImageGetter(fgtContext,richEditText),null);
+            richEditText.setText(spanned);
+        }
     }
 
     private void getNumber() {
@@ -206,6 +234,95 @@ public class DocumentEditFragment extends BaseFgt {
     private void sendInfoToJs() {
         //调用js中的函数：
         webview.loadUrl("javascript:aa('"+filePath +"','"+depUserId +"','"+temWordfile +"','"+documentationType +"')");
+    }
+
+    @Override
+    public void setBold(boolean isBold) {
+        richEditText.setBold(isBold);
+    }
+
+    @Override
+    public void setItalic(boolean isItalic) {
+        richEditText.setItalic(isItalic);
+    }
+
+    @Override
+    public void setUnderline(boolean isUnderline) {
+        richEditText.setUnderline(isUnderline);
+    }
+
+    @Override
+    public void setStreak(boolean isStreak) { richEditText.setStreak(isStreak); }
+
+
+    @Override
+    public void insertImg() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(fgtContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(fgtContext, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                ActivityCompat.requestPermissions(fgtContext, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
+            } else {
+                pickPicture();
+            }
+        } else {
+            pickPicture();
+        }
+    }
+
+    private void pickPicture(){
+        Intent getAlbum = new Intent(Intent.ACTION_GET_CONTENT);
+        getAlbum.setType("image/*");
+        startActivityForResult(getAlbum, 0);
+    }
+    //字体大小
+    @Override
+    public void setFontSize(int size) {
+        richEditText.setFontSize(size);
+    }
+    //颜色设置
+    @Override
+    public void setFontColor(int color) {
+        richEditText.setFontColor(color);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0) {
+            Uri originalUri = data.getData(); // 获得图片的uri
+            String path = Utils.getRealPathFromUri(fgtContext,originalUri);
+            richEditText.setImg(path);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    /*@OnClick(R.id.btn_right)
+    protected void btn_right_onClick(){
+        String content = CustomHtml.toHtml(richEditText.getEditableText(),CustomHtml.TO_HTML_PARAGRAPH_LINES_CONSECUTIVE);
+        Log.d("richText","span转html:"+content);
+        Intent intent = new Intent(this,WebviewActivity.class);
+        intent.putExtra("content",content);
+        startActivity(intent);
+    }*/
+    /**
+     * 样式改变
+     * @param fontStyle
+     */
+    @Override
+    public void onFontStyleChang(FontStyle fontStyle) {
+        fontStylePanel.initFontStyle(fontStyle);
+    }
+
+    /**
+     * 光标选中监听
+     * @param start
+     * @param end
+     */
+    @Override
+    public void onSelect(int start, int end) {
+    }
+
+    private void checkPermission() {
+
     }
 
     private class JsInterface {
