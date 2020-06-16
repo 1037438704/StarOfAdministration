@@ -8,15 +8,19 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.text.Editable;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseokhttp.HttpRequest;
@@ -85,6 +90,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
     private String quasiNumber;  //公文拟编号
     private FontStylePanel fontStylePanel;
     private RichEditText richEditText;
+    private Button btnCenter;
+    private int flagCenter = 1;
 
     @Override
     public void initViews() {
@@ -105,6 +112,7 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
         webceshi = (TextView) findViewById(R.id.document_sub_title);
         fontStylePanel = (FontStylePanel) findViewById(R.id.fontStylePanel);
         richEditText = (RichEditText) findViewById(R.id.richEditText);
+        btnCenter = (Button) findViewById(R.id.btn_center);
         fontStylePanel.setOnFontPanelListener(this);
         richEditText.setOnSelectChangeListener(this);
         //设置字体
@@ -125,15 +133,6 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
         initRichTextCon();
     }
 
-    private void initRichTextCon(){
-        String html_content = fgtContext.getIntent().getStringExtra("html_content");
-        if(!TextUtils.isEmpty(html_content)){
-            Log.d("richText","html转span:"+html_content);
-            Spanned spanned = CustomHtml.fromHtml(html_content,CustomHtml.FROM_HTML_MODE_LEGACY,new RichEditImageGetter(fgtContext,richEditText),null);
-            richEditText.setText(spanned);
-        }
-    }
-
     private void getNumber() {
         JSONObject json = new JSONObject();
         try {
@@ -152,6 +151,7 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
         });
     }
 
+    //获取拟编号
     private void getQuasiNumber() {
 
         HttpRequest.build(me,Constants.GETQUASINUMBER + departmentId)
@@ -172,8 +172,100 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
     @Override
     public void initDatas() {
 
+
     }
 
+    @Override
+    public void setEvents() {
+       /* //实时监听edittext内容变化
+        richEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                isEmpty = TextUtils.isEmpty(documentSubject.getText());
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isEmpty = TextUtils.isEmpty(documentSubject.getText());
+                //如果为空
+                if (isEmpty) {
+                    cebianlan.setVisibility(View.GONE);
+                } else {
+                    cebianlan.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });*/
+
+        //监听edittext滚动
+        documentSubject.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_MOVE:
+                        imgTop.setVisibility(View.VISIBLE);
+                        break;
+                }
+                return false;
+            }
+        });
+        //输入内容回滚顶部
+        imgTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                documentSubject.setSelection(0);
+            }
+        });
+        //放大字体
+        imgBig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textsize++;
+                if(textsize == 25){
+                    textsize = 25;
+                    toast("不能再大了");
+                    return;
+                }
+                documentSubject.setTextSize(textsize);
+            }
+        });
+
+        //缩小字体
+        imgSmall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textsize--;
+                if(textsize == 12){
+                    textsize = 12;
+                    toast("不能再小了");
+                    return;
+                }
+                documentSubject.setTextSize(textsize);
+            }
+        });
+
+        btnCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flagCenter == 1){
+                    richEditText.setGravity(Gravity.CENTER);
+                    btnCenter.setTextColor(ContextCompat.getColor(fgtContext, R.color.colorPrimaryDark));
+                    flagCenter = 2;
+                }else if(flagCenter == 2){
+                    richEditText.setGravity(Gravity.LEFT);
+                    btnCenter.setTextColor(ContextCompat.getColor(fgtContext, R.color.result_view));
+                    flagCenter = 1;
+                }
+            }
+        });
+    }
+
+    //-----------------------------------------------调用第三方pageOffers-----------------------------------------
     @SuppressLint("JavascriptInterface")
     @JavascriptInterface
     private void showWord() {
@@ -236,6 +328,20 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
         webview.loadUrl("javascript:aa('"+filePath +"','"+depUserId +"','"+temWordfile +"','"+documentationType +"')");
     }
 
+    private class JsInterface {
+        private Context mContext;
+
+        public JsInterface(Context context) {
+            this.mContext = context;
+        }
+
+        @JavascriptInterface
+        public void showInfoFromJs(String name) {
+            Toast.makeText(mContext, name, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //----------------------------------设置字体样式、大小、颜色-------------------------------------------------------
     @Override
     public void setBold(boolean isBold) {
         richEditText.setBold(isBold);
@@ -253,7 +359,6 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
 
     @Override
     public void setStreak(boolean isStreak) { richEditText.setStreak(isStreak); }
-
 
     @Override
     public void insertImg() {
@@ -295,6 +400,15 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    private void initRichTextCon(){
+        String html_content = fgtContext.getIntent().getStringExtra("html_content");
+        if(!TextUtils.isEmpty(html_content)){
+            Log.d("richText","html转span:"+html_content);
+            Spanned spanned = CustomHtml.fromHtml(html_content,CustomHtml.FROM_HTML_MODE_LEGACY,new RichEditImageGetter(fgtContext,richEditText),null);
+            richEditText.setText(spanned);
+        }
+    }
+
     /*@OnClick(R.id.btn_right)
     protected void btn_right_onClick(){
         String content = CustomHtml.toHtml(richEditText.getEditableText(),CustomHtml.TO_HTML_PARAGRAPH_LINES_CONSECUTIVE);
@@ -323,93 +437,6 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
 
     private void checkPermission() {
 
-    }
-
-    private class JsInterface {
-        private Context mContext;
-
-        public JsInterface(Context context) {
-            this.mContext = context;
-        }
-
-        @JavascriptInterface
-        public void showInfoFromJs(String name) {
-            Toast.makeText(mContext, name, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void setEvents() {
-       /* //实时监听edittext内容变化
-        documentSubject.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                isEmpty = TextUtils.isEmpty(documentSubject.getText());
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                isEmpty = TextUtils.isEmpty(documentSubject.getText());
-                //如果为空
-                if (isEmpty) {
-                    cebianlan.setVisibility(View.GONE);
-                } else {
-                    cebianlan.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });*/
-        //监听edittext滚动
-        documentSubject.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                v.getParent().requestDisallowInterceptTouchEvent(true);
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_MOVE:
-                        imgTop.setVisibility(View.VISIBLE);
-                        break;
-                }
-                return false;
-            }
-        });
-        //输入内容回滚顶部
-        imgTop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                documentSubject.setSelection(0);
-            }
-        });
-        //放大字体
-        imgBig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textsize++;
-                if(textsize == 25){
-                    textsize = 25;
-                    toast("不能再大了");
-                    return;
-                }
-                documentSubject.setTextSize(textsize);
-            }
-        });
-
-        //缩小字体
-        imgSmall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textsize--;
-                if(textsize == 12){
-                    textsize = 12;
-                    toast("不能再小了");
-                    return;
-                }
-                documentSubject.setTextSize(textsize);
-            }
-        });
     }
 
     public static DocumentEditFragment newInstance() {

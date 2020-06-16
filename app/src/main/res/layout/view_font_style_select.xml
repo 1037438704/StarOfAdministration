@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/btn_bold"
-        android:layout_width="40dp"
+        android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="3dp"
         android:text="B"
@@ -19,7 +19,7 @@
 
     <Button
         android:id="@+id/btn_italic"
-        android:layout_width="40dp"
+        android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="4dp"
         android:text="I"
@@ -32,9 +32,8 @@
 
     <Button
         android:id="@+id/btn_underline"
-        android:layout_width="40dp"
+        android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="4dp"
         android:text="U"
         android:background="@null"
         style="?android:attr/borderlessButtonStyle"
@@ -45,10 +44,9 @@
 
     <Button
         android:id="@+id/btn_streak"
-        android:layout_width="40dp"
+        android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginStart="4dp"
         android:text="S"
         android:background="@null"
         style="?android:attr/borderlessButtonStyle"

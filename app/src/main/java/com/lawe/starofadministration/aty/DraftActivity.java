@@ -485,19 +485,18 @@ public class DraftActivity extends BaseAty {
         });
     }
 
+    //手写批注
     private void writeDocument() {
 
         WritePadDialog mWritePadDialog = new WritePadDialog(
                 DraftActivity.this, new WriteDialogListener() {
             @Override
             public void onPaintDone(Object object) {
-
                 //1、使用Dialog、设置style
                 final Dialog dialog = new Dialog(me, R.style.DialogTheme);
                 //2、设置布局
                 View view = View.inflate(me, R.layout.write_pad2, null);
                 dialog.setContentView(view);
-
                 Window window = dialog.getWindow();
                 //设置弹出位置
                 window.setGravity(Gravity.BOTTOM);
@@ -505,13 +504,10 @@ public class DraftActivity extends BaseAty {
                 window.setWindowAnimations(R.style.main_menu_animStyle);
                 //设置对话框大小
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
                 mIVSign = view.findViewById(R.id.iv_sign);
-
                 mSignBitmap = (Bitmap) object;
                 createSignFile();
                 mIVSign.setImageBitmap(mSignBitmap);
-
                 dialog.setCanceledOnTouchOutside(true);
                 dialog.show();
             }
@@ -519,6 +515,7 @@ public class DraftActivity extends BaseAty {
         mWritePadDialog.show();
     }
 
+    //文件保存
     private void fileSave() {
         JSONObject json = new JSONObject();
         try {

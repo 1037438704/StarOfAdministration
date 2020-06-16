@@ -63,6 +63,7 @@ public class FontStylePanel extends LinearLayout {
         cusView_fontStyle = view.findViewById(R.id.fontStyleSelectView);
         cusView_fontSize1 = view.findViewById(R.id.fontSizeSelectView);
         cusView_fontColor1 = view.findViewById(R.id.fontColorSelectView);
+
         ButterKnife.bind(this);
         fontStyle = new FontStyle();
         //字体样式

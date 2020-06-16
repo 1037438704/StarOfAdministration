@@ -63,13 +63,13 @@ public class WritePadDialog extends Dialog {
         mFrameLayout.addView(mPaintView);
         mPaintView.requestFocus();
 
-        mBtnOK = (Button) findViewById(R.id.write_pad_ok);
+        mBtnOK = findViewById(R.id.write_pad_ok);
         mIVSign = findViewById(R.id.iv_sign);
         mBtnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mPaintView.getPath().isEmpty()) {
-                    Toast.makeText(mContext, "请写下你的大名", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "请写批注", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 mWriteDialogListener.onPaintDone(mPaintView.getPaintBitmap());
@@ -77,23 +77,20 @@ public class WritePadDialog extends Dialog {
             }
         });
 
-        mBtnClear = (Button) findViewById(R.id.write_pad_clear);
+        mBtnClear = findViewById(R.id.write_pad_clear);
         mBtnClear.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 mPaintView.clear();
             }
         });
 
-        mBtnCancel = (Button) findViewById(R.id.write_pad_cancel);
+        mBtnCancel = findViewById(R.id.write_pad_cancel);
         mBtnCancel.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 cancel();
             }
         });
     }
-
 }
