@@ -1,6 +1,7 @@
 package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
 import android.app.Dialog;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kongzue.baseframework.interfaces.Layout;
+import com.kongzue.baseframework.util.Preferences;
+import com.kongzue.baseokhttp.HttpRequest;
+import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.aty.ChooseCompanyActivity;
 import com.lawe.starofadministration.base.BaseFgt;
+import com.lawe.starofadministration.bean.ByTypeBean;
+import com.lawe.starofadministration.bean.LoginDefaltBean;
+import com.lawe.starofadministration.bean.ZhutiFindAllBean;
+import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.utils.PickerView;
+import com.lawe.starofadministration.utils.map.JSONUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * author : fuke
@@ -28,18 +41,24 @@ import java.util.List;
 public class SetMessageFragment extends BaseFgt {
 
     private LinearLayout setmesType;
-    private TextView setmesTypeText;
+    private TextView setmesTextType;
     private LinearLayout setmesZhuti;
     private LinearLayout setmesHuiqian;
     private LinearLayout setmesTime;
+    private String textContext;
 
-    List<String> data = new ArrayList<String>();
+    List<String> data_type = new ArrayList<String>();
+    List<String> data_zhuti = new ArrayList<String>();
+    private String jsonType;
+    private String dataType = "";
+    private TextView setmesTextZhuti;
 
     @Override
     public void initViews() {
         setmesType = (LinearLayout) findViewById(R.id.setmes_type);
-        setmesTypeText = (TextView) findViewById(R.id.setmes_type_text);
+        setmesTextType = (TextView) findViewById(R.id.setmes_text_type);
         setmesZhuti = (LinearLayout) findViewById(R.id.setmes_zhuti);
+        setmesTextZhuti = (TextView) findViewById(R.id.setmes_text_zhuti);
         setmesHuiqian = (LinearLayout) findViewById(R.id.setmes_huiqian);
         setmesTime = (LinearLayout) findViewById(R.id.setmes_time);
     }
@@ -49,48 +68,24 @@ public class SetMessageFragment extends BaseFgt {
 
 
     }
-
+    private PickerView minute_pv;
     @Override
     public void setEvents() {
 
         //公文类型
         setmesType.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                //1、使用Dialog、设置style
-                final Dialog dialog = new Dialog(getContext(),R.style.DialogTheme);
-                //2、设置布局
-                View view = View.inflate(getContext(),R.layout.pop_document_type,null);
-                dialog.setContentView(view);
+                dataType = "doc_type";
+                getDocuType();
+            }
+        });
 
-                Window window = dialog.getWindow();
-                //设置弹出位置
-                window.setGravity(Gravity.BOTTOM);
-                //设置弹出动画
-                window.setWindowAnimations(R.style.main_menu_animStyle);
-                //设置对话框大小
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                PickerView minute_pv = view.findViewById(R.id.minute_pv);
-
-                for (int i = 0; i < 10; i++)
-                {
-                    data.add("0" + i);
-                }
-                minute_pv.setData(data);
-                minute_pv.setOnSelectListener(new PickerView.onSelectListener()
-                {
-
-                    @Override
-                    public void onSelect(String text)
-                    {
-                        Toast.makeText(getContext(), "选择了 " + text + " 分",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
+        //公文主题
+        setmesZhuti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getDocuZhuti();
             }
         });
 
@@ -99,6 +94,116 @@ public class SetMessageFragment extends BaseFgt {
             @Override
             public void onClick(View v) {
                 jump(ChooseCompanyActivity.class);
+            }
+        });
+    }
+
+    //公文主题
+    private void getDocuZhuti() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("parentId", "");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //json转化为string类型
+        jsonType = String.valueOf(json);
+        HttpRequest.JSONPOST(me, Constants.LISTFINDALL, jsonType, new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                ZhutiFindAllBean zhutiFindAllBean = gson.fromJson(response, ZhutiFindAllBean.class);
+
+                final Dialog dialog = new Dialog(getContext(),R.style.DialogTheme);
+                View view = View.inflate(getContext(),R.layout.pop_document_type,null);
+                dialog.setContentView(view);
+                Window window = dialog.getWindow();
+                window.setGravity(Gravity.BOTTOM);
+                window.setWindowAnimations(R.style.main_menu_animStyle);
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                minute_pv = view.findViewById(R.id.minute_pv);
+                TextView popFinish = view.findViewById(R.id.pop_finish);
+                TextView popCancle = view.findViewById(R.id.pop_cancle);
+                for (int i = 0; i < zhutiFindAllBean.getList().size(); i++) {
+                    String themeName = zhutiFindAllBean.getList().get(i).getThemeName();
+                    data_zhuti.add(themeName);
+                }
+                minute_pv.setData(data_zhuti);
+                minute_pv.setOnSelectListener(new PickerView.onSelectListener() {
+                    @Override
+                    public void onSelect(String text) {
+                        textContext = text;
+                    }
+                });
+                popFinish.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setmesTextZhuti.setText(textContext);
+                        dialog.cancel();
+                    }
+                });
+                popCancle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
+            }
+        });
+    }
+
+    //公文类型
+    private void getDocuType() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("dataType", dataType);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //json转化为string类型
+        jsonType = String.valueOf(json);
+        HttpRequest.JSONPOST(me, Constants.BYTYPE, jsonType, new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                ByTypeBean byTypeBean = gson.fromJson(response, ByTypeBean.class);
+
+                final Dialog dialog = new Dialog(getContext(),R.style.DialogTheme);
+                View view = View.inflate(getContext(),R.layout.pop_document_type,null);
+                dialog.setContentView(view);
+                Window window = dialog.getWindow();
+                window.setGravity(Gravity.BOTTOM);
+                window.setWindowAnimations(R.style.main_menu_animStyle);
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                minute_pv = view.findViewById(R.id.minute_pv);
+                TextView popFinish = view.findViewById(R.id.pop_finish);
+                TextView popCancle = view.findViewById(R.id.pop_cancle);
+                for (int i = 0; i < byTypeBean.getDataDictList().size(); i++) {
+                    String dataKey = byTypeBean.getDataDictList().get(i).getDataKey();
+                    data_type.add(dataKey);
+                }
+                minute_pv.setData(data_type);
+                minute_pv.setOnSelectListener(new PickerView.onSelectListener() {
+                    @Override
+                    public void onSelect(String text) {
+                        textContext = text;
+                    }
+                });
+                popFinish.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setmesTextType.setText(textContext);
+                        dialog.cancel();
+                    }
+                });
+                popCancle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
             }
         });
     }

@@ -242,7 +242,6 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                 textsize--;
                 if(textsize == 12){
                     textsize = 12;
-                    toast("不能再小了");
                     return;
                 }
                 documentSubject.setTextSize(textsize);

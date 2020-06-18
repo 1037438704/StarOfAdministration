@@ -35,6 +35,12 @@ public interface Constants {
     //根据逐渐查询详情
     String DOCUMENTFICTION = "/sys/documentfiction/info";
 
+    //查询字典表
+    String BYTYPE = "/sys/dataDict/byType";
+
+    //查询公文主题
+    String LISTFINDALL = "/sys/documenttheme/listFindAll";
+
     //调用word模板
     String SHOWWORDTEMPLATE = "/sys/poffice/showWordTemplate";
 

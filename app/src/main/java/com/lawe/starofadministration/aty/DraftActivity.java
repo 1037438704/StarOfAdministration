@@ -213,7 +213,6 @@ public class DraftActivity extends BaseAty {
         viewPagerData.setAdapter(viewPagerAdp);
         viewPagerData.setCurrentItem(pageCounte);
 
-
         draftChatRecycle.setLayoutManager(layoutManager);
         draftChatRecycle.setAdapter(draftChatAdapter);
         for (int i = 0; i < 10; i++) {

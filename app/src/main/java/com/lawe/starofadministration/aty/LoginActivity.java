@@ -310,7 +310,7 @@ public class LoginActivity extends BaseAty {
 
     //登录请求
     private void postLogin() {
-        //jump(MainActivity.class);
+             //jump(MainActivity.class);
           //账号密码登录
             loginPhone = login_phone.getText().toString();
             loginPass = login_edpass.getText().toString();

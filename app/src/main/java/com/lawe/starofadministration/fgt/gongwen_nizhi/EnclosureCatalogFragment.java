@@ -43,13 +43,12 @@ public class EnclosureCatalogFragment extends BaseFgt {
     private List<String> list;
     private String path;
     private RecyclerView enclosureRecycleAdd;
+    private EnclosureAdapter enclosureAdapter;
 
     @Override
     public Bitmap fastblur(Context context, Bitmap sentBitmap, int radius) {
         return super.fastblur(context, sentBitmap, radius);
     }
-
-    private EnclosureAdapter enclosureAdapter;
 
     @Override
     public void initViews() {
@@ -76,7 +75,6 @@ public class EnclosureCatalogFragment extends BaseFgt {
         }
         enclosureAdapter.setNewData(list);
         enclosureAdapter.notifyDataSetChanged();
-
     }
 
     @Override
