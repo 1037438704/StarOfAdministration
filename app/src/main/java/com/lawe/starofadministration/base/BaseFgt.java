@@ -23,6 +23,8 @@ import com.lawe.starofadministration.utils.map.JSONUtils;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import baseokhttp3.MediaType;
@@ -39,6 +41,8 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
     public String token;
     public String depUserId;
     public String departmentId;
+    public String name;
+    public String departFullName;
 
     @Override
     public void initViews() {
@@ -47,6 +51,8 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
         token = Preferences.getInstance().getString(me,"login","token");
         depUserId = Preferences.getInstance().getString(me,"login","depUserId");
         departmentId = Preferences.getInstance().getString(me,"login","departmentId");
+        name = Preferences.getInstance().getString(me,"login","name");
+        departFullName = Preferences.getInstance().getString(me,"login","departFullName");
     }
 
     @Override
@@ -55,6 +61,18 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
         token = Preferences.getInstance().getString(me,"login","token");
         depUserId = Preferences.getInstance().getString(me,"login","depUserId");
         departmentId = Preferences.getInstance().getString(me,"login","departmentId");
+        name = Preferences.getInstance().getString(me,"login","name");
+        departFullName = Preferences.getInstance().getString(me,"login","departFullName");
+    }
+
+    //获取当前时间
+    public String getTime(){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
+        Date curDate =  new Date(System.currentTimeMillis());
+        String str = formatter.format(curDate);
+
+        Log.e("times",str);
+        return str;
     }
 
     //网络请求数据拦截器

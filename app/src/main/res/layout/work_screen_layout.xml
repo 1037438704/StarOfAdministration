@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="按责任单位/人筛选"
+            android:text="按责任单位筛选"
             android:textColor="@color/text9f9fa0"
             android:textSize="14dp" />
 
@@ -57,57 +57,6 @@
                 android:src="@mipmap/daiban_down"
                 android:layout_width="8dp"
                 android:layout_height="4dp"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="按状态筛选"
-            android:textColor="@color/text9f9fa0"
-            android:textSize="14sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"
-            android:layout_height="wrap_content">
-
-            <CheckBox
-                android:text="待处理"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:button="@null"
-                android:background="@drawable/select_shaixuan"
-                android:textColor="@drawable/select_text_color"
-                android:layout_width="78dp"
-                android:layout_height="38dp"
-                />
-
-            <CheckBox
-                android:text="进行中"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:layout_marginLeft="12dp"
-                android:button="@null"
-                android:background="@drawable/select_shaixuan"
-                android:textColor="@drawable/select_text_color"
-                android:layout_width="78dp"
-                android:layout_height="38dp"
-                />
-
-            <CheckBox
-                android:text="已完成"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:button="@null"
-                android:layout_marginLeft="12dp"
-                android:background="@drawable/select_shaixuan"
-                android:textColor="@drawable/select_text_color"
-                android:layout_width="78dp"
-                android:layout_height="38dp"
-                />
 
         </LinearLayout>
 

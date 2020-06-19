@@ -27,6 +27,7 @@
 
 
             <TextView
+                android:id="@+id/pop_fujian_quan"
                 android:text="全体人员可见"
                 android:textColor="#ffffff"
                 android:textSize="16dp"
@@ -46,6 +47,7 @@
                 android:layout_height="1dp"/>
 
             <TextView
+                android:id="@+id/pop_fujian_chuang"
                 android:text="仅创建者可见"
                 android:textColor="#ffffff"
                 android:textSize="16dp"
@@ -65,6 +67,7 @@
                 android:layout_height="1dp"/>
 
             <TextView
+                android:id="@+id/pop_fujian_delete"
                 android:text="删除附件"
                 android:textColor="#ffffff"
                 android:textSize="16dp"

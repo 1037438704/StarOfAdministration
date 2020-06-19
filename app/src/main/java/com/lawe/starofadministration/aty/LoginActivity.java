@@ -339,12 +339,16 @@ public class LoginActivity extends BaseAty {
                     public void onResponse(String response, Exception error) {
                         LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);
                         String depUserId = loginDefaltBean.getEntityBO().getId();
+                        String dName = loginDefaltBean.getEntityBO().getDName();
                         for (int i = 0; i < loginDefaltBean.getEntityBO().getListDepartment().size(); i++) {
                             String departmentId = loginDefaltBean.getEntityBO().getListDepartment().get(i).getId();
+                            String departFullName = loginDefaltBean.getEntityBO().getListDepartment().get(i).getDepartFullName();
                             Preferences.getInstance().set(me, "login", "departmentId",departmentId);
+                            Preferences.getInstance().set(me, "login", "departFullName",departFullName);
                         }
                         Preferences.getInstance().set(me, "login", "token",loginDefaltBean.getToken());
                         Preferences.getInstance().set(me, "login", "depUserId",depUserId);
+                        Preferences.getInstance().set(me, "login", "name",dName);
 
                         isFrist();
                     }

@@ -15,6 +15,7 @@ import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseAty;
+import com.lawe.starofadministration.utils.SoftHideKeyBoardUtil;
 
 /**
  * author : fuke
@@ -40,6 +41,7 @@ public class SetSafeActivity extends BaseAty {
     @Override
     public void initViews() {
         super.initViews();
+        SoftHideKeyBoardUtil.assistActivity(this);
         setSafeBack = findViewById(R.id.set_safe_back);
         setSafeTitle = findViewById(R.id.set_safe_title);
         setSafeNone = findViewById(R.id.set_safe_none);

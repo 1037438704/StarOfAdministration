@@ -36,7 +36,6 @@ import java.util.Map;
  * date : 2020/4/30 16:40
  * description : 起草公文---设置信息
  **/
-
 @Layout(R.layout.fgt_set_message)
 public class SetMessageFragment extends BaseFgt {
 
@@ -49,9 +48,12 @@ public class SetMessageFragment extends BaseFgt {
 
     List<String> data_type = new ArrayList<String>();
     List<String> data_zhuti = new ArrayList<String>();
+    List<String> data_tiaojian = new ArrayList<String>();
     private String jsonType;
     private String dataType = "";
     private TextView setmesTextZhuti;
+    private LinearLayout setmesTiaoJian;
+    private TextView setmesTextTiaojian;
 
     @Override
     public void initViews() {
@@ -59,6 +61,8 @@ public class SetMessageFragment extends BaseFgt {
         setmesTextType = (TextView) findViewById(R.id.setmes_text_type);
         setmesZhuti = (LinearLayout) findViewById(R.id.setmes_zhuti);
         setmesTextZhuti = (TextView) findViewById(R.id.setmes_text_zhuti);
+        setmesTiaoJian = (LinearLayout) findViewById(R.id.setmes_tiaojian);
+        setmesTextTiaojian = (TextView) findViewById(R.id.setmes_text_tiaojian);
         setmesHuiqian = (LinearLayout) findViewById(R.id.setmes_huiqian);
         setmesTime = (LinearLayout) findViewById(R.id.setmes_time);
     }
@@ -89,11 +93,66 @@ public class SetMessageFragment extends BaseFgt {
             }
         });
 
+        //共享条件
+        setmesTiaoJian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(getContext(),R.style.DialogTheme);
+                View view = View.inflate(getContext(),R.layout.pop_document_type,null);
+                dialog.setContentView(view);
+                Window window = dialog.getWindow();
+                window.setGravity(Gravity.BOTTOM);
+                window.setWindowAnimations(R.style.main_menu_animStyle);
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                minute_pv = view.findViewById(R.id.minute_pv);
+                TextView popFinish = view.findViewById(R.id.pop_finish);
+                TextView popCancle = view.findViewById(R.id.pop_cancle);
+                String one = "公开";
+                String two = "不公开";
+                String three = "依申请公开";
+
+                data_tiaojian.add(one);
+                data_tiaojian.add(two);
+                data_tiaojian.add(three);
+
+                minute_pv.setData(data_tiaojian);
+                minute_pv.setOnSelectListener(new PickerView.onSelectListener() {
+                    @Override
+                    public void onSelect(String text) {
+                        textContext = text;
+                    }
+                });
+                popFinish.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setmesTextTiaojian.setText(textContext);
+                        dialog.cancel();
+                    }
+                });
+                popCancle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
+            }
+        });
+
         //会签单位
         setmesHuiqian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 jump(ChooseCompanyActivity.class);
+            }
+        });
+
+        //定时发送
+        setmesTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

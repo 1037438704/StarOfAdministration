@@ -26,7 +26,10 @@ import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.utils.map.JSONUtils;
 
+import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -46,6 +49,8 @@ abstract public class BaseAty extends BaseActivity implements Constants {
     public String token;
     public String depUserId;
     public String departmentId;
+    public String name;
+    public String departFullName;
 
     //所有的页面都要加
     @Override
@@ -54,6 +59,8 @@ abstract public class BaseAty extends BaseActivity implements Constants {
         token = Preferences.getInstance().getString(me,"login","token");
         depUserId = Preferences.getInstance().getString(me,"login","depUserId");
         departmentId = Preferences.getInstance().getString(me,"login","departmentId");
+        name = Preferences.getInstance().getString(me,"login","name");
+        departFullName = Preferences.getInstance().getString(me,"login","departFullName");
     }
 
     @Override
@@ -62,6 +69,16 @@ abstract public class BaseAty extends BaseActivity implements Constants {
         token = Preferences.getInstance().getString(me,"login","token");
         depUserId = Preferences.getInstance().getString(me,"login","depUserId");
         departmentId = Preferences.getInstance().getString(me,"login","departmentId");
+        name = Preferences.getInstance().getString(me,"login","name");
+        departFullName = Preferences.getInstance().getString(me,"login","departFullName");
+    }
+
+    //获取当前时间
+    public String getTime(){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
+        Date curDate =  new Date(System.currentTimeMillis());
+        String str = formatter.format(curDate);
+        return str;
     }
 
     //网络请求数据拦截器
@@ -151,7 +168,21 @@ abstract public class BaseAty extends BaseActivity implements Constants {
         }
     }
 
+    /**
+     * 禁止Edittext弹出软件盘，光标依然正常显示。
+     */
+    public static void disableShowSoftInput(EditText editText) {
+        Class<EditText> cls = EditText.class;
+        Method method;
+        try {
+            method = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
+            method.setAccessible(true);
+            method.invoke(editText, false);
+        } catch (Exception e) {
+            // TODO: 2018/8/27 处理错误
+        }
 
+    }
     /**
      * 请求权限
      * <p>

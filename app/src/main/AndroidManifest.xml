@@ -52,7 +52,7 @@
         <activity android:name=".aty.FeedBackActivity" /> <!-- 系统设置 -->
         <activity android:name=".aty.SystemActivity" /> <!-- 重置密码 -->
         <activity android:name=".aty.UpdatePassActivity" /> <!-- 安全设置 -->
-        <activity android:name=".aty.SetSafeActivity" /> <!-- 我的勋章 -->
+        <activity android:name=".aty.SetSafeActivity"/> <!-- 我的勋章 -->
         <activity android:name=".aty.MyMedalActivity" /> <!-- 聊天页面 -->
         <activity
             android:name=".aty.ChatActivity"

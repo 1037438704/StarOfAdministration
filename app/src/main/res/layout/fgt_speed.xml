@@ -7,6 +7,8 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:background="#DB1F2C"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:id="@+id/speed_linerar_layout"
     tools:context=".fgt.SpeedFragment"
     android:layout_height="match_parent">

@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -57,6 +59,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * author : fuke
@@ -170,6 +173,14 @@ public class FictionActivity extends BaseAty {
         titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //新建的时候创建uuid--即relationId
+                UUID own= UUID.randomUUID();
+                Log.e("uuid",own+"");
+                //打印输出own=“81199e92-b564-4366-b72b-e20ce463a26d”；
+                SharedPreferences nizhi_uuid = getSharedPreferences("nizhi_uuid", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = nizhi_uuid.edit();
+                edit.putString("ni_relationId",own+"").commit();
+
                 Intent intent = new Intent(FictionActivity.this, DraftActivity.class);
                 intent.putExtra("flagSpeed","1");
                 startActivity(intent);

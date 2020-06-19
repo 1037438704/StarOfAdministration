@@ -41,6 +41,18 @@ public interface Constants {
     //查询公文主题
     String LISTFINDALL = "/sys/documenttheme/listFindAll";
 
+    //附件目录
+    String UPLOADQUERYPAGE = "/sys/upload/queryPage";
+
+    //上传附件
+    String UPLOADFILE = "/sys/upload/uploadFile";
+
+    //修改附件
+    String UPDATEFILE = "/sys/upload/update";
+
+    //删除附件
+    String DELETEFUJIAN = "/sys/upload/delete/";
+
     //调用word模板
     String SHOWWORDTEMPLATE = "/sys/poffice/showWordTemplate";
 
