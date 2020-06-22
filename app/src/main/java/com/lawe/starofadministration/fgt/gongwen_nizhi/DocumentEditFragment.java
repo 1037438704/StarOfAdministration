@@ -5,9 +5,11 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -92,6 +94,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
     private RichEditText richEditText;
     private Button btnCenter;
     private int flagCenter = 1;
+    private SharedPreferences.Editor edit;
+    private Handler handler = new Handler();
 
     @Override
     public void initViews() {
@@ -122,6 +126,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
 
         //判断公文主体是否为空
        // isEmpty = TextUtils.isEmpty(documentSubject.getText());
+        SharedPreferences sp = getActivity().getSharedPreferences("newFile", Context.MODE_PRIVATE);
+        edit = sp.edit();
 
         //获取拟编号
         getQuasiNumber();
@@ -147,6 +153,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
             public void onResponse(String response, Exception error) {
                 Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
                 qNumber = map.get("number");
+                //保存拟编号的数值
+                edit.putString("qNumber",qNumber).commit();
             }
         });
     }
@@ -162,6 +170,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                             Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
                             quasiNumber = map.get("newQuasiNumber");
                             documentNumber.setText("拟编号："+ quasiNumber);
+                            //保存拟编号
+                            edit.putString("quasiNumber",quasiNumber).commit();
                         }else{
                             error.getMessage();
                         }
@@ -171,9 +181,68 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
 
     @Override
     public void initDatas() {
+        //时时获取标题内容
+        documentTitle.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(delayRun!=null){
+                     //每次editText有变化的时候，则移除上次发出的延迟线程
+                     handler.removeCallbacks(delayRun);
+                 }
+                String docTitle = s.toString();
+                edit.putString("docTitle",docTitle).commit();
+                //延迟800ms，如果不再输入字符，则执行该线程的run方法
+                handler.postDelayed(delayRun, 800);
+            }
+        });
+
+        //时时获取公文主体内容
+        richEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(delayRun!=null){
+                    //每次editText有变化的时候，则移除上次发出的延迟线程
+                    handler.removeCallbacks(delayRun);
+                }
+                String doc_context = s.toString();
+                edit.putString("docContext",doc_context).commit();
+                //延迟800ms，如果不再输入字符，则执行该线程的run方法
+                handler.postDelayed(delayRun, 800);
+            }
+        });
     }
+
+
+    /**
+     * * 延迟线程，看是否还有下一个字符输入
+     */
+
+    private Runnable delayRun = new Runnable() {
+        @Override
+        public void run() {
+            //在这里调用服务器的接口，获取数据
+        }
+    };
 
     @Override
     public void setEvents() {

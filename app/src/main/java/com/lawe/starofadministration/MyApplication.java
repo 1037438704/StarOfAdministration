@@ -41,7 +41,8 @@ public class MyApplication extends Application {
         OkHttpUtil.init(getApplicationContext()).setShowHttpLog(true).build();
 
         //请求公共链接
-        BaseOkHttp.serviceUrl = "http://192.168.0.177:8082/szzw-web";
+        BaseOkHttp.serviceUrl = "http://192.168.0.177:8081/szzw-web";
+        BaseOkHttp.TIME_OUT_DURATION = 50;
 
 
         //字体

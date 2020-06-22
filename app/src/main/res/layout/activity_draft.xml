@@ -104,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
-        <include layout="@layout/layout_bottom"/>
+        <include layout="@layout/layout_bottom" />
 
     </LinearLayout>
 
@@ -265,6 +265,7 @@
                 android:layout_height="1dp"/>
 
             <LinearLayout
+                android:id="@+id/draft_more_changeType"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="16dp"

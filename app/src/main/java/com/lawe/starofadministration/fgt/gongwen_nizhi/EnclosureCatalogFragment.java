@@ -111,6 +111,7 @@ public class EnclosureCatalogFragment extends BaseFgt {
             @Override
             public void onClick(View v) {
                 showFileChooser();
+                //获取创建时间
                 getTime();
             }
         });

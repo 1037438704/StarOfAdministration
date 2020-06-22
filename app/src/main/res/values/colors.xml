@@ -16,6 +16,7 @@
     <color name="textDataDown">#DB1F2C</color>
     <color name="text9f9fa0">#9F9FA0</color>
     <color name="text8d8d93">#8D8D93</color>
+    <color name="button_none">#42DB1F2C</color>
 
     <!-- QRCode scanner color begin -->
     <color name="viewfinder_mask">#60000000</color>

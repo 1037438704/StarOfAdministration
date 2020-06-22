@@ -43,6 +43,7 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
     public String departmentId;
     public String name;
     public String departFullName;
+    public String time;
 
     @Override
     public void initViews() {
@@ -67,12 +68,11 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
 
     //获取当前时间
     public String getTime(){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date curDate =  new Date(System.currentTimeMillis());
-        String str = formatter.format(curDate);
-
-        Log.e("times",str);
-        return str;
+        time = formatter.format(curDate);
+        Log.e("times", time);
+        return time;
     }
 
     //网络请求数据拦截器

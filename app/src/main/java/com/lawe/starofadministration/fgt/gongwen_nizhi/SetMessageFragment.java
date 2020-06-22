@@ -1,6 +1,8 @@
 package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -54,6 +56,9 @@ public class SetMessageFragment extends BaseFgt {
     private TextView setmesTextZhuti;
     private LinearLayout setmesTiaoJian;
     private TextView setmesTextTiaojian;
+    private SharedPreferences.Editor edit;
+    private PickerView minute_pv;
+    private SharedPreferences sp;
 
     @Override
     public void initViews() {
@@ -65,14 +70,16 @@ public class SetMessageFragment extends BaseFgt {
         setmesTextTiaojian = (TextView) findViewById(R.id.setmes_text_tiaojian);
         setmesHuiqian = (LinearLayout) findViewById(R.id.setmes_huiqian);
         setmesTime = (LinearLayout) findViewById(R.id.setmes_time);
+
+        sp = getActivity().getSharedPreferences("newFile",Context.MODE_PRIVATE);
+        edit = sp.edit();
     }
 
     @Override
     public void initDatas() {
 
-
     }
-    private PickerView minute_pv;
+
     @Override
     public void setEvents() {
 
@@ -107,6 +114,8 @@ public class SetMessageFragment extends BaseFgt {
                 minute_pv = view.findViewById(R.id.minute_pv);
                 TextView popFinish = view.findViewById(R.id.pop_finish);
                 TextView popCancle = view.findViewById(R.id.pop_cancle);
+                TextView popDocType = view.findViewById(R.id.pop_doc_type);
+                popDocType.setText("请选择共享条件");
                 String one = "公开";
                 String two = "不公开";
                 String three = "依申请公开";
@@ -119,13 +128,20 @@ public class SetMessageFragment extends BaseFgt {
                 minute_pv.setOnSelectListener(new PickerView.onSelectListener() {
                     @Override
                     public void onSelect(String text) {
-                        textContext = text;
+                        setmesTextTiaojian.setText(text);
+                        if (text.equals("不公开")){
+                            edit.putString("publicProperty","0").commit();
+                        }else if(text.equals("公开")){
+                            edit.putString("publicProperty","1").commit();
+                        }else if(text.equals("依申请公开")){
+                            edit.putString("publicProperty","2").commit();
+                        }
                     }
                 });
                 popFinish.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        setmesTextTiaojian.setText(textContext);
+
                         dialog.cancel();
                     }
                 });
@@ -182,6 +198,8 @@ public class SetMessageFragment extends BaseFgt {
                 minute_pv = view.findViewById(R.id.minute_pv);
                 TextView popFinish = view.findViewById(R.id.pop_finish);
                 TextView popCancle = view.findViewById(R.id.pop_cancle);
+                TextView popDocType = view.findViewById(R.id.pop_doc_type);
+                popDocType.setText("请选择公文主题");
                 for (int i = 0; i < zhutiFindAllBean.getList().size(); i++) {
                     String themeName = zhutiFindAllBean.getList().get(i).getThemeName();
                     data_zhuti.add(themeName);
@@ -190,13 +208,14 @@ public class SetMessageFragment extends BaseFgt {
                 minute_pv.setOnSelectListener(new PickerView.onSelectListener() {
                     @Override
                     public void onSelect(String text) {
-                        textContext = text;
+                        setmesTextZhuti.setText(text);
+                        edit.putString("docTheme",text).commit();
                     }
                 });
                 popFinish.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        setmesTextZhuti.setText(textContext);
+                        //setmesTextZhuti.setText(textContext);
                         dialog.cancel();
                     }
                 });
@@ -237,6 +256,8 @@ public class SetMessageFragment extends BaseFgt {
                 minute_pv = view.findViewById(R.id.minute_pv);
                 TextView popFinish = view.findViewById(R.id.pop_finish);
                 TextView popCancle = view.findViewById(R.id.pop_cancle);
+                TextView popDocType = view.findViewById(R.id.pop_doc_type);
+                popDocType.setText("请选择公文类型");
                 for (int i = 0; i < byTypeBean.getDataDictList().size(); i++) {
                     String dataKey = byTypeBean.getDataDictList().get(i).getDataKey();
                     data_type.add(dataKey);
@@ -245,13 +266,14 @@ public class SetMessageFragment extends BaseFgt {
                 minute_pv.setOnSelectListener(new PickerView.onSelectListener() {
                     @Override
                     public void onSelect(String text) {
-                        textContext = text;
+                        setmesTextType.setText(text);
+                        edit.putString("docType",text).commit();
                     }
                 });
                 popFinish.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        setmesTextType.setText(textContext);
+
                         dialog.cancel();
                     }
                 });

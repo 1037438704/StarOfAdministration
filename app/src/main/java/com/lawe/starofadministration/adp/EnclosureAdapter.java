@@ -106,8 +106,9 @@ public class EnclosureAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
                                     @Override
                                     public void onResponse(String response, Exception error) {
                                         if(error == null){
-                                           //Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
-
+                                           Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
+                                            String msg = map.get("msg");
+                                            Toast.makeText(getContext(),msg,Toast.LENGTH_SHORT).show();
                                         }else{
                                             error.getMessage();
                                         }

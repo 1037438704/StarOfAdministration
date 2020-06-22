@@ -105,17 +105,16 @@ public class FictionActivity extends BaseAty {
         factionTop = findViewById(R.id.faction_top);
         fictionTimeStart = findViewById(R.id.fiction_time_start);
         fictionTimeEnd = findViewById(R.id.fiction_time_end);
-        //查询信息
-        getMessage();
-        //待办信息
-        fictionAdapter = new FictionAdapter(R.layout.item_fiction);
+
         layoutManager = new LinearLayoutManager(me);
         factionRecycle.setLayoutManager(layoutManager);
-        factionRecycle.setAdapter(fictionAdapter);
+
+        //查询信息
+        getMessage();
     }
 
+    //列表数据
     private void getMessage() {
-        //WaitDialog.show(me, "请稍候...");
         JSONObject json = new JSONObject();
         try {
             json.put("page", page);
@@ -126,12 +125,16 @@ public class FictionActivity extends BaseAty {
         }
         //json转化为string类型
         String jsonMess = String.valueOf(json);
-        HttpRequest.JSONPOST(me, Constants.DOCUMENT_QUERYPAGE, jsonMess, new ResponseListener() {
+        HttpRequest.JSONPOST(me, Constants.LISTFINDBYCURRENTUSER, jsonMess, new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
                 Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
-                ArrayList<Map<String, String>> list = JSONUtils.parseKeyAndValueToMapList(map.get("list"));
-                fictionAdapter.setNewData(list);
+                Log.e("asasaddd",map+"");
+                Map<String, String> list = JSONUtils.parseKeyAndValueToMap(map.get("list"));
+                Log.e("asasa",list+"");
+                fictionAdapter = new FictionAdapter(R.layout.item_fiction);
+                factionRecycle.setAdapter(fictionAdapter);
+                //fictionAdapter.setNewData(list);
             }
         });
     }

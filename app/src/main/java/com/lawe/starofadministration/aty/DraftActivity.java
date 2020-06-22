@@ -1,10 +1,15 @@
 package com.lawe.starofadministration.aty;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Environment;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
@@ -48,6 +54,7 @@ import com.lawe.starofadministration.utils.map.JSONUtils;
 import com.lawe.starofadministration.view.tuya.WriteDialogListener;
 import com.lawe.starofadministration.view.tuya.WritePadDialog;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -116,10 +123,25 @@ public class DraftActivity extends BaseAty {
     private String flagSpeed;
     private Bitmap mSignBitmap;
     private ImageView mIVSign;
+    private String remark;
+    private String quasiNumber;
+    private String  qNumber;
+    private String docTitle;
+    private String docType;
+    private String publicProperty;
+    private String docTheme;
+    private String relationId;
+    private String assigneeList = "1235099783191703555";
+    private LinearLayout draftMoreChangeType;
+    private int yourChoice;
+    private String changeType;
+    private String docContext;
+    private Handler handler = new Handler();
 
     @Override
     public void initViews() {
         super.initViews();
+        Log.e("assigneeList",assigneeList+"");
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
         titleNew = findViewById(R.id.title_new);
@@ -134,6 +156,7 @@ public class DraftActivity extends BaseAty {
         draftMoreSave = findViewById(R.id.draft_more_save);
         draftMoreTemplate = findViewById(R.id.draft_more_template);
         draftMoreGlossary = findViewById(R.id.draft_more_glossary);
+        draftMoreChangeType = findViewById(R.id.draft_more_changeType);
 
         bottomPerson = findViewById(R.id.bottom_person);
         bottomPizhu = findViewById(R.id.bottom_pizhu);
@@ -157,7 +180,6 @@ public class DraftActivity extends BaseAty {
             //设置字体
             titleText.setText("起草公文");
             bottomOne.setVisibility(View.GONE);
-
         }else if(flagSpeed.equals("2")){
             //设置字体
             titleText.setText("创建人查看");
@@ -213,15 +235,60 @@ public class DraftActivity extends BaseAty {
         viewPagerData.setAdapter(viewPagerAdp);
         viewPagerData.setCurrentItem(pageCounte);
 
+        //时时获取备注内容
+        bottomWhrit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(delayRun!=null){
+                    //每次editText有变化的时候，则移除上次发出的延迟线程
+                    handler.removeCallbacks(delayRun);
+                }
+                remark = s.toString();
+                //延迟800ms，如果不再输入字符，则执行该线程的run方法
+                handler.postDelayed(delayRun, 800);
+            }
+        });
+        //获取relationId
+        SharedPreferences nizhi_uuid = getSharedPreferences("nizhi_uuid", Context.MODE_PRIVATE);
+        relationId = nizhi_uuid.getString("ni_relationId","");
+        getZhi();  //方法：获取全部值
+
+        //常用语列表
         draftChatRecycle.setLayoutManager(layoutManager);
         draftChatRecycle.setAdapter(draftChatAdapter);
         for (int i = 0; i < 10; i++) {
             listchat.add(new ListChatBean(false, "第" + i + "条"));
         }
-        //常用语列表
         draftChatAdapter.setNewData(listchat);
         draftChatAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getZhi();
+    }
+
+    /**
+     * * 延迟线程，看是否还有下一个字符输入
+     */
+
+    private Runnable delayRun = new Runnable() {
+        @Override
+        public void run() {
+            //在这里调用服务器的接口，获取数据
+        }
+    };
 
     @Override
     public void setEvents() {
@@ -255,15 +322,19 @@ public class DraftActivity extends BaseAty {
         titleBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences newFile = getSharedPreferences("newFile", Context.MODE_PRIVATE);
+                newFile.edit().clear().commit();
                 finish();
+                newFile.edit().clear().commit();
             }
         });
-
 
         //点击全屏任意地方弹框消失
         draftAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //获取存进去的值
+                getZhi();
                 if (flag == 2) {
                     draftMore.setVisibility(View.GONE);
                     flag = 1;
@@ -288,6 +359,7 @@ public class DraftActivity extends BaseAty {
                 }
             }
         });
+
         //模板列表
         draftMoreTemplate.setOnClickListener(new View.OnClickListener() {
 
@@ -471,7 +543,20 @@ public class DraftActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 //调用保存
-                fileSave();
+                getTime();
+                if (assigneeList.equals("")){
+                    toast("请选择审核人");
+                }else{
+                    fileSave();
+                }
+            }
+        });
+
+        //保存草稿箱
+        draftMoreSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveDrafts();
             }
         });
 
@@ -480,6 +565,111 @@ public class DraftActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 writeDocument();
+            }
+        });
+
+        //变更文档类型
+        draftMoreChangeType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                draftMore.setVisibility(View.GONE);
+                flag = 1;
+                showSingleChoiceDialog();
+            }
+        });
+    }
+
+    //获取值
+    private void getZhi() {
+        //获取所有需要的值
+        SharedPreferences newFile = getSharedPreferences("newFile", Context.MODE_PRIVATE);
+        quasiNumber = newFile.getString("quasiNumber", "");
+        qNumber = newFile.getString("qNumber", "");
+        docTitle = newFile.getString("docTitle", "");
+        docType = newFile.getString("docType", "");
+        publicProperty = newFile.getString("publicProperty", "");
+        docTheme = newFile.getString("docTheme", "");
+        //公文主体
+        docContext = newFile.getString("docContext", "");
+        if (docTitle.equals("") || docContext.equals("") || docTheme.equals("") || docType.equals("") || publicProperty.equals("")){
+            bottomButton.setBackgroundResource(R.drawable.shape_red42_22);
+        }else{
+            bottomButton.setBackgroundResource(R.drawable.shape_red22);
+        }
+    }
+
+    //选择文件类型
+    private void showSingleChoiceDialog(){
+        final String[] items = { "pdf","word","图片" };
+        yourChoice = -1;
+        AlertDialog.Builder singleChoiceDialog =
+                new AlertDialog.Builder(DraftActivity.this);
+        singleChoiceDialog.setTitle("请选择文档类型");
+        // 第二个参数是默认选项，此处设置为0
+        singleChoiceDialog.setSingleChoiceItems(items, 0,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        yourChoice = which;
+                    }
+                });
+        singleChoiceDialog.setPositiveButton("确定",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (yourChoice != -1) {
+                            if (items[yourChoice].equals("pdf")){
+                                changeType = "1";
+                            }else if(items[yourChoice].equals("word")){
+                                changeType = "2";
+                            }else if(items[yourChoice].equals("图片")){
+                                changeType = "3";
+                            }
+                        }
+                    }
+                });
+        singleChoiceDialog.show();
+    }
+
+    //保存草稿箱
+    private void saveDrafts() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("depUserId",depUserId);  //用户ID
+            json.put("departmentId",departmentId);  //部门id
+            json.put("quasiNumber",quasiNumber);  //公文拟编号
+            json.put("qNumber",qNumber);  //拟编号的数字，例：001
+            json.put("docTitle",docTitle);  //公文标题
+            json.put("changeType","2");  //1.pdf 2. Word 3.图片
+            json.put("docType",docType);   //公文类型 调查询字典表接口参数：doc_type
+            json.put("publicProperty",publicProperty);  //公开属性：0 不公开 1主动公开 2依申请公开
+            json.put("docTheme",docTheme);  //公文主题 查询公文主题接口（查询所有父id为空公文主题）
+            json.put("relationId",relationId);  //关联附件表relation_id
+            json.put("timingSendTime","2020-6-24 10:10:35");  //定时发送时间
+            json.put("signUnit","天津市人民政府");  //会签单位
+            json.put("docNumber","");  //公文文号（核发传值）
+            json.put("number","");  //公文文号的数字号（核发传值）
+            json.put("modelId","");  //模板ID
+            json.put("remark",remark);  //备注
+            json.put("sendTime",time);  //发送时间
+            json.put("filePath","");  //文件存放地址
+            json.put("registerId","");  //报发人id（核发传值）
+            json.put("archivePeopleId","");  //归档人id（核发传值）
+            json.put("archivePeopleCoId","");  //归档人单位id（核发传值）
+            json.put("forwardingFile","");  //立即转发文件（核发传值）
+            json.put("fileName","");  //文件名称（加后缀的）（核发传值）
+            json.put("docContent",docContext);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //json转化为string类型
+        String jsonMess = String.valueOf(json);
+        HttpRequest.JSONPOST(me, Constants.NIZHI_SAVE, jsonMess, new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
+                String msg = map.get("msg");
+                toast(msg);
             }
         });
     }
@@ -514,20 +704,52 @@ public class DraftActivity extends BaseAty {
         mWritePadDialog.show();
     }
 
-    //文件保存
+    //文件保存并立即发送
     private void fileSave() {
         JSONObject json = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+
+        /*JSONObject jsonObject = new JSONObject();
+           jsonObject.put("assigneeList",assigneeList);  //审核人列表*/
+        jsonArray.put(assigneeList);
+
         try {
-            json.put("depUserId",depUserId);
+            json.put("depUserId",depUserId);  //用户ID
+            json.put("departmentId",departmentId);  //部门id
+            json.put("assigneeList",jsonArray);
+            json.put("quasiNumber",quasiNumber);  //公文拟编号
+            json.put("qNumber",qNumber);  //拟编号的数字，例：001
+            json.put("docTitle",docTitle);  //公文标题
+            json.put("changeType",changeType);  //1.pdf 2. Word 3.图片
+            json.put("docType",docType);   //公文类型 调查询字典表接口参数：doc_type
+            json.put("publicProperty",publicProperty);  //公开属性：0 不公开 1主动公开 2依申请公开
+            json.put("docTheme",docTheme);  //公文主题 查询公文主题接口（查询所有父id为空公文主题）
+            json.put("relationId",relationId);  //关联附件表relation_id
+            json.put("timingSendTime","2020-6-24 10:10:35");  //定时发送时间
+            json.put("signUnit","天津市人民政府");  //会签单位
+            json.put("docNumber","");  //公文文号（核发传值）
+            json.put("number","");  //公文文号的数字号（核发传值）
+            json.put("modelId","");  //模板ID
+            json.put("remark",remark);  //备注
+            json.put("sendTime",time);  //发送时间
+            json.put("filePath","");  //文件存放地址
+            json.put("registerId","");  //报发人id（核发传值）
+            json.put("archivePeopleId","");  //归档人id（核发传值）
+            json.put("archivePeopleCoId","");  //归档人单位id（核发传值）
+            json.put("forwardingFile","");  //立即转发文件（核发传值）
+            json.put("fileName",null);  //文件名称（加后缀的）（核发传值）
+            json.put("docContent",docContext);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         //json转化为string类型
         String jsonMess = String.valueOf(json);
-        HttpRequest.JSONPOST(me, Constants.DOCUMENT_QUERYPAGE, jsonMess, new ResponseListener() {
+        HttpRequest.JSONPOST(me, Constants.NIZHI_SAVESUBMIT, jsonMess, new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
-
+                Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
+                String msg = map.get("msg");
+                toast(msg);
             }
         });
     }

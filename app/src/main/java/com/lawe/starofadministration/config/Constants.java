@@ -21,10 +21,13 @@ public interface Constants {
     String QUERYPAGE = "/sys/center/queryPage";
 
     //公文拟制查询所有
-    String DOCUMENT_QUERYPAGE = "/sys/documentfiction/queryPage";
+    String LISTFINDBYCURRENTUSER = "/sys/documentfiction/listFindByCurrentUser";
 
-    //公文拟制新建保存
-    String DOCUMENT_SAVE = "/sys/documentfiction/save";
+    //拟制--保存并立即发送
+    String NIZHI_SAVESUBMIT = "/sys/documentfiction/saveSubmit";
+
+    //拟制--保存草稿箱
+    String NIZHI_SAVE = "/sys/documentfiction/save";
 
     //根据部门id拟编号
     String GETQUASINUMBER = "/sys/documentfiction/getQuasiNumber/";

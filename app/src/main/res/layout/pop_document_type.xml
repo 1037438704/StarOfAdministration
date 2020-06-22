@@ -16,6 +16,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/pop_doc_type"
                 android:text="请选择公文类型"
                 android:textSize="16dp"
                 android:textColor="@color/textMedium"
