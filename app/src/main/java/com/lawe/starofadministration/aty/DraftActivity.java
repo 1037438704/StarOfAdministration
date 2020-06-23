@@ -50,6 +50,7 @@ import com.lawe.starofadministration.fgt.gongwen_nizhi.DocumentEditFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.EnclosureCatalogFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinSpeedFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.SetMessageFragment;
+import com.lawe.starofadministration.utils.AppManager;
 import com.lawe.starofadministration.utils.map.JSONUtils;
 import com.lawe.starofadministration.view.tuya.WriteDialogListener;
 import com.lawe.starofadministration.view.tuya.WritePadDialog;
@@ -131,7 +132,7 @@ public class DraftActivity extends BaseAty {
     private String publicProperty;
     private String docTheme;
     private String relationId;
-    private String assigneeList = "1235099783191703555";
+    private String assigneeList = "1245548306401255426";
     private LinearLayout draftMoreChangeType;
     private int yourChoice;
     private String changeType;
@@ -548,6 +549,10 @@ public class DraftActivity extends BaseAty {
                     toast("请选择审核人");
                 }else{
                     fileSave();
+                    draftMore.setVisibility(View.GONE);
+                    flag = 1;
+                    jump(FictionActivity.class);
+                    AppManager.getInstance().killActivity(DraftActivity.class);
                 }
             }
         });
@@ -557,6 +562,10 @@ public class DraftActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 saveDrafts();
+                draftMore.setVisibility(View.GONE);
+                flag = 1;
+                jump(FictionActivity.class);
+                finish();
             }
         });
 
@@ -646,7 +655,7 @@ public class DraftActivity extends BaseAty {
             json.put("docTheme",docTheme);  //公文主题 查询公文主题接口（查询所有父id为空公文主题）
             json.put("relationId",relationId);  //关联附件表relation_id
             json.put("timingSendTime","2020-6-24 10:10:35");  //定时发送时间
-            json.put("signUnit","天津市人民政府");  //会签单位
+            json.put("signUnit",null);  //会签单位
             json.put("docNumber","");  //公文文号（核发传值）
             json.put("number","");  //公文文号的数字号（核发传值）
             json.put("modelId","");  //模板ID
@@ -657,7 +666,7 @@ public class DraftActivity extends BaseAty {
             json.put("archivePeopleId","");  //归档人id（核发传值）
             json.put("archivePeopleCoId","");  //归档人单位id（核发传值）
             json.put("forwardingFile","");  //立即转发文件（核发传值）
-            json.put("fileName","");  //文件名称（加后缀的）（核发传值）
+            json.put("fileName",null);  //文件名称（加后缀的）（核发传值）
             json.put("docContent",docContext);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -669,7 +678,11 @@ public class DraftActivity extends BaseAty {
             public void onResponse(String response, Exception error) {
                 Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
                 String msg = map.get("msg");
-                toast(msg);
+                if (msg.equals("success")){
+                    toast("保存成功");
+                }else{
+                    toast(msg);
+                }
             }
         });
     }
@@ -708,11 +721,9 @@ public class DraftActivity extends BaseAty {
     private void fileSave() {
         JSONObject json = new JSONObject();
         JSONArray jsonArray = new JSONArray();
-
         /*JSONObject jsonObject = new JSONObject();
            jsonObject.put("assigneeList",assigneeList);  //审核人列表*/
         jsonArray.put(assigneeList);
-
         try {
             json.put("depUserId",depUserId);  //用户ID
             json.put("departmentId",departmentId);  //部门id
@@ -726,7 +737,7 @@ public class DraftActivity extends BaseAty {
             json.put("docTheme",docTheme);  //公文主题 查询公文主题接口（查询所有父id为空公文主题）
             json.put("relationId",relationId);  //关联附件表relation_id
             json.put("timingSendTime","2020-6-24 10:10:35");  //定时发送时间
-            json.put("signUnit","天津市人民政府");  //会签单位
+            json.put("signUnit",null);  //会签单位
             json.put("docNumber","");  //公文文号（核发传值）
             json.put("number","");  //公文文号的数字号（核发传值）
             json.put("modelId","");  //模板ID
@@ -749,7 +760,11 @@ public class DraftActivity extends BaseAty {
             public void onResponse(String response, Exception error) {
                 Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
                 String msg = map.get("msg");
-                toast(msg);
+                if (msg.equals("success")){
+                    toast("保存发送成功");
+                }else{
+                    toast(msg);
+                }
             }
         });
     }

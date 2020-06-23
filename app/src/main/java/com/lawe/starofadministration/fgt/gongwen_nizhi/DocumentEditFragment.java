@@ -142,7 +142,7 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
     private void getNumber() {
         JSONObject json = new JSONObject();
         try {
-            json.put("id","");
+            json.put("id",null);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -246,29 +246,6 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
 
     @Override
     public void setEvents() {
-       /* //实时监听edittext内容变化
-        richEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                isEmpty = TextUtils.isEmpty(documentSubject.getText());
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                isEmpty = TextUtils.isEmpty(documentSubject.getText());
-                //如果为空
-                if (isEmpty) {
-                    cebianlan.setVisibility(View.GONE);
-                } else {
-                    cebianlan.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });*/
 
         //监听edittext滚动
         documentSubject.setOnTouchListener(new View.OnTouchListener() {

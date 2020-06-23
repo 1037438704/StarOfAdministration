@@ -196,6 +196,7 @@
                 />
 
             <CheckBox
+                android:id="@+id/fiction_text_pifu"
                 android:text="批复"
                 android:textSize="14dp"
                 android:gravity="center"
@@ -209,6 +210,7 @@
                 />
 
             <CheckBox
+                android:id="@+id/fiction_text_han"
                 android:text="函"
                 android:textSize="14dp"
                 android:gravity="center"
@@ -222,6 +224,7 @@
         </LinearLayout>
         <!--第四行-->
         <CheckBox
+            android:id="@+id/fiction_text_huiyijiyao"
             android:text="会议纪要"
             android:textSize="14dp"
             android:gravity="center"
@@ -263,41 +266,46 @@
             android:layout_height="wrap_content">
 
             <CheckBox
-                android:text="仅显示处理中"
+                android:id="@+id/fiction_text_chuli"
+                android:text="处理中"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
-                android:layout_width="116dp"
+                android:layout_width="74dp"
                 android:layout_height="38dp"
                 />
 
             <CheckBox
-                android:text="仅显示已归档"
+                android:id="@+id/fiction_text_yiguidang"
+                android:text="已归档"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginLeft="12dp"
                 android:button="@null"
                 android:background="@drawable/select_shaixuan"
                 android:textColor="@drawable/select_text_color"
-                android:layout_width="116dp"
+                android:layout_width="74dp"
+                android:layout_height="38dp"
+                />
+
+            <CheckBox
+                android:id="@+id/fiction_text_caogao"
+                android:text="草稿"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:button="@null"
+                android:layout_marginLeft="12dp"
+                android:background="@drawable/select_shaixuan"
+                android:textColor="@drawable/select_text_color"
+                android:layout_width="60dp"
                 android:layout_height="38dp"
                 />
 
         </LinearLayout>
 
-        <CheckBox
-            android:text="仅显示草稿"
-            android:textSize="14dp"
-            android:gravity="center"
-            android:layout_marginTop="12dp"
-            android:button="@null"
-            android:background="@drawable/select_shaixuan"
-            android:textColor="@drawable/select_text_color"
-            android:layout_width="116dp"
-            android:layout_height="38dp"
-            />
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -310,47 +318,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/fiction_time_start"
-                android:layout_width="128dp"
-                android:layout_height="38dp"
-                android:gravity="center"
-                android:background="@drawable/select_shaixuan"
-                android:textColor="@drawable/select_text_color"
-                android:hint="开始时间"
-                android:textColorHint="#9F9FA0"
-                android:textSize="14dp" />
-
-            <View
-                android:layout_width="12dp"
-                android:layout_height="1dp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="7dp"
-                android:background="#717173" />
-
-            <TextView
-                android:id="@+id/fiction_time_end"
-                android:layout_width="128dp"
-                android:layout_height="38dp"
-                android:gravity="center"
-                android:background="@drawable/select_shaixuan"
-                android:textColor="@drawable/select_text_color"
-                android:hint="结束时间"
-                android:textColorHint="#9F9FA0"
-                android:textSize="14dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <CheckBox
+                android:id="@+id/fiction_text_jin3"
                 android:layout_width="82dp"
                 android:layout_height="40dp"
                 android:gravity="center"
@@ -362,6 +334,7 @@
 
 
             <CheckBox
+                android:id="@+id/fiction_text_jin7"
                 android:layout_width="82dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="12dp"
@@ -372,6 +345,7 @@
                 android:textColor="@drawable/select_text_color" />
 
             <CheckBox
+                android:id="@+id/fiction_text_jin30"
                 android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="12dp"
@@ -383,6 +357,16 @@
 
         </LinearLayout>
 
+        <CheckBox
+            android:id="@+id/fiction_text_zidingyi"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/select_shaixuan"
+            android:text="自定义"
+            android:textColor="@drawable/select_text_color" />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -392,7 +376,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/drawer_quxiao"
+            android:id="@+id/fiction_button_cancle"
             android:layout_width="70dp"
             android:layout_height="39dp"
             android:layout_marginTop="3dp"
@@ -404,6 +388,7 @@
             android:textSize="14dp" />
 
         <Button
+            android:id="@+id/fiction_button_sure"
             android:layout_width="100dp"
             android:layout_height="39dp"
             android:layout_marginLeft="12dp"

@@ -9,10 +9,11 @@ import java.util.List;
  */
 public class FictionListBean {
 
+
     /**
      * msg : success
      * code : 0
-     * page : {"pageNum":1,"pageSize":10,"size":1,"startRow":1,"endRow":1,"total":1,"pages":1,"list":[{"id":"1274958323013754882","quasiNumber":"28nkjyj002202006220001","qNumber":"2","docTitle":"阿卡丽","changeType":2,"docType":"请示","publicProperty":"1","docTheme":"财政、金融、审计","docAddress":"","timingSendTime":"2020-06-24 10:10:35","signUnit":"天津市人民政府","signDoc":1,"spentTime":"","docNumber":"","number":"","archivedState":"","relationId":"e28d5cb1-1a6f-4f15-8802-1d0324e9fa53","timeStamp":"","modelId":"","remark":"呼呼会修","sendTime":"","creatorId":"1245548306401255426","creatorCoId":"1235120679131725825","createTime":"2020-06-22 14:52:06","modifierId":"","modifierCoId":"","modifyTime":"","state":0,"filePath":"","fileName":"","forwardingFile":"","registerId":"","archivePeopleId":"","archivePeopleCoId":""}],"prePage":0,"nextPage":0,"isFirstPage":true,"isLastPage":true,"hasPreviousPage":false,"hasNextPage":false,"navigatePages":8,"navigatepageNums":[1],"navigateFirstPage":1,"navigateLastPage":1,"lastPage":1,"firstPage":1}
+     * page : {"pageNum":1,"pageSize":10,"size":2,"startRow":1,"endRow":2,"total":2,"pages":1,"list":[{"id":"1275353169571074050","quasiNumber":"28nkjyj002202006230001","docTitle":"你你你理解理解","changeType":2,"docType":"批复","publicProperty":"1","docTheme":"国土资源、能源","docAddress":"","timingSendTime":"2020-06-24 10:10:35","signUnit":"","signDoc":0,"spentTime":"","docNumber":"","archivedState":0,"relationId":"564d0520-5abd-4fa5-a427-28f835e2d891","timeStamp":"","modelId":"","remark":"明年","sendTime":"","creatorId":"1245548306401255426","creatorCoId":"1235120679131725825","createTime":"2020-06-23 17:01:05","state":0,"filePath":"","forwardingFile":"","taskId":"","taskName":"","processInstanceId":"","dname":"啦啦啦"},{"id":"1275358009177141250","quasiNumber":"28nkjyj002202006230002","docTitle":"急急急急","changeType":2,"docType":"请示","publicProperty":"2","docTheme":"财政、金融、审计","docAddress":null,"timingSendTime":"2020-06-24 10:10:35","signUnit":null,"signDoc":0,"spentTime":null,"docNumber":null,"archivedState":0,"relationId":"7e7cac8b-4398-4185-9c88-674339702776","timeStamp":null,"modelId":null,"remark":"LOMO","sendTime":null,"creatorId":"1245548306401255426","creatorCoId":"1235120679131725825","createTime":"2020-06-23 17:20:18","state":0,"filePath":null,"forwardingFile":null,"taskId":null,"taskName":null,"processInstanceId":null,"dname":"啦啦啦"}],"prePage":0,"nextPage":0,"isFirstPage":true,"isLastPage":true,"hasPreviousPage":false,"hasNextPage":false,"navigatePages":8,"navigatepageNums":[1],"navigateFirstPage":1,"navigateLastPage":1,"firstPage":1,"lastPage":1}
      */
 
     private String msg;
@@ -47,12 +48,12 @@ public class FictionListBean {
         /**
          * pageNum : 1
          * pageSize : 10
-         * size : 1
+         * size : 2
          * startRow : 1
-         * endRow : 1
-         * total : 1
+         * endRow : 2
+         * total : 2
          * pages : 1
-         * list : [{"id":"1274958323013754882","quasiNumber":"28nkjyj002202006220001","qNumber":"2","docTitle":"阿卡丽","changeType":2,"docType":"请示","publicProperty":"1","docTheme":"财政、金融、审计","docAddress":"","timingSendTime":"2020-06-24 10:10:35","signUnit":"天津市人民政府","signDoc":1,"spentTime":"","docNumber":"","number":"","archivedState":"","relationId":"e28d5cb1-1a6f-4f15-8802-1d0324e9fa53","timeStamp":"","modelId":"","remark":"呼呼会修","sendTime":"","creatorId":"1245548306401255426","creatorCoId":"1235120679131725825","createTime":"2020-06-22 14:52:06","modifierId":"","modifierCoId":"","modifyTime":"","state":0,"filePath":"","fileName":"","forwardingFile":"","registerId":"","archivePeopleId":"","archivePeopleCoId":""}]
+         * list : [{"id":"1275353169571074050","quasiNumber":"28nkjyj002202006230001","docTitle":"你你你理解理解","changeType":2,"docType":"批复","publicProperty":"1","docTheme":"国土资源、能源","docAddress":"","timingSendTime":"2020-06-24 10:10:35","signUnit":"","signDoc":0,"spentTime":"","docNumber":"","archivedState":0,"relationId":"564d0520-5abd-4fa5-a427-28f835e2d891","timeStamp":"","modelId":"","remark":"明年","sendTime":"","creatorId":"1245548306401255426","creatorCoId":"1235120679131725825","createTime":"2020-06-23 17:01:05","state":0,"filePath":"","forwardingFile":"","taskId":"","taskName":"","processInstanceId":"","dname":"啦啦啦"},{"id":"1275358009177141250","quasiNumber":"28nkjyj002202006230002","docTitle":"急急急急","changeType":2,"docType":"请示","publicProperty":"2","docTheme":"财政、金融、审计","docAddress":null,"timingSendTime":"2020-06-24 10:10:35","signUnit":null,"signDoc":0,"spentTime":null,"docNumber":null,"archivedState":0,"relationId":"7e7cac8b-4398-4185-9c88-674339702776","timeStamp":null,"modelId":null,"remark":"LOMO","sendTime":null,"creatorId":"1245548306401255426","creatorCoId":"1235120679131725825","createTime":"2020-06-23 17:20:18","state":0,"filePath":null,"forwardingFile":null,"taskId":null,"taskName":null,"processInstanceId":null,"dname":"啦啦啦"}]
          * prePage : 0
          * nextPage : 0
          * isFirstPage : true
@@ -63,8 +64,8 @@ public class FictionListBean {
          * navigatepageNums : [1]
          * navigateFirstPage : 1
          * navigateLastPage : 1
-         * lastPage : 1
          * firstPage : 1
+         * lastPage : 1
          */
 
         private String pageNum;
@@ -83,8 +84,8 @@ public class FictionListBean {
         private String navigatePages;
         private String navigateFirstPage;
         private String navigateLastPage;
-        private String lastPage;
         private String firstPage;
+        private String lastPage;
         private List<ListBean> list;
         private List<Integer> navigatepageNums;
 
@@ -216,20 +217,20 @@ public class FictionListBean {
             this.navigateLastPage = navigateLastPage;
         }
 
-        public String getLastPage() {
-            return lastPage;
-        }
-
-        public void setLastPage(String lastPage) {
-            this.lastPage = lastPage;
-        }
-
         public String getFirstPage() {
             return firstPage;
         }
 
         public void setFirstPage(String firstPage) {
             this.firstPage = firstPage;
+        }
+
+        public String getLastPage() {
+            return lastPage;
+        }
+
+        public void setLastPage(String lastPage) {
+            this.lastPage = lastPage;
         }
 
         public List<ListBean> getList() {
@@ -250,45 +251,39 @@ public class FictionListBean {
 
         public static class ListBean {
             /**
-             * id : 1274958323013754882
-             * quasiNumber : 28nkjyj002202006220001
-             * qNumber : 2
-             * docTitle : 阿卡丽
+             * id : 1275353169571074050
+             * quasiNumber : 28nkjyj002202006230001
+             * docTitle : 你你你理解理解
              * changeType : 2
-             * docType : 请示
+             * docType : 批复
              * publicProperty : 1
-             * docTheme : 财政、金融、审计
+             * docTheme : 国土资源、能源
              * docAddress :
              * timingSendTime : 2020-06-24 10:10:35
-             * signUnit : 天津市人民政府
-             * signDoc : 1
+             * signUnit :
+             * signDoc : 0
              * spentTime :
              * docNumber :
-             * number :
-             * archivedState :
-             * relationId : e28d5cb1-1a6f-4f15-8802-1d0324e9fa53
+             * archivedState : 0
+             * relationId : 564d0520-5abd-4fa5-a427-28f835e2d891
              * timeStamp :
              * modelId :
-             * remark : 呼呼会修
+             * remark : 明年
              * sendTime :
              * creatorId : 1245548306401255426
              * creatorCoId : 1235120679131725825
-             * createTime : 2020-06-22 14:52:06
-             * modifierId :
-             * modifierCoId :
-             * modifyTime :
+             * createTime : 2020-06-23 17:01:05
              * state : 0
              * filePath :
-             * fileName :
              * forwardingFile :
-             * registerId :
-             * archivePeopleId :
-             * archivePeopleCoId :
+             * taskId :
+             * taskName :
+             * processInstanceId :
+             * dname : 啦啦啦
              */
 
             private String id;
             private String quasiNumber;
-            private String qNumber;
             private String docTitle;
             private String changeType;
             private String docType;
@@ -300,7 +295,6 @@ public class FictionListBean {
             private String signDoc;
             private String spentTime;
             private String docNumber;
-            private String number;
             private String archivedState;
             private String relationId;
             private String timeStamp;
@@ -310,16 +304,13 @@ public class FictionListBean {
             private String creatorId;
             private String creatorCoId;
             private String createTime;
-            private String modifierId;
-            private String modifierCoId;
-            private String modifyTime;
             private String state;
             private String filePath;
-            private String fileName;
             private String forwardingFile;
-            private String registerId;
-            private String archivePeopleId;
-            private String archivePeopleCoId;
+            private String taskId;
+            private String taskName;
+            private String processInstanceId;
+            private String dname;
 
             public String getId() {
                 return id;
@@ -335,14 +326,6 @@ public class FictionListBean {
 
             public void setQuasiNumber(String quasiNumber) {
                 this.quasiNumber = quasiNumber;
-            }
-
-            public String getQNumber() {
-                return qNumber;
-            }
-
-            public void setQNumber(String qNumber) {
-                this.qNumber = qNumber;
             }
 
             public String getDocTitle() {
@@ -433,14 +416,6 @@ public class FictionListBean {
                 this.docNumber = docNumber;
             }
 
-            public String getNumber() {
-                return number;
-            }
-
-            public void setNumber(String number) {
-                this.number = number;
-            }
-
             public String getArchivedState() {
                 return archivedState;
             }
@@ -513,30 +488,6 @@ public class FictionListBean {
                 this.createTime = createTime;
             }
 
-            public String getModifierId() {
-                return modifierId;
-            }
-
-            public void setModifierId(String modifierId) {
-                this.modifierId = modifierId;
-            }
-
-            public String getModifierCoId() {
-                return modifierCoId;
-            }
-
-            public void setModifierCoId(String modifierCoId) {
-                this.modifierCoId = modifierCoId;
-            }
-
-            public String getModifyTime() {
-                return modifyTime;
-            }
-
-            public void setModifyTime(String modifyTime) {
-                this.modifyTime = modifyTime;
-            }
-
             public String getState() {
                 return state;
             }
@@ -553,14 +504,6 @@ public class FictionListBean {
                 this.filePath = filePath;
             }
 
-            public String getFileName() {
-                return fileName;
-            }
-
-            public void setFileName(String fileName) {
-                this.fileName = fileName;
-            }
-
             public String getForwardingFile() {
                 return forwardingFile;
             }
@@ -569,28 +512,36 @@ public class FictionListBean {
                 this.forwardingFile = forwardingFile;
             }
 
-            public String getRegisterId() {
-                return registerId;
+            public String getTaskId() {
+                return taskId;
             }
 
-            public void setRegisterId(String registerId) {
-                this.registerId = registerId;
+            public void setTaskId(String taskId) {
+                this.taskId = taskId;
             }
 
-            public String getArchivePeopleId() {
-                return archivePeopleId;
+            public String getTaskName() {
+                return taskName;
             }
 
-            public void setArchivePeopleId(String archivePeopleId) {
-                this.archivePeopleId = archivePeopleId;
+            public void setTaskName(String taskName) {
+                this.taskName = taskName;
             }
 
-            public String getArchivePeopleCoId() {
-                return archivePeopleCoId;
+            public String getProcessInstanceId() {
+                return processInstanceId;
             }
 
-            public void setArchivePeopleCoId(String archivePeopleCoId) {
-                this.archivePeopleCoId = archivePeopleCoId;
+            public void setProcessInstanceId(String processInstanceId) {
+                this.processInstanceId = processInstanceId;
+            }
+
+            public String getDname() {
+                return dname;
+            }
+
+            public void setDname(String dname) {
+                this.dname = dname;
             }
         }
     }

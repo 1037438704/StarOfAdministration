@@ -81,6 +81,11 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
             @Override
             public boolean onResponse(Context context, String url, String response, Exception error) {
                 if (error == null) {
+                    //判空
+                    if (isNull(response)){
+                        toast("请求超时");
+                        return false;
+                    }
                     Map<String, String> data = JSONUtils.parseKeyAndValueToMap(response);
                     if (data.get("msg").equals("success")){
                         return true;

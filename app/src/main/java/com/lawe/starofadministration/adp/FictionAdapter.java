@@ -13,6 +13,7 @@ import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.aty.DraftActivity;
 import com.lawe.starofadministration.aty.FictionActivity;
+import com.lawe.starofadministration.bean.FictionListBean;
 
 import java.util.List;
 import java.util.Map;
@@ -22,11 +23,11 @@ import java.util.Map;
  * date : 2020/4/29 15:52
  * description : 公文拟制列表
  */
-public class FictionAdapter extends BaseQuickAdapter<Map<String,String>, BaseViewHolder> {
+public class FictionAdapter extends BaseQuickAdapter<FictionListBean.PageBean.ListBean, BaseViewHolder> {
 
     public Typeface getTextMedium = MyApplication.getTextMedium;
 
-    public FictionAdapter(int layoutResId, @Nullable List<Map<String,String>> data) {
+    public FictionAdapter(int layoutResId,  List<FictionListBean.PageBean.ListBean> data) {
         super(layoutResId, data);
     }
 
@@ -34,9 +35,8 @@ public class FictionAdapter extends BaseQuickAdapter<Map<String,String>, BaseVie
         super(item_fiction);
     }
 
-
     @Override
-    protected void convert(BaseViewHolder holder, Map<String, String> itemData) {
+    protected void convert(BaseViewHolder holder, FictionListBean.PageBean.ListBean listBean) {
         TextView itemFictionTitle = holder.itemView.findViewById(R.id.item_fiction_title);
         LinearLayout item_fiction_linear = holder.itemView.findViewById(R.id.item_fiction_linear);
         itemFictionTitle.setTypeface(getTextMedium);
@@ -45,10 +45,14 @@ public class FictionAdapter extends BaseQuickAdapter<Map<String,String>, BaseVie
         TextView item_fiction_state = holder.itemView.findViewById(R.id.item_fiction_state);
         TextView item_fiction_time = holder.itemView.findViewById(R.id.item_fiction_time);
 
-        item_fiction_title.setText(itemData.get("docTitle"));
-        item_fiction_person.setText(itemData.get("等.."));
-        String state = itemData.get("state");
-        String archivedState = itemData.get("archivedState");
+        item_fiction_title.setText(listBean.getDocTitle());
+        item_fiction_person.setText("起草人："+listBean.getDname());
+        String state = listBean.getState();
+        String archivedState = listBean.getArchivedState();
+        if (archivedState==null || state == null){
+            archivedState  = "3";
+            state = "10";
+        }
         if (state.equals("-1")){
             item_fiction_state.setText("状态：驳回");
         }else if(state.equals("0")){
@@ -60,7 +64,7 @@ public class FictionAdapter extends BaseQuickAdapter<Map<String,String>, BaseVie
         }else if(state.equals("2") && archivedState.equals("1")){
             item_fiction_state.setText("状态：已归档");
         }
-        item_fiction_time.setText(itemData.get("createTime"));
+        item_fiction_time.setText("起草日期："+listBean.getCreateTime());
 
         item_fiction_linear.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -337,6 +337,10 @@ public class LoginActivity extends BaseAty {
                 HttpRequest.JSONPOST(me, Constants.LOGIN, jsonLogin, new ResponseListener() {
                     @Override
                     public void onResponse(String response, Exception error) {
+                       /* if (isNull(response)){
+                            toast("响应超时");
+                            return;
+                        }*/
                         LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);
                         String depUserId = loginDefaltBean.getEntityBO().getId();
                         String dName = loginDefaltBean.getEntityBO().getDName();

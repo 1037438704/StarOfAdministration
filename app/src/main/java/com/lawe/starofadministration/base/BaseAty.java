@@ -89,6 +89,15 @@ abstract public class BaseAty extends BaseActivity implements Constants {
             public boolean onResponse(Context context, String url, String response, Exception error) {
                 if (error == null) {
                     Map<String, String> data = JSONUtils.parseKeyAndValueToMap(response);
+                    //判空
+                    if (isNull(data.toString())){
+                        toast("请求超时");
+                        return false;
+                    }
+                    if (isNull(data.get("msg"))){
+                        toast("数据为空");
+                        return false;
+                    }
                     if (data.get("msg").equals("success")){
                         return true;
                     }else{

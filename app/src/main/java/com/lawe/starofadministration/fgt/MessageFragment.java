@@ -141,12 +141,19 @@ public class MessageFragment extends BaseFgt {
         HttpRequest.JSONPOST(me, Constants.LISTFINDALLBYCURRENTUSER, jsonMess, new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
-                refreshLayout.finishRefresh();
-                refreshLayout.finishLoadMore();
                 MessageBean messageBean = gson.fromJson(response, MessageBean.class);
                 List<MessageBean.PageBean.ListBean> list = messageBean.getPage().getList();
-                messageAdapter.setNewData(list);
-                messageAdapter.notifyDataSetChanged();
+                if (page == 1){
+                    messageAdapter.setNewData(list);
+                    refreshLayout.finishRefresh();
+                }else{
+                    if(list == null || list.size() == 0){
+                        toast("没有更多数据了...");
+                        return;
+                    }
+                    messageAdapter.addData(list);
+                    refreshLayout.finishLoadMore();
+                }
 
             }
         });

@@ -141,8 +141,6 @@
             android:background="#F5F5F5"
             android:layout_height="match_parent">
 
-
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycle_message"
                 android:layout_width="match_parent"

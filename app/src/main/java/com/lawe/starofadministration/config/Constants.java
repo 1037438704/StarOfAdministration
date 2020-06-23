@@ -21,7 +21,7 @@ public interface Constants {
     String QUERYPAGE = "/sys/center/queryPage";
 
     //公文拟制查询所有
-    String LISTFINDBYCURRENTUSER = "/sys/documentfiction/listFindByCurrentUser";
+    String LISTFINDBYCURRENTUSER = "/sys/documentfiction/listFindAllByCurrentUser";
 
     //拟制--保存并立即发送
     String NIZHI_SAVESUBMIT = "/sys/documentfiction/saveSubmit";

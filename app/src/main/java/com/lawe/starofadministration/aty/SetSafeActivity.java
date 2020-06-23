@@ -48,8 +48,6 @@ public class SetSafeActivity extends BaseAty {
         setSafeChoose = findViewById(R.id.set_safe_choose);
         setSafePass = findViewById(R.id.set_safe_pass);
         setSafeConPhone = findViewById(R.id.set_safe_conPhone);
-
-
     }
 
     @Override

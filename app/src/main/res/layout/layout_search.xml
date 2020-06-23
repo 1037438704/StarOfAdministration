@@ -26,11 +26,13 @@
 
         <EditText
             android:id="@+id/search_edit"
-            android:hint="按公文文号查询"
+            android:hint="请输入查询内容"
             android:textColorHint="#9F9FA0"
             android:textSize="14dp"
             android:layout_marginLeft="8dp"
+            android:paddingRight="8dp"
             android:background="@null"
+            android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

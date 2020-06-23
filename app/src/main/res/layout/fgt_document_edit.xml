@@ -38,10 +38,11 @@
                     android:id="@+id/document_title"
                     android:textSize="16dp"
                     android:textColor="@color/textMedium"
-                    android:hint=""
+                    android:hint="请输入标题"
                     android:includeFontPadding="false"
                     android:textColorHint="#D7D7D8"
                     android:background="@null"
+                    android:paddingBottom="14dp"
                     android:layout_marginTop="16dp"
                     android:paddingRight="16dp"
                     android:layout_width="match_parent"
@@ -51,7 +52,6 @@
 
             <View
                 android:background="@color/backgroundHui"
-                android:layout_marginTop="14dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_width="match_parent"
@@ -77,16 +77,19 @@
 
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/document_sub_title"
-            android:text="项目描述："
-            android:textSize="16dp"
-            android:layout_marginLeft="12dp"
-            android:gravity="center_vertical"
-            android:textColor="#8D8D93"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="44dp"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/document_sub_title"
+                android:text="项目描述："
+                android:textSize="16dp"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical"
+                android:textColor="#8D8D93"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"/>
 
             <WebView
                 android:id="@+id/webview"
@@ -94,81 +97,82 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-        <ScrollView
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
-            <EditText
-                android:id="@+id/document_subject"
-                android:textSize="16dp"
-                android:textColor="@color/textMedium"
-                android:hint=""
-                android:textColorHint="#D7D7D8"
-                android:background="@null"
-                android:gravity="top"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
+            <ScrollView
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                >
 
-        </ScrollView>
+                <EditText
+                    android:id="@+id/document_subject"
+                    android:textSize="16dp"
+                    android:textColor="@color/textMedium"
+                    android:hint=""
+                    android:textColorHint="#D7D7D8"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            </ScrollView>
 
-            <Button
-                android:id="@+id/btn_center"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:text="C"
-                android:background="@null"
-                style="?android:attr/borderlessButtonStyle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btn_underline"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.lawe.starofadministration.view.FontStylePanel
-                android:id="@+id/fontStylePanel"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-            </com.lawe.starofadministration.view.FontStylePanel>
+                android:layout_height="wrap_content">
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btn_center"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:text="C"
+                    android:background="@null"
+                    style="?android:attr/borderlessButtonStyle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/btn_underline"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.lawe.starofadministration.view.FontStylePanel
+                    android:id="@+id/fontStylePanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                </com.lawe.starofadministration.view.FontStylePanel>
+
+            </LinearLayout>
 
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="80dp"
+                android:layout_alignParentBottom="true"
+                >
+
+                <com.lawe.starofadministration.view.RichEditText
+                    android:id="@+id/richEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:layout_marginLeft="12dp"
+                    android:gravity="top|left"
+                    android:hint="请输入公文内容"
+                    android:textSize="16sp"
+                    />
+
+            </ScrollView>
+
+        </RelativeLayout>
 
     </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="180dp"
-        android:layout_alignParentBottom="true"
-        app:layout_constraintBottom_toTopOf="@+id/fontStylePanel"
-        >
-
-        <com.lawe.starofadministration.view.RichEditText
-            android:id="@+id/richEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:layout_marginLeft="12dp"
-            android:gravity="top|left"
-            android:hint="请输入公文内容"
-            android:textSize="16sp"
-            />
-
-    </ScrollView>
 
     <include layout="@layout/layout_cebianlan" />
 

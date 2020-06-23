@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#60000000"
+        android:gravity="center"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@drawable/shape_background4_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:text="选择时间段"
+                android:textSize="16dp"
+                android:textColor="@color/textMedium"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_horizontal"
+                 android:orientation="horizontal">
+
+             <CheckBox
+                 android:id="@+id/fiction_time_start"
+                 android:layout_width="128dp"
+                 android:layout_height="38dp"
+                 android:gravity="center"
+                 android:button="@null"
+                 android:background="@drawable/select_shaixuan"
+                 android:textColor="@drawable/select_text_color"
+                 android:hint="开始时间"
+                 android:textColorHint="#9F9FA0"
+                 android:textSize="14dp" />
+
+             <View
+                 android:layout_width="12dp"
+                 android:layout_height="1dp"
+                 android:layout_marginLeft="7dp"
+                 android:layout_marginTop="16dp"
+                 android:layout_marginRight="7dp"
+                 android:background="#717173" />
+
+             <CheckBox
+                 android:id="@+id/fiction_time_end"
+                 android:layout_width="128dp"
+                 android:layout_height="38dp"
+                 android:gravity="center"
+                 android:button="@null"
+                 android:background="@drawable/select_shaixuan"
+                 android:textColor="@drawable/select_text_color"
+                 android:hint="结束时间"
+                 android:textColorHint="#9F9FA0"
+                 android:textSize="14dp" />
+         </LinearLayout>
+
+
+                <Button
+                    android:text="知道了"
+                    android:textSize="14dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/shape_red22"
+                    android:textColor="#fff"
+                    android:layout_width="100dp"
+                    android:layout_height="36dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
