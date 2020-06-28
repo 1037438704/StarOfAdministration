@@ -43,7 +43,7 @@ public class LssueSpeedFragment extends BaseFgt {
         for (int i = 0; i < 10; i++) {
             list.add("");
         }
-        joinSpeedAdapter.setNewData(list);
+        //joinSpeedAdapter.setNewData(list);
         joinSpeedAdapter.notifyDataSetChanged();
     }
 

@@ -56,6 +56,12 @@ public interface Constants {
     //删除附件
     String DELETEFUJIAN = "/sys/upload/delete/";
 
+    //查询当前任务流程（历史任务）
+    String CURRRNTTASKPROCESS = "/sys/documentfiction/currentTaskProcess";
+
+    //查询当前任务流程（待办任务）
+    String CURRENTTODOTASKPROCESS = "/sys/documentfiction/currentToDoTaskProcess";
+
     //调用word模板
     String SHOWWORDTEMPLATE = "/sys/poffice/showWordTemplate";
 

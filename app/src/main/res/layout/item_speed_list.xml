@@ -83,63 +83,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:id="@+id/liucheng_creat"
+            <RelativeLayout
                 android:layout_marginTop="16dp"
                 android:gravity="right"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/liucheng_creat_cuiban"
+                    android:id="@+id/liucheng_yijiancuiban"
                     android:text="一键催办"
                     android:textSize="16dp"
                     android:textColor="@color/white"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:background="@drawable/shape_red8"
                     android:layout_width="88dp"
-                    android:layout_height="28dp"/>
-
-                <TextView
-                    android:id="@+id/liucheng_creat_chehui"
-                    android:text="撤回"
-                    android:textSize="16dp"
-                    android:textColor="@color/white"
-                    android:gravity="center"
-                    android:background="@drawable/shape_red8"
-                    android:layout_marginLeft="16dp"
-                    android:layout_width="56dp"
-                    android:layout_height="28dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/liucheng_qianshou"
-                android:layout_marginTop="16dp"
-                android:gravity="right"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/liucheng_duban"
-                    android:text="督办"
-                    android:textSize="16dp"
-                    android:textColor="@color/white"
-                    android:gravity="center"
-                    android:background="@drawable/shape_red8"
-                    android:layout_width="56dp"
-                    android:layout_height="28dp"/>
-
-                <TextView
-                    android:id="@+id/liucheng_yuetan"
-                    android:text="约谈"
-                    android:textSize="16dp"
-                    android:textColor="@color/white"
-                    android:gravity="center"
-                    android:background="@drawable/shape_red8"
-                    android:layout_marginLeft="16dp"
-                    android:layout_width="56dp"
                     android:layout_height="28dp"/>
 
                 <TextView
@@ -153,49 +111,7 @@
                     android:layout_width="56dp"
                     android:layout_height="28dp"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/liucheng_banli"
-                android:layout_marginTop="16dp"
-                android:gravity="right"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/liucheng_chehui"
-                    android:text="撤回"
-                    android:textSize="16dp"
-                    android:textColor="@color/white"
-                    android:gravity="center"
-                    android:background="@drawable/shape_red8"
-                    android:layout_marginLeft="40dp"
-                    android:layout_width="56dp"
-                    android:layout_height="28dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/liucheng_banjie"
-                android:layout_marginTop="16dp"
-                android:gravity="right"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/liucheng_tuihui"
-                    android:text="退回"
-                    android:textSize="16dp"
-                    android:textColor="@color/white"
-                    android:gravity="center"
-                    android:background="@drawable/shape_red8"
-                    android:layout_marginLeft="40dp"
-                    android:layout_width="56dp"
-                    android:layout_height="28dp"/>
-
-            </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
 

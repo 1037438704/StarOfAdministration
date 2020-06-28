@@ -1,10 +1,13 @@
 package com.lawe.starofadministration.aty;
 
 import android.app.Dialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.Editable;
@@ -138,11 +141,14 @@ public class DraftActivity extends BaseAty {
     private String changeType;
     private String docContext;
     private Handler handler = new Handler();
+    private String yid;
+    int pageCounte = 0;
+    private String personType;
+    private LinearLayout draftMoreEndLinear;
 
     @Override
     public void initViews() {
         super.initViews();
-        Log.e("assigneeList",assigneeList+"");
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
         titleNew = findViewById(R.id.title_new);
@@ -158,6 +164,7 @@ public class DraftActivity extends BaseAty {
         draftMoreTemplate = findViewById(R.id.draft_more_template);
         draftMoreGlossary = findViewById(R.id.draft_more_glossary);
         draftMoreChangeType = findViewById(R.id.draft_more_changeType);
+        draftMoreEndLinear = findViewById(R.id.draft_more_end_linear);
 
         bottomPerson = findViewById(R.id.bottom_person);
         bottomPizhu = findViewById(R.id.bottom_pizhu);
@@ -176,7 +183,11 @@ public class DraftActivity extends BaseAty {
 
 
         //获取上一个页面传递的标识、
+        //新建还是查看
         flagSpeed = getIntent().getExtras().getString("flagSpeed");
+
+        //personType = getIntent().getExtras().getString("personType");
+
         if (flagSpeed.equals("1")){
             //设置字体
             titleText.setText("起草公文");
@@ -186,6 +197,7 @@ public class DraftActivity extends BaseAty {
             titleText.setText("创建人查看");
             draftChat.setClickable(false);
             bottomPizhu.setClickable(false);
+            draftMoreEndLinear.setVisibility(View.VISIBLE);
             bottomGongneng.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -207,7 +219,6 @@ public class DraftActivity extends BaseAty {
         layoutManager = new LinearLayoutManager(me);
         draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
     }
-    int pageCounte = 0;
 
     @Override
     public void initDatas(JumpParameter parameter) {
@@ -227,6 +238,7 @@ public class DraftActivity extends BaseAty {
             fragemnts.add(SetMessageFragment.newInstance());
             fragemnts.add(JoinSpeedFragment.newInstance());
             rb = (RadioButton) mainRgp.getChildAt(pageCounte);
+
         }
         rb.setChecked(true);
         //字体
@@ -280,10 +292,8 @@ public class DraftActivity extends BaseAty {
         getZhi();
     }
 
-    /**
-     * * 延迟线程，看是否还有下一个字符输入
-     */
 
+    //延迟线程，看是否还有下一个字符输入
     private Runnable delayRun = new Runnable() {
         @Override
         public void run() {
@@ -552,6 +562,8 @@ public class DraftActivity extends BaseAty {
                     draftMore.setVisibility(View.GONE);
                     flag = 1;
                     jump(FictionActivity.class);
+                    SharedPreferences newFile = getSharedPreferences("newFile", Context.MODE_PRIVATE);
+                    newFile.edit().clear().commit();
                     AppManager.getInstance().killActivity(DraftActivity.class);
                 }
             }
@@ -565,6 +577,8 @@ public class DraftActivity extends BaseAty {
                 draftMore.setVisibility(View.GONE);
                 flag = 1;
                 jump(FictionActivity.class);
+                SharedPreferences newFile = getSharedPreferences("newFile", Context.MODE_PRIVATE);
+                newFile.edit().clear().commit();
                 finish();
             }
         });
@@ -654,7 +668,7 @@ public class DraftActivity extends BaseAty {
             json.put("publicProperty",publicProperty);  //公开属性：0 不公开 1主动公开 2依申请公开
             json.put("docTheme",docTheme);  //公文主题 查询公文主题接口（查询所有父id为空公文主题）
             json.put("relationId",relationId);  //关联附件表relation_id
-            json.put("timingSendTime","2020-6-24 10:10:35");  //定时发送时间
+            json.put("timingSendTime","2020-7-24 10:10:35");  //定时发送时间
             json.put("signUnit",null);  //会签单位
             json.put("docNumber","");  //公文文号（核发传值）
             json.put("number","");  //公文文号的数字号（核发传值）
@@ -815,5 +829,16 @@ public class DraftActivity extends BaseAty {
                 e.printStackTrace();
             }
         }
+    }
+
+    public  String toValue(){
+        yid = getIntent().getExtras().getString("yid");
+        return  yid;
+    }
+
+    public String toPerson(){
+        //查看人是创建者还是执行者
+        personType = getIntent().getExtras().getString("personType");
+        return personType;
     }
 }

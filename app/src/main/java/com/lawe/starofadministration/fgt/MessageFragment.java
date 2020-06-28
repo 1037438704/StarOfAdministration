@@ -223,6 +223,7 @@ public class MessageFragment extends BaseFgt {
                 drawerLayout.closeDrawer(Gravity.RIGHT);
             }
         });
+
     }
 
     public static MessageFragment newInstance() {

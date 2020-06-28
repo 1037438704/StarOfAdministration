@@ -23,7 +23,9 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -55,6 +57,7 @@ import com.lawe.starofadministration.bean.FictionListBean;
 import com.lawe.starofadministration.bean.LoginDefaltBean;
 import com.lawe.starofadministration.bean.MessageBean;
 import com.lawe.starofadministration.config.Constants;
+import com.lawe.starofadministration.utils.AppManager;
 import com.lawe.starofadministration.utils.map.JSONUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -99,8 +102,10 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
     private LinearLayoutManager layoutManager;
     private ImageView factionTop;
     private DrawerLayout fictionDrawer;
-    private String fictionTimeStart = "";
-    private String fictionTimeEnd = "";
+    private TextView fictionTimeStart;
+    private TextView fictionTimeEnd;
+    private String startTime = null;
+    private String endTime = null;
     private int page = 1;
     private int pages = 1;
     private int limit = 10;
@@ -135,12 +140,14 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
         layoutManager = new LinearLayoutManager(me);
         factionRecycle.setLayoutManager(layoutManager);
         fictionAdapter = new FictionAdapter(R.layout.item_fiction);
+        fictionAdapter.setDepUserId(depUserId);
         factionRecycle.setAdapter(fictionAdapter);
 
         //checkbox--id
         checkbox();
         //查询信息
         getMessage();
+
     }
 
     private void checkbox() {
@@ -255,6 +262,7 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
             }
 
         });
+
         //返回
         titleBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,6 +286,7 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                 Intent intent = new Intent(FictionActivity.this, DraftActivity.class);
                 intent.putExtra("flagSpeed","1");
                 startActivity(intent);
+                AppManager.getInstance().killActivity(FictionActivity.class);
             }
         });
 
@@ -297,6 +306,7 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
             }
         });
 
+        //筛选确定
         fictionButtonSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -306,26 +316,14 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
             }
         });
 
+        //筛选取消
         fictionButtonCancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fictionDrawer.closeDrawer(Gravity.RIGHT);
             }
         });
-       /* //时间选择器
-        fictionTimeStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showStartDatePickerDialog(me,  2, fictionTimeStart, calendar);
-            }
-        });
 
-        fictionTimeEnd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showEndDatePickerDialog(me,  2, fictionTimeEnd, calendar);
-            }
-        });*/
     }
 
     //列表数据全部数据
@@ -365,6 +363,7 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
     //搜索筛选数据
     private void getMessageNone() {
         JSONObject json = new JSONObject();
+
         try {
             json.put("page", pages);
             json.put("limit", "100");
@@ -372,8 +371,8 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
             json.put("docNumber",null);  //公文文号(搜索框)
             json.put("docType",docType);    //公文类型
             json.put("docTitle",searchText);   //公文标题(搜索框)
-            json.put("startTime",fictionTimeStart);   //开始时间
-            json.put("endTime",fictionTimeEnd);   //结束时间
+            json.put("startTime",startTime);   //开始时间
+            json.put("endTime",endTime);   //结束时间
             json.put("day",day);  //最近几天
             json.put("archivedState",archivedState);   //归档状态
             json.put("state",state);   //状态
@@ -400,14 +399,16 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                     refreshLayout.finishLoadMore();
                 }
 
+                searchText = null;
+                docType = null;
+                day = null;
+                archivedState = null;
+                state = null;
             }
         });
     }
 
-    /**
-     * * 延迟线程，看是否还有下一个字符输入
-     */
-
+    //延迟线程，看是否还有下一个字符输入
     private Runnable delayRun = new Runnable() {
         @Override
         public void run() {
@@ -415,13 +416,112 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
         }
     };
 
-    /**
-     * 日期选择
-     * @param activity
-     * @param themeResId
-     * @param tv
-     * @param calendar
-     */
+    //筛选条件
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        //状态
+        if (isChecked){
+            for (int j = 0; j < checkBoxesstate.length; j++) {
+                //不等于当前选中的就变成false
+                if (checkBoxesstate[j].getText().toString().equals(buttonView.getText().toString())) {
+                    checkBoxesstate[j].setChecked(true);
+                    String s = buttonView.getText().toString();
+                    if (s.equals("处理中")){
+                        state = "1";
+                    }else if(s.equals("草稿")){
+                        state = "0";
+                    }else if(s.equals("已归档")){
+                        archivedState = "1";
+                    }
+                } else {
+                    checkBoxesstate[j].setChecked(false);
+                }
+            }
+        }
+        //时间
+        if (isChecked){
+            for (int k = 0; k < checkBoxestime.length; k++) {
+                //不等于当前选中的就变成false
+                if (checkBoxestime[k].getText().toString().equals(buttonView.getText().toString())) {
+                    checkBoxestime[k].setChecked(true);
+                    if (buttonView.getText().toString().equals("最近3天")){
+                        day = "3";
+                    }else if(buttonView.getText().toString().equals("最近7天")){
+                        day = "7";
+                    }else if(buttonView.getText().toString().equals("最近30天")){
+                        day = "30";
+                    }
+                } else {
+                    checkBoxestime[k].setChecked(false);
+                }
+            }
+
+            checkBoxestime[3].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    final Dialog dialog = new Dialog(me, R.style.DialogTheme);
+                    View view = View.inflate(me, R.layout.pop_check_time, null);
+                    dialog.setContentView(view);
+                    Window window = dialog.getWindow();
+                    window.setGravity(Gravity.CENTER);
+                    window.setWindowAnimations(R.style.main_menu_animStyle);
+                    //设置对话框大小
+                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    fictionTimeStart = view.findViewById(R.id.fiction_time_start);
+                    fictionTimeEnd = view.findViewById(R.id.fiction_time_end);
+                    Button sure = view.findViewById(R.id.pop_sure);
+
+                    //时间选择器
+                    fictionTimeStart.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            showStartDatePickerDialog(me,  2, fictionTimeStart, calendar);
+                        }
+                    });
+
+                    fictionTimeEnd.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            showEndDatePickerDialog(me,  2, fictionTimeEnd, calendar);
+                        }
+                    });
+
+                    sure.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            //调用接口查询
+                            day = null;
+                            startTime = fictionTimeStart.getText().toString();
+                            endTime = fictionTimeEnd.getText().toString();
+                            dialog.cancel();
+                            fictionDrawer.closeDrawer(Gravity.RIGHT);
+                            getMessageNone();
+                        }
+                    });
+
+                    dialog.setCanceledOnTouchOutside(true);
+                    dialog.show();
+                }
+            });
+        }
+        //类型
+        if (isChecked){
+            for (int i = 0; i < checkBoxes.length; i++) {
+                //不等于当前选中的就变成false
+
+                if (checkBoxes[i].getText().toString().equals(buttonView.getText().toString())) {
+                    checkBoxes[i].setChecked(true);
+                    docType = buttonView.getText().toString();
+                } else {
+                    checkBoxes[i].setChecked(false);
+                }
+            }
+        }
+    }
+
+    // 日期选择
     public static void showStartDatePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
         // 直接创建一个DatePickerDialog对话框实例，并将它显示出来
         new DatePickerDialog(activity, themeResId, new DatePickerDialog.OnDateSetListener() {
@@ -454,54 +554,4 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                 , calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked){
-            for (int i = 0; i < checkBoxes.length; i++) {
-                //不等于当前选中的就变成false
-
-                if (checkBoxes[i].getText().toString().equals(buttonView.getText().toString())) {
-                    checkBoxes[i].setChecked(true);
-                    docType = buttonView.getText().toString();
-                } else {
-                    checkBoxes[i].setChecked(false);
-                }
-            }
-
-            for (int i = 0; i < checkBoxesstate.length; i++) {
-                //不等于当前选中的就变成false
-                if (checkBoxesstate[i].getText().toString().equals(buttonView.getText().toString())) {
-                    checkBoxesstate[i].setChecked(true);
-                    String s = buttonView.getText().toString();
-                    if (s.equals("处理中")){
-                        state = "1";
-                    }else if(s.equals("草稿")){
-                        state = "0";
-                    }else if(s.equals("已归档")){
-                        archivedState = "1";
-                    }
-                } else {
-                    checkBoxesstate[i].setChecked(false);
-                }
-            }
-
-            for (int i = 0; i < checkBoxestime.length; i++) {
-                //不等于当前选中的就变成false
-
-                if (checkBoxestime[i].getText().toString().equals(buttonView.getText().toString())) {
-                    checkBoxestime[i].setChecked(true);
-                    day = buttonView.getText().toString();
-                } else {
-                    checkBoxestime[i].setChecked(false);
-                }
-            }
-
-            checkBoxestime[3].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-        }
-    }
 }
