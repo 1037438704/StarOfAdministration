@@ -23,7 +23,7 @@
         <TextView
             android:text="杨娜"
             android:textSize="16dp"
-            android:textColor="@color/textMedium"
+            android:textColor="@color/color_3E3E41"
             android:includeFontPadding="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -31,7 +31,7 @@
         <TextView
             android:text="天津市红桥区某某某某某"
             android:textSize="12dp"
-            android:textColor="@color/text717173"
+            android:textColor="@color/color_717173"
             android:layout_marginTop="6dp"
             android:includeFontPadding="false"
             android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.lawe.starofadministration.base;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -10,6 +11,8 @@ import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
@@ -23,6 +26,7 @@ import com.kongzue.baseframework.util.Preferences;
 import com.kongzue.baseokhttp.listener.ResponseInterceptListener;
 import com.kongzue.baseokhttp.util.BaseOkHttp;
 import com.lawe.starofadministration.MyApplication;
+import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.utils.map.JSONUtils;
 
@@ -33,6 +37,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.ButterKnife;
+
 
 abstract public class BaseAty extends BaseActivity implements Constants {
     public Typeface getTextMedium = MyApplication.getTextMedium;
@@ -41,6 +47,7 @@ abstract public class BaseAty extends BaseActivity implements Constants {
     public Typeface getTextNum = MyApplication.getTextNum;
 
     public Gson gson = new Gson();
+    protected Dialog dialog;
 
     //权限申请回调
     private OnPermissionResponseListener onPermissionResponseListener;
@@ -57,6 +64,7 @@ abstract public class BaseAty extends BaseActivity implements Constants {
     @Override
     public void initViews() {
         interceptDate();
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
         token = Preferences.getInstance().getString(me,"login","token");
         depUserId = Preferences.getInstance().getString(me,"login","depUserId");
         departmentId = Preferences.getInstance().getString(me,"login","departmentId");
@@ -255,6 +263,22 @@ abstract public class BaseAty extends BaseActivity implements Constants {
             }
         }
         return needRequestPermissionList;
+    }
+
+    public void showPopDialog() {
+        if ((!this.isFinishing()) && (dialog == null || !dialog.isShowing())) {
+            dialog = new Dialog(this, R.style.MyDialogStyle);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.getWindow().setDimAmount(0f);
+            dialog.setContentView(R.layout.core_center_loading);
+            dialog.setCancelable(true);
+            dialog.show();
+        }
+    }
+    public void endLoading() {
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
     }
 
 }

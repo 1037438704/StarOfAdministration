@@ -5,17 +5,26 @@ public interface Constants {
     //默认登录
     String LOGIN = "/sys/login";
 
+    //验证码登录
+    String VALIDCODELOGIN = "/sys/validCodeAndLogin";
+
     //登陆协议
     String FINDUSERAGREEMENT = "/sys/config/findUserAgreement";
 
     //发送验证码
-    String GETPASSWORDBYSENDNOTE = "/login/getPasswordBySendNote";
+    String GETPASSWORDBYSENDNOTE = "/sys/getPasswordBySendNote";
 
     //验证码验证
-    String VALIDCODE = "/login/validCode";
+    String VALIDCODE = "/sys/validCode";
+
+    //忘记密码
+    String UPDATEPASSWORD = "/sys/updatePassword";
 
     //首页待办信息
     String LISTFINDALLBYCURRENTUSER = "/sys/homepage/listFindAllByCurrentUser";
+
+    //个人信息
+    String PERSONALMSG = "/sys/center/personalMsg/";
 
     //首页个人信息
     String QUERYPAGE = "/sys/center/queryPage";

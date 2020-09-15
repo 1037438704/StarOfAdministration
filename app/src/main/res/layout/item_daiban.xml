@@ -149,7 +149,7 @@
 
         <View
             android:layout_marginTop="16dp"
-            android:background="@color/backgroundHui"
+            android:background="@color/color_EFF0F2"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 

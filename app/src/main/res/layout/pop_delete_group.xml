@@ -17,7 +17,7 @@
             android:id="@+id/pop_delete_group_title"
             android:text="删除常用组"
             android:textSize="16dp"
-            android:textColor="@color/textMedium"
+            android:textColor="@color/color_3E3E41"
             android:layout_marginTop="20dp"
             android:includeFontPadding="false"
             android:layout_width="wrap_content"
@@ -26,7 +26,7 @@
         <TextView
             android:text="这个操作将无法复原，确认要删除"
             android:textSize="14dp"
-            android:textColor="@color/text717173"
+            android:textColor="@color/color_717173"
             android:layout_marginLeft="17dp"
             android:layout_marginRight="17dp"
             android:layout_marginTop="12dp"
@@ -44,7 +44,7 @@
                 android:id="@+id/pop_delete_group_name"
                 android:text="医疗公文类"
                 android:textSize="14dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -53,7 +53,7 @@
                 android:id="@+id/pop_delete_group_text"
                 android:text="常用组吗？"
                 android:textSize="14dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

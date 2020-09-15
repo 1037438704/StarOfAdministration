@@ -1,7 +1,5 @@
 package com.lawe.starofadministration.fgt;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -14,22 +12,18 @@ import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
-import com.kongzue.dialog.v3.WaitDialog;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.MessageAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.bean.MessageBean;
 import com.lawe.starofadministration.config.Constants;
-import com.lawe.starofadministration.utils.FastBlurUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.List;
@@ -102,12 +96,7 @@ public class MessageFragment extends BaseFgt {
 
     @Override
     public void initDatas() {
-        //毛玻璃
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.maoboli_bai, null);
-        Bitmap bitmap1 = FastBlurUtil.doBlur(bitmap, 0, true);
-
         //刷新
-
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
@@ -126,13 +115,21 @@ public class MessageFragment extends BaseFgt {
         });
     }
 
+    //查询所有数据
     private void messageData() {
-        //WaitDialog.show(me, "请稍候...");
+        showPopDialog();
         JSONObject json = new JSONObject();
         try {
             json.put("page", page);
             json.put("limit", limit);
             json.put("depUserId",depUserId);
+            json.put("warningState",null);  //紧急度
+            json.put("orderType",null); //接收时间
+            json.put("category",null);   //类别
+            json.put("beAboutToOverdue",null);   //即将逾期靠前
+            json.put("day",null);   //最近幾天
+            json.put("startTime",null);   //开始时间
+            json.put("endTime",null);   //结束时间
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -141,6 +138,7 @@ public class MessageFragment extends BaseFgt {
         HttpRequest.JSONPOST(me, Constants.LISTFINDALLBYCURRENTUSER, jsonMess, new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
+                endLoading();
                 MessageBean messageBean = gson.fromJson(response, MessageBean.class);
                 List<MessageBean.PageBean.ListBean> list = messageBean.getPage().getList();
                 if (page == 1){
@@ -165,6 +163,12 @@ public class MessageFragment extends BaseFgt {
         choose_leibie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                linear_time.setVisibility(View.GONE);
+                linear_urgent.setVisibility(View.GONE);
+                daibanDown2.setImageResource(R.mipmap.daiban_down);
+                daibanDown3.setImageResource(R.mipmap.daiban_down);
+                flag_time = 1;
+                flag_urgent = 1;
                 if (flag == 1) {
                     linearLeibie.setVisibility(View.VISIBLE);
                     daibanDown1.setImageResource(R.mipmap.shaixuan_3);
@@ -181,6 +185,12 @@ public class MessageFragment extends BaseFgt {
         dealtLinerarTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                linearLeibie.setVisibility(View.GONE);
+                linear_urgent.setVisibility(View.GONE);
+                daibanDown1.setImageResource(R.mipmap.daiban_down);
+                daibanDown3.setImageResource(R.mipmap.daiban_down);
+                flag = 1;
+                flag_urgent = 1;
                 if (flag_time == 1) {
                     linear_time.setVisibility(View.VISIBLE);
                     daibanDown2.setImageResource(R.mipmap.shaixuan_3);
@@ -197,6 +207,13 @@ public class MessageFragment extends BaseFgt {
         dealtLinerarUrgent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                linearLeibie.setVisibility(View.GONE);
+                linear_time.setVisibility(View.GONE);daibanDown2.setImageResource(R.mipmap.daiban_down);
+                daibanDown1.setImageResource(R.mipmap.daiban_down);
+                daibanDown2.setImageResource(R.mipmap.daiban_down);
+                flag_time = 1;
+                flag = 1;
+
                 if (flag_urgent == 1) {
                     linear_urgent.setVisibility(View.VISIBLE);
                     daibanDown3.setImageResource(R.mipmap.shaixuan_3);

@@ -29,7 +29,7 @@
     <TextView
         android:text="杨娜"
         android:textSize="14dp"
-        android:textColor="@color/textMedium"
+        android:textColor="@color/color_3E3E41"
         android:includeFontPadding="true"
         android:layout_marginTop="10dp"
         android:maxLines="1"
@@ -40,7 +40,7 @@
     <TextView
         android:text="岗位职称2我殴斗"
         android:textSize="12dp"
-        android:textColor="@color/text717173"
+        android:textColor="@color/color_717173"
         android:includeFontPadding="true"
         android:layout_marginTop="4dp"
         android:maxLines="1"

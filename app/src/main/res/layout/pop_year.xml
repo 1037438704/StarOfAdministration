@@ -22,7 +22,7 @@
 
             <TextView
                 android:text="请选择年份"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textSize="16dp"
                 android:includeFontPadding="false"
                 android:layout_width="0dp"

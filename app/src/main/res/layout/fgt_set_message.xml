@@ -21,7 +21,7 @@
             <TextView
                 android:text="公文类型"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -31,7 +31,7 @@
                 android:id="@+id/setmes_text_type"
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -64,7 +64,7 @@
             <TextView
                 android:text="公文主题"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -74,7 +74,7 @@
                 android:id="@+id/setmes_text_zhuti"
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -107,7 +107,7 @@
             <TextView
                 android:text="选择共享条件"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -117,7 +117,7 @@
                 android:id="@+id/setmes_text_tiaojian"
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -150,7 +150,7 @@
             <TextView
                 android:text="会签单位"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -160,7 +160,7 @@
                 android:id="@+id/setmes_text_danwei"
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -195,7 +195,7 @@
             <TextView
                 android:text="定时发送"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -205,7 +205,7 @@
                 android:id="@+id/setmes_text_time"
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

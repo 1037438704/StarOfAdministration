@@ -21,6 +21,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/typeLeibie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
@@ -34,9 +35,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="24dp"
-                android:background="@color/backgroundHui" />
+                android:background="@color/color_EFF0F2" />
 
             <TextView
+                android:id="@+id/typeNizhi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
@@ -50,9 +52,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="24dp"
-                android:background="@color/backgroundHui" />
+                android:background="@color/color_EFF0F2" />
 
             <TextView
+                android:id="@+id/typeDuban"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
@@ -66,9 +69,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="24dp"
-                android:background="@color/backgroundHui" />
+                android:background="@color/color_EFF0F2" />
 
             <TextView
+                android:id="@+id/typeChuanyue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
@@ -82,9 +86,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="24dp"
-                android:background="@color/backgroundHui" />
+                android:background="@color/color_EFF0F2" />
 
             <TextView
+                android:id="@+id/typeJihua"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
@@ -98,9 +103,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="24dp"
-                android:background="@color/backgroundHui" />
+                android:background="@color/color_EFF0F2" />
 
             <TextView
+                android:id="@+id/typeGuidang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
@@ -114,9 +120,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="24dp"
-                android:background="@color/backgroundHui" />
+                android:background="@color/color_EFF0F2" />
 
             <TextView
+                android:id="@+id/typeBaofa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"

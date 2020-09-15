@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
-
 import com.kongzue.baseokhttp.util.BaseOkHttp;
 import com.kongzue.dialog.util.BaseDialog;
 import com.kongzue.dialog.util.DialogSettings;

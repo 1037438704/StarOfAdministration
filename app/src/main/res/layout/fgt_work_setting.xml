@@ -29,14 +29,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="负责单位"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -70,14 +70,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="参与人员"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -112,14 +112,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="开始时间"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -153,14 +153,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="截止时间"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -193,14 +193,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="循环模式"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -233,14 +233,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="优先级"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -273,14 +273,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="强制上传附件"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -313,14 +313,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="公开属性"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -353,14 +353,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="是否督查"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="15dp" />
 
                 <ImageView

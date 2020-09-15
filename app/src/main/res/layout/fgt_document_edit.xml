@@ -37,7 +37,7 @@
                 <EditText
                     android:id="@+id/document_title"
                     android:textSize="16dp"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:hint="请输入标题"
                     android:includeFontPadding="false"
                     android:textColorHint="#D7D7D8"
@@ -51,7 +51,7 @@
             </LinearLayout>
 
             <View
-                android:background="@color/backgroundHui"
+                android:background="@color/color_EFF0F2"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_width="match_parent"
@@ -70,7 +70,7 @@
                 />
 
             <View
-                android:background="@color/backgroundHui"
+                android:background="@color/color_EFF0F2"
                 android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="8dp"/>
@@ -106,7 +106,7 @@
                 <EditText
                     android:id="@+id/document_subject"
                     android:textSize="16dp"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:hint=""
                     android:textColorHint="#D7D7D8"
                     android:background="@null"

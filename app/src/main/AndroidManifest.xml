@@ -57,7 +57,10 @@
         <activity
             android:name=".aty.ChatActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" /> <!-- 今日日程 -->
-        <activity android:name=".aty.LookAllActivity" /> <!-- 忘记密码 -->
+        <activity android:name=".aty.LookAllActivity" />
+        <!--忘记密码-->
+        <activity android:name=".aty.ForgetPassUpdateActivity"/>
+        <!-- 忘记密码 -->
         <activity android:name=".aty.ForgetPassActivity" /> <!-- 扫一扫 -->
         <activity
             android:name=".aty.ScanningActivity"

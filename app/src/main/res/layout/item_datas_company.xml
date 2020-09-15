@@ -24,14 +24,14 @@
                 android:textSize="16dp"
                 android:gravity="center"
                 android:layout_marginLeft="12dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_width="24dp"
                 android:layout_height="20dp"/>
 
             <TextView
                 android:text="天津蓝威科技有限公司"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -44,7 +44,7 @@
 
             <TextView
                 android:text="2"
-                android:textColor="@color/textDataUp"
+                android:textColor="@color/color_d7d7d8"
                 android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -55,7 +55,7 @@
             android:text="100"
             android:textSize="16dp"
             android:layout_marginRight="12dp"
-            android:textColor="@color/textMedium"
+            android:textColor="@color/color_3E3E41"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -76,14 +76,14 @@
 
             <TextView
                 android:text="工作计划："
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:text="-3"
-                android:textColor="@color/textDataDown"
+                android:textColor="@color/color_d7d7d8"
                 android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -98,14 +98,14 @@
 
             <TextView
                 android:text="督办扣分："
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:text="-3"
-                android:textColor="@color/textDataDown"
+                android:textColor="@color/color_d7d7d8"
                 android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -122,12 +122,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="互联网+："
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:textSize="14dp" />
 
             <TextView
                 android:text="-3"
-                android:textColor="@color/textDataDown"
+                android:textColor="@color/color_d7d7d8"
                 android:textSize="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

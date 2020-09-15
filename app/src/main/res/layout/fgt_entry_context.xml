@@ -23,7 +23,7 @@
                 <TextView
                     android:text="公文标题："
                     android:textSize="16dp"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:layout_marginTop="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -31,7 +31,7 @@
                 <EditText
                     android:id="@+id/document_title"
                     android:textSize="16dp"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:hint="请输入公文标题"
                     android:includeFontPadding="false"
                     android:textColorHint="#D7D7D8"
@@ -43,7 +43,7 @@
             </LinearLayout>
 
             <View
-                android:background="@color/backgroundHui"
+                android:background="@color/color_EFF0F2"
                 android:layout_marginTop="14dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
@@ -63,7 +63,7 @@
                 />
 
             <View
-                android:background="@color/backgroundHui"
+                android:background="@color/color_EFF0F2"
                 android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="8dp"/>
@@ -73,7 +73,7 @@
                 android:textSize="16dp"
                 android:layout_marginLeft="12dp"
                 android:gravity="center_vertical"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"/>
 
@@ -85,7 +85,7 @@
             <EditText
                 android:id="@+id/document_subject"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:hint="请输入公文内容"
                 android:textColorHint="#D7D7D8"
                 android:background="@null"

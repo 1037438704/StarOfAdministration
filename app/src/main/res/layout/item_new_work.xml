@@ -8,7 +8,7 @@
     <TextView
         android:text="嘟嘟嘟嘟度嘟嘟嘟嘟嘟嘟嘟嘟的嘟嘟嘟嘟嘟嘟"
         android:textSize="16dp"
-        android:textColor="@color/textMedium"
+        android:textColor="@color/color_3E3E41"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="12dp"

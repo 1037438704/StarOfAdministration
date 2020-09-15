@@ -19,7 +19,7 @@
                 android:id="@+id/pop_doc_type"
                 android:text="请选择公文类型"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:includeFontPadding="false"

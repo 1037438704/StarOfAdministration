@@ -12,7 +12,7 @@
 
     <TextView
         android:text="公文驳回"
-        android:textColor="@color/text9f9fa0"
+        android:textColor="@color/color_9F9FA0"
         android:textSize="14dp"
         android:gravity="center"
         android:layout_marginTop="4dp"
@@ -21,7 +21,7 @@
 
     <TextView
         android:text="驳回意见："
-        android:textColor="@color/textMedium"
+        android:textColor="@color/color_3E3E41"
         android:textSize="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="16dp"
@@ -30,7 +30,7 @@
 
     <EditText
         android:hint="请输入驳回理由"
-        android:textColor="@color/textMedium"
+        android:textColor="@color/color_3E3E41"
         android:textSize="15dp"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
@@ -56,7 +56,7 @@
 
         <TextView
             android:text="驳回至："
-            android:textColor="@color/textMedium"
+            android:textColor="@color/color_3E3E41"
             android:textSize="16dp"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -64,7 +64,7 @@
 
         <TextView
             android:text="已选中2人"
-            android:textColor="@color/text717173"
+            android:textColor="@color/color_717173"
             android:textSize="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

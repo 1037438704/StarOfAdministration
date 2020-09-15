@@ -24,7 +24,7 @@
 
             <TextView
                 android:text="退办审批"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginTop="4dp"
@@ -33,7 +33,7 @@
 
             <TextView
                 android:text="关于贯彻落实疫情以前中小企业人员流动管控的指导意见"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textSize="16dp"
                 android:includeFontPadding="false"
                 android:layout_marginTop="16dp"
@@ -50,7 +50,7 @@
                 <TextView
                     android:text="申请日期"
                     android:textSize="16dp"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"/>
@@ -58,7 +58,7 @@
                 <TextView
                     android:text="2020/5/25 15:23:32"
                     android:textSize="15dp"
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -80,7 +80,7 @@
                 <TextView
                     android:text="要求办结日期"
                     android:textSize="16dp"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"/>
@@ -88,7 +88,7 @@
                 <TextView
                     android:text="2020/5/25 15:23:32"
                     android:textSize="15dp"
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -110,7 +110,7 @@
                 <TextView
                     android:text="申请人"
                     android:textSize="16dp"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"/>
@@ -118,7 +118,7 @@
                 <TextView
                     android:text="富伟学"
                     android:textSize="15dp"
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -140,7 +140,7 @@
                 <TextView
                     android:text="申请单位"
                     android:textSize="16dp"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"/>
@@ -148,7 +148,7 @@
                 <TextView
                     android:text="某某某"
                     android:textSize="15dp"
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -163,7 +163,7 @@
 
             <TextView
                 android:text="申请原由"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textSize="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
@@ -171,7 +171,7 @@
 
             <TextView
                 android:text="dududududududududududududdu"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:textSize="15dp"
                 android:layout_marginTop="16dp"
                 android:background="@null"
@@ -206,7 +206,7 @@
                 android:layout_height="39dp"
                 android:background="@drawable/shape_white22"
                 android:text="拒绝"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:textSize="14dp" />
 
             <Button
@@ -238,7 +238,7 @@
             <TextView
                 android:id="@+id/bottom_chooseper2"
                 android:text="转其他审批人"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:textSize="14dp"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"

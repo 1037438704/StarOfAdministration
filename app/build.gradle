@@ -44,9 +44,12 @@ dependencies {
     implementation 'com.kongzue.baseokhttp_v3:baseokhttp_v3:3.1.6'
     implementation 'com.github.WShaobin:VerificationCodeInputView:1.0.2'
     implementation 'com.kongzue.dialog_v3x:dialog:3.1.8'
-    //noinspection GradleCompatible
     implementation 'com.android.support:design:29.0.0'
     implementation 'com.google.android.material:material:1.1.0'
+
+    //butterknife
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
     //图片加载
     implementation 'com.github.bumptech.glide:glide:4.9.0'

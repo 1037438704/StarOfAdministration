@@ -38,7 +38,7 @@
                 android:id="@+id/chat_name"
                 android:text="个人信息"
                 android:textSize="18dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:layout_width="match_parent"

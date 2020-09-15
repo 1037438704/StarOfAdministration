@@ -61,7 +61,7 @@
 
         <EditText
             android:hint="要反馈的内容"
-            android:textColorHint="@color/text717173"
+            android:textColorHint="@color/color_717173"
             android:background="#fff"
             android:textSize="16dp"
             android:paddingLeft="20dp"

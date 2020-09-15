@@ -17,7 +17,7 @@
         <TextView
             android:text="模板列表"
             android:textSize="14dp"
-            android:textColor="@color/text9f9fa0"
+            android:textColor="@color/color_9F9FA0"
             android:gravity="center"
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"

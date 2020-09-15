@@ -32,11 +32,6 @@ public class WorkTaskFragment extends BaseFgt {
     private List<String> list;
 
     @Override
-    public Bitmap fastblur(Context context, Bitmap sentBitmap, int radius) {
-        return super.fastblur(context, sentBitmap, radius);
-    }
-
-    @Override
     public void initViews() {
         super.initViews();
         enclosureRecycle = (RecyclerView) findViewById(R.id.enclosure_recycle);

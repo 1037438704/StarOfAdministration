@@ -32,11 +32,6 @@ public class ApproveEclosureFragment extends BaseFgt {
     private List<String> list;
 
     @Override
-    public Bitmap fastblur(Context context, Bitmap sentBitmap, int radius) {
-        return super.fastblur(context, sentBitmap, radius);
-    }
-
-    @Override
     public void initViews() {
         enclosureRecycle = (RecyclerView) findViewById(R.id.enclosure_recycle);
         enclosureShangchuan = (LinearLayout) findViewById(R.id.enclosure_shangchuan);

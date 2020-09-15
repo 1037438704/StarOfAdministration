@@ -44,7 +44,7 @@
               android:id="@+id/data_pop_ji_pingjia"
               android:text="评价考核可视化模型"
               android:textSize="16dp"
-              android:textColor="@color/textMedium"
+              android:textColor="@color/color_3E3E41"
               android:layout_width="0dp"
               android:layout_weight="1"
               android:layout_height="wrap_content"/>
@@ -82,7 +82,7 @@
         <TextView
             android:id="@+id/data_pop_ji_message"
             android:text="信息摘要"
-            android:textColor="@color/textMedium"
+            android:textColor="@color/color_3E3E41"
             android:textSize="16dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="19dp"
@@ -91,7 +91,7 @@
 
         <TextView
             android:text="所在单位：天津市蓝威科技有限公司"
-            android:textColor="@color/text717173"
+            android:textColor="@color/color_717173"
             android:textSize="14dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="12dp"
@@ -100,7 +100,7 @@
 
         <TextView
             android:text="姓名：高寒"
-            android:textColor="@color/text717173"
+            android:textColor="@color/color_717173"
             android:textSize="14dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="12dp"
@@ -109,7 +109,7 @@
 
         <TextView
             android:text="编号：1234567890987654"
-            android:textColor="@color/text717173"
+            android:textColor="@color/color_717173"
             android:textSize="14dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="12dp"
@@ -118,7 +118,7 @@
 
         <TextView
             android:text="更新日期：2020/3/29 12:37:21"
-            android:textColor="@color/text717173"
+            android:textColor="@color/color_717173"
             android:textSize="14dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="12dp"

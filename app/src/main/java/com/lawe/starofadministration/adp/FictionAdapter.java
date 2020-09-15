@@ -81,7 +81,6 @@ public class FictionAdapter extends BaseQuickAdapter<FictionListBean.PageBean.Li
             item_fiction_state.setText("状态：已归档");
         }
         item_fiction_time.setText("起草日期："+listBean.getCreateTime());
-        //哪个地方呀
         item_fiction_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -300,7 +300,7 @@ public class SignActivity extends BaseAty {
                 } else {
                     draftChatNewText.setText("新建");
                     draftChatSetText.setText("管理");
-                    draftChatSetText.setTextColor(ContextCompat.getColor(me, R.color.textMedium));
+                    draftChatSetText.setTextColor(ContextCompat.getColor(me, R.color.color_3E3E41));
                     draftChatNewImg.setVisibility(View.VISIBLE);
                     draftChatSetImg.setVisibility(View.VISIBLE);
                 }

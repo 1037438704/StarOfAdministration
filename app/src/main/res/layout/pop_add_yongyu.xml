@@ -16,7 +16,7 @@
             android:id="@+id/pop_add_title"
             android:text="新增常用语"
             android:textSize="16dp"
-            android:textColor="@color/textMedium"
+            android:textColor="@color/color_3E3E41"
             android:layout_marginTop="20dp"
             android:includeFontPadding="false"
             android:layout_width="wrap_content"

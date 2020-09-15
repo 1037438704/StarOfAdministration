@@ -69,11 +69,6 @@ public class EnclosureCatalogFragment extends BaseFgt {
     private String fileName;
 
     @Override
-    public Bitmap fastblur(Context context, Bitmap sentBitmap, int radius) {
-        return super.fastblur(context, sentBitmap, radius);
-    }
-
-    @Override
     public void initViews() {
         super.initViews();
         enclosureRecycle = (RecyclerView) findViewById(R.id.enclosure_recycle);

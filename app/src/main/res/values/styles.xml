@@ -17,8 +17,8 @@
     </style>
 
     <style name="MyEditText" parent="Theme.AppCompat.Light">
-    <item name="colorControlNormal">@color/editcolor</item>
-    <item name="colorControlActivated">@color/editcolor</item>
+    <item name="colorControlNormal">@color/color_3E3E41</item>
+    <item name="colorControlActivated">@color/color_3E3E41</item>
     </style>
 
     <style name="main_menu_animStyle">
@@ -47,5 +47,16 @@
     </style>
 
    <!-- <style name="TabLayoutTextStyle"> <item name="android:textSize">@dimen/textsizi</item> </style>-->
+
+    <style name="MyDialogStyle">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
 
 </resources>

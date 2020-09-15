@@ -21,7 +21,7 @@
             <TextView
                 android:text="督查类型"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -30,7 +30,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -62,7 +62,7 @@
             <TextView
                 android:text="要求办结日期"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -71,7 +71,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -104,7 +104,7 @@
             <TextView
                 android:text="负责领导"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -113,7 +113,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -145,7 +145,7 @@
             <TextView
                 android:text="主责单位"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -154,7 +154,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -185,7 +185,7 @@
             <TextView
                 android:text="协办单位"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -194,7 +194,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -225,7 +225,7 @@
             <TextView
                 android:text="报送周期"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -234,7 +234,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -265,7 +265,7 @@
             <TextView
                 android:text="预警与挂牌"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -274,7 +274,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -305,7 +305,7 @@
             <TextView
                 android:text="是否允许延期"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -314,7 +314,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -345,7 +345,7 @@
             <TextView
                 android:text="强制上传附件"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -354,7 +354,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

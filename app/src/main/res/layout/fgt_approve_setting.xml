@@ -7,7 +7,7 @@
 
     <TextView
         android:text="公文字号设置"
-        android:textColor="@color/text717173"
+        android:textColor="@color/color_717173"
         android:textSize="14dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
@@ -32,7 +32,7 @@
             <TextView
                 android:text="机关代字"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -42,7 +42,7 @@
                 android:id="@+id/app_set_jiguan_text"
                 android:text="津蓟卫"
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -75,7 +75,7 @@
             <TextView
                 android:text="文种"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -85,7 +85,7 @@
                 android:id="@+id/app_set_wenzhong_text"
                 android:text="医疗卫生"
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -119,7 +119,7 @@
             <TextView
                 android:text="年份"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -129,7 +129,7 @@
                 android:id="@+id/app_set_year_text"
                 android:text="2020"
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -164,7 +164,7 @@
             <TextView
                 android:text="字号"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -174,7 +174,7 @@
                 android:id="@+id/app_set_textnum_text"
                 android:text="1"
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -190,7 +190,7 @@
 
     <TextView
         android:text="发文归档设置"
-        android:textColor="@color/text717173"
+        android:textColor="@color/color_717173"
         android:textSize="14dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
@@ -215,7 +215,7 @@
             <TextView
                 android:text="转发至其他单位"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -225,7 +225,7 @@
                 android:id="@+id/app_set_choose_company_num"
                 android:text="已选3个"
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -258,7 +258,7 @@
             <TextView
                 android:text="设置报发人"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -268,7 +268,7 @@
                 android:id="@+id/app_set_person_num"
                 android:text="李晓等2人"
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -303,7 +303,7 @@
             <TextView
                 android:text="设置归档人"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -313,7 +313,7 @@
                 android:id="@+id/app_set_person_num2"
                 android:text="黄元丽等3人"
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

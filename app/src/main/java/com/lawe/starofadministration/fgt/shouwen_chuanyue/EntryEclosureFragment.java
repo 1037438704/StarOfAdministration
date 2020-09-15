@@ -31,11 +31,6 @@ public class EntryEclosureFragment extends BaseFgt {
     //空集合
     private List<String> list;
 
-    @Override
-    public Bitmap fastblur(Context context, Bitmap sentBitmap, int radius) {
-        return super.fastblur(context, sentBitmap, radius);
-    }
-
     private EnclosureAdapter enclosureAdapter;
 
     @Override

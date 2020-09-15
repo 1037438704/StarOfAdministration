@@ -72,7 +72,7 @@
             android:layout_height="56dp">
 
             <TextView
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textSize="16dp"
                 android:text="原始密码"
                 android:layout_marginLeft="20dp"
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:textSize="14dp"
                 android:text="请输入现在的密码"
                 android:background="@null"
@@ -107,7 +107,7 @@
             android:layout_height="56dp">
 
             <TextView
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textSize="16dp"
                 android:text="新密码"
                 android:layout_marginLeft="20dp"
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:textSize="14dp"
                 android:text="请输入新的密码"
                 android:background="@null"
@@ -142,7 +142,7 @@
             android:layout_height="56dp">
 
             <TextView
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textSize="16dp"
                 android:text="确认新密码"
                 android:layout_marginLeft="20dp"
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:textSize="14dp"
                 android:text="请确认新的密码"
                 android:background="@null"

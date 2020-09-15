@@ -13,7 +13,7 @@
             android:id="@+id/join_context_title"
             android:text="关于贯彻落实疫情以前中小企业人员流动管控的指导意见"
             android:textSize="16dp"
-            android:textColor="@color/textMedium"
+            android:textColor="@color/color_3E3E41"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:includeFontPadding="false"
@@ -23,7 +23,7 @@
 
 
         <View
-            android:background="@color/backgroundHui"
+            android:background="@color/color_EFF0F2"
             android:layout_marginTop="14dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
@@ -43,7 +43,7 @@
             />
 
         <View
-            android:background="@color/backgroundHui"
+            android:background="@color/color_EFF0F2"
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="8dp"/>
@@ -60,7 +60,7 @@
             <TextView
                 android:text="紧急度"
                 android:textSize="16dp"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
@@ -68,14 +68,14 @@
             <TextView
                 android:text="通知"
                 android:textSize="15dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
         <View
-            android:background="@color/backgroundHui"
+            android:background="@color/color_EFF0F2"
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="8dp"/>
@@ -92,7 +92,7 @@
             <TextView
                 android:text="来文单位"
                 android:textSize="16dp"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_marginRight="16dp"
@@ -103,14 +103,14 @@
                 android:textSize="15dp"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
         <View
-            android:background="@color/backgroundHui"
+            android:background="@color/color_EFF0F2"
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="8dp"/>
@@ -127,7 +127,7 @@
             <TextView
                 android:text="要求办结"
                 android:textSize="16dp"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
@@ -136,14 +136,14 @@
                 android:id="@+id/setmes_type_text"
                 android:text="2020/3/4 12:34:21"
                 android:textSize="15dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
         <View
-            android:background="@color/backgroundHui"
+            android:background="@color/color_EFF0F2"
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="8dp"/>
@@ -155,7 +155,7 @@
             <TextView
                 android:id="@+id/join_context_subject"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textColorHint="#D7D7D8"
                 android:padding="16dp"
                 android:paddingLeft="12dp"

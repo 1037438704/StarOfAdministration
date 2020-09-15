@@ -17,6 +17,7 @@
             android:src="@mipmap/bg_tu" />
 
         <ImageView
+            android:id="@+id/img_head"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginLeft="16dp"
@@ -251,33 +252,35 @@
                     android:orientation="vertical">
 
                     <ProgressBar
+                        android:id="@+id/proShixiao"
                         style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="141dp"
+                        android:layout_width="134dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-
                         android:max="100"
                         android:progress="44"
-                        android:progressDrawable="@drawable/shape_chage_all"
+                        android:progressDrawable="@drawable/shape_progress_work"
                         android:visibility="visible" />
 
                     <ProgressBar
+                        android:id="@+id/proChaping"
                         style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="141dp"
+                        android:layout_width="134dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginTop="20dp"
                         android:layout_weight="1"
                         android:max="100"
                         android:progress="22"
-                        android:progressDrawable="@drawable/shape_chage_all"
+                        android:progressDrawable="@drawable/shape_progress_server"
                         android:visibility="visible" />
 
                     <ProgressBar
+                        android:id="@+id/proXinyong"
                         style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="141dp"
+                        android:layout_width="134dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginTop="22dp"
@@ -285,7 +288,7 @@
                         android:max="400"
                         android:progress="302"
 
-                        android:progressDrawable="@drawable/shape_chage_all"
+                        android:progressDrawable="@drawable/shape_progress_xinyong"
                         android:visibility="visible" />
 
                 </LinearLayout>
@@ -297,17 +300,20 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/textWork"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="44/100" />
 
                     <TextView
+                        android:id="@+id/textChaping"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="22/100" />
 
                     <TextView
+                        android:id="@+id/textXinyong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -358,6 +364,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/suozaidanwei"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -384,6 +391,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/suozaibumen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -410,6 +418,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -436,6 +445,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/zhichen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -462,17 +472,18 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/ages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:ellipsize="end"
-                    android:maxLines="1"
                     android:text="24"
-                    android:textColor="#717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="14dp" />
             </RelativeLayout>
 
         </LinearLayout>
+
     </RelativeLayout>
+
 </LinearLayout>
 

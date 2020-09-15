@@ -44,7 +44,7 @@
                         android:id="@+id/data_pop_xin_text1"
                         android:text="政务信用可视化模型"
                         android:textSize="16dp"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"/>
@@ -82,7 +82,7 @@
                 <TextView
                     android:id="@+id/data_pop_xin_message"
                     android:text="信息摘要"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="19dp"
@@ -91,7 +91,7 @@
 
                 <TextView
                     android:text="主体名称：天津市蓝威科技有限公司"
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="14dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="12dp"
@@ -100,7 +100,7 @@
 
                 <TextView
                     android:text="编号：1234567890987654"
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="14dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="12dp"
@@ -109,7 +109,7 @@
 
                 <TextView
                 android:text="信息来源："
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:textSize="14dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="12dp"
@@ -120,7 +120,7 @@
 
                 <TextView
                     android:text="更新日期：2020/3/29 12:37:21"
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="14dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="12dp"
@@ -129,7 +129,7 @@
 
                 <TextView
                     android:text="有效期：2020/3/29 12:37:21"
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="14dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="12dp"
@@ -138,7 +138,7 @@
 
                 <TextView
                     android:text="信用类型"
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="14dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="12dp"
@@ -155,7 +155,7 @@
 
                     <TextView
                         android:text="基本信息：22"
-                        android:textColor="@color/text717173"
+                        android:textColor="@color/color_717173"
                         android:textSize="14dp"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -163,7 +163,7 @@
 
                     <TextView
                         android:text="业务信息：22"
-                        android:textColor="@color/text717173"
+                        android:textColor="@color/color_717173"
                         android:textSize="14dp"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -180,7 +180,7 @@
 
                     <TextView
                         android:text="司法信息：22"
-                        android:textColor="@color/text717173"
+                        android:textColor="@color/color_717173"
                         android:textSize="14dp"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -188,7 +188,7 @@
 
                     <TextView
                         android:text="行政执法信息：22"
-                        android:textColor="@color/text717173"
+                        android:textColor="@color/color_717173"
                         android:textSize="14dp"
                         android:layout_width="0dp"
                         android:layout_weight="1"

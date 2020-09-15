@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center" />
 
-        <com.lawe.starofadministration.zxing.view.ViewfinderView
+       <!-- <com.lawe.starofadministration.zxing.view.ViewfinderView
             android:id="@+id/viewfinder_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             app:laser_color="@color/laser_color"
             app:mask_color="@color/viewfinder_mask"
             app:result_color="@color/result_view"
-            app:result_point_color="@color/result_point_color" />
+            app:result_point_color="@color/result_point_color" />-->
 
         <ImageButton
             android:id="@+id/btn_flash"

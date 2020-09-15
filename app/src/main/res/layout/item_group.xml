@@ -26,7 +26,7 @@
             <TextView
                 android:id="@+id/item_group_name"
                 android:text="医疗类公文常用组"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textSize="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

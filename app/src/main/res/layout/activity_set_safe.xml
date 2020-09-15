@@ -65,7 +65,7 @@
                 android:layout_height="56dp">
 
                 <TextView
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp"
                     android:text="密码"
                     android:layout_marginLeft="20dp"
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="14dp"
                     android:text="已设置"
                     android:layout_marginLeft="20dp"
@@ -115,7 +115,7 @@
 
                     <TextView
                         android:text="通讯里不显示手机号"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -162,7 +162,7 @@
 
                     <TextView
                         android:text="不接收跨单位通知"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -210,7 +210,7 @@
 
                     <TextView
                         android:text="一键启用高级安全设置"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -247,7 +247,7 @@
 
                     <TextView
                         android:text="绑定本机"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -284,7 +284,7 @@
 
                     <TextView
                         android:text="手势识别"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -321,7 +321,7 @@
 
                     <TextView
                         android:text="临时授权"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -358,7 +358,7 @@
 
                     <TextView
                         android:text="专网链接"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -392,7 +392,7 @@
 
             <EditText
                 android:hint="说明的内容"
-                android:textColorHint="@color/text717173"
+                android:textColorHint="@color/color_717173"
                 android:background="#fff"
                 android:textSize="16dp"
                 android:paddingLeft="20dp"

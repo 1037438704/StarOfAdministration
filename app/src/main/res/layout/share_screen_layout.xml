@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="按共享类型筛选"
-            android:textColor="@color/text9f9fa0"
+            android:textColor="@color/color_9F9FA0"
             android:textSize="14dp" />
 
         <LinearLayout
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="按单位筛选"
-            android:textColor="@color/text9f9fa0"
+            android:textColor="@color/color_9F9FA0"
             android:textSize="14sp" />
 
         <LinearLayout
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="模糊时间搜索"
-            android:textColor="@color/text9f9fa0"
+            android:textColor="@color/color_9F9FA0"
             android:textSize="14sp" />
 
         <LinearLayout

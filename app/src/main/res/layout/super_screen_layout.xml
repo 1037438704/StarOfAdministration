@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="按督查单位筛选"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="按主责单位筛选"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="按分管领导筛选"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="按公文字号筛选"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -166,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="按办结状态筛选"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:textSize="14dp" />
 
             <LinearLayout
@@ -217,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="按督查内容筛选"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:textSize="14dp" />
 
             <LinearLayout
@@ -280,7 +280,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="模糊时间搜索"
-                android:textColor="@color/text9f9fa0"
+                android:textColor="@color/color_9F9FA0"
                 android:textSize="14sp" />
 
             <LinearLayout

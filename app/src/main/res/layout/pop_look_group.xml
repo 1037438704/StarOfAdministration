@@ -24,7 +24,7 @@
                 android:id="@+id/pop_title"
                 android:text="请选择常用人"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:includeFontPadding="false"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -42,7 +42,7 @@
                     android:layout_height="16dp"/>
                 <TextView
                     android:text="管理"
-                    android:textColor="@color/text717173"
+                    android:textColor="@color/color_717173"
                     android:textSize="14dp"
                     android:includeFontPadding="false"
                     android:layout_width="wrap_content"

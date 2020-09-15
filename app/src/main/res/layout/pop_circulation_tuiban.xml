@@ -17,7 +17,7 @@
         <TextView
             android:text="申请退办"
             android:textSize="14dp"
-            android:textColor="@color/text9f9fa0"
+            android:textColor="@color/color_9F9FA0"
             android:gravity="center"
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
         <TextView
             android:text="退办原由"
             android:textSize="16dp"
-            android:textColor="@color/textMedium"
+            android:textColor="@color/color_3E3E41"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
 
             <TextView
                 android:text="审批人"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textSize="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_width="wrap_content"

@@ -22,7 +22,7 @@
             <TextView
                 android:text="紧急度"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -31,7 +31,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -63,7 +63,7 @@
             <TextView
                 android:text="是否允许转发"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -72,7 +72,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -105,7 +105,7 @@
             <TextView
                 android:text="定时发送"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -114,7 +114,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -148,7 +148,7 @@
             <TextView
                 android:text="截止日期"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:layout_marginLeft="16dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -157,7 +157,7 @@
             <TextView
                 android:text=""
                 android:textSize="15dp"
-                android:textColor="@color/text717173"
+                android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

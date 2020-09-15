@@ -22,7 +22,7 @@
                 android:layout_marginTop="20dp"
                 android:text="是否立即保存"
                 android:textSize="16dp"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:fontFamily="sans-serif-medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

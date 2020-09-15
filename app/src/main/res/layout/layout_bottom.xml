@@ -114,7 +114,7 @@
                 <TextView
                     android:id="@+id/draft_chat_new_text"
                     android:text="新建"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp"
                     android:includeFontPadding="false"
                     android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                 <TextView
                     android:id="@+id/draft_chat_set_text"
                     android:text="管理"
-                    android:textColor="@color/textMedium"
+                    android:textColor="@color/color_3E3E41"
                     android:textSize="16dp"
                     android:includeFontPadding="false"
                     android:layout_width="wrap_content"
@@ -179,7 +179,7 @@
             <TextView
                 android:id="@+id/bottom_chooseper1"
                 android:text="驳回"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textSize="16dp"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"
@@ -211,7 +211,7 @@
             <TextView
                 android:id="@+id/bottom_chooseper2"
                 android:text="添加审核人"
-                android:textColor="@color/textMedium"
+                android:textColor="@color/color_3E3E41"
                 android:textSize="16dp"
                 android:includeFontPadding="false"
                 android:layout_width="wrap_content"

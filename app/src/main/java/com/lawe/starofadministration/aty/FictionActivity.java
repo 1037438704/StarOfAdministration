@@ -107,7 +107,6 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
     private String startTime = null;
     private String endTime = null;
     private int page = 1;
-    private int pages = 1;
     private int limit = 10;
     private SmartRefreshLayout refreshLayout;
     private Handler handler = new Handler();
@@ -252,7 +251,6 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 int firstCompletelyVisibleItemPosition = layoutManager.findFirstCompletelyVisibleItemPosition();
-                Log.e("ssssss_itemCount",firstCompletelyVisibleItemPosition+"");
                 if(firstCompletelyVisibleItemPosition >= maxRecycleCount){
                     factionTop.setVisibility(View.VISIBLE);
                 }else if(firstCompletelyVisibleItemPosition == 0){
@@ -277,7 +275,6 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
             public void onClick(View v) {
                 //新建的时候创建uuid--即relationId
                 UUID own= UUID.randomUUID();
-                Log.e("uuid",own+"");
                 //打印输出own=“81199e92-b564-4366-b72b-e20ce463a26d”；
                 SharedPreferences nizhi_uuid = getSharedPreferences("nizhi_uuid", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = nizhi_uuid.edit();
@@ -355,7 +352,6 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                     fictionAdapter.addData(list);
                     refreshLayout.finishLoadMore();
                 }
-
             }
         });
     }
@@ -365,7 +361,7 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
         JSONObject json = new JSONObject();
 
         try {
-            json.put("page", pages);
+            json.put("page", page);
             json.put("limit", "100");
             json.put("depUserId",depUserId);
             json.put("docNumber",null);  //公文文号(搜索框)

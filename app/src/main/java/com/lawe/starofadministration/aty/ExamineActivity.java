@@ -73,7 +73,7 @@ public class ExamineActivity extends BaseAty {
         mainRgp = findViewById(R.id.main_rgp);
         viewPagerData = findViewById(R.id.viewPagerData);
         //下输入键盘常用语的部分
-        bottomPerson = findViewById(R.id.bottom_person);
+        //bottomPerson = findViewById(R.id.bottom_person);
         bottomPizhu = findViewById(R.id.bottom_pizhu);
         bottomWhrit = findViewById(R.id.bottom_whrit);
         bottomChat = findViewById(R.id.bottom_chat);
@@ -233,7 +233,7 @@ public class ExamineActivity extends BaseAty {
                 } else {
                     draftChatNewText.setText("新建");
                     draftChatSetText.setText("管理");
-                    draftChatSetText.setTextColor(ContextCompat.getColor(me, R.color.textMedium));
+                    draftChatSetText.setTextColor(ContextCompat.getColor(me, R.color.color_3E3E41));
                     draftChatNewImg.setVisibility(View.VISIBLE);
                     draftChatSetImg.setVisibility(View.VISIBLE);
                 }

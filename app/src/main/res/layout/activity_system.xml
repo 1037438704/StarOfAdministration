@@ -80,7 +80,7 @@
 
                     <TextView
                         android:text="短信推送"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -117,7 +117,7 @@
 
                     <TextView
                         android:text="预警提示"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -154,7 +154,7 @@
 
                     <TextView
                         android:text="日程提醒"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -191,7 +191,7 @@
 
                     <TextView
                         android:text="全部采用手写签批"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -228,7 +228,7 @@
 
                     <TextView
                         android:text="字体变大"
-                        android:textColor="@color/textMedium"
+                        android:textColor="@color/color_3E3E41"
                         android:textSize="16dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="20dp"
@@ -262,7 +262,7 @@
 
             <EditText
                 android:hint="说明的内容"
-                android:textColorHint="@color/text717173"
+                android:textColorHint="@color/color_717173"
                 android:background="#fff"
                 android:textSize="16dp"
                 android:paddingLeft="20dp"

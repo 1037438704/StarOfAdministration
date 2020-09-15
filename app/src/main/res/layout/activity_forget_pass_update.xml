@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".aty.ForgetPassUpdateActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:elevation="2dp"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/layout_title_white"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_marginTop="28dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="新的密码"
+            android:textColor="@color/color_3E3E41"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/edit_pass"
+            android:text=""
+            android:textColor="@color/color_3E3E41"
+            android:hint="请输入新密码"
+            android:textColorHint="@color/color_d7d7d8"
+            android:textSize="16sp"
+            android:layout_marginStart="8dp"
+            android:background="@null"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <View
+        android:background="#EDEDED"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:layout_marginTop="28dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="确认密码"
+            android:textColor="@color/color_3E3E41"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/edit_pass_sure"
+            android:text=""
+            android:textColor="@color/color_3E3E41"
+            android:hint="请确认您的密码"
+            android:textColorHint="@color/color_d7d7d8"
+            android:textSize="16sp"
+            android:layout_marginStart="8dp"
+            android:background="@null"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <View
+        android:background="#EDEDED"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <Button
+        android:id="@+id/buttonSure"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_width="match_parent"
+        android:text="确认修改"
+        android:includeFontPadding="false"
+        android:textSize="18sp"
+        android:textColor="#fff"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_login"
+        android:layout_height="44dp"/>
+
+</LinearLayout>
