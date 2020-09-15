@@ -1,5 +1,7 @@
 package com.lawe.starofadministration.bean;
 
+import java.util.List;
+
 /**
  * author : fuke
  * date : 2020/9/15 10:14
@@ -7,10 +9,11 @@ package com.lawe.starofadministration.bean;
  */
 public class PersonMessBean {
 
+
     /**
      * msg : success
      * code : 0
-     * map : {"policy_percentage":"0","credit_percentage":"0","unit":"其他机构","d_name":"啦啦啦","job_name":null,"work_percentage":"0","depart":"南开区教育局002","user_photo":null,"age":7}
+     * map : {"policy_percentage":"0","credit_percentage":"0","unit":"其他机构","d_name":"李四","job_name":"书记","work_percentage":"0","depart":"南开区教育局002","list":[{"id":"1237946831187492865","departmentUserId":"1235099783191703555","achieveTypeId":"39","awardType":1,"createUser":"1","createTime":"2020-03-12 11:41:39","medalPhoto":"http://60.205.202.177:8081/static/medal/medal_small.png","medalName":"优秀党委书记勋章"},{"id":"1237922371823550466","departmentUserId":"1235099783191703555","achieveTypeId":"11","awardType":1,"createUser":"1235754208570691585","createTime":"2020-03-12 10:04:28","medalPhoto":"http://60.205.202.177:8081/static/medal/medal_small.png","medalName":"月度优秀公务员"},{"id":"1237922372041654274","departmentUserId":"1235099783191703555","achieveTypeId":"23","awardType":1,"createUser":"1235754208570691585","createTime":"2020-03-12 10:04:28","medalPhoto":"http://60.205.202.177:8081/static/medal/medal_small.png","medalName":"优秀共产党员"}],"user_photo":"","age":29}
      */
 
     private String msg;
@@ -46,12 +49,13 @@ public class PersonMessBean {
          * policy_percentage : 0
          * credit_percentage : 0
          * unit : 其他机构
-         * d_name : 啦啦啦
-         * job_name : null
+         * d_name : 李四
+         * job_name : 书记
          * work_percentage : 0
          * depart : 南开区教育局002
-         * user_photo : null
-         * age : 7
+         * list : [{"id":"1237946831187492865","departmentUserId":"1235099783191703555","achieveTypeId":"39","awardType":1,"createUser":"1","createTime":"2020-03-12 11:41:39","medalPhoto":"http://60.205.202.177:8081/static/medal/medal_small.png","medalName":"优秀党委书记勋章"},{"id":"1237922371823550466","departmentUserId":"1235099783191703555","achieveTypeId":"11","awardType":1,"createUser":"1235754208570691585","createTime":"2020-03-12 10:04:28","medalPhoto":"http://60.205.202.177:8081/static/medal/medal_small.png","medalName":"月度优秀公务员"},{"id":"1237922372041654274","departmentUserId":"1235099783191703555","achieveTypeId":"23","awardType":1,"createUser":"1235754208570691585","createTime":"2020-03-12 10:04:28","medalPhoto":"http://60.205.202.177:8081/static/medal/medal_small.png","medalName":"优秀共产党员"}]
+         * user_photo :
+         * age : 29
          */
 
         private int policy_percentage;
@@ -63,6 +67,7 @@ public class PersonMessBean {
         private String depart;
         private String user_photo;
         private int age;
+        private List<ListBean> list;
 
         public int getPolicy_percentage() {
             return policy_percentage;
@@ -134,6 +139,100 @@ public class PersonMessBean {
 
         public void setAge(int age) {
             this.age = age;
+        }
+
+        public List<ListBean> getList() {
+            return list;
+        }
+
+        public void setList(List<ListBean> list) {
+            this.list = list;
+        }
+
+        public static class ListBean {
+            /**
+             * id : 1237946831187492865
+             * departmentUserId : 1235099783191703555
+             * achieveTypeId : 39
+             * awardType : 1
+             * createUser : 1
+             * createTime : 2020-03-12 11:41:39
+             * medalPhoto : http://60.205.202.177:8081/static/medal/medal_small.png
+             * medalName : 优秀党委书记勋章
+             */
+
+            private String id;
+            private String departmentUserId;
+            private String achieveTypeId;
+            private int awardType;
+            private String createUser;
+            private String createTime;
+            private String medalPhoto;
+            private String medalName;
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+
+            public String getDepartmentUserId() {
+                return departmentUserId;
+            }
+
+            public void setDepartmentUserId(String departmentUserId) {
+                this.departmentUserId = departmentUserId;
+            }
+
+            public String getAchieveTypeId() {
+                return achieveTypeId;
+            }
+
+            public void setAchieveTypeId(String achieveTypeId) {
+                this.achieveTypeId = achieveTypeId;
+            }
+
+            public int getAwardType() {
+                return awardType;
+            }
+
+            public void setAwardType(int awardType) {
+                this.awardType = awardType;
+            }
+
+            public String getCreateUser() {
+                return createUser;
+            }
+
+            public void setCreateUser(String createUser) {
+                this.createUser = createUser;
+            }
+
+            public String getCreateTime() {
+                return createTime;
+            }
+
+            public void setCreateTime(String createTime) {
+                this.createTime = createTime;
+            }
+
+            public String getMedalPhoto() {
+                return medalPhoto;
+            }
+
+            public void setMedalPhoto(String medalPhoto) {
+                this.medalPhoto = medalPhoto;
+            }
+
+            public String getMedalName() {
+                return medalName;
+            }
+
+            public void setMedalName(String medalName) {
+                this.medalName = medalName;
+            }
         }
     }
 }

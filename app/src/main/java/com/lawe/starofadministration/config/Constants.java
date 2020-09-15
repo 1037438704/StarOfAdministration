@@ -26,8 +26,8 @@ public interface Constants {
     //个人信息
     String PERSONALMSG = "/sys/center/personalMsg/";
 
-    //首页个人信息
-    String QUERYPAGE = "/sys/center/queryPage";
+    //我的勋章
+    String MEDALLIST = "/sys/center/medalList/";
 
     //公文拟制查询所有
     String LISTFINDBYCURRENTUSER = "/sys/documentfiction/listFindAllByCurrentUser";

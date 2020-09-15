@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.kongzue.baseframework.BaseFragment;
@@ -32,6 +34,7 @@ import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.kongzue.baseokhttp.util.Parameter;
 import com.kongzue.dialog.v3.WaitDialog;
+import com.lawe.starofadministration.adp.MyXunzhangAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
 import com.lawe.starofadministration.bean.PersonMessBean;
@@ -78,6 +81,8 @@ public class MainActivity extends BaseAty {
     private TextView textWork;
     private TextView textChaping;
     private TextView textXinyong;
+    private RecyclerView recycleXunzhang;
+    private MyXunzhangAdapter myXunzhangAdapter;
 
     @Override
     public void initViews() {
@@ -97,6 +102,7 @@ public class MainActivity extends BaseAty {
         personData.setTypeface(getTextMedium);
         personSetting.setTypeface(getTextMedium);
         drawer = findViewById(R.id.drawer_layout_shaixuan);
+        recycleXunzhang = findViewById(R.id.recycleXunzhang);
 
         imgHead = findViewById(R.id.img_head);
         suozaidanwei = findViewById(R.id.suozaidanwei);
@@ -125,6 +131,11 @@ public class MainActivity extends BaseAty {
         viewPager.setAdapter(viewPagerAdp);
         //禁止viewpager滑动
         viewPager.setNoScroll(true);
+
+        recycleXunzhang.setLayoutManager(new GridLayoutManager(me,4));
+        myXunzhangAdapter = new MyXunzhangAdapter(R.layout.item_xunzhang);
+        recycleXunzhang.setAdapter(myXunzhangAdapter);
+
     }
 
     @Override
@@ -152,6 +163,8 @@ public class MainActivity extends BaseAty {
                     name.setText(personMessBean.getMap().getD_name());
                     suozaibumen.setText(personMessBean.getMap().getUnit());
                     zhichen.setText(personMessBean.getMap().getJob_name());
+                    List<PersonMessBean.MapBean.ListBean> list = personMessBean.getMap().getList();
+                    myXunzhangAdapter.setNewData(list);
                 }else{
                     error.getMessage();
                 }

@@ -1,24 +1,35 @@
 package com.lawe.starofadministration.aty;
 
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-
 import com.google.android.material.tabs.TabLayout;
+import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
+import com.kongzue.baseokhttp.HttpRequest;
+import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.adp.MyMedalsAdapter;
 import com.lawe.starofadministration.base.BaseAty;
-import com.lawe.starofadministration.fgt.AllMedalFragment;
-import com.lawe.starofadministration.fgt.LookAllFragment;
+import com.lawe.starofadministration.bean.MyMedalBean;
+import com.lawe.starofadministration.config.Constants;
+import com.lawe.starofadministration.fgt.BasicsFragment;
+import com.lawe.starofadministration.fgt.CountryFragment;
+import com.lawe.starofadministration.fgt.GloryFragment;
+import com.lawe.starofadministration.utils.GlidUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +54,8 @@ public class MyMedalActivity extends BaseAty {
     private List<Fragment> fragmentList = new ArrayList<Fragment>();
     private String[] strings = new String[]{"基础勋章", "荣耀勋章", "国家级勋章"};
     private  TabLayoutAdapter fragmentAdater;
-
+    private ImageView medalBig;
+    private TextView number;
 
     @Override
     public void initViews() {
@@ -51,14 +63,35 @@ public class MyMedalActivity extends BaseAty {
 
         tablayout = findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.viewPagerMedal);
+        medalBig = findViewById(R.id.medal_big);
+        number = findViewById(R.id.number);
         fragmentAdater = new TabLayoutAdapter(getSupportFragmentManager());
+
+        getDatas();
+    }
+
+    private void getDatas() {
+        showPopDialog();
+        HttpRequest.POST(me, Constants.MEDALLIST + depUserId, new Parameter(), new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                endLoading();
+                if (error == null){
+                    MyMedalBean myMedalBean = gson.fromJson(response, MyMedalBean.class);
+                    GlidUtils.defaultGlid(me,myMedalBean.getMap().getNewMedal(),medalBig);
+                    number.setText("共"+myMedalBean.getMap().getTotal()+"枚");
+                }else {
+                    error.getMessage();
+                }
+            }
+        });
     }
 
     @Override
     public void initDatas(JumpParameter parameter) {
-        fragmentList.add(new AllMedalFragment());
-        fragmentList.add(new AllMedalFragment());
-        fragmentList.add(new AllMedalFragment());
+        fragmentList.add(new BasicsFragment());
+        fragmentList.add(new GloryFragment());
+        fragmentList.add(new CountryFragment());
         tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager.setAdapter(fragmentAdater);
         tablayout.setupWithViewPager(viewPager);

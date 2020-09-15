@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:id="@+id/number"
         android:textSize="16dp"
         android:textColor="#50F5F5F5"
         android:text="共34枚"
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"/>
 
     <ImageView
+        android:id="@+id/medal_big"
         android:src="@mipmap/medal_big"
         android:layout_alignParentRight="true"
         android:layout_marginTop="78dp"
