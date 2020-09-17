@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
@@ -33,6 +34,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.gson.Gson;
 import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
@@ -47,6 +49,7 @@ import com.lawe.starofadministration.adp.DraftChatAdapter;
 import com.lawe.starofadministration.adp.TemplateAdapter;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
+import com.lawe.starofadministration.bean.EventFactionBean;
 import com.lawe.starofadministration.bean.ListChatBean;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.DocumentEditFragment;
@@ -58,6 +61,9 @@ import com.lawe.starofadministration.utils.map.JSONUtils;
 import com.lawe.starofadministration.view.tuya.WriteDialogListener;
 import com.lawe.starofadministration.view.tuya.WritePadDialog;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -149,6 +155,7 @@ public class DraftActivity extends BaseAty {
     @Override
     public void initViews() {
         super.initViews();
+        EventBus.getDefault().register(this);
         titleBack = findViewById(R.id.title_back);
         titleText = findViewById(R.id.title_text);
         titleNew = findViewById(R.id.title_new);
@@ -181,9 +188,7 @@ public class DraftActivity extends BaseAty {
         draftChatNewText = findViewById(R.id.draft_chat_new_text);
         draftChatSetText = findViewById(R.id.draft_chat_set_text);
 
-
-        //获取上一个页面传递的标识、
-        //新建还是查看
+        //获取上一个页面传递的标识、新建还是查看
         flagSpeed = getIntent().getExtras().getString("flagSpeed");
 
         //personType = getIntent().getExtras().getString("personType");
@@ -238,7 +243,6 @@ public class DraftActivity extends BaseAty {
             fragemnts.add(SetMessageFragment.newInstance());
             fragemnts.add(JoinSpeedFragment.newInstance());
             rb = (RadioButton) mainRgp.getChildAt(pageCounte);
-
         }
         rb.setChecked(true);
         //字体
@@ -274,8 +278,6 @@ public class DraftActivity extends BaseAty {
         //获取relationId
         SharedPreferences nizhi_uuid = getSharedPreferences("nizhi_uuid", Context.MODE_PRIVATE);
         relationId = nizhi_uuid.getString("ni_relationId","");
-        getZhi();  //方法：获取全部值
-
         //常用语列表
         draftChatRecycle.setLayoutManager(layoutManager);
         draftChatRecycle.setAdapter(draftChatAdapter);
@@ -285,13 +287,6 @@ public class DraftActivity extends BaseAty {
         draftChatAdapter.setNewData(listchat);
         draftChatAdapter.notifyDataSetChanged();
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getZhi();
-    }
-
 
     //延迟线程，看是否还有下一个字符输入
     private Runnable delayRun = new Runnable() {
@@ -345,7 +340,7 @@ public class DraftActivity extends BaseAty {
             @Override
             public void onClick(View v) {
                 //获取存进去的值
-                getZhi();
+                //getZhi();
                 if (flag == 2) {
                     draftMore.setVisibility(View.GONE);
                     flag = 1;
@@ -381,18 +376,12 @@ public class DraftActivity extends BaseAty {
             public void onClick(View v) {
                 draftMore.setVisibility(View.GONE);
                 flag = 1;
-                //1、使用Dialog、设置style
                 final Dialog dialog = new Dialog(me, R.style.DialogTheme);
-                //2、设置布局
                 View view = View.inflate(me, R.layout.pop_draft_muban, null);
                 dialog.setContentView(view);
-
                 Window window = dialog.getWindow();
-                //设置弹出位置
                 window.setGravity(Gravity.BOTTOM);
-                //设置弹出动画
                 window.setWindowAnimations(R.style.main_menu_animStyle);
-                //设置对话框大小
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
                 wordMuban();
@@ -602,18 +591,27 @@ public class DraftActivity extends BaseAty {
         });
     }
 
-    //获取值
-    private void getZhi() {
-        //获取所有需要的值
-        SharedPreferences newFile = getSharedPreferences("newFile", Context.MODE_PRIVATE);
-        quasiNumber = newFile.getString("quasiNumber", "");
-        qNumber = newFile.getString("qNumber", "");
-        docTitle = newFile.getString("docTitle", "");
-        docType = newFile.getString("docType", "");
-        publicProperty = newFile.getString("publicProperty", "");
-        docTheme = newFile.getString("docTheme", "");
-        //公文主体
-        docContext = newFile.getString("docContext", "");
+    EventFactionBean eventFaction = new EventFactionBean();
+    @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
+    public void getData(EventFactionBean eventUpdateBean) {
+
+        if(eventUpdateBean.type == 0){
+            eventFaction.setqNumber(eventUpdateBean.getqNumber());
+            eventFaction.setQuasiNumber(eventUpdateBean.getQuasiNumber());
+            eventFaction.setDocTitle(eventUpdateBean.getDocTitle());
+            eventFaction.setDocContext(eventUpdateBean.getDocContext());
+        }else {
+            eventFaction.setPublicProperty(eventUpdateBean.getPublicProperty());
+            eventFaction.setDocTheme(eventUpdateBean.getDocTheme());
+            eventFaction.setDocType(eventUpdateBean.getDocType());
+        }
+        docContext = eventFaction.getDocContext();
+        docTitle = eventFaction.getDocTitle();
+        docTheme = eventFaction.getDocTheme();
+        docType = eventFaction.getDocType();
+        qNumber = eventFaction.getqNumber();
+        publicProperty = eventFaction.getPublicProperty();
+        quasiNumber = eventFaction.getQuasiNumber();
         if (docTitle.equals("") || docContext.equals("") || docTheme.equals("") || docType.equals("") || publicProperty.equals("")){
             bottomButton.setBackgroundResource(R.drawable.shape_red42_22);
         }else{
@@ -656,6 +654,23 @@ public class DraftActivity extends BaseAty {
 
     //保存草稿箱
     private void saveDrafts() {
+        if(TextUtils.isEmpty(docTitle)){
+            toast("请输入公文标题");
+            return;
+        }
+        if (TextUtils.isEmpty(docContext)){
+            toast("请输入公文内容");
+            return;
+        }
+        if (TextUtils.isEmpty(docTheme)){
+            toast("请输入公文主题");
+            return;
+        }
+        if (TextUtils.isEmpty(docType)){
+            toast("请输入公文类型");
+            return;
+        }
+
         JSONObject json = new JSONObject();
         try {
             json.put("depUserId",depUserId);  //用户ID
@@ -701,42 +716,26 @@ public class DraftActivity extends BaseAty {
         });
     }
 
-    //手写批注
-    private void writeDocument() {
-
-        WritePadDialog mWritePadDialog = new WritePadDialog(
-                DraftActivity.this, new WriteDialogListener() {
-            @Override
-            public void onPaintDone(Object object) {
-                //1、使用Dialog、设置style
-                final Dialog dialog = new Dialog(me, R.style.DialogTheme);
-                //2、设置布局
-                View view = View.inflate(me, R.layout.write_pad2, null);
-                dialog.setContentView(view);
-                Window window = dialog.getWindow();
-                //设置弹出位置
-                window.setGravity(Gravity.BOTTOM);
-                //设置弹出动画
-                window.setWindowAnimations(R.style.main_menu_animStyle);
-                //设置对话框大小
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                mIVSign = view.findViewById(R.id.iv_sign);
-                mSignBitmap = (Bitmap) object;
-                createSignFile();
-                mIVSign.setImageBitmap(mSignBitmap);
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
-            }
-        });
-        mWritePadDialog.show();
-    }
-
     //文件保存并立即发送
     private void fileSave() {
+        if(TextUtils.isEmpty(docTitle)){
+            toast("请输入公文标题");
+            return;
+        }
+        if (TextUtils.isEmpty(docContext)){
+            toast("请输入公文内容");
+            return;
+        }
+        if (TextUtils.isEmpty(docTheme)){
+            toast("请输入公文主题");
+            return;
+        }
+        if (TextUtils.isEmpty(docType)){
+            toast("请输入公文类型");
+            return;
+        }
         JSONObject json = new JSONObject();
         JSONArray jsonArray = new JSONArray();
-        /*JSONObject jsonObject = new JSONObject();
-           jsonObject.put("assigneeList",assigneeList);  //审核人列表*/
         jsonArray.put(assigneeList);
         try {
             json.put("depUserId",depUserId);  //用户ID
@@ -781,6 +780,36 @@ public class DraftActivity extends BaseAty {
                 }
             }
         });
+    }
+
+    //手写批注
+    private void writeDocument() {
+
+        WritePadDialog mWritePadDialog = new WritePadDialog(
+                DraftActivity.this, new WriteDialogListener() {
+            @Override
+            public void onPaintDone(Object object) {
+                //1、使用Dialog、设置style
+                final Dialog dialog = new Dialog(me, R.style.DialogTheme);
+                //2、设置布局
+                View view = View.inflate(me, R.layout.write_pad2, null);
+                dialog.setContentView(view);
+                Window window = dialog.getWindow();
+                //设置弹出位置
+                window.setGravity(Gravity.BOTTOM);
+                //设置弹出动画
+                window.setWindowAnimations(R.style.main_menu_animStyle);
+                //设置对话框大小
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                mIVSign = view.findViewById(R.id.iv_sign);
+                mSignBitmap = (Bitmap) object;
+                createSignFile();
+                mIVSign.setImageBitmap(mSignBitmap);
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
+            }
+        });
+        mWritePadDialog.show();
     }
 
     //改变状态

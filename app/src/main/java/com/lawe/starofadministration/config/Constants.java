@@ -38,14 +38,14 @@ public interface Constants {
     //拟制--保存草稿箱
     String NIZHI_SAVE = "/sys/documentfiction/save";
 
-    //根据部门id拟编号
+    //根据部门id生成拟编号
     String GETQUASINUMBER = "/sys/documentfiction/getQuasiNumber/";
 
     //查询公文拟制公文字号数值
     String GETNUMBER = "/sys/documentfiction/getNumber";
 
-    //根据逐渐查询详情
-    String DOCUMENTFICTION = "/sys/documentfiction/info";
+    //根据主键id查询详情
+    String DOCUMENTFICTION = "/sys/documentfiction/info/";
 
     //查询字典表
     String BYTYPE = "/sys/dataDict/byType";

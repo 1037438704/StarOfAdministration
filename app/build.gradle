@@ -78,6 +78,9 @@ dependencies {
 
     implementation 'com.zhousf.lib:okhttp3:2.9.9'
 
+    //eventbus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
     //富文本编辑器
     implementation 'com.zzhoujay.richtext:richtext:3.0.7'
     implementation 'com.jakewharton:butterknife:10.2.1'

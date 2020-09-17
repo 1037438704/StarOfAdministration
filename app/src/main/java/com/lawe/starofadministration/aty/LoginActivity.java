@@ -136,9 +136,9 @@ public class LoginActivity extends BaseAty {
         String psd = Preferences.getInstance().getString(me, "phone", "psd");
 
         if (phone != null && psd != null){
+            jump(MainActivity.class);
             login_phone.setText(phone);
             login_edpass.setText(psd);
-            //jump(MainActivity.class);
         }
     }
 
@@ -357,12 +357,11 @@ public class LoginActivity extends BaseAty {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            showPopDialog();
             HttpRequest.JSONPOST(me, Constants.LOGIN, jsonLogin, new ResponseListener() {
                 @Override
                 public void onResponse(String response, Exception error) {
-                    endLoading();
                    if (error == null){
+
                        LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);
                        String depUserId = loginDefaltBean.getEntityBO().getId();
                        String dName = loginDefaltBean.getEntityBO().getDName();
@@ -375,7 +374,6 @@ public class LoginActivity extends BaseAty {
                        Preferences.getInstance().set(me, "login", "token",loginDefaltBean.getToken());
                        Preferences.getInstance().set(me, "login", "depUserId",depUserId);
                        Preferences.getInstance().set(me, "login", "name",dName);
-
                        isFrist();
                    }else{
                        error.getMessage();

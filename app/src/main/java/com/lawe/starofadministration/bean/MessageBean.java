@@ -278,6 +278,33 @@ public class MessageBean {
             private String deadlineTime;
             private String warningState;
             private String isEmergency;
+            private String total;
+            private String quasiNumber;
+            private String documentReportUnit;
+
+            public String getDocumentReportUnit() {
+                return documentReportUnit;
+            }
+
+            public void setDocumentReportUnit(String documentReportUnit) {
+                this.documentReportUnit = documentReportUnit;
+            }
+
+            public String getQuasiNumber() {
+                return quasiNumber;
+            }
+
+            public void setQuasiNumber(String quasiNumber) {
+                this.quasiNumber = quasiNumber;
+            }
+
+            public String getTotal() {
+                return total;
+            }
+
+            public void setTotal(String total) {
+                this.total = total;
+            }
 
             public String getId() {
                 return id;

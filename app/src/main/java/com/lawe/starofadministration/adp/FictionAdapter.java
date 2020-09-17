@@ -1,6 +1,8 @@
 package com.lawe.starofadministration.adp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -31,10 +33,6 @@ public class FictionAdapter extends BaseQuickAdapter<FictionListBean.PageBean.Li
 
     public void setDepUserId(String depUserId){
         this.depUserId = depUserId;
-    }
-
-    public FictionAdapter(int layoutResId,  List<FictionListBean.PageBean.ListBean> data) {
-        super(layoutResId, data);
     }
 
     public FictionAdapter(int item_fiction) {
@@ -86,7 +84,8 @@ public class FictionAdapter extends BaseQuickAdapter<FictionListBean.PageBean.Li
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), DraftActivity.class);
                 intent.putExtra("flagSpeed","2");
-                intent.putExtra("yid",listBean.getId());
+                SharedPreferences fictionId = getContext().getSharedPreferences("fictionId", Context.MODE_PRIVATE);
+                fictionId.edit().putString("fictionId",listBean.getId()).commit();
                 intent.putExtra("personType",personType);
                 getContext().startActivity(intent);
             }

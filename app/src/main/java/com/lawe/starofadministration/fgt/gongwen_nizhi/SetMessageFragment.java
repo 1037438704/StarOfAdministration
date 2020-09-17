@@ -20,12 +20,14 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.aty.ChooseCompanyActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.bean.ByTypeBean;
+import com.lawe.starofadministration.bean.EventFactionBean;
 import com.lawe.starofadministration.bean.LoginDefaltBean;
 import com.lawe.starofadministration.bean.ZhutiFindAllBean;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.utils.PickerView;
 import com.lawe.starofadministration.utils.map.JSONUtils;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,6 +49,7 @@ public class SetMessageFragment extends BaseFgt {
     private LinearLayout setmesHuiqian;
     private LinearLayout setmesTime;
     private String textContext;
+    private String publicProperty = "";
 
     List<String> data_type = new ArrayList<String>();
     List<String> data_zhuti = new ArrayList<String>();
@@ -59,6 +62,7 @@ public class SetMessageFragment extends BaseFgt {
     private SharedPreferences.Editor edit;
     private PickerView minute_pv;
     private SharedPreferences sp;
+    private EventFactionBean eventFactionBean;
 
     @Override
     public void initViews() {
@@ -70,6 +74,10 @@ public class SetMessageFragment extends BaseFgt {
         setmesTextTiaojian = (TextView) findViewById(R.id.setmes_text_tiaojian);
         setmesHuiqian = (LinearLayout) findViewById(R.id.setmes_huiqian);
         setmesTime = (LinearLayout) findViewById(R.id.setmes_time);
+
+        eventFactionBean = new EventFactionBean();
+        eventFactionBean.type = 1;
+        EventBus.getDefault().postSticky(eventFactionBean);
 
         sp = getActivity().getSharedPreferences("newFile",Context.MODE_PRIVATE);
         edit = sp.edit();
@@ -130,12 +138,14 @@ public class SetMessageFragment extends BaseFgt {
                     public void onSelect(String text) {
                         setmesTextTiaojian.setText(text);
                         if (text.equals("不公开")){
-                            edit.putString("publicProperty","0").commit();
+                            publicProperty = "0";
                         }else if(text.equals("公开")){
-                            edit.putString("publicProperty","1").commit();
+                            publicProperty = "1";
                         }else if(text.equals("依申请公开")){
-                            edit.putString("publicProperty","2").commit();
+                            publicProperty = "2";
                         }
+                        eventFactionBean.setPublicProperty(publicProperty);
+                        EventBus.getDefault().postSticky(eventFactionBean);
                     }
                 });
                 popFinish.setOnClickListener(new View.OnClickListener() {
@@ -175,6 +185,19 @@ public class SetMessageFragment extends BaseFgt {
 
     //公文主题
     private void getDocuZhuti() {
+        final Dialog dialog = new Dialog(getContext(),R.style.DialogTheme);
+        View view = View.inflate(getContext(),R.layout.pop_document_type,null);
+        dialog.setContentView(view);
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        window.setWindowAnimations(R.style.main_menu_animStyle);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        minute_pv = view.findViewById(R.id.minute_pv);
+        TextView popFinish = view.findViewById(R.id.pop_finish);
+        TextView popCancle = view.findViewById(R.id.pop_cancle);
+        TextView popDocType = view.findViewById(R.id.pop_doc_type);
+        popDocType.setText("请选择公文主题");
+
         JSONObject json = new JSONObject();
         try {
             json.put("parentId", "");
@@ -187,19 +210,6 @@ public class SetMessageFragment extends BaseFgt {
             @Override
             public void onResponse(String response, Exception error) {
                 ZhutiFindAllBean zhutiFindAllBean = gson.fromJson(response, ZhutiFindAllBean.class);
-
-                final Dialog dialog = new Dialog(getContext(),R.style.DialogTheme);
-                View view = View.inflate(getContext(),R.layout.pop_document_type,null);
-                dialog.setContentView(view);
-                Window window = dialog.getWindow();
-                window.setGravity(Gravity.BOTTOM);
-                window.setWindowAnimations(R.style.main_menu_animStyle);
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                minute_pv = view.findViewById(R.id.minute_pv);
-                TextView popFinish = view.findViewById(R.id.pop_finish);
-                TextView popCancle = view.findViewById(R.id.pop_cancle);
-                TextView popDocType = view.findViewById(R.id.pop_doc_type);
-                popDocType.setText("请选择公文主题");
                 for (int i = 0; i < zhutiFindAllBean.getList().size(); i++) {
                     String themeName = zhutiFindAllBean.getList().get(i).getThemeName();
                     data_zhuti.add(themeName);
@@ -209,7 +219,9 @@ public class SetMessageFragment extends BaseFgt {
                     @Override
                     public void onSelect(String text) {
                         setmesTextZhuti.setText(text);
-                        edit.putString("docTheme",text).commit();
+                        //edit.putString("docTheme",text).commit();
+                        eventFactionBean.setDocTheme(text);
+                        EventBus.getDefault().postSticky(eventFactionBean);
                     }
                 });
                 popFinish.setOnClickListener(new View.OnClickListener() {
@@ -233,6 +245,20 @@ public class SetMessageFragment extends BaseFgt {
 
     //公文类型
     private void getDocuType() {
+
+        final Dialog dialog = new Dialog(getContext(),R.style.DialogTheme);
+        View view = View.inflate(getContext(),R.layout.pop_document_type,null);
+        dialog.setContentView(view);
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        window.setWindowAnimations(R.style.main_menu_animStyle);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        minute_pv = view.findViewById(R.id.minute_pv);
+        TextView popFinish = view.findViewById(R.id.pop_finish);
+        TextView popCancle = view.findViewById(R.id.pop_cancle);
+        TextView popDocType = view.findViewById(R.id.pop_doc_type);
+        popDocType.setText("请选择公文类型");
+
         JSONObject json = new JSONObject();
         try {
             json.put("dataType", dataType);
@@ -245,19 +271,6 @@ public class SetMessageFragment extends BaseFgt {
             @Override
             public void onResponse(String response, Exception error) {
                 ByTypeBean byTypeBean = gson.fromJson(response, ByTypeBean.class);
-
-                final Dialog dialog = new Dialog(getContext(),R.style.DialogTheme);
-                View view = View.inflate(getContext(),R.layout.pop_document_type,null);
-                dialog.setContentView(view);
-                Window window = dialog.getWindow();
-                window.setGravity(Gravity.BOTTOM);
-                window.setWindowAnimations(R.style.main_menu_animStyle);
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                minute_pv = view.findViewById(R.id.minute_pv);
-                TextView popFinish = view.findViewById(R.id.pop_finish);
-                TextView popCancle = view.findViewById(R.id.pop_cancle);
-                TextView popDocType = view.findViewById(R.id.pop_doc_type);
-                popDocType.setText("请选择公文类型");
                 for (int i = 0; i < byTypeBean.getDataDictList().size(); i++) {
                     String dataKey = byTypeBean.getDataDictList().get(i).getDataKey();
                     data_type.add(dataKey);
@@ -267,7 +280,9 @@ public class SetMessageFragment extends BaseFgt {
                     @Override
                     public void onSelect(String text) {
                         setmesTextType.setText(text);
-                        edit.putString("docType",text).commit();
+                        //edit.putString("docType",text).commit();
+                        eventFactionBean.setDocType(text);
+                        EventBus.getDefault().postSticky(eventFactionBean);
                     }
                 });
                 popFinish.setOnClickListener(new View.OnClickListener() {

@@ -38,6 +38,8 @@ import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
+import com.lawe.starofadministration.bean.EventFactionBean;
+import com.lawe.starofadministration.bean.FictionListBean;
 import com.lawe.starofadministration.bean.fontbean.FontStyle;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.handle.CustomHtml;
@@ -47,10 +49,12 @@ import com.lawe.starofadministration.utils.map.JSONUtils;
 import com.lawe.starofadministration.view.FontStylePanel;
 import com.lawe.starofadministration.view.RichEditText;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.OnClick;
@@ -96,6 +100,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
     private int flagCenter = 1;
     private SharedPreferences.Editor edit;
     private Handler handler = new Handler();
+    private String fictionId;
+    private EventFactionBean eventFactionBean;
 
     @Override
     public void initViews() {
@@ -128,17 +134,40 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
        // isEmpty = TextUtils.isEmpty(documentSubject.getText());
         SharedPreferences sp = getActivity().getSharedPreferences("newFile", Context.MODE_PRIVATE);
         edit = sp.edit();
-
+        SharedPreferences fictionIdSp = getContext().getSharedPreferences("fictionId", Context.MODE_PRIVATE);
+        fictionId = fictionIdSp.getString("fictionId", "");
+        eventFactionBean = new EventFactionBean();
+        eventFactionBean.type = 0;
         //获取拟编号
         getQuasiNumber();
         //查询公文拟制公文字号数值
         getNumber();
-
+        //模板
         showWord();
 
         initRichTextCon();
+        //根据主键id查询信息
+        getmessage();
     }
 
+    //根据主键id查询公文信息
+    private void getmessage() {
+        HttpRequest.build(me,Constants.DOCUMENTFICTION + fictionId)
+                .setResponseListener(new ResponseListener() {
+                    @Override
+                    public void onResponse(String response, Exception error) {
+                        if(error == null){
+                            FictionListBean fictionListBean = gson.fromJson(response, FictionListBean.class);
+                            List<FictionListBean.PageBean.ListBean> list = fictionListBean.getPage().getList();
+                            documentTitle.setText(list.get(0).getDocTitle());
+                        }else{
+                            error.getMessage();
+                        }
+                    }
+                }).doGet();
+    }
+
+    //获取公文字号数值
     private void getNumber() {
         JSONObject json = new JSONObject();
         try {
@@ -153,8 +182,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
             public void onResponse(String response, Exception error) {
                 Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
                 qNumber = map.get("number");
-                //保存拟编号的数值
-                edit.putString("qNumber",qNumber).commit();
+                eventFactionBean.setqNumber(qNumber);
+                EventBus.getDefault().postSticky(eventFactionBean);
             }
         });
     }
@@ -171,7 +200,9 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                             quasiNumber = map.get("newQuasiNumber");
                             documentNumber.setText("拟编号："+ quasiNumber);
                             //保存拟编号
-                            edit.putString("quasiNumber",quasiNumber).commit();
+                            //edit.putString("quasiNumber",quasiNumber).commit();
+                            eventFactionBean.setQuasiNumber(quasiNumber);
+                            EventBus.getDefault().postSticky(eventFactionBean);
                         }else{
                             error.getMessage();
                         }
@@ -200,7 +231,11 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                      handler.removeCallbacks(delayRun);
                  }
                 String docTitle = s.toString();
-                edit.putString("docTitle",docTitle).commit();
+                //edit.putString("docTitle",docTitle).commit();
+
+                eventFactionBean.setDocTitle(docTitle);
+                EventBus.getDefault().postSticky(eventFactionBean);
+
                 //延迟800ms，如果不再输入字符，则执行该线程的run方法
                 handler.postDelayed(delayRun, 800);
             }
@@ -226,6 +261,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                 }
                 String doc_context = s.toString();
                 edit.putString("docContext",doc_context).commit();
+                eventFactionBean.setDocContext(doc_context);
+                EventBus.getDefault().postSticky(eventFactionBean);
                 //延迟800ms，如果不再输入字符，则执行该线程的run方法
                 handler.postDelayed(delayRun, 800);
             }

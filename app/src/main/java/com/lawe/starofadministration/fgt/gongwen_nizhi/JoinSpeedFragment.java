@@ -102,7 +102,7 @@ public class JoinSpeedFragment extends BaseFgt {
                 JoinSpeedHistoryBean joinSpeedHistoryBean = gson.fromJson(response, JoinSpeedHistoryBean.class);
                 List<JoinSpeedHistoryBean.HistoryTaskMapBean.QicaoBean> qicao = joinSpeedHistoryBean.getHistoryTaskMap().getQicao();
                 //手动起草的不可以   后台改字段  接口
-                Log.e("xaxaxaxa",qicao.toString());
+                //Log.e("xaxaxaxa",qicao.toString());
                 joinSpeedAdapter.setNewData(qicao);
             }
         });

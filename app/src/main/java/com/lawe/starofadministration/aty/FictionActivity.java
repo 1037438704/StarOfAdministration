@@ -120,6 +120,7 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
     private CheckBox[] checkBoxestime = new CheckBox[4];
     private Button fictionButtonSure;
     private Button fictionButtonCancle;
+    private UUID uuid;
 
     @Override
     public void initViews() {
@@ -141,6 +142,12 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
         fictionAdapter = new FictionAdapter(R.layout.item_fiction);
         fictionAdapter.setDepUserId(depUserId);
         factionRecycle.setAdapter(fictionAdapter);
+
+        //新建的时候创建uuid--即relationId
+        uuid = UUID.randomUUID();
+        SharedPreferences nizhi_uuid = getSharedPreferences("nizhi_uuid", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = nizhi_uuid.edit();
+        edit.putString("ni_relationId",uuid+"").commit();
 
         //checkbox--id
         checkbox();
@@ -273,17 +280,9 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
         titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //新建的时候创建uuid--即relationId
-                UUID own= UUID.randomUUID();
-                //打印输出own=“81199e92-b564-4366-b72b-e20ce463a26d”；
-                SharedPreferences nizhi_uuid = getSharedPreferences("nizhi_uuid", Context.MODE_PRIVATE);
-                SharedPreferences.Editor edit = nizhi_uuid.edit();
-                edit.putString("ni_relationId",own+"").commit();
-
                 Intent intent = new Intent(FictionActivity.this, DraftActivity.class);
                 intent.putExtra("flagSpeed","1");
                 startActivity(intent);
-                AppManager.getInstance().killActivity(FictionActivity.class);
             }
         });
 
@@ -400,6 +399,8 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                 day = null;
                 archivedState = null;
                 state = null;
+                startTime = null;
+                endTime = null;
             }
         });
     }
