@@ -38,6 +38,12 @@ public interface Constants {
     //拟制--保存草稿箱
     String NIZHI_SAVE = "/sys/documentfiction/save";
 
+    //拟制--创建人撤回
+    String TERMINATIONFILE = "/sys/documentfiction/terminationFile/";
+
+    //一键催办
+    String ONECLICKREMINDER = "/sys/message/oneClickReminder";
+
     //根据部门id生成拟编号
     String GETQUASINUMBER = "/sys/documentfiction/getQuasiNumber/";
 
@@ -45,7 +51,7 @@ public interface Constants {
     String GETNUMBER = "/sys/documentfiction/getNumber";
 
     //根据主键id查询详情
-    String DOCUMENTFICTION = "/sys/documentfiction/info/";
+    String DOCUMENTFICTION = "/sys/documentfiction/info";
 
     //查询字典表
     String BYTYPE = "/sys/dataDict/byType";
@@ -63,7 +69,7 @@ public interface Constants {
     String UPDATEFILE = "/sys/upload/update";
 
     //删除附件
-    String DELETEFUJIAN = "/sys/upload/delete/";
+    String DELETEFUJIAN = "/sys/upload/delete";
 
     //查询当前任务流程（历史任务）
     String CURRRNTTASKPROCESS = "/sys/documentfiction/currentTaskProcess";

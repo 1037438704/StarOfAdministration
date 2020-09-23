@@ -1,5 +1,6 @@
 package com.lawe.starofadministration.aty;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,6 +57,7 @@ public class MyMedalActivity extends BaseAty {
     private  TabLayoutAdapter fragmentAdater;
     private ImageView medalBig;
     private TextView number;
+    private ImageView back;
 
     @Override
     public void initViews() {
@@ -65,6 +67,7 @@ public class MyMedalActivity extends BaseAty {
         viewPager = findViewById(R.id.viewPagerMedal);
         medalBig = findViewById(R.id.medal_big);
         number = findViewById(R.id.number);
+        back = findViewById(R.id.back);
         fragmentAdater = new TabLayoutAdapter(getSupportFragmentManager());
 
         getDatas();
@@ -72,7 +75,7 @@ public class MyMedalActivity extends BaseAty {
 
     private void getDatas() {
         showPopDialog();
-        HttpRequest.POST(me, Constants.MEDALLIST + depUserId, new Parameter(), new ResponseListener() {
+        HttpRequest.GET(me, Constants.MEDALLIST + depUserId, new Parameter(), new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
                 endLoading();
@@ -99,7 +102,12 @@ public class MyMedalActivity extends BaseAty {
 
     @Override
     public void setEvents() {
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public class TabLayoutAdapter extends FragmentPagerAdapter {

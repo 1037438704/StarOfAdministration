@@ -37,7 +37,7 @@ public class CountryFragment extends BaseFgt {
     @Override
     public void initDatas() {
         showPopDialog();
-        HttpRequest.POST(getActivity(), Constants.MEDALLIST + depUserId, new Parameter(), new ResponseListener() {
+        HttpRequest.GET(getActivity(), Constants.MEDALLIST + depUserId, new Parameter(), new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
                 endLoading();

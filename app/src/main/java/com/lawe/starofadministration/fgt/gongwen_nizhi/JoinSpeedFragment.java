@@ -1,25 +1,38 @@
 package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.JoinSpeedAdapter;
+import com.lawe.starofadministration.adp.JoinSpeedToDoAdapter;
 import com.lawe.starofadministration.aty.DraftActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.bean.JoinSpeedHistoryBean;
+import com.lawe.starofadministration.bean.JoinSpeedToDoBean;
 import com.lawe.starofadministration.config.Constants;
+import com.lawe.starofadministration.utils.map.JSONUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * author : fuke
@@ -30,11 +43,12 @@ import java.util.List;
 public class JoinSpeedFragment extends BaseFgt {
 
     private RecyclerView joinSpeedRecycle;
-    private String id = null;
+    private String fictionId = null;
 
     private JoinSpeedAdapter joinSpeedAdapter;
     private RecyclerView joinSpeedTodoRecycle;
     private String personType;
+    private JoinSpeedToDoAdapter joinSpeedToDoAdapter;
 
     @Override
     public void initViews() {
@@ -42,17 +56,20 @@ public class JoinSpeedFragment extends BaseFgt {
         joinSpeedRecycle = (RecyclerView) findViewById(R.id.join_speed_recycle);
         joinSpeedTodoRecycle = (RecyclerView) findViewById(R.id.join_speed_todo_recycle);
 
-        id = ((DraftActivity)fgtContext).toValue();
-        personType = ((DraftActivity)fgtContext).toPerson();
-
+        SharedPreferences fictionIdSp = getContext().getSharedPreferences("fictionId", Context.MODE_PRIVATE);
+        fictionId = fictionIdSp.getString("fictionId", "");
+        personType = fictionIdSp.getString("personType", "");
 
         //进度列表
-        LinearLayoutManager layoutManager = new LinearLayoutManager(me);
-        joinSpeedRecycle.setLayoutManager(layoutManager);
+       //LinearLayoutManager layoutManager = new LinearLayoutManager(me);
+        joinSpeedRecycle.setLayoutManager(new LinearLayoutManager(me));
+        joinSpeedTodoRecycle.setLayoutManager(new LinearLayoutManager(me));
+
         joinSpeedAdapter = new JoinSpeedAdapter(R.layout.item_speed_list);
-        joinSpeedAdapter.setPersonType(personType);
         joinSpeedRecycle.setAdapter(joinSpeedAdapter);
 
+        joinSpeedToDoAdapter = new JoinSpeedToDoAdapter(R.layout.item_speed_list);
+        joinSpeedTodoRecycle.setAdapter(joinSpeedToDoAdapter);
     }
 
     @Override
@@ -70,40 +87,75 @@ public class JoinSpeedFragment extends BaseFgt {
 
     //查询待办进度
     private void getTodo() {
-        JSONObject json = new JSONObject();
-        try {
-            json.put("id",id);  //业务ID
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //json转化为string类型
-        String jsonTodo = String.valueOf(json);
-        HttpRequest.JSONPOST(me, Constants.CURRENTTODOTASKPROCESS, jsonTodo, new ResponseListener() {
+        HttpRequest.POST(me, Constants.CURRENTTODOTASKPROCESS, new Parameter().add("id",fictionId), new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
+                JoinSpeedToDoBean joinSpeedToDoBean = gson.fromJson(response, JoinSpeedToDoBean.class);
+                List<JoinSpeedToDoBean.TaskMapBean.CreateFileBean> createFile = joinSpeedToDoBean.getTaskMap().getCreateFile();
 
+                joinSpeedToDoAdapter.setNewData(createFile);
+                joinSpeedAdapter.addChildClickViewIds(R.id.liucheng_yijiancuiban);
+                joinSpeedAdapter.setOnItemClickListener(new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                        List<JoinSpeedHistoryBean.HistoryTaskMapBean.SumBean> data = joinSpeedAdapter.getData();
+                        oneClickReminder();
+                    }
+                });
             }
         });
     }
 
     //查询历史任务
     private void getHistory() {
+
+        HttpRequest.POST(me, Constants.CURRRNTTASKPROCESS, new Parameter().add("id",fictionId), new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                JoinSpeedHistoryBean joinSpeedHistoryBean = gson.fromJson(response, JoinSpeedHistoryBean.class);
+                JoinSpeedHistoryBean.HistoryTaskMapBean historyTaskMap = joinSpeedHistoryBean.getHistoryTaskMap();
+                List<JoinSpeedHistoryBean.HistoryTaskMapBean.SumBean> listSumBean = historyTaskMap.getListSumBean();
+                joinSpeedAdapter.setNewData(listSumBean);
+
+                joinSpeedAdapter.addChildClickViewIds(R.id.liucheng_yijiancuiban);
+                joinSpeedAdapter.setOnItemClickListener(new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                        List<JoinSpeedHistoryBean.HistoryTaskMapBean.SumBean> data = joinSpeedAdapter.getData();
+                        oneClickReminder();
+                    }
+                });
+            }
+        });
+    }
+
+    //一键催办
+    private void oneClickReminder() {
         JSONObject json = new JSONObject();
         try {
-            json.put("id",id);  //业务ID
+           json.put("businessKey",fictionId);
+           json.put("businessKeyType","1");
+           json.put("delayTime","");
+           json.put("id","");
+           json.put("messContent","");
+           json.put("messType","8");
+           json.put("messageCount","");
+           json.put("sendTime","");
+           json.put("sysUserId",depUserId);
+           json.put("title","");
         } catch (JSONException e) {
             e.printStackTrace();
         }
         //json转化为string类型
-        String jsonHistory = String.valueOf(json);
-        HttpRequest.JSONPOST(me, Constants.CURRRNTTASKPROCESS, jsonHistory, new ResponseListener() {
+        String jsonMess = String.valueOf(json);
+        HttpRequest.JSONPOST(me, Constants.ONECLICKREMINDER, jsonMess, new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
-                JoinSpeedHistoryBean joinSpeedHistoryBean = gson.fromJson(response, JoinSpeedHistoryBean.class);
-                List<JoinSpeedHistoryBean.HistoryTaskMapBean.QicaoBean> qicao = joinSpeedHistoryBean.getHistoryTaskMap().getQicao();
-                //手动起草的不可以   后台改字段  接口
-                //Log.e("xaxaxaxa",qicao.toString());
-                joinSpeedAdapter.setNewData(qicao);
+                if (error==null){
+                    toast("一键催办成功");
+                }else{
+                    error.getMessage();
+                }
             }
         });
     }

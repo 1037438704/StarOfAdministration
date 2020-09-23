@@ -353,6 +353,7 @@
                     android:layout_height="20dp"/>
 
                 <TextView
+
                     android:text="终止文件"
                     android:textColor="#ffffff"
                     android:textSize="16dp"

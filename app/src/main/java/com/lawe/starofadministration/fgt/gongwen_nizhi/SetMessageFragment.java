@@ -2,22 +2,36 @@ package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.google.gson.Gson;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.util.Preferences;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.aty.ChooseCompanyActivity;
+import com.lawe.starofadministration.aty.LoginActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.bean.ByTypeBean;
 import com.lawe.starofadministration.bean.EventFactionBean;
@@ -26,6 +40,7 @@ import com.lawe.starofadministration.bean.ZhutiFindAllBean;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.utils.PickerView;
 import com.lawe.starofadministration.utils.map.JSONUtils;
+import com.okhttplib.OkHttpUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
@@ -34,6 +49,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.Call;
 
 /**
  * author : fuke
@@ -63,6 +80,7 @@ public class SetMessageFragment extends BaseFgt {
     private PickerView minute_pv;
     private SharedPreferences sp;
     private EventFactionBean eventFactionBean;
+    private TextView setmesTextTime;
 
     @Override
     public void initViews() {
@@ -74,6 +92,7 @@ public class SetMessageFragment extends BaseFgt {
         setmesTextTiaojian = (TextView) findViewById(R.id.setmes_text_tiaojian);
         setmesHuiqian = (LinearLayout) findViewById(R.id.setmes_huiqian);
         setmesTime = (LinearLayout) findViewById(R.id.setmes_time);
+        setmesTextTime = (TextView) findViewById(R.id.setmes_text_time);
 
         eventFactionBean = new EventFactionBean();
         eventFactionBean.type = 1;
@@ -176,9 +195,10 @@ public class SetMessageFragment extends BaseFgt {
 
         //定时发送
         setmesTime.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-
+                choosePlot();
             }
         });
     }
@@ -302,6 +322,92 @@ public class SetMessageFragment extends BaseFgt {
                 dialog.show();
             }
         });
+    }
+
+    //定时发送
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void choosePlot() {
+        final Dialog dialog = new Dialog(getActivity(), R.style.DialogTheme);
+        View views = View.inflate(getActivity(), R.layout.pop_community, null);
+        dialog.setContentView(views);
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        LinearLayout ll_select_one = views.findViewById(R.id.ll_select_one);
+        LinearLayout ll_select_two = views.findViewById(R.id.ll_select_two);
+        LinearLayout li_choose_plot = views.findViewById(R.id.li_choose_plot);
+        LinearLayout li_choose_house = views.findViewById(R.id.li_choose_house);
+
+        TextView tv_select_data = views.findViewById(R.id.tv_select_data);
+        TextView tv_select_time = views.findViewById(R.id.tv_select_time);
+        View v_line_one = views.findViewById(R.id.v_line_one);
+        View v_line_two = views.findViewById(R.id.v_line_two);
+
+        TimePicker mTimepicker = (TimePicker) views.findViewById(R.id.timepicker);
+        DatePicker datePicker = views.findViewById(R.id.datePicker);
+        TextView pop_finish = views.findViewById(R.id.pop_finish);
+        mTimepicker.setDescendantFocusability(TimePicker.FOCUS_BLOCK_DESCENDANTS);  //设置点击事件不弹键盘
+        mTimepicker.setIs24HourView(true);   //设置时间显示为24小时
+        //mTimepicker.setHour(16);  //设置当前小时
+        //mTimepicker.setMinute(06); //设置当前分（0-59）
+
+        mTimepicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {  //获取当前选择的时间
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                tv_select_time.setText(hourOfDay+":"+minute);
+            }
+        });
+
+        datePicker.init(2020, 10, 12, new DatePicker.OnDateChangedListener() {
+            //            当dp日期改变时回调onDateChanged方法
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                获取dp的年月日的值，在textView上显示出来
+                tv_select_data.setText(+datePicker.getYear()+"/"+
+                        (datePicker.getMonth()+1)+"/"+datePicker.getDayOfMonth());
+            }
+        });
+
+        ll_select_one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                li_choose_house.setVisibility(View.VISIBLE);
+                li_choose_plot.setVisibility(View.GONE);
+
+                tv_select_data.setTextColor(getResources().getColor(R.color.color_db322b));
+                v_line_one.setVisibility(View.VISIBLE);
+                tv_select_time.setTextColor(getResources().getColor(R.color.color_3E3E41));
+                v_line_two.setVisibility(View.GONE);
+            }
+        });
+
+        ll_select_two.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                li_choose_house.setVisibility(View.GONE);
+                li_choose_plot.setVisibility(View.VISIBLE);
+
+                tv_select_time.setTextColor(getResources().getColor(R.color.color_db322b));
+                v_line_one.setVisibility(View.GONE);
+                tv_select_data.setTextColor(getResources().getColor(R.color.color_3E3E41));
+                v_line_two.setVisibility(View.VISIBLE);
+            }
+        });
+
+        pop_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setmesTextTime.setText(datePicker.getYear()+"/"+
+                        (datePicker.getMonth()+1)+"/"+datePicker.getDayOfMonth()+"  "+tv_select_time.getText().toString());
+                eventFactionBean.setDocTime(setmesTextTime.getText().toString());
+                EventBus.getDefault().postSticky(eventFactionBean);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
     }
 
     public static SetMessageFragment newInstance() {

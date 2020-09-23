@@ -52,7 +52,7 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
 
     @Override
     public void initViews() {
-        interceptDate();
+        //interceptDate();
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
         fgtContext = (AppCompatActivity) getActivity();
         token = Preferences.getInstance().getString(me,"login","token");
@@ -85,13 +85,16 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
         BaseOkHttp.responseInterceptListener = new ResponseInterceptListener() {
             @Override
             public boolean onResponse(Context context, String url, String response, Exception error) {
+                Map<String, String> data = JSONUtils.parseKeyAndValueToMap(response);
                 if (error == null) {
-                    //判空
                     if (isNull(response)){
                         toast("请求超时");
                         return false;
                     }
-                    Map<String, String> data = JSONUtils.parseKeyAndValueToMap(response);
+                    if (isNull(data.get("msg"))){
+                        toast("数据为空");
+                        return false;
+                    }
                     if (data.get("msg").equals("success")){
                         return true;
                     }else{
@@ -99,6 +102,7 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
                         return false;
                     }
                 } else {
+                    error.getMessage();
                     return false;
                 }
             }

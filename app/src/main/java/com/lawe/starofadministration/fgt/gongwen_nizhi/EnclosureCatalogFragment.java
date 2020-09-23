@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.EnclosureAdapter;
@@ -57,8 +58,6 @@ public class EnclosureCatalogFragment extends BaseFgt {
     private LinearLayout enclosureShangchuan;
     private TextView enclosureText;
 
-    //空集合
-    private List<String> list;
     private String path;
     private RecyclerView enclosureRecycleAdd;
     private EnclosureAdapter enclosureAdapter;
@@ -83,7 +82,6 @@ public class EnclosureCatalogFragment extends BaseFgt {
         //附件目录
         getUpload();
         //附件列表
-        list = new ArrayList<>();
         enclosureRecycle.setNestedScrollingEnabled(false);
         enclosureRecycle.setLayoutManager(new LinearLayoutManager(me));
         enclosureAdapter = new EnclosureAdapter(R.layout.item_enclosure);
@@ -92,10 +90,12 @@ public class EnclosureCatalogFragment extends BaseFgt {
 
     @Override
     public void initDatas() {
+        ArrayList<String> strings = new ArrayList<>();
+
         for (int i = 0; i < 10; i++) {
-            list.add("" + i);
+            strings.add(i+"");
         }
-        enclosureAdapter.setNewData(list);
+        enclosureAdapter.setNewData(strings);
         enclosureAdapter.notifyDataSetChanged();
     }
 
@@ -112,13 +112,15 @@ public class EnclosureCatalogFragment extends BaseFgt {
         });
     }
 
-    //附件目录接口
+    //附件目录
     private void getUpload() {
         JSONObject json = new JSONObject();
         try {
             json.put("page",page);
             json.put("limit",limit);
             json.put("relationId", relationId);
+            json.put("state",null);
+            json.put("uploadifyTitle",null);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -128,6 +130,7 @@ public class EnclosureCatalogFragment extends BaseFgt {
             @Override
             public void onResponse(String response, Exception error) {
 
+                //enclosureAdapter.setNewData(list);
             }
         });
     }
@@ -152,7 +155,7 @@ public class EnclosureCatalogFragment extends BaseFgt {
                 fileurl = new File(path);
                 fileName = fileurl.getParentFile().getName();
                 uploadFile();
-                Toast.makeText(fgtContext, path +"11111",Toast.LENGTH_SHORT).show();
+                Toast.makeText(fgtContext, fileurl +"11111",Toast.LENGTH_SHORT).show();
                 return;
             }
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
@@ -161,7 +164,7 @@ public class EnclosureCatalogFragment extends BaseFgt {
                 fileurl = new File(path);
                 fileName = fileurl.getParentFile().getName();
                 uploadFile();
-                Toast.makeText(fgtContext,path+"333",Toast.LENGTH_SHORT).show();
+                Toast.makeText(fgtContext,fileurl+"333",Toast.LENGTH_SHORT).show();
             } else {//4.4以下下系统调用方法
                 //path = getRealPathFromURI(uri);
                 path = uri.getPath();
@@ -169,29 +172,22 @@ public class EnclosureCatalogFragment extends BaseFgt {
                 fileurl = new File(path);
                 fileName = fileurl.getParentFile().getName();
                 uploadFile();
-                Toast.makeText(fgtContext, path+"222222", Toast.LENGTH_SHORT).show();
+                Toast.makeText(fgtContext, fileurl+"222222", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     //上传附件接口
     private void uploadFile() {
-        JSONObject json = new JSONObject();
-        try {
-            json.put("file",fileurl);
-            json.put("fileName",fileName);
-            json.put("relationId", relationId);
-            json.put("depUserId",depUserId);
-            json.put("state",1);
-            json.put("departmentId", departmentId);
-            json.put("departmentName",departFullName);
-            json.put("depUserName",name);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //json转化为string类型
-        String jsonUpload = String.valueOf(json);
-        HttpRequest.JSONPOST(me, Constants.UPLOADFILE, jsonUpload, new ResponseListener() {
+        HttpRequest.POST(me, Constants.UPLOADFILE, new Parameter()
+                        .add("file",fileurl)
+                        .add("relationId", relationId)
+                        .add("depUserId",depUserId)
+                        .add("state",1)
+                        .add("departmentId", departmentId)
+                        .add("departmentName",departFullName)
+                        .add("depUserName",name)
+                , new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
 

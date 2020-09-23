@@ -36,15 +36,19 @@ import androidx.core.content.ContextCompat;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.bean.EventFactionBean;
 import com.lawe.starofadministration.bean.FictionListBean;
+import com.lawe.starofadministration.bean.GetMessageByIdBean;
+import com.lawe.starofadministration.bean.MyMedalBean;
 import com.lawe.starofadministration.bean.fontbean.FontStyle;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.handle.CustomHtml;
 import com.lawe.starofadministration.handle.RichEditImageGetter;
 import com.lawe.starofadministration.handle.Utils;
+import com.lawe.starofadministration.utils.GlidUtils;
 import com.lawe.starofadministration.utils.map.JSONUtils;
 import com.lawe.starofadministration.view.FontStylePanel;
 import com.lawe.starofadministration.view.RichEditText;
@@ -130,10 +134,6 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
         newWorkTitle.setText("公文标题：");
         documentSubTitle.setText("公文主体：");
 
-        //判断公文主体是否为空
-       // isEmpty = TextUtils.isEmpty(documentSubject.getText());
-        SharedPreferences sp = getActivity().getSharedPreferences("newFile", Context.MODE_PRIVATE);
-        edit = sp.edit();
         SharedPreferences fictionIdSp = getContext().getSharedPreferences("fictionId", Context.MODE_PRIVATE);
         fictionId = fictionIdSp.getString("fictionId", "");
         eventFactionBean = new EventFactionBean();
@@ -147,45 +147,42 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
 
         initRichTextCon();
         //根据主键id查询信息
-        getmessage();
+        //getmessage();
     }
 
     //根据主键id查询公文信息
     private void getmessage() {
-        HttpRequest.build(me,Constants.DOCUMENTFICTION + fictionId)
-                .setResponseListener(new ResponseListener() {
-                    @Override
-                    public void onResponse(String response, Exception error) {
-                        if(error == null){
-                            FictionListBean fictionListBean = gson.fromJson(response, FictionListBean.class);
-                            List<FictionListBean.PageBean.ListBean> list = fictionListBean.getPage().getList();
-                            documentTitle.setText(list.get(0).getDocTitle());
-                        }else{
-                            error.getMessage();
-                        }
-                    }
-                }).doGet();
+        HttpRequest.GET(me, Constants.DOCUMENTFICTION, new Parameter().add("id", fictionId), new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                if(error == null){
+                    GetMessageByIdBean message = gson.fromJson(response, GetMessageByIdBean.class);
+                    GetMessageByIdBean.DocumentFictionBOBean documentFictionBO = message.getDocumentFictionBO();
+                    documentTitle.setText(documentFictionBO.getDocTitle());
+                    documentSubject.setText(documentFictionBO.getDocTheme());
+                }else{
+                    error.getMessage();
+                }
+            }
+        });
     }
 
     //获取公文字号数值
     private void getNumber() {
-        JSONObject json = new JSONObject();
-        try {
-            json.put("id",null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //json转化为string类型
-        String jsonLogin = String.valueOf(json);
-        HttpRequest.JSONPOST(me, Constants.GETNUMBER, jsonLogin, new ResponseListener() {
+        /*HttpRequest.GET(me, Constants.GETNUMBER, new Parameter(), new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
-                Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
-                qNumber = map.get("number");
-                eventFactionBean.setqNumber(qNumber);
-                EventBus.getDefault().postSticky(eventFactionBean);
+                endLoading();
+                if (error == null){
+                    Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
+                    qNumber = map.get("number");
+                    eventFactionBean.setqNumber(qNumber);
+                    EventBus.getDefault().postSticky(eventFactionBean);
+                }else {
+                    error.getMessage();
+                }
             }
-        });
+        });*/
     }
 
     //获取拟编号

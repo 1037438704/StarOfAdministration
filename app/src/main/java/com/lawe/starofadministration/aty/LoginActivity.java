@@ -13,6 +13,7 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -26,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -136,7 +138,6 @@ public class LoginActivity extends BaseAty {
         String psd = Preferences.getInstance().getString(me, "phone", "psd");
 
         if (phone != null && psd != null){
-            jump(MainActivity.class);
             login_phone.setText(phone);
             login_edpass.setText(psd);
         }
@@ -235,6 +236,7 @@ public class LoginActivity extends BaseAty {
                     login_getCode.setText("获取验证码");
                     login_text.setText("多因素登录");
                     linear_pass.setVisibility(View.GONE);
+                    login_passwordSmall.setVisibility(View.GONE);
                     codes = 2;
                 } else {
                     login_getCode.setVisibility(View.GONE);
@@ -334,7 +336,6 @@ public class LoginActivity extends BaseAty {
 
     //手机号密码登录
     private void postLogin() {
-        //账号密码登录
         loginPhone = login_phone.getText().toString();
         loginPass = login_edpass.getText().toString();
         Preferences.getInstance().commit(me, "phone", "phone", login_phone.getText().toString().trim());
@@ -361,7 +362,6 @@ public class LoginActivity extends BaseAty {
                 @Override
                 public void onResponse(String response, Exception error) {
                    if (error == null){
-
                        LoginDefaltBean loginDefaltBean = gson.fromJson(response, LoginDefaltBean.class);
                        String depUserId = loginDefaltBean.getEntityBO().getId();
                        String dName = loginDefaltBean.getEntityBO().getDName();
@@ -377,6 +377,7 @@ public class LoginActivity extends BaseAty {
                        isFrist();
                    }else{
                        error.getMessage();
+                       toast(error.getMessage());
                    }
 
                 }
@@ -451,6 +452,19 @@ public class LoginActivity extends BaseAty {
         Button login_jujue = view.findViewById(R.id.login_jujue);
         RadioGroup mainRgp = view.findViewById(R.id.main_rgp);
         ViewPager viewPager = view.findViewById(R.id.viewPager);
+        ScrollView sv01 = (ScrollView) findViewById(R.id.popup_sf_event_scroll_01);
+        loginWeb.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP)
+                    sv01.requestDisallowInterceptTouchEvent(false);
+                else
+                    sv01.requestDisallowInterceptTouchEvent(true);
+
+                return false;
+            }
+        });
         WebView loginWeb = view.findViewById(R.id.login_webview);
         RadioButton radioButton = (RadioButton) mainRgp.getChildAt(0);
         radioButton.setChecked(true);

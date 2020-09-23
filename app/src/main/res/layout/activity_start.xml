@@ -2,34 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_start"
-    tools:context="com.lanwei.grid.activity.StartActivity"
+
     android:layout_width="match_parent"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:background="@mipmap/bg_start"
+    android:background="@mipmap/sahnping"
     android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/iv_start"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:src="@mipmap/icon_strat" />
-
-    </LinearLayout>
-
-
-    <ImageView
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="54dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/icon_text" />
 
 </LinearLayout>

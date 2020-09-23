@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         >
-
         <ImageView
             android:id="@+id/daiban_head"
             android:layout_width="38dp"

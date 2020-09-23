@@ -1,5 +1,8 @@
 package com.lawe.starofadministration.fgt;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -8,13 +11,17 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 
 import com.kongzue.baseframework.interfaces.Layout;
+import com.kongzue.baseframework.util.Preferences;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.aty.ExplanaActivity;
 import com.lawe.starofadministration.aty.FeedBackActivity;
+import com.lawe.starofadministration.aty.LoginActivity;
 import com.lawe.starofadministration.aty.ServiceActivity;
 import com.lawe.starofadministration.aty.SetSafeActivity;
 import com.lawe.starofadministration.aty.SystemActivity;
 import com.lawe.starofadministration.base.BaseFgt;
+
+import java.util.Objects;
 
 /**
  * author : fuke
@@ -87,6 +94,13 @@ public class SettingsFragment extends BaseFgt {
 
     @Override
     public void setEvents() {
+        set_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+            }
+        });
+
         //检查是否有更新
         linearSetUpgread.setOnClickListener(new View.OnClickListener() {
 
@@ -184,6 +198,42 @@ public class SettingsFragment extends BaseFgt {
             }
         });
         
+    }
+
+    //显示dialog
+    private void showDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(me);
+        View view = View.inflate(me, R.layout.pop_tuichu, null);
+        builder.setView(view);
+        builder.setCancelable(true);
+        AlertDialog dialog = builder.create();
+
+        Button sure = view.findViewById(R.id.pop_delete_group_sure);
+        Button cancle = view.findViewById(R.id.pop_delete_group_cancle);
+
+        //取消的点击
+        cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        sure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               SharedPreferences frist = getActivity().getSharedPreferences("frist", Context.MODE_PRIVATE);
+               frist.edit().putBoolean("isAgree",true).commit();
+                Preferences.getInstance().cleanAll(getActivity(),"login");
+                Preferences.getInstance().cleanAll(getActivity(),"phone");
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
     public static SettingsFragment newInstance() {

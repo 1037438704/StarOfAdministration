@@ -34,7 +34,7 @@ public class MessageAdapter extends BaseQuickAdapter< MessageBean.PageBean.ListB
         helper.setText(R.id.laiwenDanwei,"来文单位："+listBeans.getDocumentReportUnit());
         helper.setText(R.id.fujianNUmber,listBeans.getTotal());
         TextView background = helper.itemView.findViewById(R.id.background);
-        String category = listBeans.getCategory();
+        /*String category = listBeans.getCategory();
         if (category.equals("1")&&category != null){
             background.setBackgroundResource(R.drawable.shape_radius100);
         }else if (category.equals("2")&&category != null){
@@ -49,6 +49,6 @@ public class MessageAdapter extends BaseQuickAdapter< MessageBean.PageBean.ListB
             background.setBackgroundResource(R.drawable.shape_radius100);
         }else if (category.equals("8")&&category != null){
             background.setBackgroundResource(R.drawable.shape_radius100);
-        }
+        }*/
     }
 }

@@ -91,9 +91,10 @@ public class MessageFragment extends BaseFgt implements CompoundButton.OnChecked
     private CheckBox[] checkBoxestime = new CheckBox[4];
     private TextView fictionTimeStart;
     private TextView fictionTimeEnd;
-    private String day;
-    private String startTime;
-    private String endTime;
+    private String day = null;
+    private String startTime = null;
+    private String endTime = null;
+    private String beAboutToOverdue = "0";
     Calendar calendar= Calendar.getInstance(Locale.CHINA);
     private Button buttonSure;
 
@@ -168,6 +169,15 @@ public class MessageFragment extends BaseFgt implements CompoundButton.OnChecked
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 page = 1;
                 limit = 10;
+                orderType = null;
+                warningState = null;
+                day = null;
+                startTime = null;
+                endTime = null;
+                category = null;
+                textUrgent.setText("紧急度");
+                textCategory.setText("类别");
+                textTimer.setText("接收时间");
                 messageData();
             }
         });
@@ -190,14 +200,13 @@ public class MessageFragment extends BaseFgt implements CompoundButton.OnChecked
             json.put("limit", limit);
             json.put("depUserId",depUserId);
             json.put("warningState",warningState);  //紧急度
-
-            json.put("order",orderType); //接收时间
+            json.put("orderType",orderType); //接收时间
             json.put("order","createTime");
             json.put("category",category);   //类别
-            json.put("beAboutToOverdue",null);   //即将逾期靠前
-            json.put("day",null);   //最近幾天
-            json.put("startTime",null);   //开始时间
-            json.put("endTime",null);   //结束时间
+            //json.put("beAboutToOverdue",beAboutToOverdue);   //即将逾期靠前
+            json.put("day",day);   //最近幾天
+            json.put("startTime",startTime);   //开始时间
+            json.put("endTime",endTime);   //结束时间
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -207,20 +216,23 @@ public class MessageFragment extends BaseFgt implements CompoundButton.OnChecked
             @Override
             public void onResponse(String response, Exception error) {
                 endLoading();
-                MessageBean messageBean = gson.fromJson(response, MessageBean.class);
-                List<MessageBean.PageBean.ListBean> list = messageBean.getPage().getList();
-                if (page == 1){
-                    messageAdapter.setNewData(list);
-                    refreshLayout.finishRefresh();
-                }else{
-                    if(list == null || list.size() == 0){
-                        toast("没有更多数据了...");
-                        refreshLayout.finishLoadMore();
-                        return;
+                if (error == null){
+                    MessageBean messageBean = gson.fromJson(response, MessageBean.class);
+                    List<MessageBean.PageBean.ListBean> list = messageBean.getPage().getList();
+                    if (page == 1){
+                        messageAdapter.setNewData(list);
+                        refreshLayout.finishRefresh();
+                    }else{
+                        if(list == null || list.size() == 0){
+                            toast("没有更多数据了...");
+                            refreshLayout.finishLoadMore();
+                            return;
+                        }
+                        messageAdapter.addData(list);
                     }
-                    messageAdapter.addData(list);
+                }else {
+                    error.getMessage();
                 }
-
             }
         });
     }
@@ -475,12 +487,11 @@ public class MessageFragment extends BaseFgt implements CompoundButton.OnChecked
             }
         });
 
-        //预警信息靠前
+        //即将逾期靠前
         drawAfter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // drawerLayout.closeDrawer(Gravity.RIGHT);
-                String s = drawAfter.getText().toString();
+                beAboutToOverdue = "1";
             }
         });
 
@@ -526,6 +537,8 @@ public class MessageFragment extends BaseFgt implements CompoundButton.OnChecked
                     }else if(buttonView.getText().toString().equals("最近30天")){
                         day = "30";
                     }
+                    startTime = null;
+                    endTime = null;
                 } else {
                     checkBoxestime[k].setChecked(false);
                 }

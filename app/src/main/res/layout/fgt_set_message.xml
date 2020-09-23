@@ -158,7 +158,7 @@
 
             <TextView
                 android:id="@+id/setmes_text_danwei"
-                android:text=""
+                android:text="天津蓝威科技"
                 android:textSize="15dp"
                 android:textColor="@color/color_717173"
                 android:layout_width="wrap_content"

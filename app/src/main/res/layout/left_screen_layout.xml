@@ -24,6 +24,7 @@
             android:textSize="18dp" />
 
         <TextView
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -32,6 +33,7 @@
             android:textSize="14dp" />
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -48,7 +50,7 @@
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:background="@drawable/select_shaixuan"
-                    android:text="聊天留言靠前"
+                    android:text="会议通知靠前靠前"
                     android:button="@null"
                     android:textColor="@drawable/select_text_color" />
 
@@ -60,7 +62,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:background="@drawable/select_shaixuan"
-                    android:text="预警信息靠前"
+                    android:text="即将逾期靠前"
                     android:textColor="@drawable/select_text_color" />
 
             </RadioGroup>

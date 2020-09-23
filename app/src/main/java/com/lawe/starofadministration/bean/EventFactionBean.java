@@ -19,6 +19,15 @@ public class EventFactionBean {
     private String publicProperty; //公开
     private String docTheme; //公文主题
     private String docType;  //公文类
+    private String docTime;  //定时发送时间
+
+    public String getDocTime() {
+        return docTime;
+    }
+
+    public void setDocTime(String docTime) {
+        this.docTime = docTime;
+    }
 
     //判断是哪个页面
     public int type;
@@ -81,6 +90,7 @@ public class EventFactionBean {
     }
     //打印一个toString
 
+
     @Override
     public String toString() {
         return "EventFactionBean{" +
@@ -91,6 +101,7 @@ public class EventFactionBean {
                 ", publicProperty='" + publicProperty + '\'' +
                 ", docTheme='" + docTheme + '\'' +
                 ", docType='" + docType + '\'' +
+                ", docTime='" + docTime + '\'' +
                 ", type=" + type +
                 '}';
     }

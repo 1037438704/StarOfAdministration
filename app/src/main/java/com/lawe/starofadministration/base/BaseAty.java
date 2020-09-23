@@ -113,6 +113,7 @@ abstract public class BaseAty extends BaseActivity implements Constants {
                         return false;
                     }
                 } else {
+                    error.getMessage();
                     return false;
                 }
             }

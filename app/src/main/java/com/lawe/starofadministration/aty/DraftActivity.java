@@ -43,6 +43,7 @@ import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.DraftChatAdapter;
@@ -151,6 +152,8 @@ public class DraftActivity extends BaseAty {
     int pageCounte = 0;
     private String personType;
     private LinearLayout draftMoreEndLinear;
+    private String fictionId;
+    private String docTime;
 
     @Override
     public void initViews() {
@@ -252,6 +255,10 @@ public class DraftActivity extends BaseAty {
         viewPagerData.setAdapter(viewPagerAdp);
         viewPagerData.setCurrentItem(pageCounte);
 
+        SharedPreferences fictionIdSp = getSharedPreferences("fictionId", Context.MODE_PRIVATE);
+        String personType = fictionIdSp.getString("personType", "");
+        fictionId = fictionIdSp.getString("fictionId", "");
+
         //时时获取备注内容
         bottomWhrit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -335,6 +342,23 @@ public class DraftActivity extends BaseAty {
             }
         });
 
+        //终止文件
+        draftMoreEndLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HttpRequest.POST(me, Constants.TERMINATIONFILE+ fictionId, new Parameter(), new ResponseListener() {
+                    @Override
+                    public void onResponse(String response, Exception error) {
+                        if (error == null){
+                            toast("已终止文件");
+                        }else{
+                            error.getMessage();
+                        }
+                    }
+                });
+            }
+        });
+
         //点击全屏任意地方弹框消失
         draftAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -366,7 +390,7 @@ public class DraftActivity extends BaseAty {
             }
         });
 
-        //模板列表
+        /*//模板列表
         draftMoreTemplate.setOnClickListener(new View.OnClickListener() {
 
             private RecyclerView popDraftRecycle;
@@ -415,7 +439,7 @@ public class DraftActivity extends BaseAty {
                 dialog.show();
             }
 
-        });
+        });*/
 
         //新增常用语
         draftChatNew.setOnClickListener(new View.OnClickListener() {
@@ -604,6 +628,7 @@ public class DraftActivity extends BaseAty {
             eventFaction.setPublicProperty(eventUpdateBean.getPublicProperty());
             eventFaction.setDocTheme(eventUpdateBean.getDocTheme());
             eventFaction.setDocType(eventUpdateBean.getDocType());
+            eventFaction.setDocTime(eventUpdateBean.getDocTime());
         }
         docContext = eventFaction.getDocContext();
         docTitle = eventFaction.getDocTitle();
@@ -612,6 +637,7 @@ public class DraftActivity extends BaseAty {
         qNumber = eventFaction.getqNumber();
         publicProperty = eventFaction.getPublicProperty();
         quasiNumber = eventFaction.getQuasiNumber();
+        docTime = eventFaction.getDocTime();
         if (docTitle.equals("") || docContext.equals("") || docTheme.equals("") || docType.equals("") || publicProperty.equals("")){
             bottomButton.setBackgroundResource(R.drawable.shape_red42_22);
         }else{
@@ -683,7 +709,7 @@ public class DraftActivity extends BaseAty {
             json.put("publicProperty",publicProperty);  //公开属性：0 不公开 1主动公开 2依申请公开
             json.put("docTheme",docTheme);  //公文主题 查询公文主题接口（查询所有父id为空公文主题）
             json.put("relationId",relationId);  //关联附件表relation_id
-            json.put("timingSendTime","2020-7-24 10:10:35");  //定时发送时间
+            json.put("timingSendTime",docTime);  //定时发送时间
             json.put("signUnit",null);  //会签单位
             json.put("docNumber","");  //公文文号（核发传值）
             json.put("number","");  //公文文号的数字号（核发传值）
@@ -749,7 +775,7 @@ public class DraftActivity extends BaseAty {
             json.put("publicProperty",publicProperty);  //公开属性：0 不公开 1主动公开 2依申请公开
             json.put("docTheme",docTheme);  //公文主题 查询公文主题接口（查询所有父id为空公文主题）
             json.put("relationId",relationId);  //关联附件表relation_id
-            json.put("timingSendTime","2020-6-24 10:10:35");  //定时发送时间
+            json.put("timingSendTime","2020-10-24 10:10:35");  //定时发送时间
             json.put("signUnit",null);  //会签单位
             json.put("docNumber","");  //公文文号（核发传值）
             json.put("number","");  //公文文号的数字号（核发传值）

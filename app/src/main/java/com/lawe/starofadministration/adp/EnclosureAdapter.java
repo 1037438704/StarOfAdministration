@@ -12,8 +12,10 @@ import androidx.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.zhouwei.library.CustomPopWindow;
+import com.kongzue.baseframework.util.Preferences;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.R;
@@ -99,22 +101,18 @@ public class EnclosureAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
                         break;
                     case R.id.pop_fujian_delete:
-                        Toast.makeText(getContext(),"删除附件",Toast.LENGTH_SHORT).show();
+                        String depUserId = Preferences.getInstance().getString(getContext(),"login","depUserId");
                         //删除附件接口
-                        HttpRequest.build(getContext(), Constants.DELETEFUJIAN + id)
-                                .setResponseListener(new ResponseListener() {
-                                    @Override
-                                    public void onResponse(String response, Exception error) {
-                                        if(error == null){
-                                           Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
-                                            String msg = map.get("msg");
-                                            Toast.makeText(getContext(),msg,Toast.LENGTH_SHORT).show();
-                                        }else{
-                                            error.getMessage();
-                                        }
-                                    }
-                                }).doGet();
-                        //刷新
+                        HttpRequest.GET(getContext(), Constants.DELETEFUJIAN, new Parameter().add("depUserId", depUserId).add("id", id), new ResponseListener() {
+                            @Override
+                            public void onResponse(String response, Exception error) {
+                                if(error == null){
+                                    Toast.makeText(getContext(),"删除成功",Toast.LENGTH_SHORT).show();
+                                }else{
+                                    error.getMessage();
+                                }
+                            }
+                        });
                         break;
                 }
             }

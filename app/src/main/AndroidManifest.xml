@@ -54,7 +54,8 @@
         <activity android:name=".aty.UpdatePassActivity" /> <!-- 安全设置 -->
         <activity android:name=".aty.SetSafeActivity"/> <!-- 我的勋章 -->
         <activity android:name=".aty.MyMedalActivity" /> <!-- 聊天页面 -->
-        <activity android:name=".aty.LoginActivity"/>   <!--启动页面-->
+        <activity android:name=".aty.LoginActivity"/>
+        <activity android:name=".aty.GuideActivity"/>
         <activity
             android:name=".aty.ChatActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" /> <!-- 今日日程 -->
