@@ -265,43 +265,50 @@
             android:layout_marginTop="12dp"
             android:layout_height="wrap_content">
 
-            <CheckBox
-                android:id="@+id/fiction_text_chuli"
-                android:text="处理中"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:button="@null"
-                android:background="@drawable/select_shaixuan"
-                android:textColor="@drawable/select_text_color"
-                android:layout_width="74dp"
-                android:layout_height="38dp"
-                />
+            <RadioGroup
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <CheckBox
-                android:id="@+id/fiction_text_yiguidang"
-                android:text="已归档"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:layout_marginLeft="12dp"
-                android:button="@null"
-                android:background="@drawable/select_shaixuan"
-                android:textColor="@drawable/select_text_color"
-                android:layout_width="74dp"
-                android:layout_height="38dp"
-                />
+                <RadioButton
+                    android:id="@+id/fiction_text_chuli"
+                    android:text="处理中"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/select_shaixuan"
+                    android:textColor="@drawable/select_text_color"
+                    android:layout_width="74dp"
+                    android:layout_height="38dp"
+                    />
 
-            <CheckBox
-                android:id="@+id/fiction_text_caogao"
-                android:text="草稿"
-                android:textSize="14dp"
-                android:gravity="center"
-                android:button="@null"
-                android:layout_marginLeft="12dp"
-                android:background="@drawable/select_shaixuan"
-                android:textColor="@drawable/select_text_color"
-                android:layout_width="60dp"
-                android:layout_height="38dp"
-                />
+                <RadioButton
+                    android:id="@+id/fiction_text_yiguidang"
+                    android:text="已归档"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="12dp"
+                    android:button="@null"
+                    android:background="@drawable/select_shaixuan"
+                    android:textColor="@drawable/select_text_color"
+                    android:layout_width="74dp"
+                    android:layout_height="38dp"
+                    />
+
+                <RadioButton
+                    android:id="@+id/fiction_text_caogao"
+                    android:text="草稿"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/select_shaixuan"
+                    android:textColor="@drawable/select_text_color"
+                    android:layout_width="60dp"
+                    android:layout_height="38dp"
+                    />
+
+            </RadioGroup>
 
         </LinearLayout>
 

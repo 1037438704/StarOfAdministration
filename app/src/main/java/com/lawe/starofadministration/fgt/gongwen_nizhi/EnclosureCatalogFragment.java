@@ -1,24 +1,13 @@
 package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
-import android.app.Activity;
-import android.app.Dialog;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
-import android.provider.ContactsContract;
-import android.provider.MediaStore;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,23 +16,20 @@ import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.kongzue.baseokhttp.util.Parameter;
-import com.lawe.starofadministration.MainActivity;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.EnclosureAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
-import com.lawe.starofadministration.bean.ZhutiFindAllBean;
+import com.lawe.starofadministration.bean.EnclosureListBean;
 import com.lawe.starofadministration.config.Constants;
-import com.lawe.starofadministration.utils.PickerView;
+import com.lawe.starofadministration.utils.Uri2PathUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
+import static com.lawe.starofadministration.fgt.QRcodeFragment.RESULT_OK;
 
 /**
  * author : fuke
@@ -81,6 +67,7 @@ public class EnclosureCatalogFragment extends BaseFgt {
         relationId = nizhi_uuid.getString("ni_relationId","");
         //附件目录
         getUpload();
+
         //附件列表
         enclosureRecycle.setNestedScrollingEnabled(false);
         enclosureRecycle.setLayoutManager(new LinearLayoutManager(me));
@@ -90,13 +77,7 @@ public class EnclosureCatalogFragment extends BaseFgt {
 
     @Override
     public void initDatas() {
-        ArrayList<String> strings = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
-            strings.add(i+"");
-        }
-        enclosureAdapter.setNewData(strings);
-        enclosureAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -114,6 +95,7 @@ public class EnclosureCatalogFragment extends BaseFgt {
 
     //附件目录
     private void getUpload() {
+        showPopDialog();
         JSONObject json = new JSONObject();
         try {
             json.put("page",page);
@@ -129,8 +111,16 @@ public class EnclosureCatalogFragment extends BaseFgt {
         HttpRequest.JSONPOST(me, Constants.UPLOADQUERYPAGE, jsonUpload, new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
+                endLoading();
+                if (error == null){
+                    EnclosureListBean enclosureListBean = gson.fromJson(response, EnclosureListBean.class);
+                    List<EnclosureListBean.PageBean.ListBean> list = enclosureListBean.getPage().getList();
+                    enclosureAdapter.setNewData(list);
+                    enclosureAdapter.setSize(list.size());
+                }else{
+                    error.getMessage();
+                }
 
-                //enclosureAdapter.setNewData(list);
             }
         });
     }
@@ -141,46 +131,28 @@ public class EnclosureCatalogFragment extends BaseFgt {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");//设置类型，我这里是任意类型，任意后缀的可以这样写。
         intent.addCategory(Intent.CATEGORY_OPENABLE);
-        startActivityForResult(intent,1);
+        startActivityForResult(intent,200);
     }
 
-    /*上传附件回调，调用上传接口*/
-    @Override
+    @SuppressLint("MissingSuperCall")
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK) {
-            Uri uri = data.getData();
-            if ("file".equalsIgnoreCase(uri.getScheme())){//使用第三方应用打开
-                path = uri.getPath();
-                //tv.setText(path);\
-                fileurl = new File(path);
-                fileName = fileurl.getParentFile().getName();
-                uploadFile();
-                Toast.makeText(fgtContext, fileurl +"11111",Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-                //4.4以后
-                path = uri.getPath();
-                fileurl = new File(path);
-                fileName = fileurl.getParentFile().getName();
-                uploadFile();
-                Toast.makeText(fgtContext,fileurl+"333",Toast.LENGTH_SHORT).show();
-            } else {//4.4以下下系统调用方法
-                //path = getRealPathFromURI(uri);
-                path = uri.getPath();
-                //tv.setText(path);\
-                fileurl = new File(path);
-                fileName = fileurl.getParentFile().getName();
-                uploadFile();
-                Toast.makeText(fgtContext, fileurl+"222222", Toast.LENGTH_SHORT).show();
+        if (requestCode == 200 && resultCode == RESULT_OK && data != null) {
+            if (data != null){
+                Uri selectedImage = data.getData();
+                if(selectedImage != null){
+                    String urlpath = Uri2PathUtil.getRealPathFromUri(getActivity(),selectedImage);
+                    File  file = new File(urlpath);
+                    uploadFile(file);
+                }
             }
         }
     }
 
     //上传附件接口
-    private void uploadFile() {
+    private void  uploadFile(File file) {
+        showPopDialog();
         HttpRequest.POST(me, Constants.UPLOADFILE, new Parameter()
-                        .add("file",fileurl)
+                        .add("file",file)
                         .add("relationId", relationId)
                         .add("depUserId",depUserId)
                         .add("state",1)
@@ -190,11 +162,17 @@ public class EnclosureCatalogFragment extends BaseFgt {
                 , new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
-
+                endLoading();
+                if (error == null){
+                    toast("上传成功");
+                    //附件目录
+                    getUpload();
+                }else{
+                    error.getMessage();
+                }
             }
         });
     }
-
 
     public static EnclosureCatalogFragment newInstance() {
         return new EnclosureCatalogFragment();

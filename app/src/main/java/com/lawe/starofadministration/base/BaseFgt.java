@@ -2,17 +2,9 @@ package com.lawe.starofadministration.base;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
-import android.view.WindowManager;
-import android.webkit.WebView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
@@ -25,13 +17,9 @@ import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.utils.map.JSONUtils;
 
-import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
-
-import baseokhttp3.MediaType;
 
 abstract public class BaseFgt extends BaseFragment implements Constants {
 
@@ -52,14 +40,14 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
 
     @Override
     public void initViews() {
-        //interceptDate();
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        interceptDate();
+        //getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);15600057920
         fgtContext = (AppCompatActivity) getActivity();
-        token = Preferences.getInstance().getString(me,"login","token");
-        depUserId = Preferences.getInstance().getString(me,"login","depUserId");
-        departmentId = Preferences.getInstance().getString(me,"login","departmentId");
-        name = Preferences.getInstance().getString(me,"login","name");
-        departFullName = Preferences.getInstance().getString(me,"login","departFullName");
+        token = Preferences.getInstance().getString(getActivity(),"login","token");
+        depUserId = Preferences.getInstance().getString(getActivity(),"login","depUserId");
+        departmentId = Preferences.getInstance().getString(getActivity(),"login","departmentId");
+        name = Preferences.getInstance().getString(getActivity(),"login","name");
+        departFullName = Preferences.getInstance().getString(getActivity(),"login","departFullName");
     }
 
     @Override
@@ -85,9 +73,10 @@ abstract public class BaseFgt extends BaseFragment implements Constants {
         BaseOkHttp.responseInterceptListener = new ResponseInterceptListener() {
             @Override
             public boolean onResponse(Context context, String url, String response, Exception error) {
-                Map<String, String> data = JSONUtils.parseKeyAndValueToMap(response);
                 if (error == null) {
-                    if (isNull(response)){
+                    Map<String, String> data = JSONUtils.parseKeyAndValueToMap(response);
+                    //判空
+                    if (isNull(data.toString())){
                         toast("请求超时");
                         return false;
                     }

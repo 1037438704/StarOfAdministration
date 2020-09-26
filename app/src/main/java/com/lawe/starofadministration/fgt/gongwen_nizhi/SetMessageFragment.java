@@ -2,11 +2,8 @@ package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Build;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,32 +12,21 @@ import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
-import com.google.gson.Gson;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.util.Preferences;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
+import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.R;
-import com.lawe.starofadministration.aty.ChooseCompanyActivity;
-import com.lawe.starofadministration.aty.LoginActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.bean.ByTypeBean;
 import com.lawe.starofadministration.bean.EventFactionBean;
-import com.lawe.starofadministration.bean.LoginDefaltBean;
 import com.lawe.starofadministration.bean.ZhutiFindAllBean;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.utils.PickerView;
-import com.lawe.starofadministration.utils.map.JSONUtils;
-import com.okhttplib.OkHttpUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
@@ -48,9 +34,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import okhttp3.Call;
 
 /**
  * author : fuke
@@ -81,6 +64,7 @@ public class SetMessageFragment extends BaseFgt {
     private SharedPreferences sp;
     private EventFactionBean eventFactionBean;
     private TextView setmesTextTime;
+    private TextView setmesTextDanwei;
 
     @Override
     public void initViews() {
@@ -90,6 +74,7 @@ public class SetMessageFragment extends BaseFgt {
         setmesTextZhuti = (TextView) findViewById(R.id.setmes_text_zhuti);
         setmesTiaoJian = (LinearLayout) findViewById(R.id.setmes_tiaojian);
         setmesTextTiaojian = (TextView) findViewById(R.id.setmes_text_tiaojian);
+        setmesTextDanwei = (TextView) findViewById(R.id.setmes_text_danwei);
         setmesHuiqian = (LinearLayout) findViewById(R.id.setmes_huiqian);
         setmesTime = (LinearLayout) findViewById(R.id.setmes_time);
         setmesTextTime = (TextView) findViewById(R.id.setmes_text_time);
@@ -98,6 +83,23 @@ public class SetMessageFragment extends BaseFgt {
         eventFactionBean.type = 1;
         EventBus.getDefault().postSticky(eventFactionBean);
 
+        String flagSpeed = Preferences.getInstance().getString(getActivity(), "doc", "flagSpeed");
+        if (flagSpeed.equals("2")){
+            String them = Preferences.getInstance().getString(getActivity(),"doc","them");
+            String type = Preferences.getInstance().getString(getActivity(),"doc","type");
+            String sendTime = Preferences.getInstance().getString(getActivity(),"doc","sendTime");
+            String publicProperty = Preferences.getInstance().getString(getActivity(),"doc","publicProperty");
+            setmesTextType.setText(type);
+            setmesTextZhuti.setText(them);
+            setmesTextTime.setText(sendTime);
+            if (publicProperty.equals("0")){
+                setmesTextTiaojian.setText("不公开");
+            }else if (publicProperty.equals("1")){
+                setmesTextTiaojian.setText("公开");
+            }else if (publicProperty.equals("2")){
+                setmesTextTiaojian.setText("依申请公开");
+            }
+        }
         sp = getActivity().getSharedPreferences("newFile",Context.MODE_PRIVATE);
         edit = sp.edit();
     }
@@ -189,7 +191,9 @@ public class SetMessageFragment extends BaseFgt {
         setmesHuiqian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jump(ChooseCompanyActivity.class);
+                eventFactionBean.setPartMent(setmesTextDanwei.getText().toString());
+                EventBus.getDefault().postSticky(eventFactionBean);
+                //jump(ChooseCompanyActivity.class);
             }
         });
 
@@ -278,16 +282,7 @@ public class SetMessageFragment extends BaseFgt {
         TextView popCancle = view.findViewById(R.id.pop_cancle);
         TextView popDocType = view.findViewById(R.id.pop_doc_type);
         popDocType.setText("请选择公文类型");
-
-        JSONObject json = new JSONObject();
-        try {
-            json.put("dataType", dataType);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //json转化为string类型
-        jsonType = String.valueOf(json);
-        HttpRequest.JSONPOST(me, Constants.BYTYPE, jsonType, new ResponseListener() {
+        HttpRequest.GET(me, Constants.BYTYPE, new Parameter().add("dataType",dataType), new ResponseListener() {
             @Override
             public void onResponse(String response, Exception error) {
                 ByTypeBean byTypeBean = gson.fromJson(response, ByTypeBean.class);
@@ -300,7 +295,6 @@ public class SetMessageFragment extends BaseFgt {
                     @Override
                     public void onSelect(String text) {
                         setmesTextType.setText(text);
-                        //edit.putString("docType",text).commit();
                         eventFactionBean.setDocType(text);
                         EventBus.getDefault().postSticky(eventFactionBean);
                     }
@@ -349,8 +343,6 @@ public class SetMessageFragment extends BaseFgt {
         TextView pop_finish = views.findViewById(R.id.pop_finish);
         mTimepicker.setDescendantFocusability(TimePicker.FOCUS_BLOCK_DESCENDANTS);  //设置点击事件不弹键盘
         mTimepicker.setIs24HourView(true);   //设置时间显示为24小时
-        //mTimepicker.setHour(16);  //设置当前小时
-        //mTimepicker.setMinute(06); //设置当前分（0-59）
 
         mTimepicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {  //获取当前选择的时间
             @Override
@@ -360,12 +352,12 @@ public class SetMessageFragment extends BaseFgt {
         });
 
         datePicker.init(2020, 10, 12, new DatePicker.OnDateChangedListener() {
-            //            当dp日期改变时回调onDateChanged方法
+            //当dp日期改变时回调onDateChanged方法
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//                获取dp的年月日的值，在textView上显示出来
-                tv_select_data.setText(+datePicker.getYear()+"/"+
-                        (datePicker.getMonth()+1)+"/"+datePicker.getDayOfMonth());
+                //获取dp的年月日的值，在textView上显示出来
+                tv_select_data.setText(+datePicker.getYear()+"-"+
+                        (datePicker.getMonth()+1)+"-"+datePicker.getDayOfMonth());
             }
         });
 
@@ -398,8 +390,8 @@ public class SetMessageFragment extends BaseFgt {
         pop_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setmesTextTime.setText(datePicker.getYear()+"/"+
-                        (datePicker.getMonth()+1)+"/"+datePicker.getDayOfMonth()+"  "+tv_select_time.getText().toString());
+                setmesTextTime.setText(datePicker.getYear()+"-"+
+                        (datePicker.getMonth()+1)+"-"+datePicker.getDayOfMonth()+" "+tv_select_time.getText().toString()+":00");
                 eventFactionBean.setDocTime(setmesTextTime.getText().toString());
                 EventBus.getDefault().postSticky(eventFactionBean);
                 dialog.dismiss();

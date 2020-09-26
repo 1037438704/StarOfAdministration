@@ -149,27 +149,18 @@
 
             </LinearLayout>
 
-
-            <ScrollView
+            <com.lawe.starofadministration.view.RichEditText
+                android:id="@+id/richEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@null"
+                android:layout_marginLeft="12dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="40dp"
-                android:layout_alignParentBottom="true"
-                >
-
-                <com.lawe.starofadministration.view.RichEditText
-                    android:id="@+id/richEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null"
-                    android:layout_marginLeft="12dp"
-                    android:gravity="top|left"
-                    android:hint="请输入公文内容"
-                    android:textSize="16sp"
-                    />
-
-            </ScrollView>
+                android:gravity="top|left"
+                android:hint="请输入公文内容"
+                android:textSize="16sp"
+                />
 
         </RelativeLayout>
 

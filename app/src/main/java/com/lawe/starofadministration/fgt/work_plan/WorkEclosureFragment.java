@@ -1,8 +1,5 @@
 package com.lawe.starofadministration.fgt.work_plan;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -45,11 +42,6 @@ public class WorkEclosureFragment extends BaseFgt {
 
     @Override
     public void initDatas() {
-        for (int i = 0; i < 10; i++) {
-            list.add("" + i);
-        }
-        enclosureAdapter.setNewData(list);
-        enclosureAdapter.notifyDataSetChanged();
 
     }
 

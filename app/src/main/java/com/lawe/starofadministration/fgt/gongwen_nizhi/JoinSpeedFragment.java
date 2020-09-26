@@ -2,8 +2,6 @@ package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -19,20 +17,15 @@ import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.JoinSpeedAdapter;
 import com.lawe.starofadministration.adp.JoinSpeedToDoAdapter;
-import com.lawe.starofadministration.aty.DraftActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.bean.JoinSpeedHistoryBean;
 import com.lawe.starofadministration.bean.JoinSpeedToDoBean;
 import com.lawe.starofadministration.config.Constants;
-import com.lawe.starofadministration.utils.map.JSONUtils;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * author : fuke

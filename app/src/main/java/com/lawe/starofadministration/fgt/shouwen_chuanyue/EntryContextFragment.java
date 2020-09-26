@@ -1,14 +1,5 @@
 package com.lawe.starofadministration.fgt.shouwen_chuanyue;
 
-import android.app.Dialog;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;

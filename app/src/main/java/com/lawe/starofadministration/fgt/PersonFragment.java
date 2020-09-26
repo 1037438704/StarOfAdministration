@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
-import com.lawe.starofadministration.adp.CompanyAdapter;
 import com.lawe.starofadministration.adp.PersonAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
 

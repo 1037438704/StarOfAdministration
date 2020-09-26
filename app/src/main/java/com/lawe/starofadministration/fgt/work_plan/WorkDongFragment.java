@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
-import com.lawe.starofadministration.adp.JoinSpeedAdapter;
 import com.lawe.starofadministration.adp.WorkListAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
 

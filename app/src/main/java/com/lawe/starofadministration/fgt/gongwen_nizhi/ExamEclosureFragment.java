@@ -1,7 +1,5 @@
 package com.lawe.starofadministration.fgt.gongwen_nizhi;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -51,11 +49,7 @@ public class ExamEclosureFragment extends BaseFgt {
 
     @Override
     public void initDatas() {
-        for (int i = 0; i < 10; i++) {
-            list.add("" + i);
-        }
-        enclosureAdapter.setNewData(list);
-        enclosureAdapter.notifyDataSetChanged();
+
 
     }
 

@@ -107,7 +107,7 @@ public class LoginDefaltBean {
 
         private String id;
         private String regionCode;
-        private String dName;
+        private String dname;
         private String dAccount;
         private String dNum;
         private String sex;
@@ -161,11 +161,11 @@ public class LoginDefaltBean {
         }
 
         public String getDName() {
-            return dName;
+            return dname;
         }
 
         public void setDName(String dName) {
-            this.dName = dName;
+            this.dname = dName;
         }
 
         public String getDAccount() {

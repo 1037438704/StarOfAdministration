@@ -20,6 +20,15 @@ public class EventFactionBean {
     private String docTheme; //公文主题
     private String docType;  //公文类
     private String docTime;  //定时发送时间
+    private String partMent;
+
+    public String getPartMent() {
+        return partMent;
+    }
+
+    public void setPartMent(String partMent) {
+        this.partMent = partMent;
+    }
 
     public String getDocTime() {
         return docTime;

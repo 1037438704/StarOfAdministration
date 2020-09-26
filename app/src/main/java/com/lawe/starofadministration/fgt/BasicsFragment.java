@@ -9,14 +9,11 @@ import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.MyMedalsAdapter;
-import com.lawe.starofadministration.adp.MyXunzhangAdapter;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.bean.MyMedalBean;
 import com.lawe.starofadministration.config.Constants;
 
 import java.util.List;
-
-import butterknife.BindView;
 
 /**
  * author : fuke

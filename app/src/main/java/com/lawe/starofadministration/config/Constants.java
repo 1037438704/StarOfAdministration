@@ -11,6 +11,12 @@ public interface Constants {
     //登陆协议
     String FINDUSERAGREEMENT = "/sys/config/findUserAgreement";
 
+    //扫码登陆
+    String FINDQRISOVERDUE = "/sys/findQrIsOverdue";
+
+    //扫码登陆连带
+    String UPDATEDEPUEINFO = "/sys/updateDepUeInfo/";
+
     //发送验证码
     String GETPASSWORDBYSENDNOTE = "/sys/getPasswordBySendNote";
 
@@ -66,7 +72,7 @@ public interface Constants {
     String UPLOADFILE = "/sys/upload/uploadFile";
 
     //修改附件
-    String UPDATEFILE = "/sys/upload/update";
+    String UPDATEFILE = "/sys/upload/updateState";
 
     //删除附件
     String DELETEFUJIAN = "/sys/upload/delete";

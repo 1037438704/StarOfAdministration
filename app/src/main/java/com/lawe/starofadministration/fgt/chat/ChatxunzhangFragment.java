@@ -1,7 +1,6 @@
 package com.lawe.starofadministration.fgt.chat;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kongzue.baseframework.interfaces.Layout;

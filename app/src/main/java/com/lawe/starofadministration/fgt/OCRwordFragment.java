@@ -1,9 +1,6 @@
 package com.lawe.starofadministration.fgt;
 
-import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
-import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
-import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 

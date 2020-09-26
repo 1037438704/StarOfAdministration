@@ -3,7 +3,6 @@ package com.lawe.starofadministration.fgt.chat;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
-import com.lawe.starofadministration.fgt.gongwen_guidang.FileSettingFragment;
 
 /**
  * author : fuke

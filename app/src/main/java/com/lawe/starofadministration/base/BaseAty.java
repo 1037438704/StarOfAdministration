@@ -5,18 +5,13 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.IBinder;
-import android.os.PersistableBundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -36,8 +31,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-import butterknife.ButterKnife;
 
 
 abstract public class BaseAty extends BaseActivity implements Constants {
@@ -64,7 +57,7 @@ abstract public class BaseAty extends BaseActivity implements Constants {
     @Override
     public void initViews() {
         interceptDate();
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
         token = Preferences.getInstance().getString(me,"login","token");
         depUserId = Preferences.getInstance().getString(me,"login","depUserId");
         departmentId = Preferences.getInstance().getString(me,"login","departmentId");

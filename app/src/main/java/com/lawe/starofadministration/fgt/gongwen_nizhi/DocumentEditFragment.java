@@ -34,34 +34,25 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.kongzue.baseframework.interfaces.Layout;
+import com.kongzue.baseframework.util.Preferences;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
-import com.kongzue.baseokhttp.util.Parameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 import com.lawe.starofadministration.bean.EventFactionBean;
-import com.lawe.starofadministration.bean.FictionListBean;
-import com.lawe.starofadministration.bean.GetMessageByIdBean;
-import com.lawe.starofadministration.bean.MyMedalBean;
 import com.lawe.starofadministration.bean.fontbean.FontStyle;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.handle.CustomHtml;
 import com.lawe.starofadministration.handle.RichEditImageGetter;
 import com.lawe.starofadministration.handle.Utils;
-import com.lawe.starofadministration.utils.GlidUtils;
 import com.lawe.starofadministration.utils.map.JSONUtils;
 import com.lawe.starofadministration.view.FontStylePanel;
 import com.lawe.starofadministration.view.RichEditText;
 
 import org.greenrobot.eventbus.EventBus;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Map;
-
-import butterknife.OnClick;
 
 import static androidx.core.content.ContextCompat.checkSelfPermission;
 
@@ -128,12 +119,21 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
         richEditText = (RichEditText) findViewById(R.id.richEditText);
         btnCenter = (Button) findViewById(R.id.btn_center);
         fontStylePanel.setOnFontPanelListener(this);
-        richEditText.setOnSelectChangeListener(this);
+        //richEditText.setOnSelectChangeListener(this);
         //设置字体
         documentTitle.setTypeface(getTextMedium);
         newWorkTitle.setText("公文标题：");
         documentSubTitle.setText("公文主体：");
 
+        String flagSpeed = Preferences.getInstance().getString(getActivity(), "doc", "flagSpeed");
+        if (flagSpeed.equals("2")){
+            String title = Preferences.getInstance().getString(getActivity(),"doc","title");
+            String num = Preferences.getInstance().getString(getActivity(),"doc","num");
+            String content = Preferences.getInstance().getString(getActivity(),"doc","content");
+            documentTitle.setText(title);
+            documentNumber.setText(num);
+            richEditText.setText(content);
+        }
         SharedPreferences fictionIdSp = getContext().getSharedPreferences("fictionId", Context.MODE_PRIVATE);
         fictionId = fictionIdSp.getString("fictionId", "");
         eventFactionBean = new EventFactionBean();
@@ -146,25 +146,7 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
         showWord();
 
         initRichTextCon();
-        //根据主键id查询信息
-        //getmessage();
-    }
 
-    //根据主键id查询公文信息
-    private void getmessage() {
-        HttpRequest.GET(me, Constants.DOCUMENTFICTION, new Parameter().add("id", fictionId), new ResponseListener() {
-            @Override
-            public void onResponse(String response, Exception error) {
-                if(error == null){
-                    GetMessageByIdBean message = gson.fromJson(response, GetMessageByIdBean.class);
-                    GetMessageByIdBean.DocumentFictionBOBean documentFictionBO = message.getDocumentFictionBO();
-                    documentTitle.setText(documentFictionBO.getDocTitle());
-                    documentSubject.setText(documentFictionBO.getDocTheme());
-                }else{
-                    error.getMessage();
-                }
-            }
-        });
     }
 
     //获取公文字号数值
@@ -197,7 +179,6 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                             quasiNumber = map.get("newQuasiNumber");
                             documentNumber.setText("拟编号："+ quasiNumber);
                             //保存拟编号
-                            //edit.putString("quasiNumber",quasiNumber).commit();
                             eventFactionBean.setQuasiNumber(quasiNumber);
                             EventBus.getDefault().postSticky(eventFactionBean);
                         }else{
@@ -228,11 +209,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                      handler.removeCallbacks(delayRun);
                  }
                 String docTitle = s.toString();
-                //edit.putString("docTitle",docTitle).commit();
-
                 eventFactionBean.setDocTitle(docTitle);
                 EventBus.getDefault().postSticky(eventFactionBean);
-
                 //延迟800ms，如果不再输入字符，则执行该线程的run方法
                 handler.postDelayed(delayRun, 800);
             }
@@ -257,7 +235,6 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                     handler.removeCallbacks(delayRun);
                 }
                 String doc_context = s.toString();
-                edit.putString("docContext",doc_context).commit();
                 eventFactionBean.setDocContext(doc_context);
                 EventBus.getDefault().postSticky(eventFactionBean);
                 //延迟800ms，如果不再输入字符，则执行该线程的run方法

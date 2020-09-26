@@ -1,7 +1,5 @@
 package com.lawe.starofadministration.fgt.gongxiang_wenjian;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -52,11 +50,6 @@ public class ShareEnclosureCatalogFragment extends BaseFgt {
 
     @Override
     public void initDatas() {
-        for (int i = 0; i < 10; i++) {
-            list.add("" + i);
-        }
-        enclosureAdapter.setNewData(list);
-        enclosureAdapter.notifyDataSetChanged();
 
     }
 

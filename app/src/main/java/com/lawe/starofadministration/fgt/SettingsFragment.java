@@ -21,8 +21,6 @@ import com.lawe.starofadministration.aty.SetSafeActivity;
 import com.lawe.starofadministration.aty.SystemActivity;
 import com.lawe.starofadministration.base.BaseFgt;
 
-import java.util.Objects;
-
 /**
  * author : fuke
  * date : 2020/4/7 16:36
