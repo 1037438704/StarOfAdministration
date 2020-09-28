@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.baidu.ocr.sdk.model.AccessToken;
 import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.BindView;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
@@ -86,7 +87,7 @@ public class MainActivity extends BaseAty {
 
     @Override
     public void initViews() {
-        super.initViews();
+    super.initViews();
         ButterKnife.bind(this);
         fragemnts = new ArrayList<>();
         mFragmentTouchListeners = new ArrayList<>();
@@ -150,21 +151,26 @@ public class MainActivity extends BaseAty {
                 endLoading();
                 if (error == null){
                     PersonMessBean personMessBean = gson.fromJson(response, PersonMessBean.class);
-                    personName.setText(personMessBean.getMap().getD_name());
-                    personCompany.setText(personMessBean.getMap().getDepart());
-                    suozaidanwei.setText(personMessBean.getMap().getDepart());
-                    proShixiao.setProgress(personMessBean.getMap().getWork_percentage());
-                    proXinyong.setProgress(personMessBean.getMap().getCredit_percentage());
-                    proChaping.setProgress(personMessBean.getMap().getPolicy_percentage());
-                    textWork.setText(personMessBean.getMap().getWork_percentage()+"/100");
-                    textChaping.setText(personMessBean.getMap().getPolicy_percentage()+"/100");
-                    textXinyong.setText(personMessBean.getMap().getCredit_percentage()+"/400");
-                    age.setText(String.valueOf(personMessBean.getMap().getAge()));
-                    name.setText(personMessBean.getMap().getD_name());
-                    suozaibumen.setText(personMessBean.getMap().getUnit());
-                    zhichen.setText(personMessBean.getMap().getJob_name());
-                    List<PersonMessBean.MapBean.ListBean> list = personMessBean.getMap().getList();
-                    myXunzhangAdapter.setNewData(list);
+                    if (personMessBean.getMap() == null){
+                        toast("暂无个人信息");
+                    }else{
+                        personName.setText(personMessBean.getMap().getD_name());
+                        personCompany.setText(personMessBean.getMap().getDepart());
+                        suozaidanwei.setText(personMessBean.getMap().getDepart());
+                        proShixiao.setProgress(personMessBean.getMap().getWork_percentage());
+                        proXinyong.setProgress(personMessBean.getMap().getCredit_percentage());
+                        proChaping.setProgress(personMessBean.getMap().getPolicy_percentage());
+                        textWork.setText(personMessBean.getMap().getWork_percentage()+"/100");
+                        textChaping.setText(personMessBean.getMap().getPolicy_percentage()+"/100");
+                        textXinyong.setText(personMessBean.getMap().getCredit_percentage()+"/400");
+                        age.setText(String.valueOf(personMessBean.getMap().getAge()));
+                        name.setText(personMessBean.getMap().getD_name());
+                        suozaibumen.setText(personMessBean.getMap().getUnit());
+                        zhichen.setText(personMessBean.getMap().getJob_name());
+                        List<PersonMessBean.MapBean.ListBean> list = personMessBean.getMap().getList();
+                        myXunzhangAdapter.setNewData(list);
+                    }
+
                 }else{
                     error.getMessage();
                 }

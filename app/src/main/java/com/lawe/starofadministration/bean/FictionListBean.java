@@ -1,5 +1,6 @@
 package com.lawe.starofadministration.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -249,7 +250,7 @@ public class FictionListBean {
             this.navigatepageNums = navigatepageNums;
         }
 
-        public static class ListBean {
+        public static class ListBean implements Serializable {
             /**
              * id : 1275353169571074050
              * quasiNumber : 28nkjyj002202006230001
@@ -311,6 +312,15 @@ public class FictionListBean {
             private String taskName;
             private String processInstanceId;
             private String dname;
+            private String docContent;
+
+            public String getDocContent() {
+                return docContent;
+            }
+
+            public void setDocContent(String docContent) {
+                this.docContent = docContent;
+            }
 
             public String getId() {
                 return id;

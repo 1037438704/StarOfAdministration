@@ -12,7 +12,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/baiduocrlibs" />
             <option value="$PROJECT_DIR$/lib-zxing" />
+            <option value="$PROJECT_DIR$/ocr_ui" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -27,6 +27,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -34,6 +35,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.google.gson.Gson;
 import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
@@ -41,6 +45,7 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
+import com.kongzue.baseframework.util.Preferences;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.kongzue.baseokhttp.util.Parameter;
@@ -163,6 +168,7 @@ public class DraftActivity extends BaseAty {
         titleText = findViewById(R.id.title_text);
         titleNew = findViewById(R.id.title_new);
         titleMore = findViewById(R.id.title_more);
+        titleMore.setVisibility(View.GONE);
         mainRgp = findViewById(R.id.main_rgp);
         viewPagerData = findViewById(R.id.viewPagerData);
 
@@ -190,29 +196,18 @@ public class DraftActivity extends BaseAty {
         draftChatSet = findViewById(R.id.draft_chat_set);
         draftChatNewText = findViewById(R.id.draft_chat_new_text);
         draftChatSetText = findViewById(R.id.draft_chat_set_text);
+        //设置字体
+        titleText.setText("创建人查看");
+        draftChat.setClickable(false);
+        bottomPizhu.setClickable(false);
+        draftMoreEndLinear.setVisibility(View.GONE);
+        bottomGongneng.setVisibility(View.GONE);
+        draftMore.setVisibility(View.GONE);
 
-        //获取上一个页面传递的标识、新建还是查看
-        flagSpeed = getIntent().getExtras().getString("flagSpeed");
+        SharedPreferences fictionIdSp = getSharedPreferences("fictionId", Context.MODE_PRIVATE);
+        fictionId = fictionIdSp.getString("fictionId", "");
+        getInfo();
 
-        //personType = getIntent().getExtras().getString("personType");
-
-        if (flagSpeed.equals("1")){
-            //设置字体
-            titleText.setText("起草公文");
-            bottomOne.setVisibility(View.GONE);
-        }else if(flagSpeed.equals("2")){
-            //设置字体
-            titleText.setText("创建人查看");
-            draftChat.setClickable(false);
-            bottomPizhu.setClickable(false);
-            draftMoreEndLinear.setVisibility(View.VISIBLE);
-            bottomGongneng.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    toast("禁止修改");
-                }
-            });
-        }
 
         titleText.setTypeface(getTextBold);
         titleMore.setVisibility(View.VISIBLE);
@@ -228,25 +223,28 @@ public class DraftActivity extends BaseAty {
         draftChatAdapter = new DraftChatAdapter(R.layout.item_draft_chat);
     }
 
+    //根据主键id查询信息
+    private void getInfo() {
+        HttpRequest.GET(me, Constants.DOCUMENTFICTION, new Parameter().add("id", fictionId), new ResponseListener() {
+            @Override
+            public void onResponse(String response, Exception error) {
+                if (error == null){
+                    //gson.fromJson(response,)
+                }
+            }
+        });
+    }
+
     @Override
     public void initDatas(JumpParameter parameter) {
 
-        if (flagSpeed.equals("1")){
-            pageCounte = 0;
-            draftSpeedOne.setVisibility(View.GONE);
-            fragemnts.add(DocumentEditFragment.newInstance());
-            fragemnts.add(EnclosureCatalogFragment.newInstance());
-            fragemnts.add(SetMessageFragment.newInstance());
-            rb = (RadioButton) mainRgp.getChildAt(pageCounte);
-        }else{
-            pageCounte = 3;
-            draftSpeedOne.setVisibility(View.VISIBLE);
-            fragemnts.add(DocumentEditFragment.newInstance());
-            fragemnts.add(EnclosureCatalogFragment.newInstance());
-            fragemnts.add(SetMessageFragment.newInstance());
-            fragemnts.add(JoinSpeedFragment.newInstance());
-            rb = (RadioButton) mainRgp.getChildAt(pageCounte);
-        }
+        pageCounte = 0;
+        draftSpeedOne.setVisibility(View.VISIBLE);
+        fragemnts.add(DocumentEditFragment.newInstance());
+        fragemnts.add(EnclosureCatalogFragment.newInstance());
+        fragemnts.add(SetMessageFragment.newInstance());
+        fragemnts.add(JoinSpeedFragment.newInstance());
+        rb = (RadioButton) mainRgp.getChildAt(pageCounte);
         rb.setChecked(true);
         //字体
         rb.setTypeface(getTextMedium);
@@ -256,7 +254,6 @@ public class DraftActivity extends BaseAty {
         viewPagerData.setCurrentItem(pageCounte);
 
         SharedPreferences fictionIdSp = getSharedPreferences("fictionId", Context.MODE_PRIVATE);
-        String personType = fictionIdSp.getString("personType", "");
         fictionId = fictionIdSp.getString("fictionId", "");
 
         //时时获取备注内容
@@ -292,16 +289,15 @@ public class DraftActivity extends BaseAty {
             listchat.add(new ListChatBean(false, "第" + i + "条"));
         }
         draftChatAdapter.setNewData(listchat);
+        draftChatAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                String title = draftChatAdapter.getData().get(position).getTitle();
+                bottomWhrit.setText(title);
+            }
+        });
         draftChatAdapter.notifyDataSetChanged();
     }
-
-    //延迟线程，看是否还有下一个字符输入
-    private Runnable delayRun = new Runnable() {
-        @Override
-        public void run() {
-            //在这里调用服务器的接口，获取数据
-        }
-    };
 
     @Override
     public void setEvents() {
@@ -389,57 +385,6 @@ public class DraftActivity extends BaseAty {
                 }
             }
         });
-
-        /*//模板列表
-        draftMoreTemplate.setOnClickListener(new View.OnClickListener() {
-
-            private RecyclerView popDraftRecycle;
-            private ImageView loginDown;
-
-            @Override
-            public void onClick(View v) {
-                draftMore.setVisibility(View.GONE);
-                flag = 1;
-                final Dialog dialog = new Dialog(me, R.style.DialogTheme);
-                View view = View.inflate(me, R.layout.pop_draft_muban, null);
-                dialog.setContentView(view);
-                Window window = dialog.getWindow();
-                window.setGravity(Gravity.BOTTOM);
-                window.setWindowAnimations(R.style.main_menu_animStyle);
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                wordMuban();
-                loginDown = view.findViewById(R.id.login_down);
-                popDraftRecycle = view.findViewById(R.id.pop_draft_recycle);
-
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(me, 2);
-                popDraftRecycle.setLayoutManager(gridLayoutManager);
-
-                //列表
-                list = new ArrayList<>();
-                //待办信息
-                templateAdapter = new TemplateAdapter(R.layout.item_pop_draft);
-                popDraftRecycle.setAdapter(templateAdapter);
-
-                for (int i = 0; i < 10; i++) {
-                    list.add("" + i);
-                }
-                templateAdapter.setNewData(list);
-                templateAdapter.notifyDataSetChanged();
-
-
-                loginDown.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
-            }
-
-        });*/
 
         //新增常用语
         draftChatNew.setOnClickListener(new View.OnClickListener() {
@@ -574,10 +519,6 @@ public class DraftActivity extends BaseAty {
                     fileSave();
                     draftMore.setVisibility(View.GONE);
                     flag = 1;
-                    jump(FictionActivity.class);
-                    SharedPreferences newFile = getSharedPreferences("newFile", Context.MODE_PRIVATE);
-                    newFile.edit().clear().commit();
-                    //AppManager.getInstance().killActivity(DraftActivity.class);
                 }
             }
         });
@@ -589,10 +530,6 @@ public class DraftActivity extends BaseAty {
                 saveDrafts();
                 draftMore.setVisibility(View.GONE);
                 flag = 1;
-                jump(FictionActivity.class);
-                SharedPreferences newFile = getSharedPreferences("newFile", Context.MODE_PRIVATE);
-                newFile.edit().clear().commit();
-                finish();
             }
         });
 
@@ -618,7 +555,6 @@ public class DraftActivity extends BaseAty {
     EventFactionBean eventFaction = new EventFactionBean();
     @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
     public void getData(EventFactionBean eventUpdateBean) {
-
         if(eventUpdateBean.type == 0){
             eventFaction.setqNumber(eventUpdateBean.getqNumber());
             eventFaction.setQuasiNumber(eventUpdateBean.getQuasiNumber());
@@ -735,6 +671,10 @@ public class DraftActivity extends BaseAty {
                 String msg = map.get("msg");
                 if (msg.equals("success")){
                     toast("保存成功");
+                    jump(FictionActivity.class);
+                    SharedPreferences newFile = getSharedPreferences("newFile", Context.MODE_PRIVATE);
+                    newFile.edit().clear().commit();
+                    finish();
                 }else{
                     toast(msg);
                 }
@@ -775,7 +715,7 @@ public class DraftActivity extends BaseAty {
             json.put("publicProperty",publicProperty);  //公开属性：0 不公开 1主动公开 2依申请公开
             json.put("docTheme",docTheme);  //公文主题 查询公文主题接口（查询所有父id为空公文主题）
             json.put("relationId",relationId);  //关联附件表relation_id
-            json.put("timingSendTime","2020-10-24 10:10:35");  //定时发送时间
+            json.put("timingSendTime",null);  //定时发送时间
             json.put("signUnit",null);  //会签单位
             json.put("docNumber","");  //公文文号（核发传值）
             json.put("number","");  //公文文号的数字号（核发传值）
@@ -801,6 +741,10 @@ public class DraftActivity extends BaseAty {
                 String msg = map.get("msg");
                 if (msg.equals("success")){
                     toast("保存发送成功");
+                    jump(FictionActivity.class);
+                    SharedPreferences newFile = getSharedPreferences("newFile", Context.MODE_PRIVATE);
+                    newFile.edit().clear().commit();
+                    finish();
                 }else{
                     toast(msg);
                 }
@@ -847,12 +791,6 @@ public class DraftActivity extends BaseAty {
         draftChatAdapter.notifyDataSetChanged();
     }
 
-    // 调用模板接口
-    private void wordMuban() {
-
-
-    }
-
     //创建签名文件
     private void createSignFile() {
         ByteArrayOutputStream baos = null;
@@ -886,14 +824,11 @@ public class DraftActivity extends BaseAty {
         }
     }
 
-    public  String toValue(){
-        yid = getIntent().getExtras().getString("yid");
-        return  yid;
-    }
-
-    public String toPerson(){
-        //查看人是创建者还是执行者
-        personType = getIntent().getExtras().getString("personType");
-        return personType;
-    }
+    //延迟线程，看是否还有下一个字符输入
+    private Runnable delayRun = new Runnable() {
+        @Override
+        public void run() {
+            //在这里调用服务器的接口，获取数据
+        }
+    };
 }

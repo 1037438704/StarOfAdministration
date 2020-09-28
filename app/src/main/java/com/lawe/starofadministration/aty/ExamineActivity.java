@@ -1,8 +1,12 @@
 package com.lawe.starofadministration.aty;
 
+import android.app.Dialog;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,9 +29,12 @@ import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
+import com.lawe.starofadministration.fgt.SpeedFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.EnclosureCatalogFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.ExamContextFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.ExamEclosureFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.ExamSpeedFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinSpeedFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +54,10 @@ public class ExamineActivity extends BaseAty {
     private TextView titleText;
     private RadioGroup mainRgp;
     private ViewPager viewPagerData;
-    private ImageView bottomPerson;
+    private LinearLayout bottomPerson;
     private ImageView bottomPizhu;
     private EditText bottomWhrit;
-    private ImageView bottomChat;
+    private Button bottomChat;
     private Button bottomButton;
     private LinearLayout draftChat;
     private RecyclerView draftChatRecycle;
@@ -65,6 +72,9 @@ public class ExamineActivity extends BaseAty {
     private ViewPagerAdp viewPagerAdp;
     private int chatflag = 1; //常用语展开隐藏标识
     private RadioButton rb;
+    private TextView bottomChooseper2;
+    private LinearLayout bottomOne;
+
     @Override
     public void initViews() {
         super.initViews();
@@ -73,11 +83,12 @@ public class ExamineActivity extends BaseAty {
         mainRgp = findViewById(R.id.main_rgp);
         viewPagerData = findViewById(R.id.viewPagerData);
         //下输入键盘常用语的部分
-        //bottomPerson = findViewById(R.id.bottom_person);
+        bottomPerson = findViewById(R.id.bottom_person);
         bottomPizhu = findViewById(R.id.bottom_pizhu);
         bottomWhrit = findViewById(R.id.bottom_whrit);
         bottomChat = findViewById(R.id.bottom_chat);
         bottomButton = findViewById(R.id.bottom_button);
+        bottomChooseper2 = findViewById(R.id.bottom_chooseper2);
         draftChat = findViewById(R.id.draft_chat);
         draftChatRecycle = findViewById(R.id.draft_chat_recycle);
         draftChatNew = findViewById(R.id.draft_chat_new);
@@ -86,6 +97,7 @@ public class ExamineActivity extends BaseAty {
         draftChatSet = findViewById(R.id.draft_chat_set);
         draftChatSetImg = findViewById(R.id.draft_chat_set_img);
         draftChatSetText = findViewById(R.id.draft_chat_set_text);
+        bottomOne = findViewById(R.id.bottom_one);
         fragemnts = new ArrayList<>();
     }
 
@@ -97,12 +109,12 @@ public class ExamineActivity extends BaseAty {
         rb.setTypeface(getTextMedium);
 
         titleText.setText("公文审核");
+        bottomChooseper2.setText("添加审阅人");
         titleText.setTypeface(getTextBold);
 
-
         fragemnts.add(ExamContextFragment.newInstance());
-        fragemnts.add(ExamEclosureFragment.newInstance());
-        fragemnts.add(ExamSpeedFragment.newInstance());
+        fragemnts.add(EnclosureCatalogFragment.newInstance());
+        fragemnts.add(JoinSpeedFragment.newInstance());
 
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPagerData.setOffscreenPageLimit(fragemnts.size());
@@ -111,6 +123,27 @@ public class ExamineActivity extends BaseAty {
 
     @Override
     public void setEvents() {
+        bottomOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //1、使用Dialog、设置style
+                final Dialog dialog = new Dialog(me, R.style.DialogTheme);
+                //2、设置布局
+                View view = View.inflate(me, R.layout.pop_bohui, null);
+                dialog.setContentView(view);
+
+                Window window = dialog.getWindow();
+                //设置弹出位置
+                window.setGravity(Gravity.BOTTOM);
+                //设置弹出动画
+                window.setWindowAnimations(R.style.main_menu_animStyle);
+                //设置对话框大小
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
+            }
+        });
         //viewPager的滑动监听
         viewPagerData.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -262,14 +295,6 @@ public class ExamineActivity extends BaseAty {
                 jump(ChoosePersonActivity.class, new JumpParameter()
                         .put("flagType", 1)
                 );
-            }
-        });
-
-        //暂定跳往审阅页面
-        bottomButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                jump(ReviewActivity.class);
             }
         });
     }

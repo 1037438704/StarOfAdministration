@@ -41,17 +41,29 @@
                 android:textSize="14sp"
                 />
 
-            <ImageView
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:background="#dff"
-                />
+                android:layout_height="500dp">
+
+                <TextView
+                    android:id="@+id/tv_show_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:hint="显示分析的结果"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
+            </ScrollView>
+
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <LinearLayout
+                    android:id="@+id/news"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -72,6 +84,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/copy"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"

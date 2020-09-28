@@ -33,6 +33,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -46,6 +47,7 @@ import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
 import com.kongzue.baseframework.interfaces.Layout;
 import com.kongzue.baseframework.interfaces.NavigationBarBackgroundColor;
 import com.kongzue.baseframework.util.JumpParameter;
+import com.kongzue.baseframework.util.Preferences;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.lawe.starofadministration.MainActivity;
@@ -76,6 +78,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
+
+import butterknife.OnCheckedChanged;
 
 /**
  * author : fuke
@@ -116,11 +120,13 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
     private String archivedState = null;
     private String state = null;
     private CheckBox[] checkBoxes = new CheckBox[13];
-    private CheckBox[] checkBoxesstate = new CheckBox[3];
     private CheckBox[] checkBoxestime = new CheckBox[4];
     private Button fictionButtonSure;
     private Button fictionButtonCancle;
     private UUID uuid;
+    private RadioButton fictionTextChuli;
+    private RadioButton fictionTextYiguidang;
+    private RadioButton fictionTextCaogao;
 
     @Override
     public void initViews() {
@@ -142,6 +148,10 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
         fictionAdapter = new FictionAdapter(R.layout.item_fiction);
         fictionAdapter.setDepUserId(depUserId);
         factionRecycle.setAdapter(fictionAdapter);
+
+        fictionTextChuli = findViewById(R.id.fiction_text_chuli);
+        fictionTextYiguidang = findViewById(R.id.fiction_text_yiguidang);
+        fictionTextCaogao = findViewById(R.id.fiction_text_caogao);
 
         //新建的时候创建uuid--即relationId
         uuid = UUID.randomUUID();
@@ -183,12 +193,6 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
         checkBoxes[10].setOnCheckedChangeListener(this);
         checkBoxes[11].setOnCheckedChangeListener(this);
         checkBoxes[12].setOnCheckedChangeListener(this);
-        checkBoxesstate[0] = findViewById(R.id.fiction_text_chuli);
-        checkBoxesstate[1] = findViewById(R.id.fiction_text_yiguidang);
-        checkBoxesstate[2] = findViewById(R.id.fiction_text_caogao);
-        checkBoxesstate[0].setOnCheckedChangeListener(this);
-        checkBoxesstate[1].setOnCheckedChangeListener(this);
-        checkBoxesstate[2].setOnCheckedChangeListener(this);
         checkBoxestime[0] = findViewById(R.id.fiction_text_jin3);
         checkBoxestime[1] = findViewById(R.id.fiction_text_jin7);
         checkBoxestime[2] = findViewById(R.id.fiction_text_jin30);
@@ -202,7 +206,7 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
 
     @Override
     public void initDatas(JumpParameter parameter) {
-        titleNew.setVisibility(View.VISIBLE);
+        titleNew.setVisibility(View.GONE);
         //设置字体
         titleText.setTypeface(getTextMedium);
         titleText.setText("公文拟制系统");
@@ -277,14 +281,14 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
         });
 
         //新建
-        titleNew.setOnClickListener(new View.OnClickListener() {
+        /*titleNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FictionActivity.this, DraftActivity.class);
                 intent.putExtra("flagSpeed","1");
                 startActivity(intent);
             }
-        });
+        });*/
 
         //回到第一条item
         factionTop.setOnClickListener(new View.OnClickListener() {
@@ -309,6 +313,7 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                 fictionDrawer.closeDrawer(Gravity.RIGHT);
                 //调用接口查询
                 getMessageNone();
+
             }
         });
 
@@ -320,6 +325,26 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
             }
         });
 
+        fictionTextChuli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                state = "1";
+            }
+        });
+
+        fictionTextYiguidang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                state = "2";
+            }
+        });
+
+        fictionTextCaogao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                state = "3";
+            }
+        });
     }
 
     //列表数据全部数据
@@ -339,6 +364,7 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
             public void onResponse(String response, Exception error) {
                 FictionListBean fictionListBean = gson.fromJson(response, FictionListBean.class);
                 List<FictionListBean.PageBean.ListBean> list = fictionListBean.getPage().getList();
+
                 if (page == 1){
                     fictionAdapter.setNewData(list);
                     refreshLayout.finishRefresh();
@@ -405,36 +431,10 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
         });
     }
 
-    //延迟线程，看是否还有下一个字符输入
-    private Runnable delayRun = new Runnable() {
-        @Override
-        public void run() {
-            //在这里调用服务器的接口，获取数据
-        }
-    };
-
     //筛选条件
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        //状态
-        if (isChecked){
-            for (int j = 0; j < checkBoxesstate.length; j++) {
-                //不等于当前选中的就变成false
-                if (checkBoxesstate[j].getText().toString().equals(buttonView.getText().toString())) {
-                    checkBoxesstate[j].setChecked(true);
-                    String s = buttonView.getText().toString();
-                    if (s.equals("处理中")){
-                        state = "1";
-                    }else if(s.equals("草稿")){
-                        state = "0";
-                    }else if(s.equals("已归档")){
-                        archivedState = "1";
-                    }
-                } else {
-                    checkBoxesstate[j].setChecked(false);
-                }
-            }
-        }
+
         //时间
         if (isChecked){
             for (int k = 0; k < checkBoxestime.length; k++) {
@@ -448,6 +448,8 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                     }else if(buttonView.getText().toString().equals("最近30天")){
                         day = "30";
                     }
+                    startTime = null;
+                    endTime = null;
                 } else {
                     checkBoxestime[k].setChecked(false);
                 }
@@ -462,9 +464,8 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                     dialog.setContentView(view);
                     Window window = dialog.getWindow();
                     window.setGravity(Gravity.CENTER);
-                    window.setWindowAnimations(R.style.main_menu_animStyle);
                     //设置对话框大小
-                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     fictionTimeStart = view.findViewById(R.id.fiction_time_start);
                     fictionTimeEnd = view.findViewById(R.id.fiction_time_end);
                     Button sure = view.findViewById(R.id.pop_sure);
@@ -493,8 +494,7 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                             startTime = fictionTimeStart.getText().toString();
                             endTime = fictionTimeEnd.getText().toString();
                             dialog.cancel();
-                            fictionDrawer.closeDrawer(Gravity.RIGHT);
-                            getMessageNone();
+
                         }
                     });
 
@@ -503,11 +503,11 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                 }
             });
         }
+
         //类型
         if (isChecked){
             for (int i = 0; i < checkBoxes.length; i++) {
                 //不等于当前选中的就变成false
-
                 if (checkBoxes[i].getText().toString().equals(buttonView.getText().toString())) {
                     checkBoxes[i].setChecked(true);
                     docType = buttonView.getText().toString();
@@ -551,4 +551,11 @@ public class FictionActivity extends BaseAty implements CompoundButton.OnChecked
                 , calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    //延迟线程，看是否还有下一个字符输入
+    private Runnable delayRun = new Runnable() {
+        @Override
+        public void run() {
+            //在这里调用服务器的接口，获取数据
+        }
+    };
 }

@@ -37,7 +37,7 @@
                     android:layout_height="match_parent"
                     android:button="@null"
                     android:gravity="center"
-                    android:text="公文编辑"
+                    android:text="公文内容"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="7dp"
@@ -150,7 +150,7 @@
                     android:layout_height="20dp"/>
 
                 <TextView
-                    android:text="AI只能编辑"
+                    android:text="AI智能编辑"
                     android:textColor="#42ffffff"
                     android:textSize="16dp"
                     android:layout_marginLeft="8dp"

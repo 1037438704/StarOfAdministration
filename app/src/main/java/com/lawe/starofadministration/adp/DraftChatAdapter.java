@@ -30,6 +30,8 @@ public class DraftChatAdapter extends BaseQuickAdapter<ListChatBean, BaseViewHol
     @Override
     protected void convert(BaseViewHolder helper, ListChatBean item) {
 
+        TextView item_draft_text = helper.itemView.findViewById(R.id.item_draft_text);
+        item_draft_text.setText(item_draft_text.getText().toString()+item.getTitle());
         ImageView itemDraftBianJi = helper.itemView.findViewById(R.id.item_draft_bianji);
         ImageView itemDraftDelete = helper.itemView.findViewById(R.id.item_draft_delete);
         if (item.getDisplay()){
@@ -40,7 +42,7 @@ public class DraftChatAdapter extends BaseQuickAdapter<ListChatBean, BaseViewHol
             itemDraftDelete.setVisibility(View.GONE);
         }
 
-
+        item.setTitle(item_draft_text.getText().toString());
         //messageTitle.setTypeface(getTextMedium);
 
       /*   = (TextView) item.findViewById();

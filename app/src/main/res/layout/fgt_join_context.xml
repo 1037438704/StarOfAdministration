@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/join_context_tongzhi"
+                    android:id="@+id/join_context_type"
                     android:text="通知"
                     android:textColor="@color/color_3E3E41"
                     android:textSize="14dp"
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/join_context_gongkai"
+                    android:id="@+id/join_context_publicProperty"
                     android:text="依申请公开"
                     android:textColor="@color/color_3E3E41"
                     android:textSize="14dp"

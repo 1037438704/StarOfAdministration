@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import com.heynchy.baiduocr.BaiduOCRUtil;
 import com.kongzue.baseframework.BaseFragment;
 import com.kongzue.baseframework.interfaces.DarkNavigationBarTheme;
 import com.kongzue.baseframework.interfaces.DarkStatusBarTheme;
@@ -54,6 +55,10 @@ public class ScanningActivity extends BaseAty {
     @Override
     public void initViews() {
         super.initViews();
+        BaiduOCRUtil.initAccessTokenWithAkSk(this,
+                "Tppn4nxavQ2XEEnUGpXYFXRe",
+                "jIf8gbEoMcnp1eA5uHeUjGlFTWPxTq1P");
+
         fragemnts = new ArrayList<>();
         mainRgp = findViewById(R.id.main_rgp);
         viewPager = findViewById(R.id.viewPager);

@@ -82,7 +82,7 @@
                 android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-            <EditText
+            <TextView
                 android:id="@+id/document_subject"
                 android:textSize="16dp"
                 android:textColor="@color/color_3E3E41"

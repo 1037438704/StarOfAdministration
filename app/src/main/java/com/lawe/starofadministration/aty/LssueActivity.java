@@ -60,6 +60,7 @@ public class LssueActivity extends BaseAty {
     private LinearLayout draftChatSet;
     private ImageView draftChatSetImg;
     private TextView draftChatSetText;
+    private TextView bottomChooseper2;
 
     private List<BaseFragment> fragemnts;
     private ViewPagerAdp viewPagerAdp;
@@ -88,6 +89,7 @@ public class LssueActivity extends BaseAty {
         draftChatSet = findViewById(R.id.draft_chat_set);
         draftChatSetImg = findViewById(R.id.draft_chat_set_img);
         draftChatSetText = findViewById(R.id.draft_chat_set_text);
+        bottomChooseper2 = findViewById(R.id.bottom_chooseper2);
 
 
         fragemnts = new ArrayList<>();
@@ -100,7 +102,8 @@ public class LssueActivity extends BaseAty {
     public void initDatas(JumpParameter parameter) {
         rb.setChecked(true);
         rb.setTypeface(getTextMedium);
-        titleText.setText("公文审阅");
+        bottomChooseper2.setText("添加归档人");
+        titleText.setText("公文会签");
         titleText.setTypeface(getTextBold);
         fragemnts.add(LssueContextFragment.newInstance());
         fragemnts.add(LssueEclosureFragment.newInstance());

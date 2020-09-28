@@ -73,6 +73,7 @@ public class ApproveActivity extends BaseAty {
     //空集合
     private List<String> list;
     private TemplateAdapter templateAdapter;
+    private TextView bottomChooseper2;
 
     @Override
     public void initViews() {
@@ -94,10 +95,11 @@ public class ApproveActivity extends BaseAty {
         draftChatSet = findViewById(R.id.draft_chat_set);
         draftChatSetImg = findViewById(R.id.draft_chat_set_img);
         draftChatSetText = findViewById(R.id.draft_chat_set_text);
+        bottomChooseper2 = findViewById(R.id.bottom_chooseper2);
 
-        titleText.setText("公文审阅");
+        titleText.setText("公文核发");
         titleText.setTypeface(getTextBold);
-
+        bottomChooseper2.setText("添加签发人");
         fragemnts = new ArrayList<>();
         RadioButton rb = (RadioButton) mainRgp.getChildAt(0);
         rb.setChecked(true);

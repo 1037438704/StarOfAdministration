@@ -264,7 +264,7 @@ public class JoinSpeedHistoryBean {
             }
 
             //列表反转
-            Collections.reverse(ListSumBean);
+           // Collections.reverse(ListSumBean);
             Log.v("TAGB",new Gson().toJson(ListSumBean));
             return ListSumBean;
         }

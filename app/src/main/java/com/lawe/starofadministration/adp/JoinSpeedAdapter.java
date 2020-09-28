@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
@@ -24,6 +25,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
+import com.kongzue.baseframework.util.Preferences;
 import com.kongzue.baseokhttp.HttpRequest;
 import com.kongzue.baseokhttp.listener.ResponseListener;
 import com.kongzue.baseokhttp.util.Parameter;
@@ -33,6 +35,9 @@ import com.lawe.starofadministration.bean.JoinSpeedHistoryBean;
 import com.lawe.starofadministration.bean.JoinSpeedToDoBean;
 import com.lawe.starofadministration.config.Constants;
 import com.lawe.starofadministration.utils.GlidUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +70,7 @@ public class JoinSpeedAdapter extends BaseQuickAdapter<JoinSpeedHistoryBean.Hist
         TextView liuchengContext = helper.itemView.findViewById(R.id.liucheng_context);
         TextView liucheng_yijiancuiban = helper.itemView.findViewById(R.id.liucheng_yijiancuiban);
         TextView liucheng_cuiban = helper.itemView.findViewById(R.id.liucheng_cuiban);
+        LinearLayout linearChehui = helper.itemView.findViewById(R.id.linearChehui);
 
        liuchengTitle.setText(dataBean.typeTitle);
        if (dataBean.imgHead == null){
@@ -74,17 +80,32 @@ public class JoinSpeedAdapter extends BaseQuickAdapter<JoinSpeedHistoryBean.Hist
        }
         liuchengName.setText(dataBean.departName+"-"+dataBean.jobName+"-"+dataBean.name);
         liuchengTime.setText(dataBean.time);
-        liuchengContext.setText(dataBean.content);
-        liucheng_cuiban.setText("撤回");
+        if(TextUtils.isEmpty(dataBean.content)){
+            liuchengContext.setText(" ");
+        }else{
+            liuchengContext.setText(dataBean.content);
+        }
 
         SharedPreferences fictionIdSp = getContext().getSharedPreferences("fictionId", Context.MODE_PRIVATE);
         String personType = fictionIdSp.getString("personType", "");
         String fictionId = fictionIdSp.getString("fictionId", "");
         if (personType.equals("1")){  //创建人
             liucheng_yijiancuiban.setVisibility(View.VISIBLE);
+
         }else if(personType.equals("2")){  //执行者
             liucheng_yijiancuiban.setVisibility(View.GONE);
         }
+        String names = Preferences.getInstance().getString(getContext(),"login","name");
+        if(!TextUtils.isEmpty(names)){
+            if (dataBean.name != null && dataBean.name.equals(names)){
+                liucheng_cuiban.setText("撤回");
+                liucheng_cuiban.setVisibility(View.VISIBLE);
+            }else{
+                //liucheng_cuiban.setVisibility(View.GONE);
+                linearChehui.setVisibility(View.GONE);
+            }
+        }
+
 
         //创建人撤回
         liucheng_cuiban.setOnClickListener(new View.OnClickListener() {
@@ -102,55 +123,43 @@ public class JoinSpeedAdapter extends BaseQuickAdapter<JoinSpeedHistoryBean.Hist
                 });
             }
         });
-       /* //督办
-        liuchengDuban.setOnClickListener(new View.OnClickListener() {
+        //一键催办
+        liucheng_yijiancuiban.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Dialog dialog = new Dialog(getContext(), R.style.DialogTheme);
-                View view = View.inflate(getContext(), R.layout.pop_duban, null);
-                dialog.setContentView(view);
-                Window window = dialog.getWindow();
-                window.setGravity(Gravity.BOTTOM);
-                window.setWindowAnimations(R.style.main_menu_animStyle);
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                SharedPreferences fictionIdSp = getContext().getSharedPreferences("fictionId", Context.MODE_PRIVATE);
+                String fictionId = fictionIdSp.getString("fictionId", "");
+                String depUserId = Preferences.getInstance().getString(getContext(),"login","depUserId");
 
-                ImageView loginDown = view.findViewById(R.id.login_down);
-                loginDown.setOnClickListener(new View.OnClickListener() {
+                JSONObject json = new JSONObject();
+                try {
+                    json.put("businessKey",fictionId);
+                    json.put("businessKeyType","1");
+                    json.put("delayTime","");
+                    json.put("id","");
+                    json.put("messContent","");
+                    json.put("messType","8");
+                    json.put("messageCount","");
+                    json.put("sendTime","");
+                    json.put("sysUserId",depUserId);
+                    json.put("title","");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //json转化为string类型
+                String jsonMess = String.valueOf(json);
+                HttpRequest.JSONPOST(getContext(), Constants.ONECLICKREMINDER, jsonMess, new ResponseListener() {
                     @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+                    public void onResponse(String response, Exception error) {
+                        if (error==null){
+                            Toast.makeText(getContext(),"一键催办成功",Toast.LENGTH_SHORT).show();
+                        }else{
+                            error.getMessage();
+                        }
                     }
                 });
-
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
-
             }
         });
-
-        //退办
-        liuchengTuihui.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Dialog dialog = new Dialog(getContext(), R.style.DialogTheme);
-                View view = View.inflate(getContext(), R.layout.pop_tuiban, null);
-                dialog.setContentView(view);
-                Window window = dialog.getWindow();
-                window.setGravity(Gravity.BOTTOM);
-                window.setWindowAnimations(R.style.main_menu_animStyle);
-                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
-                ImageView loginDown = view.findViewById(R.id.login_down);
-                loginDown.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
-            }
-        });*/
     }
 
 

@@ -13,6 +13,9 @@ android {
 
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
+
+        // 这里添加
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -33,6 +36,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 //    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation project(path: ':ocr_ui')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -81,6 +85,8 @@ dependencies {
     //eventbus
     implementation 'org.greenrobot:eventbus:3.1.1'
 
+    compile project(path: ':baiduocrlibs')
+
     //富文本编辑器
     implementation 'com.zzhoujay.richtext:richtext:3.0.7'
     implementation 'com.jakewharton:butterknife:10.2.1'
@@ -90,4 +96,7 @@ dependencies {
     }
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     implementation 'org.ccil.cowan.tagsoup:tagsoup:1.2.1'
+
+
+    implementation 'com.android.support:multidex:1.0.3'
 }

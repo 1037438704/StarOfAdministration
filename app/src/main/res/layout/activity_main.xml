@@ -24,7 +24,7 @@
         <RadioGroup
             android:id="@+id/main_rgp"
             android:layout_width="match_parent"
-            android:layout_height="61dp"
+            android:layout_height="66dp"
             android:layout_gravity="bottom"
             android:paddingBottom="5dp"
             android:background="@mipmap/daiban_tabbar_bottom"
@@ -35,7 +35,7 @@
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
 
                 android:layout_weight="1"
                 android:button="@null"
@@ -48,7 +48,7 @@
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:drawableTop="@drawable/select_jindu"
@@ -69,7 +69,7 @@
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:drawableTop="@drawable/select_datas"
@@ -81,7 +81,7 @@
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:button="@null"
                 android:drawableTop="@drawable/select_settings"

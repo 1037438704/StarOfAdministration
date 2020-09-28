@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -12,10 +14,17 @@ import androidx.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
+import com.kongzue.baseframework.util.Preferences;
 import com.lawe.starofadministration.MyApplication;
 import com.lawe.starofadministration.R;
+import com.lawe.starofadministration.aty.ApproveActivity;
 import com.lawe.starofadministration.aty.DraftActivity;
+import com.lawe.starofadministration.aty.ExamineActivity;
 import com.lawe.starofadministration.aty.FictionActivity;
+import com.lawe.starofadministration.aty.JointlyActivity;
+import com.lawe.starofadministration.aty.LssueActivity;
+import com.lawe.starofadministration.aty.ProofreadActivity;
+import com.lawe.starofadministration.aty.ReviewActivity;
 import com.lawe.starofadministration.bean.FictionListBean;
 
 import java.util.List;
@@ -79,17 +88,56 @@ public class FictionAdapter extends BaseQuickAdapter<FictionListBean.PageBean.Li
                 String personType = "";
                 String creatorId = listBean.getCreatorId();
                 //判断比较两个id，是执行者还是创建者
-                if(creatorId.equals(depUserId)){
+                if (creatorId.equals(depUserId)) {
                     personType = "1";  //创建者
-                }else{
+                } else {
                     personType = "2";  //执行者
                 }
-                Intent intent = new Intent(getContext(), DraftActivity.class);
-                intent.putExtra("flagSpeed","2");
+
                 SharedPreferences fictionId = getContext().getSharedPreferences("fictionId", Context.MODE_PRIVATE);
                 fictionId.edit().putString("fictionId",listBean.getId()).commit();
                 fictionId.edit().putString("personType",personType).commit();
-                getContext().startActivity(intent);
+                Preferences.getInstance().set(getContext(),"doc","title",listBean.getDocTitle());
+                Preferences.getInstance().set(getContext(),"doc","num",listBean.getQuasiNumber());
+                Preferences.getInstance().set(getContext(),"doc","dName",listBean.getDname());
+                Preferences.getInstance().set(getContext(),"doc","content",listBean.getDocContent());
+                Preferences.getInstance().set(getContext(),"doc","them",listBean.getDocTheme());
+                Preferences.getInstance().set(getContext(),"doc","type",listBean.getDocType());
+                Preferences.getInstance().set(getContext(),"doc","sendTime",listBean.getSendTime());
+                Preferences.getInstance().set(getContext(),"doc","department","南开区教育局002");
+                Preferences.getInstance().set(getContext(),"doc","publicProperty",listBean.getPublicProperty());
+
+                String taskName = listBean.getTaskName();
+               if (taskName.equals("起草文件")){
+                    Intent intent = new Intent(getContext(), DraftActivity.class);
+                    intent.putExtra("bean",listBean);
+                    getContext().startActivity(intent);
+                }else if (taskName.equals("审核文件")){
+                    Intent intent = new Intent(getContext(), ExamineActivity.class);
+                    intent.putExtra("bean",listBean);
+                    getContext().startActivity(intent);
+                }else if (taskName.equals("审阅文件")){
+                    Intent intent = new Intent(getContext(), ReviewActivity.class);
+                    intent.putExtra("bean",listBean);
+                    getContext().startActivity(intent);
+                }else if(taskName.equals("校对文件")){
+                    Intent intent = new Intent(getContext(), ProofreadActivity.class);
+                    intent.putExtra("bean",listBean);
+                    getContext().startActivity(intent);
+                }else if(taskName.equals("签发文件")){
+                    Intent intent = new Intent(getContext(), ApproveActivity.class);
+                    intent.putExtra("bean",listBean);
+                    getContext().startActivity(intent);
+                }else if(taskName.equals("核发文件")){
+                    Intent intent = new Intent(getContext(), LssueActivity.class);
+                    intent.putExtra("bean",listBean);
+                    getContext().startActivity(intent);
+                }else if(taskName.equals("会签文件")){
+                    Intent intent = new Intent(getContext(), JointlyActivity.class);
+                    intent.putExtra("bean",listBean);
+                    getContext().startActivity(intent);
+                }
+
             }
         });
     }

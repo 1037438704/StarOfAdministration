@@ -83,23 +83,23 @@ public class SetMessageFragment extends BaseFgt {
         eventFactionBean.type = 1;
         EventBus.getDefault().postSticky(eventFactionBean);
 
-        String flagSpeed = Preferences.getInstance().getString(getActivity(), "doc", "flagSpeed");
-        if (flagSpeed.equals("2")){
-            String them = Preferences.getInstance().getString(getActivity(),"doc","them");
-            String type = Preferences.getInstance().getString(getActivity(),"doc","type");
-            String sendTime = Preferences.getInstance().getString(getActivity(),"doc","sendTime");
-            String publicProperty = Preferences.getInstance().getString(getActivity(),"doc","publicProperty");
-            setmesTextType.setText(type);
-            setmesTextZhuti.setText(them);
-            setmesTextTime.setText(sendTime);
-            if (publicProperty.equals("0")){
-                setmesTextTiaojian.setText("不公开");
-            }else if (publicProperty.equals("1")){
-                setmesTextTiaojian.setText("公开");
-            }else if (publicProperty.equals("2")){
-                setmesTextTiaojian.setText("依申请公开");
-            }
+        String them = Preferences.getInstance().getString(getActivity(),"doc","them");
+        String type = Preferences.getInstance().getString(getActivity(),"doc","type");
+        String sendTime = Preferences.getInstance().getString(getActivity(),"doc","sendTime");
+        String publicProperty = Preferences.getInstance().getString(getActivity(),"doc","publicProperty");
+        String department = Preferences.getInstance().getString(getActivity(), "doc", "department");
+        setmesTextType.setText(type);
+        setmesTextZhuti.setText(them);
+        setmesTextTime.setText(sendTime);
+        setmesTextDanwei.setText(department);
+        if (publicProperty.equals("0")){
+            setmesTextTiaojian.setText("不公开");
+        }else if (publicProperty.equals("1")){
+            setmesTextTiaojian.setText("公开");
+        }else if (publicProperty.equals("2")){
+            setmesTextTiaojian.setText("依申请公开");
         }
+
         sp = getActivity().getSharedPreferences("newFile",Context.MODE_PRIVATE);
         edit = sp.edit();
     }
@@ -113,6 +113,7 @@ public class SetMessageFragment extends BaseFgt {
     public void setEvents() {
 
         //公文类型
+        setmesType.setClickable(false);
         setmesType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +123,7 @@ public class SetMessageFragment extends BaseFgt {
         });
 
         //公文主题
+        setmesZhuti.setClickable(false);
         setmesZhuti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,6 +132,7 @@ public class SetMessageFragment extends BaseFgt {
         });
 
         //共享条件
+        setmesTextTiaojian.setClickable(false);
         setmesTiaoJian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,6 +191,7 @@ public class SetMessageFragment extends BaseFgt {
         });
 
         //会签单位
+        setmesHuiqian.setClickable(false);
         setmesHuiqian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,7 +201,9 @@ public class SetMessageFragment extends BaseFgt {
             }
         });
 
+
         //定时发送
+        setmesTime.setVisibility(View.GONE);
         setmesTime.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override

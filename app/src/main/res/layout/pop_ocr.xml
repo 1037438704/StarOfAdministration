@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingTop="8dp"
+    android:layout_marginTop="81dp"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/item_img_down"/>
+
+    <TextView
+        android:text="识别出的文本"
+        android:textColor="@color/color_9F9FA0"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:background="@drawable/shape_red42_22"
+            android:layout_marginTop="20dp"
+            android:text="复制"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="8dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="44dp"/>
+
+        <Button
+            android:background="@drawable/shape_red42_22"
+            android:layout_marginTop="20dp"
+            android:text="复制"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:includeFontPadding="false"
+            android:layout_marginBottom="8dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="44dp"/>
+    </LinearLayout>
+
+</LinearLayout>

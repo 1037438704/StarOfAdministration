@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+
+import androidx.multidex.MultiDex;
+
 import com.kongzue.baseokhttp.util.BaseOkHttp;
 import com.kongzue.dialog.util.BaseDialog;
 import com.kongzue.dialog.util.DialogSettings;
@@ -29,8 +32,16 @@ public class MyApplication extends Application {
     public static Typeface getTextRegular;
     public static Typeface getTextNum;
 
+    private static MyApplication mApp;
+    public static MyApplication getApp() {
+        return mApp;
+    }
+
     @Override
     public void onCreate() {
+        // 主要是添加下面这句代码
+        MultiDex.install(this);
+
         BaseDialog.unload();
         DialogSettings.init();
         DialogSettings.style = DialogSettings.STYLE.STYLE_IOS;
@@ -40,8 +51,9 @@ public class MyApplication extends Application {
         OkHttpUtil.init(getApplicationContext()).setShowHttpLog(true).build();
 
         //请求公共链接
-        BaseOkHttp.serviceUrl = "http://192.168.0.179:8091";
-        //BaseOkHttp.serviceUrl = "http://192.168.0.119:8091";
+//        BaseOkHttp.serviceUrl = "http://192.168.0.179:8090";
+//        BaseOkHttp.serviceUrl = "http://192.168.0.119:8091";
+        BaseOkHttp.serviceUrl = "http://60.205.202.177:8090";
         BaseOkHttp.TIME_OUT_DURATION = 10;
 
 
@@ -53,6 +65,8 @@ public class MyApplication extends Application {
         getTextNum = Typeface.createFromAsset(textType, "fonts/DINAlternateBold.ttf");
 
         super.onCreate();
+
+
     }
 
     //static 代码段可以防止内存泄露

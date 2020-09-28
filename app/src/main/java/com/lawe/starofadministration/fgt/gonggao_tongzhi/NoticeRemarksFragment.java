@@ -38,8 +38,8 @@ public class NoticeRemarksFragment extends BaseFgt {
     @Override
     public void initViews() {
         joinContextTitle = (TextView) findViewById(R.id.join_context_title);
-        joinContextTongzhi = (TextView) findViewById(R.id.join_context_tongzhi);
-        joinContextGongkai = (TextView) findViewById(R.id.join_context_gongkai);
+        //joinContextTongzhi = (TextView) findViewById(R.id.join_context_tongzhi);
+        //joinContextGongkai = (TextView) findViewById(R.id.join_context_gongkai);
         joinContextQicaoren = (TextView) findViewById(R.id.join_context_qicaoren);
         joinContextHuiqian = (TextView) findViewById(R.id.join_context_huiqian);
         joinContextNumber = (TextView) findViewById(R.id.join_context_number);

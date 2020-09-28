@@ -62,25 +62,19 @@ import static androidx.core.content.ContextCompat.checkSelfPermission;
  * description : 起草公文---公文编辑
  **/
 @Layout(R.layout.fgt_document_edit)
-public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFontPanelListener
-        , RichEditText.OnSelectChangeListener {
+public class DocumentEditFragment extends BaseFgt {
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-    private EditText documentTitle;
+    private TextView documentTitle;
     private TextView documentNumber;
-    private EditText documentSubject;
-    private LinearLayout cebianlan;
+    private TextView documentSubject;
     private ImageView imgBig;
     private ImageView imgSmall;
     private ImageView imgTop;
-    private ImageView imgRead;
-    private ImageView imgBohui;
-    private boolean isEmpty;
-    private ScrollView documentScroll;
     private int textsize = 16;
     private WebView webview;
     private String filePath = "0",depUserId = "1253514067132448770",temWordfile = "aa",documentationType = "0";
@@ -90,7 +84,7 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
     private String qNumber;  //拟编号的数字
     private String quasiNumber;  //公文拟编号
     private FontStylePanel fontStylePanel;
-    private RichEditText richEditText;
+    private TextView richEditText;
     private Button btnCenter;
     private int flagCenter = 1;
     private SharedPreferences.Editor edit;
@@ -101,39 +95,34 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
     @Override
     public void initViews() {
         super.initViews();
-        documentTitle = (EditText) findViewById(R.id.document_title);
+        documentTitle = (TextView) findViewById(R.id.document_title);
         documentNumber = (TextView) findViewById(R.id.document_number);
-        documentSubject = (EditText) findViewById(R.id.document_subject);
+        documentSubject = (TextView) findViewById(R.id.document_subject);
         newWorkTitle = (TextView) findViewById(R.id.new_work_title);
         documentSubTitle = (TextView) findViewById(R.id.document_sub_title);
-        //documentScroll = (ScrollView) findViewById(R.id.document_scroll);
-        cebianlan = (LinearLayout) findViewById(R.id.cebianlan);
         imgBig = (ImageView) findViewById(R.id.img_big);
         imgSmall = (ImageView) findViewById(R.id.img_small);
         imgTop = (ImageView) findViewById(R.id.img_top);
-        imgRead = (ImageView) findViewById(R.id.img_read);
-        imgBohui = (ImageView) findViewById(R.id.img_bohui);
         webview = (WebView) findViewById(R.id.webview);
         webceshi = (TextView) findViewById(R.id.document_sub_title);
         fontStylePanel = (FontStylePanel) findViewById(R.id.fontStylePanel);
-        richEditText = (RichEditText) findViewById(R.id.richEditText);
+        richEditText = (TextView) findViewById(R.id.richEditText);
         btnCenter = (Button) findViewById(R.id.btn_center);
-        fontStylePanel.setOnFontPanelListener(this);
+        //fontStylePanel.setOnFontPanelListener(this);
         //richEditText.setOnSelectChangeListener(this);
         //设置字体
         documentTitle.setTypeface(getTextMedium);
         newWorkTitle.setText("公文标题：");
         documentSubTitle.setText("公文主体：");
 
-        String flagSpeed = Preferences.getInstance().getString(getActivity(), "doc", "flagSpeed");
-        if (flagSpeed.equals("2")){
-            String title = Preferences.getInstance().getString(getActivity(),"doc","title");
-            String num = Preferences.getInstance().getString(getActivity(),"doc","num");
-            String content = Preferences.getInstance().getString(getActivity(),"doc","content");
-            documentTitle.setText(title);
-            documentNumber.setText(num);
-            richEditText.setText(content);
-        }
+
+        String title = Preferences.getInstance().getString(getActivity(),"doc","title");
+        String num = Preferences.getInstance().getString(getActivity(),"doc","num");
+        String content = Preferences.getInstance().getString(getActivity(),"doc","content");
+        documentTitle.setText(title);
+        documentNumber.setText("拟编号:"+num);
+        richEditText.setText(content);
+
         SharedPreferences fictionIdSp = getContext().getSharedPreferences("fictionId", Context.MODE_PRIVATE);
         fictionId = fictionIdSp.getString("fictionId", "");
         eventFactionBean = new EventFactionBean();
@@ -142,10 +131,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
         getQuasiNumber();
         //查询公文拟制公文字号数值
         getNumber();
-        //模板
-        showWord();
 
-        initRichTextCon();
+        //initRichTextCon();
 
     }
 
@@ -177,7 +164,7 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                         if(error == null){
                             Map<String, String> map = JSONUtils.parseKeyAndValueToMap(response);
                             quasiNumber = map.get("newQuasiNumber");
-                            documentNumber.setText("拟编号："+ quasiNumber);
+                            //documentNumber.setText("拟编号："+ quasiNumber);
                             //保存拟编号
                             eventFactionBean.setQuasiNumber(quasiNumber);
                             EventBus.getDefault().postSticky(eventFactionBean);
@@ -190,7 +177,7 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
 
     @Override
     public void initDatas() {
-        //时时获取标题内容
+      /*  //时时获取标题内容
         documentTitle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -240,20 +227,8 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                 //延迟800ms，如果不再输入字符，则执行该线程的run方法
                 handler.postDelayed(delayRun, 800);
             }
-        });
+        });*/
     }
-
-
-    /**
-     * * 延迟线程，看是否还有下一个字符输入
-     */
-
-    private Runnable delayRun = new Runnable() {
-        @Override
-        public void run() {
-            //在这里调用服务器的接口，获取数据
-        }
-    };
 
     @Override
     public void setEvents() {
@@ -271,13 +246,13 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
                 return false;
             }
         });
-        //输入内容回滚顶部
+        /*//输入内容回滚顶部
         imgTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 documentSubject.setSelection(0);
             }
-        });
+        });*/
         //放大字体
         imgBig.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -398,7 +373,7 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
     }
 
     //----------------------------------设置字体样式、大小、颜色-------------------------------------------------------
-    @Override
+   /* @Override
     public void setBold(boolean isBold) {
         richEditText.setBold(isBold);
     }
@@ -459,44 +434,52 @@ public class DocumentEditFragment extends BaseFgt implements FontStylePanel.OnFo
     private void initRichTextCon(){
         String html_content = fgtContext.getIntent().getStringExtra("html_content");
         if(!TextUtils.isEmpty(html_content)){
-            Log.d("richText","html转span:"+html_content);
             Spanned spanned = CustomHtml.fromHtml(html_content,CustomHtml.FROM_HTML_MODE_LEGACY,new RichEditImageGetter(fgtContext,richEditText),null);
             richEditText.setText(spanned);
         }
     }
 
-    /*@OnClick(R.id.btn_right)
+    *//*@OnClick(R.id.btn_right)
     protected void btn_right_onClick(){
         String content = CustomHtml.toHtml(richEditText.getEditableText(),CustomHtml.TO_HTML_PARAGRAPH_LINES_CONSECUTIVE);
         Log.d("richText","span转html:"+content);
         Intent intent = new Intent(this,WebviewActivity.class);
         intent.putExtra("content",content);
         startActivity(intent);
-    }*/
-    /**
+    }*//*
+    *//**
      * 样式改变
      * @param fontStyle
-     */
+     *//*
     @Override
     public void onFontStyleChang(FontStyle fontStyle) {
         fontStylePanel.initFontStyle(fontStyle);
     }
 
-    /**
+    *//**
      * 光标选中监听
-     * @param start
-     * @param end
-     */
+     * @param
+     * @param
+     *//*
     @Override
     public void onSelect(int start, int end) {
     }
 
     private void checkPermission() {
 
-    }
+    }*/
 
     public static DocumentEditFragment newInstance() {
         return new DocumentEditFragment();
     }
 
+    /**
+     * * 延迟线程，看是否还有下一个字符输入
+     */
+    private Runnable delayRun = new Runnable() {
+        @Override
+        public void run() {
+            //在这里调用服务器的接口，获取数据
+        }
+    };
 }

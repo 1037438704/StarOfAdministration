@@ -25,6 +25,9 @@ import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.EnclosureCatalogFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.ExamContextFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinSpeedFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.ReviewContextFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.ReviewEclosureFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.ReviewSpeedFragment;
@@ -60,6 +63,7 @@ public class ReviewActivity extends BaseAty {
     private LinearLayout draftChatSet;
     private ImageView draftChatSetImg;
     private TextView draftChatSetText;
+    private TextView bottomChooseper2;
 
     private List<BaseFragment> fragemnts;
     private ViewPagerAdp viewPagerAdp;
@@ -80,6 +84,7 @@ public class ReviewActivity extends BaseAty {
         bottomChat = findViewById(R.id.bottom_chat);
         bottomButton = findViewById(R.id.bottom_button);
         draftChat = findViewById(R.id.draft_chat);
+        bottomChooseper2 = findViewById(R.id.bottom_chooseper2);
         draftChatRecycle = findViewById(R.id.draft_chat_recycle);
         draftChatNew = findViewById(R.id.draft_chat_new);
         draftChatNewImg = findViewById(R.id.draft_chat_new_img);
@@ -98,12 +103,13 @@ public class ReviewActivity extends BaseAty {
         rb.setChecked(true);
         rb.setTypeface(getTextMedium);
         titleText.setText("公文审阅");
+        bottomChooseper2.setText("添加校对人");
         titleText.setTypeface(getTextBold);
 
 
-        fragemnts.add(ReviewContextFragment.newInstance());
-        fragemnts.add(ReviewEclosureFragment.newInstance());
-        fragemnts.add(ReviewSpeedFragment.newInstance());
+        fragemnts.add(ExamContextFragment.newInstance());
+        fragemnts.add(EnclosureCatalogFragment.newInstance());
+        fragemnts.add(JoinSpeedFragment.newInstance());
 
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPagerData.setOffscreenPageLimit(fragemnts.size());

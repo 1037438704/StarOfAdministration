@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kongzue.baseframework.interfaces.Layout;
+import com.kongzue.baseframework.util.Preferences;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.base.BaseFgt;
 
@@ -22,8 +23,8 @@ import com.lawe.starofadministration.base.BaseFgt;
 public class ExamContextFragment extends BaseFgt {
 
     private TextView joinContextTitle;
-    private TextView joinContextTongzhi;
-    private TextView joinContextGongkai;
+    private TextView joinContextType;
+    private TextView joinPublicProperty;
     private TextView joinContextQicaoren;
     private TextView joinContextHuiqian;
     private TextView joinContextNumber;
@@ -39,8 +40,8 @@ public class ExamContextFragment extends BaseFgt {
     public void initViews() {
         super.initViews();
         joinContextTitle = (TextView) findViewById(R.id.join_context_title);
-        joinContextTongzhi = (TextView) findViewById(R.id.join_context_tongzhi);
-        joinContextGongkai = (TextView) findViewById(R.id.join_context_gongkai);
+        joinContextType = (TextView) findViewById(R.id.join_context_type);
+        joinPublicProperty = (TextView) findViewById(R.id.join_context_publicProperty);
         joinContextQicaoren = (TextView) findViewById(R.id.join_context_qicaoren);
         joinContextHuiqian = (TextView) findViewById(R.id.join_context_huiqian);
         joinContextNumber = (TextView) findViewById(R.id.join_context_number);
@@ -51,7 +52,7 @@ public class ExamContextFragment extends BaseFgt {
         imgTop = (ImageView) findViewById(R.id.img_top);
         imgRead = (ImageView) findViewById(R.id.img_read);
         imgBohui = (ImageView) findViewById(R.id.img_bohui);
-        cebianlan.setVisibility(View.VISIBLE);
+        cebianlan.setVisibility(View.GONE);
         imgBohui.setVisibility(View.VISIBLE);
         imgRead.setVisibility(View.VISIBLE);
         //设置字体
@@ -61,7 +62,24 @@ public class ExamContextFragment extends BaseFgt {
 
     @Override
     public void initDatas() {
-
+        String type = Preferences.getInstance().getString(me,"doc","type");
+        String publicProperty = Preferences.getInstance().getString(me,"doc","publicProperty");
+        String title = Preferences.getInstance().getString(me,"doc","title");
+        String num = Preferences.getInstance().getString(me,"doc","num");
+        String content = Preferences.getInstance().getString(me,"doc","content");
+        String dName = Preferences.getInstance().getString(me, "doc", "dName");
+        joinContextQicaoren.setText(dName);
+        joinContextTitle.setText(title);
+        joinContextNumber.setText("拟编号:"+num);
+        joinContextSubject.setText(content);
+        joinContextType.setText(type);
+        if (publicProperty.equals("0")){
+            joinPublicProperty.setText("不公开");
+        }else if (publicProperty.equals("1")){
+            joinPublicProperty.setText("公开");
+        }else if (publicProperty.equals("2")){
+            joinPublicProperty.setText("依申请公开");
+        }
     }
 
     @Override

@@ -25,6 +25,9 @@ import com.kongzue.baseframework.util.JumpParameter;
 import com.lawe.starofadministration.R;
 import com.lawe.starofadministration.adp.ViewPagerAdp;
 import com.lawe.starofadministration.base.BaseAty;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.EnclosureCatalogFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.ExamContextFragment;
+import com.lawe.starofadministration.fgt.gongwen_nizhi.JoinSpeedFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.ProofreadContextFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.ProofreadEclosureFragment;
 import com.lawe.starofadministration.fgt.gongwen_nizhi.ProofreadSpeedFragment;
@@ -47,10 +50,10 @@ public class ProofreadActivity extends BaseAty {
     private TextView titleText;
     private RadioGroup mainRgp;
     private ViewPager viewPagerData;
-    private ImageView bottomPerson;
+    private LinearLayout bottomPerson;
     private ImageView bottomPizhu;
     private EditText bottomWhrit;
-    private ImageView bottomChat;
+    private Button bottomChat;
     private Button bottomButton;
     private LinearLayout draftChat;
     private RecyclerView draftChatRecycle;
@@ -60,6 +63,7 @@ public class ProofreadActivity extends BaseAty {
     private LinearLayout draftChatSet;
     private ImageView draftChatSetImg;
     private TextView draftChatSetText;
+    private TextView bottomChooseper2;
 
     private List<BaseFragment> fragemnts;
     private ViewPagerAdp viewPagerAdp;
@@ -75,11 +79,12 @@ public class ProofreadActivity extends BaseAty {
         mainRgp = findViewById(R.id.main_rgp);
         viewPagerData = findViewById(R.id.viewPagerData);
         //下输入键盘常用语的部分
-        //bottomPerson = findViewById(R.id.bottom_person);
+        bottomPerson = findViewById(R.id.bottom_person);
         bottomPizhu = findViewById(R.id.bottom_pizhu);
         bottomWhrit = findViewById(R.id.bottom_whrit);
         bottomChat = findViewById(R.id.bottom_chat);
         bottomButton = findViewById(R.id.bottom_button);
+        bottomChooseper2 = findViewById(R.id.bottom_chooseper2);
         draftChat = findViewById(R.id.draft_chat);
         draftChatRecycle = findViewById(R.id.draft_chat_recycle);
         draftChatNew = findViewById(R.id.draft_chat_new);
@@ -100,11 +105,12 @@ public class ProofreadActivity extends BaseAty {
         rb.setTypeface(getTextMedium);
 
         titleText.setText("公文审阅");
+        bottomChooseper2.setText("添加核发人");
         titleText.setTypeface(getTextBold);
 
-        fragemnts.add(ProofreadContextFragment.newInstance());
-        fragemnts.add(ProofreadEclosureFragment.newInstance());
-        fragemnts.add(ProofreadSpeedFragment.newInstance());
+        fragemnts.add(ExamContextFragment.newInstance());
+        fragemnts.add(EnclosureCatalogFragment.newInstance());
+        fragemnts.add(JoinSpeedFragment.newInstance());
 
         viewPagerAdp = new ViewPagerAdp(me.getSupportFragmentManager(), fragemnts);
         viewPagerData.setOffscreenPageLimit(fragemnts.size());
@@ -267,12 +273,5 @@ public class ProofreadActivity extends BaseAty {
             }
         });
 
-        //暂定跳往核发页面
-        bottomButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                jump(ApproveActivity.class);
-            }
-        });
     }
 }
